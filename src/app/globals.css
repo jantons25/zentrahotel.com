@@ -1,0 +1,109 @@
+/* Design tokens globales del sitio: colores de marca, tipografía, radios, sombras, z-index y animación. */
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-sans);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-header: var(--shadow-header);
+}
+
+:root {
+  /* Paleta de marca extraída del sitio original de Zentra Hotel */
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #b9bc31;
+  --primary-foreground: #ffffff;
+  --secondary: #004c72;
+  --secondary-foreground: #ffffff;
+  --muted: #f7f7f7;
+  --muted-foreground: #6f6f6f;
+  --accent: #f5f6e4;
+  --accent-foreground: #1a1a1a;
+  --destructive: #d4472e;
+  --border: #eaeaea;
+  --input: #eaeaea;
+  --ring: #b9bc31;
+  --radius: 1rem;
+  /* Sombras */
+  --shadow-card: 0 6px 24px rgb(0 0 0 / 0.06);
+  --shadow-card-hover: 0 12px 32px rgb(0 0 0 / 0.12);
+  --shadow-header: 0 2px 12px rgb(0 0 0 / 0.06);
+  /* Escala de z-index nombrada */
+  --z-header: 40;
+  --z-floating: 50;
+  /* Duraciones de animación */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+}
+
+.dark {
+  --background: #0e1418;
+  --foreground: #f2f2f2;
+  --card: #162026;
+  --card-foreground: #f2f2f2;
+  --popover: #162026;
+  --popover-foreground: #f2f2f2;
+  --primary: #b9bc31;
+  --primary-foreground: #10150a;
+  --secondary: #1273a3;
+  --secondary-foreground: #ffffff;
+  --muted: #1b262d;
+  --muted-foreground: #9aa3a8;
+  --accent: #232d1a;
+  --accent-foreground: #f2f2f2;
+  --destructive: #e2593f;
+  --border: #ffffff1a;
+  --input: #ffffff26;
+  --ring: #b9bc31;
+  --shadow-card: 0 6px 24px rgb(0 0 0 / 0.4);
+  --shadow-card-hover: 0 12px 32px rgb(0 0 0 / 0.55);
+  --shadow-header: 0 2px 12px rgb(0 0 0 / 0.4);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply scroll-smooth font-sans;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}

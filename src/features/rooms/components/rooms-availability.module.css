@@ -1,0 +1,45 @@
+/* Microanimaciones exclusivas de la sección disponibilidad-titulo. */
+
+@keyframes availability-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  animation: availability-reveal-in 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.card {
+  transition:
+    transform var(--duration-normal, 250ms) cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow var(--duration-normal, 250ms) ease;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .card,
+  .card:hover,
+  .card:focus-within {
+    transform: none;
+    transition: none;
+  }
+}
