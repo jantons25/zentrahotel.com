@@ -1,0 +1,103 @@
+// Beneficios B2B: navy dark con 4 tarjetas serifadas y CTA integrado.
+import { ArrowUpRight } from "lucide-react";
+
+import { Container } from "@/components/common/container";
+import { Section } from "@/components/common/section";
+import { fontCorporateDisplay } from "@/features/corporate/config/corporate-fonts";
+import { corporateBenefits } from "@/features/corporate/data/corporate";
+
+import styles from "./corporate.module.css";
+
+export function CorporateBenefits() {
+  const total = corporateBenefits.length;
+
+  return (
+    <Section
+      id="beneficios"
+      aria-labelledby="beneficios-titulo"
+      className={`${fontCorporateDisplay.variable} ${styles.section} relative overflow-hidden bg-secondary text-secondary-foreground`}
+    >
+      <div className={styles.auroraOne} aria-hidden="true" />
+      <div className={styles.auroraTwo} aria-hidden="true" />
+      <div className={styles.grain} aria-hidden="true" />
+
+      <Container className="relative">
+        <header
+          className={`${styles.reveal} flex flex-col gap-8 md:flex-row md:items-end md:justify-between`}
+          style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
+        >
+          <div className="max-w-2xl">
+            <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-white/60 uppercase">
+              <span className="h-px w-8 bg-white/30" aria-hidden="true" />
+              Beneficios exclusivos B2B · {total.toString().padStart(2, "0")}
+            </p>
+            <h2
+              id="beneficios-titulo"
+              className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.3rem,5vw,4rem)]"
+            >
+              Más que hospedaje. Un{" "}
+              <span className="italic font-normal text-primary">
+                ecosistema de operación corporativa.
+              </span>
+            </h2>
+            <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/70">
+              Al firmar tu convenio con Zentra Hotel & Cowork, tu empresa accede
+              a condiciones que ningún hotel de Chiclayo puede ofrecerte de
+              forma integrada.
+            </p>
+          </div>
+
+          <a
+            href="#convenio"
+            className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none md:self-auto"
+          >
+            Hablar con un asesor
+            <ArrowUpRight
+              className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
+              strokeWidth={2}
+              aria-hidden="true"
+            />
+          </a>
+        </header>
+
+        <ol className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">
+          {corporateBenefits.map(({ number, icon: Icon, title, description }, index) => (
+            <li
+              key={number}
+              className={styles.reveal}
+              style={
+                {
+                  "--reveal-delay": `${140 + index * 90}ms`,
+                } as React.CSSProperties
+              }
+            >
+              <article
+                className={`${styles.card} ${styles.cardDark} group flex h-full flex-col gap-6 rounded-[1.5rem] border border-white/12 bg-white/5 p-6 backdrop-blur sm:p-7`}
+              >
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="font-[family-name:var(--font-corporate-display)] text-4xl font-light leading-none text-primary tracking-tight">
+                    {number}
+                  </span>
+                  <span
+                    className={`${styles.iconChip} grid size-11 place-items-center rounded-xl bg-primary/15 text-primary`}
+                    aria-hidden="true"
+                  >
+                    <Icon className="size-5" strokeWidth={1.75} />
+                  </span>
+                </div>
+                <div>
+                  <h3 className="font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-tight text-white tracking-tight text-balance sm:text-[1.35rem]">
+                    {title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/75">
+                    {description}
+                  </p>
+                </div>
+              </article>
+            </li>
+          ))}
+        </ol>
+      </Container>
+    </Section>
+  );
+}

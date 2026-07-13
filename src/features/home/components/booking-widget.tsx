@@ -96,7 +96,7 @@ export function BookingWidget() {
           <CalendarDays className="size-4" strokeWidth={1.75} />
         </span>
         <div>
-          <p className="text-[0.62rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
+          <p className="text-[0.62rem] font-mono text-secondary/55 uppercase tracking-tight text-balance sm:text-[1.7rem]">
             Reserva directo
           </p>
           <h3

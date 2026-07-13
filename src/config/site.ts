@@ -34,7 +34,7 @@ export const mainNavLeft: NavItem[] = [
   { label: "Inicio", href: "/" },
   { label: "Nosotros", href: "/nosotros" },
   { label: "Habitaciones", href: "/habitaciones" },
-  { label: "Galería", href: "/galeria" },
+  { label: "Empresa", href: "/empresa" },
 ];
 
 export const mainNavRight: NavItem[] = [
