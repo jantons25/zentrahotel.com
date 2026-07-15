@@ -29,15 +29,15 @@ export function CorporateBenefits() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-white/60 uppercase">
               <span className="h-px w-8 bg-white/30" aria-hidden="true" />
-              Beneficios exclusivos B2B · {total.toString().padStart(2, "0")}
+              Nuestros convenios · {total.toString().padStart(2, "0")}
             </p>
             <h2
               id="beneficios-titulo"
               className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.3rem,5vw,4rem)]"
             >
-              Más que hospedaje. Un{" "}
+              Más que hospedaje, una{" "}
               <span className="italic font-normal text-primary">
-                ecosistema de operación corporativa.
+                solución para tu equipo de trabajo en Chiclayo.
               </span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/70">

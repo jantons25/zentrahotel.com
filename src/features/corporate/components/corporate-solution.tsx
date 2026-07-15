@@ -48,17 +48,17 @@ export function CorporateSolution() {
               style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
             >
               <span className="h-px w-8 bg-secondary/50" aria-hidden="true" />
-              La solución · Un solo hub
+              La solución
             </p>
 
             <h2
               id="solucion-titulo"
-              className={`${styles.reveal} mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.3rem,5vw,4rem)]`}
+              className={`${styles.reveal} mt-6 font-[family-name:var(--font-corporate-display)] font-[1.5rem] leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.3rem,5vw,4rem)]`}
               style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
             >
-              El primer hub corporativo del{" "}
+              Te facilitamos la complejidad logística en{" "}
               <span className="italic font-normal text-white/95">
-                norte del Perú.
+                Zentra Hotel & Cowork.
               </span>
             </h2>
 
@@ -66,9 +66,10 @@ export function CorporateSolution() {
               className={`${styles.reveal} mt-6 max-w-xl text-[0.98rem] leading-relaxed text-secondary/85 md:text-base`}
               style={{ "--reveal-delay": "220ms" } as React.CSSProperties}
             >
-              Zentra Hotel & Cowork integra una cadena de tres hoteles ejecutivos
-              y espacios de trabajo premium bajo un mismo convenio. Tu equipo
-              aterriza en Chiclayo listo para operar desde el primer minuto.
+              Somos el primer hub corporativo en Chiclayo que integra una cadena
+              de tres hoteles ejecutivos y un Coworking premium bajo un mismo
+              convenio. Tu equipo estará listo para operar desde el primer
+              minuto.
             </p>
 
             <ul
@@ -137,7 +138,10 @@ export function CorporateSolution() {
                       className={styles.hubNodeChip}
                       style={nodePosition(node.angle)}
                     >
-                      <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
+                      <span
+                        className="size-1.5 rounded-full bg-primary"
+                        aria-hidden="true"
+                      />
                       {node.label}
                     </span>
                   ))}
@@ -149,21 +153,27 @@ export function CorporateSolution() {
 
         <div className="mt-16 grid gap-6 lg:grid-cols-2 lg:gap-8">
           <article
-            className={`${styles.reveal} ${styles.card} flex h-full flex-col rounded-[1.75rem] border border-secondary/15 bg-card p-6 shadow-card sm:p-8`}
+            className={`${styles.reveal} ${styles.card} flex h-full flex-col rounded-[1.75rem] border border-secondary/15 bg-accent p-6 shadow-card sm:p-8`}
             style={{ "--reveal-delay": "440ms" } as React.CSSProperties}
           >
             <p className="flex items-center gap-2 text-[0.65rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
-              <Building2 className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
+              <Building2
+                className="size-3.5"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
               Cadena Zentra Hotel · Hospedaje ejecutivo
             </p>
             <h3 className="mt-4 font-[family-name:var(--font-corporate-display)] text-2xl font-light leading-tight text-secondary tracking-tight text-balance sm:text-[1.85rem]">
-              Tres establecimientos en el centro, diseñados para el viajero de negocios.
+              Tres establecimientos en el centro, diseñados para el viajero de
+              negocios.
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Comodidad, tecnología y servicio sin tiempos de espera. Habitaciones
-              pensadas para equipos que trabajan hasta tarde y arrancan temprano.
+              Comodidad, tecnología y servicio sin tiempos de espera.
+              Habitaciones pensadas para equipos que trabajan hasta tarde y
+              arrancan temprano.
             </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2" style={{ whiteSpace: "pre-line" }}>
               {corporateSolutionZentraFeatures.map(({ icon: Icon, label }) => (
                 <li
                   key={label}
@@ -186,7 +196,11 @@ export function CorporateSolution() {
             style={{ "--reveal-delay": "520ms" } as React.CSSProperties}
           >
             <p className="flex items-center gap-2 text-[0.65rem] font-mono tracking-[0.22em] text-white/60 uppercase">
-              <Sparkles className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
+              <Sparkles
+                className="size-3.5"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
               Nexus Cowork · Espacios de trabajo premium
             </p>
             <h3 className="mt-4 font-[family-name:var(--font-corporate-display)] text-2xl font-light leading-tight text-white tracking-tight text-balance sm:text-[1.85rem]">
@@ -197,7 +211,7 @@ export function CorporateSolution() {
               central, sin interrupciones. Un solo punto de contacto, operación
               sin fricciones.
             </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2" style={{ whiteSpace: "pre-line" }}>
               {corporateSolutionNexusFeatures.map(({ icon: Icon, label }) => (
                 <li
                   key={label}

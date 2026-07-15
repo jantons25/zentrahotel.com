@@ -14,7 +14,7 @@ export function CorporateHero() {
       aria-label="Bienvenida corporativa"
       className={`${fontCorporateDisplay.variable} ${styles.section} relative isolate -mt-16 overflow-hidden bg-secondary text-white md:-mt-20`}
     >
-      {/* <Image
+      * <Image
         src="/images/cowork-plaza.webp"
         alt=""
         fill
@@ -23,11 +23,11 @@ export function CorporateHero() {
         className="absolute inset-0 -z-20 object-cover object-[center_35%] motion-safe:animate-[corp-hero-zoom_18s_ease-out_forwards]"
       />
       <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-black/50"
+        className="pointer-events-none absolute inset-0 -z-10 bg-black/65"
         aria-hidden="true"
-      /> */}
+      /> 
       <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-secondary/45 via-transparent to-secondary/70"
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-secondary/15 via-transparent to-secondary/30"
         aria-hidden="true"
       />
       <div className={styles.auroraOne} aria-hidden="true" />
@@ -39,7 +39,10 @@ export function CorporateHero() {
               className={`${styles.reveal} inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-[0.62rem] font-semibold tracking-[0.28em] text-white/90 uppercase backdrop-blur-md`}
               style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
             >
-              <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
+              <span
+                className="size-1.5 rounded-full bg-primary"
+                aria-hidden="true"
+              />
               Cadena hotelera corporativa · 3 sedes en Chiclayo · 2026
             </p>
 
@@ -57,8 +60,8 @@ export function CorporateHero() {
               className={`${styles.reveal} mt-6 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg`}
               style={{ "--reveal-delay": "220ms" } as React.CSSProperties}
             >
-              Hospedaje ejecutivo en tres sedes más espacios de trabajo premium
-              en un solo convenio. Una sola factura, un solo punto de contacto.
+              Elige tu hospedaje ejecutivo en cualquiera de nuestras 3 sedes,
+              más espacios de coworking premium
             </p>
 
             <div
@@ -69,7 +72,7 @@ export function CorporateHero() {
                 href="#convenio"
                 className="group inline-flex items-center justify-center gap-3 rounded-full bg-primary px-6 py-3 text-sm font-semibold tracking-wide text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                Solicita tu convenio
+                Solicita tu cotización
                 <ArrowUpRight
                   className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
                   strokeWidth={2}
@@ -85,13 +88,17 @@ export function CorporateHero() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-3 rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none"
               >
-                <MessageCircle className="size-4" strokeWidth={1.75} aria-hidden="true" />
+                <MessageCircle
+                  className="size-4"
+                  strokeWidth={1.75}
+                  aria-hidden="true"
+                />
                 Hablar con un asesor
               </a>
             </div>
           </div>
 
-          <aside
+          {/* <aside
             className={`${styles.reveal} lg:col-span-4`}
             style={{ "--reveal-delay": "260ms" } as React.CSSProperties}
             aria-label="Resumen del convenio"
@@ -108,7 +115,7 @@ export function CorporateHero() {
                 hub corporativo del norte del Perú.
               </p>
             </div>
-          </aside>
+          </aside> */}
         </div>
 
         <ul
@@ -117,7 +124,7 @@ export function CorporateHero() {
           aria-label="Indicadores clave del convenio"
         >
           {corporateHeroKpis.map(({ icon: Icon, label, detail }) => (
-            <li key={label} className="flex items-start gap-3">
+            <li key={label} className="flex items-center gap-3">
               <span
                 className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-xl bg-primary/15 text-secondary"
                 aria-hidden="true"
@@ -127,9 +134,6 @@ export function CorporateHero() {
               <div className="min-w-0">
                 <p className="font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-none text-secondary tracking-tight sm:text-2xl">
                   {label}
-                </p>
-                <p className="mt-1 text-[0.72rem] leading-snug text-secondary sm:text-sm">
-                  {detail}
                 </p>
               </div>
             </li>

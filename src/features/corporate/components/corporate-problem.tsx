@@ -31,16 +31,13 @@ export function CorporateProblem() {
             id="problema-titulo"
             className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.98] tracking-[-0.02em] text-white text-balance text-[clamp(2.3rem,5vw,4rem)]"
           >
-            Tu equipo viaja a Chiclayo. El caos logístico{" "}
-            <span className="italic font-normal text-primary">
-              no debería viajar con él.
-            </span>
+            ¿Tu equipo viaja a Chiclayo?
           </h2>
           <p className="mt-5 text-[0.95rem] leading-relaxed text-white/70">
             Cada vez que un colaborador viaja, tu empresa gestiona al menos tres
             proveedores distintos: el hotel, la oficina y la sala de reuniones.
             Eso se traduce en tiempo perdido, facturas duplicadas y
-            coordinaciones interminables.
+            coordinaciones.
           </p>
         </header>
 
@@ -65,7 +62,7 @@ export function CorporateProblem() {
                   >
                     <Icon className="size-5" strokeWidth={1.75} />
                   </span>
-                  <span className="font-[family-name:var(--font-corporate-display)] text-3xl font-light leading-none text-white/25 tracking-tight">
+                  <span className="font-[family-name:var(--font-corporate-display)] text-3xl font-light leading-none text-white/85 tracking-tight">
                     {number}
                   </span>
                 </div>

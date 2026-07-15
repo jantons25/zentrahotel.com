@@ -27,6 +27,7 @@ import {
   Timer,
   TrendingDown,
   Truck,
+  User,
   UserCog,
   Users,
   Wifi,
@@ -36,22 +37,22 @@ import {
 export const corporateHeroKpis = [
   {
     label: "3 hoteles",
-    detail: "en el centro financiero de Chiclayo",
+    detail: "",
     icon: Building2,
   },
   {
-    label: "1 convenio",
-    detail: "dos marcas, factura consolidada",
+    label: "1 coworking",
+    detail: "",
     icon: Handshake,
   },
   {
-    label: "3 minutos",
-    detail: "check-in express para tu equipo",
+    label: "Desayuno Buffet",
+    detail: "",
     icon: Timer,
   },
   {
     label: "WiFi 5G",
-    detail: "fibra óptica con respaldo en las cuatro sedes",
+    detail: "",
     icon: Wifi,
   },
 ] as const;
@@ -74,26 +75,6 @@ export interface CorporateLocation {
 export const corporateLocations: CorporateLocation[] = [
   {
     brand: "Zentra Hotel",
-    name: "Zentra Balta",
-    slug: "balta",
-    tagline: "Sede insignia",
-    description:
-      "Sobre la Av. Balta, a pasos del centro financiero. Ideal para ejecutivos con agenda intensa.",
-    image: "/images/room-matrimonial.jpg",
-    imageAlt: "Habitación ejecutiva de Zentra Balta con cama king y escritorio.",
-    features: [
-      "Habitaciones ejecutivas con escritorio",
-      "Check-in express en 3 minutos",
-      "Desayuno americano incluido",
-      "Traslado al aeropuerto",
-    ],
-    stats: {
-      capacity: { icon: MapPin, label: "Av. Balta · Centro" },
-      detail: { icon: Timer, label: "Check-in 3 min" },
-    },
-  },
-  {
-    brand: "Zentra Hotel",
     name: "Zentra Plaza",
     slug: "plaza",
     tagline: "Estadías largas",
@@ -110,6 +91,26 @@ export const corporateLocations: CorporateLocation[] = [
     stats: {
       capacity: { icon: BedDouble, label: "Habitaciones amplias" },
       detail: { icon: Bath, label: "Jacuzzi disponible" },
+    },
+  },
+  {
+    brand: "Nexus Cowork",
+    name: "Nexus Cowork",
+    slug: "nexus",
+    tagline: "Oficina lista",
+    description:
+      "Oficinas privadas, coworking y salas de reuniones 100% implementadas para trabajar sin interrupciones.",
+    image: "/images/zen-room.jpg",
+    imageAlt: "Sala de reuniones de Nexus Cowork con smart TV y pared pizarra.",
+    features: [
+      "Oficinas privadas para 1 a 12 personas",
+      "Salas de reuniones 5 y 10 personas",
+      "Smart TV y videoconferencia",
+      "Soporte técnico especializado",
+    ],
+    stats: {
+      capacity: { icon: Presentation, label: "Salas 5 y 10 pax" },
+      detail: { icon: MonitorPlay, label: "Videoconferencia" },
     },
   },
   {
@@ -133,23 +134,24 @@ export const corporateLocations: CorporateLocation[] = [
     },
   },
   {
-    brand: "Nexus Cowork",
-    name: "Nexus Cowork",
-    slug: "nexus",
-    tagline: "Oficina lista",
+    brand: "Zentra Hotel",
+    name: "Zentra Balta",
+    slug: "balta",
+    tagline: "Sede insignia",
     description:
-      "Oficinas privadas, coworking y salas de reuniones 100% implementadas para trabajar sin interrupciones.",
-    image: "/images/zen-room.jpg",
-    imageAlt: "Sala de reuniones de Nexus Cowork con smart TV y pared pizarra.",
+      "Sobre la Av. Balta, a pasos del centro financiero. Ideal para ejecutivos con agenda intensa.",
+    image: "/images/room-matrimonial.jpg",
+    imageAlt:
+      "Habitación ejecutiva de Zentra Balta con cama king y escritorio.",
     features: [
-      "Oficinas privadas para 1 a 12 personas",
-      "Salas de reuniones 5 y 10 personas",
-      "Smart TV y videoconferencia",
-      "Soporte técnico especializado",
+      "Habitaciones ejecutivas con escritorio",
+      "Check-in express en 3 minutos",
+      "Desayuno americano incluido",
+      "Traslado al aeropuerto",
     ],
     stats: {
-      capacity: { icon: Presentation, label: "Salas 5 y 10 pax" },
-      detail: { icon: MonitorPlay, label: "Videoconferencia" },
+      capacity: { icon: MapPin, label: "Av. Balta · Centro" },
+      detail: { icon: Timer, label: "Check-in 3 min" },
     },
   },
 ];
@@ -186,25 +188,30 @@ export const corporateProblems = [
 ] as const;
 
 export const corporateSolutionZentraFeatures = [
-  { icon: Building2, label: "Habitaciones ejecutivas con escritorio" },
-  { icon: Wifi, label: "WiFi 5G con respaldo" },
-  { icon: Coffee, label: "Desayuno americano y café ilimitado" },
-  { icon: Timer, label: "Check-in express en 3 minutos" },
+  { icon: Building2, label: "Habitaciones ejecutivas\ncon escritorio" },
+  { icon: Timer, label: "Espacios de\ntrabajo" },
+  { icon: Wifi, label: "Internet continuo y de alta velocidad"},
+  { icon: Coffee, label: "Desayuno\nBuffet"},
+  { icon: Coffee, label: "Café e infusiones\nilimitadas"},
+  { icon: Building2, label: "Frigobar\nincorporado"},
+  { icon: Timer, label: "Ambientes modernos y\nseguros"},
+  { icon: Timer, label: "Room Service\n24 horas"}, 
 ] as const;
 
 export const corporateSolutionNexusFeatures = [
-  { icon: Briefcase, label: "Oficinas privadas para 1 a 12 personas" },
-  { icon: Users, label: "Salas de reuniones para 5 y 10 personas" },
-  { icon: Signal, label: "Smart TV y videoconferencia" },
-  { icon: UserCog, label: "Soporte técnico especializado" },
+  { icon: Briefcase, label: "Oficinas\nprivadas" },
+  { icon: Users, label: "Escritorios de trabajo\nen áreas compartidas" },
+  { icon: Signal, label: "Sala de reuniones\npara 7 y 10 personas" },
+  { icon: UserCog, label: "Aire\nacondicionado" },
+  { icon: Coffee, label: "Comedor y\nKitchenette"},
+  { icon: Wifi, label: "Internet de fibra óptica\ncon respaldo"},
+  { icon: Users, label: "Soporte técnico\nespecializado"},
+  { icon: Coffee, label: "Café, infusiones y\nagua ilimitadas"}
 ] as const;
 
 export const corporateHubHighlights = [
-  { value: "1", label: "convenio corporativo" },
   { value: "1", label: "espacio cowork" },
-  { value: "3", label: "hoteles disponibles" },
   { value: "1", label: "factura consolidada" },
-  { value: "1", label: "ejecutivo de cuenta" },
 ] as const;
 
 export interface CorporateSector {
@@ -249,7 +256,7 @@ export const corporateBenefits = [
   {
     number: "04",
     icon: ScrollText,
-    title: "Ejecutivo de cuenta dedicado",
+    title: "Ejecutivo de cuenta",
     description:
       "Un solo contacto humano que conoce tu operación: gestiona reservas, resuelve incidencias y consolida tu facturación.",
   },
@@ -264,19 +271,19 @@ export interface CorporateGalleryItem {
 
 export const corporateGallery: CorporateGalleryItem[] = [
   {
-    src: "/images/room-matrimonial.jpg",
+    src: "/images/zen-room.jpg",
     alt: "Habitación ejecutiva de Zentra con cama matrimonial.",
-    caption: "Zentra Balta · Habitación ejecutiva",
+    caption: "Zentra Balta · Suite ejecutiva",
     brand: "Zentra Hotel",
   },
   {
-    src: "/images/suite-jacuzzi.jpg",
+    src: "/images/cowork-plaza.webp",
     alt: "Suite Zentra con jacuzzi privado.",
-    caption: "Zentra Plaza · Suite con jacuzzi",
+    caption: "Zentra Plaza · Coworking integrado",
     brand: "Zentra Hotel",
   },
   {
-    src: "/images/room-doble.jpg",
+    src: "/images/sanjose/hab-doble.webp",
     alt: "Habitación doble Zentra San José.",
     caption: "Zentra San José · Habitación doble",
     brand: "Zentra Hotel",
@@ -288,13 +295,13 @@ export const corporateGallery: CorporateGalleryItem[] = [
     brand: "Zentra Hotel",
   },
   {
-    src: "/images/zen-room.jpg",
+    src: "/images/nexus/sala-a.webp",
     alt: "Sala de reuniones Nexus Cowork.",
     caption: "Nexus · Sala de reuniones",
     brand: "Nexus Cowork",
   },
   {
-    src: "/images/hero-collage.webp",
+    src: "/images/nexus/oficina-privada.webp",
     alt: "Coworking Nexus con escritorios flexibles.",
     caption: "Nexus · Escritorios flexibles",
     brand: "Nexus Cowork",

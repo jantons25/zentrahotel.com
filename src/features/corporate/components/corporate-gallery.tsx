@@ -8,13 +8,22 @@ import { corporateGallery } from "@/features/corporate/data/corporate";
 
 import styles from "./corporate.module.css";
 
-const galleryLayout = [
-  "aspect-[4/5] sm:col-span-1 lg:col-span-3 lg:aspect-[3/4]",
-  "aspect-[4/3] sm:col-span-1 lg:col-span-4 lg:aspect-[16/10]",
-  "aspect-[4/3] sm:col-span-1 lg:col-span-5 lg:aspect-[16/9]",
-  "aspect-[4/5] sm:col-span-1 lg:col-span-4 lg:aspect-[5/4]",
-  "aspect-[4/5] sm:col-span-1 lg:col-span-4 lg:aspect-[3/4]",
-  "aspect-[4/3] sm:col-span-2 lg:col-span-4 lg:aspect-[5/4]",
+// Misma retícula bento y tratamiento de tarjeta que "Conoce nuestras habitaciones".
+type GalleryTone = "solid" | "accent";
+
+interface GalleryLayout {
+  colSpan: string;
+  aspect: string;
+  tone: GalleryTone;
+}
+
+const galleryLayout: GalleryLayout[] = [
+  { colSpan: "lg:col-span-2", aspect: "aspect-[3/4]", tone: "solid" },
+  { colSpan: "lg:col-span-4", aspect: "aspect-[16/10]", tone: "solid" },
+  { colSpan: "lg:col-span-3", aspect: "aspect-[3/2]", tone: "solid" },
+  { colSpan: "lg:col-span-3", aspect: "aspect-[3/2]", tone: "accent" },
+  { colSpan: "lg:col-span-4", aspect: "aspect-[16/10]", tone: "solid" },
+  { colSpan: "lg:col-span-2", aspect: "aspect-[3/4]", tone: "accent" },
 ];
 
 export function CorporateGallery() {
@@ -36,7 +45,8 @@ export function CorporateGallery() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
               <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
-              Nuestros espacios · {corporateGallery.length.toString().padStart(2, "0")}
+              Nuestros espacios ·{" "}
+              {corporateGallery.length.toString().padStart(2, "0")}
             </p>
             <h2
               id="galeria-titulo"
@@ -49,52 +59,79 @@ export function CorporateGallery() {
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
               Todas las fotos son de los espacios reales de la cadena Zentra y
-              Nexus Cowork en Chiclayo. Sin renders, sin retoques imposibles.
+              Nexus Cowork en Chiclayo.
             </p>
           </div>
         </header>
 
-        <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-12 lg:gap-5">
-          {corporateGallery.map((item, index) => (
-            <li
-              key={item.src}
-              className={`${styles.reveal} ${galleryLayout[index] ?? galleryLayout[0]}`}
-              style={
-                {
-                  "--reveal-delay": `${120 + index * 70}ms`,
-                } as React.CSSProperties
-              }
-            >
-              <figure
-                className={`${styles.card} group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-secondary/10 bg-secondary shadow-card`}
+        <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-6 lg:gap-6">
+          {corporateGallery.map((item, index) => {
+            const layout = galleryLayout[index] ?? galleryLayout[0];
+            const isAccent = layout.tone === "accent";
+            const [title, tagline] = item.caption.includes(" · ")
+              ? item.caption.split(" · ")
+              : [item.caption, ""];
+
+            return (
+              <li
+                key={item.src}
+                className={`${styles.reveal} ${layout.colSpan}`}
+                style={
+                  {
+                    "--reveal-delay": `${120 + index * 80}ms`,
+                  } as React.CSSProperties
+                }
               >
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  loading="lazy"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="absolute inset-0 -z-10 object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-                />
-                <div
-                  className="absolute inset-0 -z-[5] bg-gradient-to-t from-secondary/70 via-secondary/10 to-transparent"
-                  aria-hidden="true"
-                />
-                <figcaption className="mt-auto flex items-center justify-between gap-3 p-4 text-white sm:p-5">
-                  <span className="text-sm font-semibold leading-tight text-balance">
-                    {item.caption}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-2.5 py-1 text-[0.6rem] font-semibold tracking-[0.18em] text-white uppercase backdrop-blur">
+                <figure
+                  className={`${styles.card} group relative flex h-full w-full ${layout.aspect} flex-col justify-between overflow-hidden rounded-[1.75rem] p-6 text-white shadow-card sm:p-7`}
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    loading="lazy"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1440px) 40vw, 33vw"
+                    className="absolute inset-0 -z-20 object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                  />
+                  <div
+                    className={
+                      isAccent
+                        ? "absolute inset-0 -z-10 bg-gradient-to-t from-secondary/60 via-secondary/25 to-primary/10"
+                        : "absolute inset-0 -z-10 bg-gradient-to-t from-secondary/60 via-secondary/30 to-secondary/5"
+                    }
+                    aria-hidden="true"
+                  />
+
+                  <div className="flex items-start justify-between gap-3">
                     <span
-                      className="size-1.5 rounded-full bg-primary"
-                      aria-hidden="true"
-                    />
-                    {item.brand}
-                  </span>
-                </figcaption>
-              </figure>
-            </li>
-          ))}
+                      className={
+                        "inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] text-primary-foreground uppercase shadow-card"
+                      }
+                    >
+                      <span
+                        className={
+                          "size-1.5 rounded-full bg-primary-foreground"
+                        }
+                        aria-hidden="true"
+                      />
+                      {(index + 1).toString().padStart(2, "0")} · {item.brand}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3 className="font-[family-name:var(--font-corporate-display)] text-2xl font-light leading-tight tracking-tight text-balance sm:text-[1.9rem] lg:text-[2.05rem]">
+                      {title}
+                    </h3>
+                    {tagline ? (
+                      <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/80">
+                        {tagline}
+                      </p>
+                    ) : null}
+                  </div>
+                </figure>
+              </li>
+            );
+          })}
         </ul>
       </Container>
     </Section>

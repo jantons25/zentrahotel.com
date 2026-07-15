@@ -30,13 +30,13 @@ export function CorporateLocations() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
               <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
-              Nuestras sedes · {total.toString().padStart(2, "0")}
+              Nuestra cadena hotelera · {total.toString().padStart(2, "0")}
             </p>
             <h2
               id="sedes-titulo"
               className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.4rem,5.2vw,4.2rem)]"
             >
-              Tres establecimientos ejecutivos en el{" "}
+              Cuatro establecimientos ejecutivos en el{" "}
               <span className="italic font-normal text-secondary/90">
                 centro de Chiclayo.
               </span>
@@ -44,7 +44,7 @@ export function CorporateLocations() {
             <p className="mt-5 max-w-2xl text-[0.95rem] leading-relaxed text-muted-foreground">
               Donde se aloje tu equipo, siempre estará a pocos minutos del centro
               financiero y de las oficinas de Nexus Cowork. Elige la sede más
-              conveniente o reserva en las tres según la rotación.
+              conveniente o reserva en las tres según la rotación de tu equipo.
             </p>
           </div>
         </header>

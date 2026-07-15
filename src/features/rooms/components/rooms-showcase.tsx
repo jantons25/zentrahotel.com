@@ -140,7 +140,7 @@ export function RoomsShowcase() {
                 }
               >
                 <article
-                  className={`${styles.card} group relative flex h-full ${layout.aspect} flex-col justify-between overflow-hidden rounded-[1.75rem] p-6 text-white shadow-card sm:p-7`}
+                  className={`${styles.card} group relative flex h-full w-full ${layout.aspect} flex-col justify-between overflow-hidden rounded-[1.75rem] p-6 text-white shadow-card sm:p-7`}
                 >
                   <Image
                     src={room.image}

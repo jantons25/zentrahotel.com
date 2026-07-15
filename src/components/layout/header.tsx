@@ -46,7 +46,7 @@ export function Header() {
       data-scrolled={scrolled}
       className={`sticky top-0 z-(--z-header) transition-[background-color,backdrop-filter,box-shadow] duration-(--duration-normal) motion-reduce:transition-none ${
         scrolled
-          ? "bg-secondary/85 shadow-header backdrop-blur-xl"
+          ? "bg-primary/85 shadow-header backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
