@@ -1,6 +1,7 @@
 // Layout raíz: tipografía global, metadata SEO y estructura común (header, footer, flotantes).
 import type { Metadata } from "next";
 
+import { BookingFloatingButton } from "@/components/common/booking-floating-button";
 import { ScrollToTop } from "@/components/common/scroll-to-top";
 import { WhatsAppButton } from "@/components/common/whatsapp-button";
 import { Footer } from "@/components/layout/footer";
@@ -50,6 +51,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <BookingFloatingButton />
         <ScrollToTop />
       </body>
     </html>

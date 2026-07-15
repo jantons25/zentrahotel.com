@@ -22,7 +22,7 @@ export function ScrollToTop() {
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Volver arriba"
       className={cn(
-        "fixed right-4 bottom-21 z-(--z-floating) flex size-10 items-center justify-center rounded-lg bg-secondary text-secondary-foreground shadow-card transition-all duration-(--duration-normal) hover:bg-secondary/90 focus-visible:ring-3 focus-visible:ring-ring/50 md:right-6 md:bottom-24",
+        "fixed right-4 bottom-36 z-(--z-floating) flex size-10 items-center justify-center rounded-lg bg-secondary text-secondary-foreground shadow-card transition-all duration-(--duration-normal) hover:bg-secondary/90 focus-visible:ring-3 focus-visible:ring-ring/50 md:right-6 md:bottom-42",
         visible ? "opacity-100" : "pointer-events-none opacity-0",
       )}
     >

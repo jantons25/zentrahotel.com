@@ -14,6 +14,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { mainNav, siteConfig } from "@/config/site";
+import { bookingLinkProps } from "@/lib/booking";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -62,9 +63,7 @@ export function MobileNav() {
             </Link>
           ))}
           <a
-            href={siteConfig.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...bookingLinkProps}
             className="group mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-xs font-semibold tracking-[0.18em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           >
             Reservar ahora

@@ -57,7 +57,7 @@ export function PresentationBand() {
 
             <h2
               id="presentacion-titulo"
-              className={`${styles.reveal} mt-6 font-[family-name:var(--font-presentation-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.4rem,5.4vw,4.4rem)]`}
+              className={`${styles.reveal} mt-6 font-[family-name:var(--font-presentation-display)] font-[1.5rem] leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.4rem,5.4vw,4.4rem)]`}
               style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
             >
               {siteConfig.tagline.split("en el centro de Chiclayo")[0]}

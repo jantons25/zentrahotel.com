@@ -100,9 +100,9 @@ export function RoomsShowcase() {
               </span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/70">
-              Elige entre habitaciones cómodas, suites con jacuzzi y experiencias
-              curadas. Cada espacio está diseñado para un ritmo distinto —
-              trabajo, descanso o celebración.
+              Elige entre habitaciones cómodas, suites con jacuzzi y
+              experiencias curadas. Cada espacio está diseñado para un ritmo
+              distinto — trabajo, descanso o celebración.
             </p>
           </div>
 
@@ -162,16 +162,12 @@ export function RoomsShowcase() {
                   <div className="flex items-start justify-between gap-3">
                     <span
                       className={
-                        isAccent
-                          ? "inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] text-primary-foreground uppercase shadow-card"
-                          : "inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] text-white uppercase backdrop-blur"
+                        "inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] text-primary-foreground uppercase shadow-card"
                       }
                     >
                       <span
                         className={
-                          isAccent
-                            ? "size-1.5 rounded-full bg-primary-foreground"
-                            : "size-1.5 rounded-full bg-primary"
+                          "size-1.5 rounded-full bg-primary-foreground"
                         }
                         aria-hidden="true"
                       />
@@ -197,7 +193,9 @@ export function RoomsShowcase() {
                         <dt className="sr-only">Capacidad</dt>
                         <dd>{room.capacity}</dd>
                       </div>
-                      <span className="text-white/30" aria-hidden="true">·</span>
+                      <span className="text-white/30" aria-hidden="true">
+                        ·
+                      </span>
                       <div className="flex items-center gap-1.5">
                         <BedDouble
                           className="size-3.5 text-white/60"
@@ -215,9 +213,7 @@ export function RoomsShowcase() {
                       rel={ctaExternal ? "noopener noreferrer" : undefined}
                       aria-label={`${ctaLabel}: ${room.name}`}
                       className={
-                        isAccent
-                          ? "mt-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold tracking-[0.14em] text-secondary uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-                          : "mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                        "mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                       }
                     >
                       {ctaLabel}

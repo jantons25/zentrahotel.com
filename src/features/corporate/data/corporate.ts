@@ -80,7 +80,7 @@ export const corporateLocations: CorporateLocation[] = [
     tagline: "Estadías largas",
     description:
       "Frente a la plaza principal, para equipos que se quedan una semana o más. Habitaciones amplias con espacio para trabajar.",
-    image: "/images/room-doble.jpg",
+    image: "/images/cowork-plaza.webp",
     imageAlt: "Habitación de Zentra Plaza con dos camas y zona de estudio.",
     features: [
       "Habitaciones amplias con sala",
@@ -100,7 +100,7 @@ export const corporateLocations: CorporateLocation[] = [
     tagline: "Oficina lista",
     description:
       "Oficinas privadas, coworking y salas de reuniones 100% implementadas para trabajar sin interrupciones.",
-    image: "/images/zen-room.jpg",
+    image: "/images/nexus/sala-a.webp",
     imageAlt: "Sala de reuniones de Nexus Cowork con smart TV y pared pizarra.",
     features: [
       "Oficinas privadas para 1 a 12 personas",
@@ -120,7 +120,7 @@ export const corporateLocations: CorporateLocation[] = [
     tagline: "Proyectos técnicos",
     description:
       "Ambiente ejecutivo tranquilo para estadías largas. Perfecta para consultores, auditores y equipos técnicos.",
-    image: "/images/room-individual.jpg",
+    image: "/images/sanjose/hab-doble.webp",
     imageAlt: "Habitación ejecutiva individual de Zentra San José.",
     features: [
       "WiFi 5G de alta velocidad",

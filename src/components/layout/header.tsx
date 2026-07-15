@@ -8,7 +8,8 @@ import { ArrowUpRight } from "lucide-react";
 import { BrandLogo } from "@/components/common/brand-logo";
 import { LanguageSelector } from "@/components/layout/language-selector";
 import { MobileNav } from "@/components/layout/mobile-nav";
-import { mainNavLeft, mainNavRight, siteConfig } from "@/config/site";
+import { mainNavLeft, mainNavRight } from "@/config/site";
+import { bookingLinkProps } from "@/lib/booking";
 import type { NavItem } from "@/types";
 
 function NavLinks({ items }: { items: NavItem[] }) {
@@ -71,9 +72,7 @@ export function Header() {
             <LanguageSelector />
           </div>
           <a
-            href={siteConfig.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...bookingLinkProps}
             className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-[0.72rem] font-semibold tracking-[0.16em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           >
             Reservar

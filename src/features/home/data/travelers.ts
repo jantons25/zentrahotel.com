@@ -18,7 +18,7 @@ export const travelerTypes: TravelerType[] = [
     description:
       "Ubicación céntrica, Wi-Fi 5G y espacios cómodos para trabajar durante tu estadía.",
     icon: Briefcase,
-    image: "/images/room-individual.jpg",
+    image: "/images/viajero-2.webp",
     imageAlt: "Habitación individual iluminada para viajeros de negocios",
     tag: "Corporativo",
   },
@@ -27,7 +27,7 @@ export const travelerTypes: TravelerType[] = [
     description:
       "Punto de partida ideal para descubrir Chiclayo y sus alrededores.",
     icon: Compass,
-    image: "/images/room-doble.jpg",
+    image: "/images/viajero-3.webp",
     imageAlt: "Habitación doble luminosa lista para explorar Chiclayo",
     tag: "Descubre la ciudad",
   },
@@ -36,7 +36,7 @@ export const travelerTypes: TravelerType[] = [
     description:
       "Veladas románticas, experiencia Zen y momentos pensados para sorprender.",
     icon: Sparkles,
-    image: "/images/velada-romantica.jpg",
+    image: "/images/velada-romantica.webp",
     imageAlt: "Mesa con velas y pétalos para una velada romántica",
     tag: "Momentos memorables",
   },
@@ -45,7 +45,7 @@ export const travelerTypes: TravelerType[] = [
     description:
       "Masajes, aromaterapia y descanso reparador en un ambiente tranquilo.",
     icon: HeartPulse,
-    image: "/images/masajes.jpg",
+    image: "/images/zen-room6.webp",
     imageAlt: "Sesión de masaje relajante con aromaterapia",
     tag: "Bienestar",
   },
