@@ -2,7 +2,7 @@
 import type { NavItem } from "@/types";
 
 export const siteConfig = {
-  name: "Zentra Hotel",
+  name: "Zentra Hotel & Cowork",
   tagline: "Hotel moderno y cómodo en el centro de Chiclayo",
   description:
     "Zentra Hotel: hotel moderno y cómodo en el centro de Chiclayo. Reserva directo en web y ahorra en tu próximo viaje.",

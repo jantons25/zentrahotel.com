@@ -1,6 +1,8 @@
-// Video "En acción": banner navy con placeholder de video 45s y CTA de reunión.
-import Image from "next/image";
-import { ArrowUpRight, Play } from "lucide-react";
+"use client";
+
+// Video "En acción": banner navy con el video real del hub y CTA de reunión.
+import { ArrowUpRight, Volume2, VolumeX } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
@@ -10,6 +12,28 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import styles from "./corporate.module.css";
 
 export function CorporateVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Section
       id="video"
@@ -23,11 +47,11 @@ export function CorporateVideo() {
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
           <div className="lg:col-span-5">
             <p
-              className={`${styles.reveal} flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-white/60 uppercase`}
+              className={`${styles.reveal} flex items-center gap-3 text-[0.8rem] font-semibold tracking-[0.28em] text-white/60 uppercase`}
               style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
             >
               <span className="h-px w-8 bg-white/30" aria-hidden="true" />
-              En acción · 45 segundos
+              En acción · 26 segundos
             </p>
             <h2
               id="video-titulo"
@@ -73,37 +97,43 @@ export function CorporateVideo() {
             className={`${styles.reveal} lg:col-span-7`}
             style={{ "--reveal-delay": "260ms" } as React.CSSProperties}
           >
-            <button
-              type="button"
-              aria-label="Reproducir el video de 45 segundos del hub corporativo"
-              className={`${styles.card} group relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/12 bg-black/40`}
+            <div
+              className={`${styles.card} relative mx-auto aspect-[9/16] w-full max-w-[320px] overflow-hidden rounded-[1.75rem] border border-white/12 bg-black sm:max-w-[360px]`}
             >
-              <Image
-                src="/images/hero-collage.webp"
-                alt=""
-                fill
-                loading="lazy"
-                sizes="(max-width: 1024px) 100vw, 58vw"
-                className="absolute inset-0 -z-10 object-cover opacity-70 transition-transform duration-[900ms] ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-              />
-              <div
-                className="absolute inset-0 -z-[5] bg-gradient-to-t from-secondary/80 via-secondary/40 to-secondary/10"
+              <video
+                ref={videoRef}
+                src="/videos/hub-corporativo.mp4"
+                muted={isMuted}
+                loop
+                playsInline
+                preload="metadata"
                 aria-hidden="true"
+                className="absolute inset-0 size-full object-cover"
               />
-              <span
-                className="grid size-20 place-items-center rounded-full bg-primary text-primary-foreground shadow-[0_18px_38px_rgba(0,0,0,0.35)] transition-transform duration-(--duration-normal) group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:size-24"
-                aria-hidden="true"
+              <button
+                type="button"
+                onClick={() => setIsMuted((muted) => !muted)}
+                aria-label={
+                  isMuted
+                    ? "Activar el sonido del video del hub corporativo"
+                    : "Silenciar el video del hub corporativo"
+                }
+                className="absolute top-4 right-4 grid size-9 place-items-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur transition-colors duration-(--duration-normal) hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:top-6 sm:right-6"
               >
-                <Play className="size-8 fill-current" strokeWidth={0} />
-              </span>
-              <span className="absolute right-4 bottom-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[0.62rem] font-semibold tracking-[0.22em] text-white uppercase backdrop-blur sm:right-6 sm:bottom-6">
+                {isMuted ? (
+                  <VolumeX className="size-4" strokeWidth={1.75} />
+                ) : (
+                  <Volume2 className="size-4" strokeWidth={1.75} />
+                )}
+              </button>
+              <span className="pointer-events-none absolute right-4 bottom-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[0.62rem] font-semibold tracking-[0.22em] text-white uppercase backdrop-blur sm:right-6 sm:bottom-6">
                 <span
                   className="size-1.5 rounded-full bg-primary"
                   aria-hidden="true"
                 />
-                Video · 0:45
+                Video · 0:26
               </span>
-            </button>
+            </div>
           </div>
         </div>
       </Container>

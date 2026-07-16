@@ -45,9 +45,9 @@ export function Footer() {
             style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
             aria-labelledby="footer-brand"
           >
-            <p className="flex items-center gap-3 text-[0.68rem] font-semibold tracking-[0.32em] text-white/60 uppercase">
+            <p className="flex items-center gap-3 text-[0.8rem] font-semibold tracking-[0.32em] text-white/60 uppercase">
               <span className="h-px w-8 bg-white/30" aria-hidden="true" />
-              Boutique Hotel · Chiclayo
+              Chiclayo
             </p>
             <h2
               id="footer-brand"

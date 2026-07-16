@@ -14,8 +14,8 @@ export function CorporateHero() {
       aria-label="Bienvenida corporativa"
       className={`${fontCorporateDisplay.variable} ${styles.section} relative isolate -mt-16 overflow-hidden bg-secondary text-white md:-mt-20`}
     >
-      * <Image
-        src="/images/cowork-plaza.webp"
+      <Image
+        src="/images/plaza/cowork-plaza-uno.webp"
         alt=""
         fill
         priority
@@ -25,7 +25,7 @@ export function CorporateHero() {
       <div
         className="pointer-events-none absolute inset-0 -z-10 bg-black/65"
         aria-hidden="true"
-      /> 
+      />
       <div
         className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-secondary/15 via-transparent to-secondary/30"
         aria-hidden="true"

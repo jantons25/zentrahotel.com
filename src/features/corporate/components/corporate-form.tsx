@@ -4,7 +4,13 @@
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { ArrowUpRight, CheckCircle2, Clock, MessageCircle, User2 } from "lucide-react";
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  Clock,
+  MessageCircle,
+  User2,
+} from "lucide-react";
 import { z } from "zod";
 
 import {
@@ -20,12 +26,8 @@ const schema = z.object({
   company: z.string().min(2, "Ingresa el nombre o razón social."),
   role: z.string().min(2, "Ingresa tu cargo o área."),
   email: z.email("Ingresa un correo corporativo válido."),
-  phone: z
-    .string()
-    .min(6, "Ingresa un número de teléfono o WhatsApp válido."),
-  frequency: z
-    .string()
-    .min(1, "Cuéntanos con qué frecuencia viaja tu equipo."),
+  phone: z.string().min(6, "Ingresa un número de teléfono o WhatsApp válido."),
+  frequency: z.string().min(1, "Cuéntanos con qué frecuencia viaja tu equipo."),
   sector: z.string().min(1, "Selecciona el sector de tu empresa."),
   location: z.string().optional(),
 });
@@ -68,7 +70,6 @@ export function CorporateForm() {
       phone: "",
       frequency: "",
       sector: "",
-      location: "Sin preferencia",
     },
   });
 
@@ -111,7 +112,11 @@ export function CorporateForm() {
       className="flex flex-col gap-4"
     >
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <Field label="Nombre completo" htmlFor="corp-name" error={errors.name?.message}>
+        <Field
+          label="Nombre completo"
+          htmlFor="corp-name"
+          error={errors.name?.message}
+        >
           <input
             id="corp-name"
             type="text"
@@ -136,7 +141,11 @@ export function CorporateForm() {
           />
         </Field>
 
-        <Field label="Cargo / Área" htmlFor="corp-role" error={errors.role?.message}>
+        <Field
+          label="Cargo / Área"
+          htmlFor="corp-role"
+          error={errors.role?.message}
+        >
           <input
             id="corp-role"
             type="text"
@@ -162,13 +171,14 @@ export function CorporateForm() {
         </Field>
 
         <Field
-          label="Teléfono / WhatsApp"
+          label={`Teléfono /\nWhatsApp`}
           htmlFor="corp-phone"
           error={errors.phone?.message}
         >
           <input
             id="corp-phone"
             type="tel"
+            style={{ whiteSpace: "pre-line" }}
             autoComplete="tel"
             aria-invalid={Boolean(errors.phone)}
             className={INPUT_CLASS}
@@ -214,25 +224,12 @@ export function CorporateForm() {
             ))}
           </select>
         </Field>
-        <Field label="Sede de preferencia (opcional)" htmlFor="corp-location">
-          <select
-            id="corp-location"
-            className={INPUT_CLASS}
-            {...register("location")}
-          >
-            {corporatePreferredLocations.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </Field>
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="group mt-4 inline-flex items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3.5 text-sm font-semibold tracking-[0.14em] text-secondary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary disabled:cursor-progress disabled:opacity-70 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+        className="group mt-4 inline-flex items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3.5 text-sm font-semibold tracking-[0.14em] text-secondary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary disabled:cursor-progress disabled:opacity-70 motion-reduce:transition-none motion-reduce:hover:translate-y-0 cursor-pointer"
       >
         Solicitar mi propuesta corporativa
         <ArrowUpRight
@@ -243,7 +240,11 @@ export function CorporateForm() {
       </button>
 
       <p className="mt-1 flex items-start gap-2 text-xs leading-relaxed text-secondary/70">
-        <Clock className="mt-0.5 size-3.5 shrink-0 text-primary" strokeWidth={1.75} aria-hidden="true" />
+        <Clock
+          className="mt-0.5 size-3.5 shrink-0 text-primary"
+          strokeWidth={1.75}
+          aria-hidden="true"
+        />
         Al enviar, abrimos WhatsApp con tu propuesta pre-cargada al{" "}
         {siteConfig.contact.phoneDisplay}. Sin compromisos.
       </p>
@@ -260,7 +261,7 @@ interface FieldProps {
 
 function Field({ label, htmlFor, error, children }: FieldProps) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-1.5" style={{ whiteSpace: "pre-line" }}>
       <label
         htmlFor={htmlFor}
         className="text-[0.68rem] font-semibold tracking-[0.2em] text-secondary/70 uppercase"
@@ -288,7 +289,7 @@ export function CorporateFormAside() {
           <User2 className="size-5" strokeWidth={1.75} />
         </span>
         <div>
-          <p className="text-[0.65rem] font-mono tracking-[0.22em] text-secondary/60 uppercase">
+          <p className="text-[0.8rem] font-mono tracking-[0.22em] text-secondary/60 uppercase">
             Activa tu convenio
           </p>
           <p className="mt-1 font-[family-name:var(--font-corporate-display)] text-2xl font-light leading-tight text-secondary tracking-tight text-balance sm:text-[1.75rem]">
@@ -310,7 +311,11 @@ export function CorporateFormAside() {
         rel="noopener noreferrer"
         className="group inline-flex items-center gap-3 self-start rounded-full border border-secondary/20 bg-white px-5 py-2.5 text-xs font-semibold tracking-[0.14em] text-secondary uppercase transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none"
       >
-        <MessageCircle className="size-4" strokeWidth={1.75} aria-hidden="true" />
+        <MessageCircle
+          className="size-4"
+          strokeWidth={1.75}
+          aria-hidden="true"
+        />
         Escríbenos directo
         <ArrowUpRight
           className="size-3.5 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"

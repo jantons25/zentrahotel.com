@@ -22,7 +22,7 @@ export function CorporateProblem() {
           className={`${styles.reveal} mx-auto max-w-3xl text-center`}
           style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
         >
-          <p className="flex items-center justify-center gap-3 text-[0.72rem] font-semibold tracking-[0.32em] text-white/60 uppercase">
+          <p className="flex items-center justify-center gap-3 text-[.8rem] font-semibold tracking-[0.32em] text-white/60 uppercase">
             <span className="h-px w-10 bg-white/30" aria-hidden="true" />
             El costo invisible del viaje corporativo
             <span className="h-px w-10 bg-white/30" aria-hidden="true" />
@@ -34,10 +34,7 @@ export function CorporateProblem() {
             ¿Tu equipo viaja a Chiclayo?
           </h2>
           <p className="mt-5 text-[0.95rem] leading-relaxed text-white/70">
-            Cada vez que un colaborador viaja, tu empresa gestiona al menos tres
-            proveedores distintos: el hotel, la oficina y la sala de reuniones.
-            Eso se traduce en tiempo perdido, facturas duplicadas y
-            coordinaciones.
+            Unifique alojamiento, espacios de trabajo y reuniones en una sola solución para su empresa. Menos gestión, más productividad
           </p>
         </header>
 
@@ -53,23 +50,23 @@ export function CorporateProblem() {
               }
             >
               <article
-                className={`${styles.card} ${styles.cardDark} group flex h-full flex-col rounded-[1.5rem] border border-white/12 bg-white/5 p-6 backdrop-blur sm:p-7`}
+                className={`${styles.card} ${styles.cardDark} group flex h-full flex-col rounded-[1.5rem] border border-white/12 bg-card p-6 backdrop-blur sm:p-7`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <span
-                    className={`${styles.iconChip} grid size-11 place-items-center rounded-xl bg-primary/15 text-primary`}
+                    className={`${styles.iconChip} grid size-11 place-items-center rounded-xl bg-secondary/15 text-secondary`}
                     aria-hidden="true"
                   >
                     <Icon className="size-5" strokeWidth={1.75} />
                   </span>
-                  <span className="font-[family-name:var(--font-corporate-display)] text-3xl font-light leading-none text-white/85 tracking-tight">
+                  <span className="font-[family-name:var(--font-corporate-display)] text-3xl font-light leading-none text-secondary/85 tracking-tight">
                     {number}
                   </span>
                 </div>
-                <h3 className="mt-6 font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-tight text-white tracking-tight text-balance sm:text-[1.35rem]">
+                <h3 className="mt-6 font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-tight text-secondary tracking-tight text-balance sm:text-[1.35rem]">
                   {title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/70">
+                <p className="mt-3 text-sm leading-relaxed text-secondary/70">
                   {description}
                 </p>
               </article>

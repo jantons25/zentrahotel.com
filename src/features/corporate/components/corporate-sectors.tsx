@@ -1,13 +1,15 @@
-// Sectores: cream light + marquee horizontal continuo (distintivo de esta landing).
+// Empresas clientas: cream light + marquee horizontal continuo (distintivo de esta landing).
+import Image from "next/image";
+
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
 import { fontCorporateDisplay } from "@/features/corporate/config/corporate-fonts";
-import { corporateSectors } from "@/features/corporate/data/corporate";
+import { corporateClients } from "@/features/corporate/data/corporate";
 
 import styles from "./corporate.module.css";
 
 export function CorporateSectors() {
-  const doubled = [...corporateSectors, ...corporateSectors];
+  const doubled = [...corporateClients, ...corporateClients];
 
   return (
     <Section
@@ -24,23 +26,23 @@ export function CorporateSectors() {
           className={`${styles.reveal} mx-auto max-w-3xl text-center`}
           style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
         >
-          <p className="flex items-center justify-center gap-3 text-[0.72rem] font-semibold tracking-[0.32em] text-secondary/70 uppercase">
+          <p className="flex items-center justify-center gap-3 text-[0.8rem] font-semibold tracking-[0.32em] text-secondary/70 uppercase">
             <span className="h-px w-10 bg-secondary/40" aria-hidden="true" />
-            Sectores prioritarios
+            Empresas que confían en nosotros
             <span className="h-px w-10 bg-secondary/40" aria-hidden="true" />
           </p>
           <h2
             id="sectores-titulo"
             className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.98] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.3rem,5vw,4rem)]"
           >
-            Trabajamos con los principales sectores productivos del{" "}
+            Compañías que ya viajan y trabajan con{" "}
             <span className="italic font-normal text-secondary/90">
-              norte del Perú.
+              Zentra Hotel & Cowork.
             </span>
           </h2>
           <p className="mt-5 text-[0.95rem] leading-relaxed text-muted-foreground">
-            Si tu empresa opera con equipos en desplazamiento a Chiclayo, Zentra
-            Hotel & Cowork tiene una propuesta diseñada para tu sector.
+            Equipos corporativos de distintos rubros eligen Zentra Hotel &
+            Cowork para sus operaciones en Chiclayo.
           </p>
         </header>
       </Container>
@@ -48,23 +50,30 @@ export function CorporateSectors() {
       <div
         className={`${styles.reveal} ${styles.marqueeViewport} mt-12 lg:mt-16`}
         style={{ "--reveal-delay": "160ms" } as React.CSSProperties}
-        aria-label="Sectores atendidos por Zentra Hotel & Cowork"
+        aria-label="Empresas que confían en Zentra Hotel & Cowork"
       >
         <ul className={styles.marqueeTrack}>
-          {doubled.map(({ label, icon: Icon }, index) => (
+          {doubled.map(({ name, logo }, index) => (
             <li
-              key={`${label}-${index}`}
+              key={`${name}-${index}`}
               className="flex items-center gap-3 border-r border-secondary/15 px-6 py-4 text-secondary sm:px-8"
-              aria-hidden={index >= corporateSectors.length}
+              aria-hidden={index >= corporateClients.length}
             >
               <span
                 className="grid size-9 place-items-center rounded-full bg-primary/15 text-secondary"
                 aria-hidden="true"
               >
-                <Icon className="size-4" strokeWidth={1.75} />
+                <Image
+                  src={logo}
+                  alt=""
+                  width={48}
+                  height={48}
+                  loading="eager"
+                  className="size-7 object-contain"
+                />
               </span>
               <span className="text-sm font-semibold tracking-[0.08em] whitespace-nowrap">
-                {label}
+                {name}
               </span>
             </li>
           ))}
@@ -73,7 +82,7 @@ export function CorporateSectors() {
 
       <Container className="relative mt-12 lg:mt-14">
         <p className="mx-auto max-w-2xl text-center text-xs leading-relaxed text-secondary/60">
-          ¿Tu sector no aparece? Cuéntanos qué opera tu equipo. Nuestro
+          ¿Tu empresa aún no está aquí? Cuéntanos qué opera tu equipo. Nuestro
           ejecutivo de cuenta arma la propuesta a la medida.
         </p>
       </Container>

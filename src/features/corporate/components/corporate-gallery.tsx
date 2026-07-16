@@ -43,7 +43,7 @@ export function CorporateGallery() {
           style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
         >
           <div className="max-w-2xl">
-            <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
+            <p className="flex items-center gap-3 text-[0.8rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
               <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
               Nuestros espacios ·{" "}
               {corporateGallery.length.toString().padStart(2, "0")}

@@ -1,6 +1,14 @@
-// Solución: campo oliva con diagrama del hub (signature) + doble columna Zentra + Nexus.
-import { ArrowUpRight, Building2, Sparkles } from "lucide-react";
+"use client";
 
+// Solución: campo oliva con diagrama del hub (signature) + doble columna Zentra + Nexus.
+import {
+  ArrowUpRight,
+  Building2,
+  Sparkles,
+  Volume2,
+  VolumeX,
+} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
 import { fontCorporateDisplay } from "@/features/corporate/config/corporate-fonts";
@@ -9,6 +17,8 @@ import {
   corporateSolutionNexusFeatures,
   corporateSolutionZentraFeatures,
 } from "@/features/corporate/data/corporate";
+import { buildWhatsAppUrl } from "@/lib/whatsapp";
+import { MessageCircle } from "lucide-react";
 
 import styles from "./corporate.module.css";
 
@@ -29,6 +39,28 @@ function nodePosition(angle: number, radius = 46) {
 }
 
 export function CorporateSolution() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Section
       id="solucion"
@@ -44,7 +76,7 @@ export function CorporateSolution() {
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
           <div className="lg:col-span-6">
             <p
-              className={`${styles.reveal} flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary uppercase`}
+              className={`${styles.reveal} flex items-center gap-3 text-[0.8rem] font-semibold tracking-[0.28em] text-secondary uppercase`}
               style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
             >
               <span className="h-px w-8 bg-secondary/50" aria-hidden="true" />
@@ -56,10 +88,10 @@ export function CorporateSolution() {
               className={`${styles.reveal} mt-6 font-[family-name:var(--font-corporate-display)] font-[1.5rem] leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.3rem,5vw,4rem)]`}
               style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
             >
-              Te facilitamos la complejidad logística en{" "}
               <span className="italic font-normal text-white/95">
-                Zentra Hotel & Cowork.
-              </span>
+                Zentra Hotel & Cowork te reduce
+              </span>{" "}
+              la complejidad logística
             </h2>
 
             <p
@@ -95,15 +127,19 @@ export function CorporateSolution() {
               style={{ "--reveal-delay": "380ms" } as React.CSSProperties}
             >
               <a
-                href="#convenio"
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3 text-sm font-semibold tracking-wide text-secondary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                href={buildWhatsAppUrl(
+                  "Hola, quiero información sobre el convenio corporativo Zentra Hotel & Cowork.",
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3 text-sm font-semibold tracking-wide text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                Activar convenio
-                <ArrowUpRight
-                  className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
-                  strokeWidth={2}
+                <MessageCircle
+                  className="size-4"
+                  strokeWidth={1.75}
                   aria-hidden="true"
                 />
+                Hablar con un asesor
               </a>
             </div>
           </div>
@@ -111,13 +147,45 @@ export function CorporateSolution() {
           <div
             className={`${styles.reveal} relative lg:col-span-6`}
             style={{ "--reveal-delay": "260ms" } as React.CSSProperties}
-            aria-hidden="true"
           >
             <div
-              className="absolute inset-6 rounded-[2rem] bg-secondary shadow-[0_30px_80px_rgba(0,0,0,0.35)]"
-              aria-hidden="true"
-            />
-            <div className="relative p-6 sm:p-8">
+              className={`${styles.card} relative mx-auto aspect-[9/16] w-full max-w-[320px] overflow-hidden rounded-[1.75rem] border border-white/12 bg-black sm:max-w-[360px]`}
+            >
+              <video
+                ref={videoRef}
+                src="/videos/hub-corporativo.mp4"
+                muted={isMuted}
+                loop
+                playsInline
+                preload="metadata"
+                aria-hidden="true"
+                className="absolute inset-0 size-full object-cover"
+              />
+              <button
+                type="button"
+                onClick={() => setIsMuted((muted) => !muted)}
+                aria-label={
+                  isMuted
+                    ? "Activar el sonido del video del hub corporativo"
+                    : "Silenciar el video del hub corporativo"
+                }
+                className="absolute top-4 right-4 grid size-9 place-items-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur transition-colors duration-(--duration-normal) hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:top-6 sm:right-6"
+              >
+                {isMuted ? (
+                  <VolumeX className="size-4" strokeWidth={1.75} />
+                ) : (
+                  <Volume2 className="size-4" strokeWidth={1.75} />
+                )}
+              </button>
+              <span className="pointer-events-none absolute right-4 bottom-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[0.62rem] font-semibold tracking-[0.22em] text-white uppercase backdrop-blur sm:right-6 sm:bottom-6">
+                <span
+                  className="size-1.5 rounded-full bg-primary"
+                  aria-hidden="true"
+                />
+                Video · 0:26
+              </span>
+            </div>
+            {/* <div className="relative p-6 sm:p-8">
               <div className={styles.hubDiagram}>
                 <div className={styles.hubRing} />
                 <div className={`${styles.hubRing} ${styles.hubRingInner}`} />
@@ -147,13 +215,13 @@ export function CorporateSolution() {
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
         <div className="mt-16 grid gap-6 lg:grid-cols-2 lg:gap-8">
           <article
-            className={`${styles.reveal} ${styles.card} flex h-full flex-col rounded-[1.75rem] border border-secondary/15 bg-accent p-6 shadow-card sm:p-8`}
+            className={`${styles.reveal} ${styles.card} flex h-full flex-col rounded-[1.75rem] border border-secondary/15 bg-card p-6 shadow-card sm:p-8`}
             style={{ "--reveal-delay": "440ms" } as React.CSSProperties}
           >
             <p className="flex items-center gap-2 text-[0.65rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
@@ -173,7 +241,10 @@ export function CorporateSolution() {
               Habitaciones pensadas para equipos que trabajan hasta tarde y
               arrancan temprano.
             </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2" style={{ whiteSpace: "pre-line" }}>
+            <ul
+              className="mt-6 grid gap-3 sm:grid-cols-2"
+              style={{ whiteSpace: "pre-line" }}
+            >
               {corporateSolutionZentraFeatures.map(({ icon: Icon, label }) => (
                 <li
                   key={label}
@@ -211,7 +282,10 @@ export function CorporateSolution() {
               central, sin interrupciones. Un solo punto de contacto, operación
               sin fricciones.
             </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2" style={{ whiteSpace: "pre-line" }}>
+            <ul
+              className="mt-6 grid gap-3 sm:grid-cols-2"
+              style={{ whiteSpace: "pre-line" }}
+            >
               {corporateSolutionNexusFeatures.map(({ icon: Icon, label }) => (
                 <li
                   key={label}

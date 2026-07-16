@@ -80,7 +80,7 @@ export const corporateLocations: CorporateLocation[] = [
     tagline: "Estadías largas",
     description:
       "Frente a la plaza principal, para equipos que se quedan una semana o más. Habitaciones amplias con espacio para trabajar.",
-    image: "/images/cowork-plaza.webp",
+    image: "/images/plaza/cowork-plaza-tres.webp",
     imageAlt: "Habitación de Zentra Plaza con dos camas y zona de estudio.",
     features: [
       "Habitaciones amplias con sala",
@@ -100,7 +100,7 @@ export const corporateLocations: CorporateLocation[] = [
     tagline: "Oficina lista",
     description:
       "Oficinas privadas, coworking y salas de reuniones 100% implementadas para trabajar sin interrupciones.",
-    image: "/images/nexus/sala-a.webp",
+    image: "/images/nexus/sala-a-dos.webp",
     imageAlt: "Sala de reuniones de Nexus Cowork con smart TV y pared pizarra.",
     features: [
       "Oficinas privadas para 1 a 12 personas",
@@ -120,7 +120,7 @@ export const corporateLocations: CorporateLocation[] = [
     tagline: "Proyectos técnicos",
     description:
       "Ambiente ejecutivo tranquilo para estadías largas. Perfecta para consultores, auditores y equipos técnicos.",
-    image: "/images/sanjose/hab-doble.webp",
+    image: "/images/sanjose/hab-matrimonial.webp",
     imageAlt: "Habitación ejecutiva individual de Zentra San José.",
     features: [
       "WiFi 5G de alta velocidad",
@@ -140,7 +140,7 @@ export const corporateLocations: CorporateLocation[] = [
     tagline: "Sede insignia",
     description:
       "Sobre la Av. Balta, a pasos del centro financiero. Ideal para ejecutivos con agenda intensa.",
-    image: "/images/room-matrimonial.jpg",
+    image: "/images/balta/hab-suite.webp",
     imageAlt:
       "Habitación ejecutiva de Zentra Balta con cama king y escritorio.",
     features: [
@@ -231,6 +231,25 @@ export const corporateSectors: CorporateSector[] = [
   { label: "Industria manufacturera", icon: Factory },
 ];
 
+export interface CorporateClient {
+  name: string;
+  logo: string;
+}
+
+export const corporateClients: CorporateClient[] = [
+  { name: "Enazul", logo: "/images/empresas/Enazul.png" },
+  { name: "Nexus Capital", logo: "/images/empresas/Nexus capital.png" },
+  { name: "Perú Verde Citrus", logo: "/images/empresas/Perú verde.png" },
+  { name: "Acuña Inmobiliaria", logo: "/images/empresas/acuña.png" },
+  {
+    name: "BBVA Comercializadora Corporativa",
+    logo: "/images/empresas/bbva.png",
+  },
+  { name: "Innovate", logo: "/images/empresas/innovate.png" },
+  { name: "Prime Fruits Perú", logo: "/images/empresas/prime fruits.png" },
+  { name: "Grupo Quiola", logo: "/images/empresas/quiola.png" },
+];
+
 export const corporateBenefits = [
   {
     number: "01",
@@ -270,41 +289,47 @@ export interface CorporateGalleryItem {
 }
 
 export const corporateGallery: CorporateGalleryItem[] = [
+  // {
+  //   src: "/images/zen-room.jpg",
+  //   alt: "Habitación ejecutiva de Zentra con cama matrimonial.",
+  //   caption: "Zentra Balta · Suite ejecutiva",
+  //   brand: "Zentra Hotel",
+  // },
   {
-    src: "/images/zen-room.jpg",
-    alt: "Habitación ejecutiva de Zentra con cama matrimonial.",
-    caption: "Zentra Balta · Suite ejecutiva",
+    src: "/images/plaza/individual.webp",
+    alt: "Habitación Individual.",
+    caption: "Zentra Plaza · Habitaciones",
     brand: "Zentra Hotel",
   },
   {
-    src: "/images/cowork-plaza.webp",
+    src: "/images/plaza/cowork-plaza-uno.webp",
     alt: "Suite Zentra con jacuzzi privado.",
     caption: "Zentra Plaza · Coworking integrado",
     brand: "Zentra Hotel",
   },
   {
-    src: "/images/sanjose/hab-doble.webp",
-    alt: "Habitación doble Zentra San José.",
-    caption: "Zentra San José · Habitación doble",
-    brand: "Zentra Hotel",
-  },
-  {
-    src: "/images/room-individual.jpg",
-    alt: "Habitación individual con escritorio de trabajo.",
-    caption: "Zentra Balta · Individual ejecutiva",
-    brand: "Zentra Hotel",
-  },
-  {
-    src: "/images/nexus/sala-a.webp",
-    alt: "Sala de reuniones Nexus Cowork.",
-    caption: "Nexus · Sala de reuniones",
+    src: "/images/nexus/sala-b.webp",
+    alt: "Sala de reuniones B",
+    caption: "Nexus Cowork · Sala B",
     brand: "Nexus Cowork",
   },
   {
-    src: "/images/nexus/oficina-privada.webp",
-    alt: "Coworking Nexus con escritorios flexibles.",
-    caption: "Nexus · Escritorios flexibles",
+    src: "/images/nexus/sala-flex.webp",
+    alt: "Espacio flex de trabajo corporativo.",
+    caption: "Nexus Cowork · Sala Flex",
     brand: "Nexus Cowork",
+  },
+  {
+    src: "/images/balta/hab-suite-dos.webp",
+    alt: "Habitación ejecutiva de Zentra con cama matrimonial.",
+    caption: "Zentra Balta · Suite",
+    brand: "Zentra Hotel",
+  },
+  {
+    src: "/images/sanjose/comedor.webp",
+    alt: "Sala de comedor y coworking.",
+    caption: "Zentra San José · Comedor",
+    brand: "Zentra Hotel",
   },
 ];
 

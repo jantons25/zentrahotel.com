@@ -126,7 +126,6 @@
 .cardDark:hover,
 .cardDark:focus-within {
   border-color: color-mix(in oklab, var(--primary) 55%, transparent);
-  background-color: color-mix(in oklab, white 8%, transparent);
 }
 
 .iconChip {

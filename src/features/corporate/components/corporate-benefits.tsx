@@ -27,9 +27,9 @@ export function CorporateBenefits() {
           style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
         >
           <div className="max-w-2xl">
-            <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-white/60 uppercase">
+            <p className="flex items-center gap-3 text-[0.8rem] font-semibold tracking-[0.28em] text-white/60 uppercase">
               <span className="h-px w-8 bg-white/30" aria-hidden="true" />
-              Nuestros convenios · {total.toString().padStart(2, "0")}
+              Nuestro convenios · {total.toString().padStart(2, "0")}
             </p>
             <h2
               id="beneficios-titulo"
@@ -72,24 +72,24 @@ export function CorporateBenefits() {
               }
             >
               <article
-                className={`${styles.card} ${styles.cardDark} group flex h-full flex-col gap-6 rounded-[1.5rem] border border-white/12 bg-white/5 p-6 backdrop-blur sm:p-7`}
+                className={`${styles.card} ${styles.cardDark} group flex h-full flex-col gap-6 rounded-[1.5rem] border border-white/12 bg-white p-6 backdrop-blur sm:p-7`}
               >
                 <div className="flex items-baseline justify-between gap-3">
-                  <span className="font-[family-name:var(--font-corporate-display)] text-4xl font-light leading-none text-primary tracking-tight">
+                  <span className="font-[family-name:var(--font-corporate-display)] text-4xl font-light leading-none text-secondary tracking-tight">
                     {number}
                   </span>
                   <span
-                    className={`${styles.iconChip} grid size-11 place-items-center rounded-xl bg-primary/15 text-primary`}
+                    className={`${styles.iconChip} grid size-11 place-items-center rounded-xl bg-secondary/15 text-secondary`}
                     aria-hidden="true"
                   >
                     <Icon className="size-5" strokeWidth={1.75} />
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-tight text-white tracking-tight text-balance sm:text-[1.35rem]">
+                  <h3 className="font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-tight text-secondary tracking-tight text-balance sm:text-[1.35rem]">
                     {title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/75">
+                  <p className="mt-3 text-sm leading-relaxed text-secondary/75">
                     {description}
                   </p>
                 </div>
