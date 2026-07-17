@@ -1,4 +1,5 @@
 // Beneficios B2B: navy dark con 4 tarjetas serifadas y CTA integrado.
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -8,7 +9,8 @@ import { corporateBenefits } from "@/features/corporate/data/corporate";
 
 import styles from "./corporate.module.css";
 
-export function CorporateBenefits() {
+export async function CorporateBenefits() {
+  const t = await getTranslations("corporate.benefits");
   const total = corporateBenefits.length;
 
   return (
@@ -29,21 +31,17 @@ export function CorporateBenefits() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-[0.8rem] font-semibold tracking-[0.28em] text-white/60 uppercase">
               <span className="h-px w-8 bg-white/30" aria-hidden="true" />
-              Nuestro convenios · {total.toString().padStart(2, "0")}
+              {t("eyebrow")} · {total.toString().padStart(2, "0")}
             </p>
             <h2
               id="beneficios-titulo"
               className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.3rem,5vw,4rem)]"
             >
-              Más que hospedaje, una{" "}
-              <span className="italic font-normal text-primary">
-                solución para tu equipo de trabajo en Chiclayo.
-              </span>
+              {t("titleA")}{" "}
+              <span className="italic font-normal text-primary">{t("titleEmphasis")}</span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/70">
-              Al firmar tu convenio con Zentra Hotel & Cowork, tu empresa accede
-              a condiciones que ningún hotel de Chiclayo puede ofrecerte de
-              forma integrada.
+              {t("lead")}
             </p>
           </div>
 
@@ -51,7 +49,7 @@ export function CorporateBenefits() {
             href="#convenio"
             className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none md:self-auto"
           >
-            Hablar con un asesor
+            {t("ctaAdvisor")}
             <ArrowUpRight
               className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
               strokeWidth={2}
@@ -71,9 +69,7 @@ export function CorporateBenefits() {
                 } as React.CSSProperties
               }
             >
-              <article
-                className={`${styles.card} ${styles.cardDark} group flex h-full flex-col gap-6 rounded-[1.5rem] border border-white/12 bg-white p-6 backdrop-blur sm:p-7`}
-              >
+              <article className={`${styles.card} ${styles.cardDark} group flex h-full flex-col gap-6 rounded-[1.5rem] border border-white/12 bg-white p-6 backdrop-blur sm:p-7`}>
                 <div className="flex items-baseline justify-between gap-3">
                   <span className="font-[family-name:var(--font-corporate-display)] text-4xl font-light leading-none text-secondary tracking-tight">
                     {number}

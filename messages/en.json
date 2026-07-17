@@ -1,0 +1,394 @@
+{
+  "nav": {
+    "inicio": "Home",
+    "nosotros": "About",
+    "habitaciones": "Rooms",
+    "empresa": "Corporate",
+    "blog": "Blog",
+    "promociones": "Offers",
+    "reservar": "Book",
+    "reservarAhora": "Book now",
+    "primary": "Primary navigation",
+    "secondary": "Secondary navigation",
+    "mobile": "Mobile navigation",
+    "openMenu": "Open navigation menu"
+  },
+  "languageSelector": {
+    "trigger": "Change language",
+    "soon": "Coming soon"
+  },
+  "common": {
+    "whatsapp": {
+      "aria": "Message us on WhatsApp",
+      "prefill": "Hi, I'd like more information."
+    },
+    "bookingFloat": {
+      "aria": "Book now",
+      "label": "Book"
+    },
+    "newsletter": {
+      "emailLabel": "Email address",
+      "emailPlaceholder": "Your email address",
+      "submitAria": "Subscribe to the newsletter",
+      "success": "Thanks for subscribing! Your exclusive code is on its way.",
+      "errorRequired": "Enter your email address",
+      "errorInvalid": "Enter a valid email address"
+    },
+    "comingSoon": {
+      "body": "We're working on this section. It will be available very soon.",
+      "backHome": "Back to home"
+    }
+  },
+  "footer": {
+    "eyebrow": "Chiclayo",
+    "description": "A modern, comfortable hotel in downtown Chiclayo. Book direct on our site and enjoy attentive service on every stay.",
+    "bookDirect": "Book direct",
+    "socialAria": "Follow us on social media",
+    "socialLinkAria": "{brand} on {platform}",
+    "linksHeading": "Links",
+    "contactHeading": "Contact",
+    "phoneAria": "Call {phone}",
+    "mailAria": "Email {email}",
+    "hours": "24-hour service · Flexible check-in",
+    "newsletterHeading": "Exclusive code",
+    "discountLeadA": "10% off your",
+    "discountEmphasis": "first",
+    "discountLeadB": " booking.",
+    "discountBody": "Subscribe and get your discount straight to your inbox.",
+    "legalPolicies": "Policies",
+    "legalComplaints": "Complaints book",
+    "copyright": "© {year} {brand}. All rights reserved."
+  },
+  "home": {
+    "hero": {
+      "sectionAria": "Welcome",
+      "eyebrow": "Zentra Hotel & Cowork",
+      "titleA": "Welcome to Zentra,",
+      "titleB": "where Chiclayo",
+      "titleEmphasis": "feels like home.",
+      "lead": "A stay designed for you in the heart of the historic center: modern rooms, warm hospitality, and experiences crafted so the city feels yours from the very first moment.",
+      "amenitiesAria": "Included amenities",
+      "amenityWifi": "5G Wi-Fi",
+      "amenitySuite": "Suite with jacuzzi",
+      "amenityZen": "Zen Experience",
+      "amenityReception": "24 h reception",
+      "statReceptionValue": "24 h",
+      "statReceptionLabel": "Reception and room service",
+      "statDistanceValue": "5 min",
+      "statDistanceLabel": "Chiclayo's Plaza de Armas",
+      "statRoomsValue": "6",
+      "statRoomsLabel": "Room types",
+      "statRatingValue": "4.6★",
+      "statRatingLabel": "In Google Maps reviews"
+    },
+    "presentation": {
+      "eyebrow": "Zentra · Chiclayo, Peru",
+      "titleLead": "A modern, comfortable hotel",
+      "titleTail": "in downtown Chiclayo.",
+      "lead": "Book direct on our site and save on your next trip to Chiclayo. A stay designed down to the last detail, with the warmth of a boutique hotel steps from the historic center.",
+      "ctaBook": "Book now",
+      "ctaWhatsapp": "Message us on WhatsApp",
+      "whatsappPrefill": "Hi, I'd like info to book at Zentra Hotel.",
+      "cardEyebrow": "Booking direct",
+      "cardTitle": "Three reasons to skip the middleman.",
+      "perkLocationTitle": "Prime location",
+      "perkLocationDetail": "Five minutes from Plaza de Armas.",
+      "perkPriceTitle": "Best rate guaranteed",
+      "perkPriceDetail": "Book direct and save on every night.",
+      "perkCareTitle": "Warm 24-hour service",
+      "perkCareDetail": "Reception and room service always ready."
+    },
+    "offers": {
+      "eyebrow": "Offers",
+      "titleA": "Limited-time",
+      "titleEmphasis": "deals.",
+      "lead": "Exclusive discounts for guests who book direct with us. Pick the code that fits your stay best and use it when you book.",
+      "ctaBook": "Book now",
+      "featuredBadge": "Featured offer · Web exclusive",
+      "featuredCodeLabel": "Use the code",
+      "featuredCtaBook": "Book now",
+      "featuredValidUntil": "{title} · Valid until {date}.",
+      "couponLabel": "Coupon",
+      "couponCodeLabel": "Code",
+      "couponCta": "Book via WhatsApp",
+      "couponAria": "Book via WhatsApp using code {code}",
+      "couponPrefill": "Hi, I'd like to book. Discount code: {code}",
+      "countdownEnds": "Ends in {days} {days, plural, one {day} other {days}}",
+      "countdownLastDay": "Last day",
+      "countdownEnded": "Offer ended"
+    },
+    "services": {
+      "eyebrow": "Services",
+      "titleA": "Our",
+      "titleEmphasis": "services.",
+      "lead": "Every detail thought out so you only have to worry about resting. 5G Wi-Fi, buffet breakfast, 24/7 service, and touches that make your stay simple, comfortable, and safe.",
+      "ctaBook": "Book now",
+      "listAria": "{count} services included"
+    },
+    "roomsShowcase": {
+      "eyebrow": "Rooms",
+      "titleA": "Meet our",
+      "titleEmphasis": "rooms.",
+      "lead": "Choose from cozy rooms, suites with jacuzzi, and curated experiences. Every space is designed for a different rhythm — work, rest, or celebration.",
+      "ctaSeeAll": "See all",
+      "ctaBook": "Book",
+      "ctaDetails": "See details",
+      "ctaAria": "{action}: {room}",
+      "bentoTag0": "Essential comfort",
+      "bentoTagline0": "Light rest in downtown Chiclayo.",
+      "bentoTag1": "Most requested",
+      "bentoTagline1": "Queen suite with warm ambience.",
+      "bentoTag2": "For three",
+      "bentoTagline2": "Double bed plus an extra for friends or family.",
+      "bentoTag3": "Signature",
+      "bentoTagline3": "Private jacuzzi, warm light, and city views.",
+      "bentoTag4": "Experience",
+      "bentoTagline4": "Romantic dinner prepared by our team.",
+      "bentoTag5": "Wellness",
+      "bentoTagline5": "In-suite massage and aromatherapy ritual."
+    },
+    "zen": {
+      "eyebrow": "Rituals",
+      "titleA": "Zen",
+      "titleEmphasis": "Experience.",
+      "leadA": "Discover why we're one of the best",
+      "leadLink": "hotels in Chiclayo",
+      "leadB": ". Every ritual is designed for a real pause — massages, aromatherapy, and rest in the heart of the city.",
+      "ctaPackages": "See packages",
+      "featuredBadge": "Signature"
+    },
+    "traveler": {
+      "eyebrow": "Collections",
+      "titleA": "For every",
+      "titleB": "kind of",
+      "titleEmphasis": "traveler.",
+      "lead": "Rooms, services, and experiences designed for every reason you travel: business, tourism, celebrations, or full-on rest in the heart of Chiclayo.",
+      "ctaCollections": "See collections",
+      "prevAria": "Previous category",
+      "nextAria": "Next category",
+      "statusAria": "Category {current} of {total}"
+    },
+    "booking": {
+      "eyebrow": "Channels",
+      "titleA": "How to",
+      "titleEmphasis": "book?",
+      "lead": "Book direct and save on your next stay. Pick the channel you prefer — we reply in minutes, with no middleman fees.",
+      "ctaBook": "Book now",
+      "actionAria": "{action}: {detail}",
+      "channelWhatsappTitle": "WhatsApp",
+      "channelWhatsappHint": "Instant reply",
+      "channelWhatsappAction": "Message on WhatsApp",
+      "channelWhatsappPrefill": "Hi, I'd like to book a room.",
+      "channelMailTitle": "Email",
+      "channelMailHint": "Ideal for groups and invoicing",
+      "channelMailAction": "Send an email",
+      "channelVisitTitle": "Visit us",
+      "channelVisitHint": "We're in downtown Chiclayo",
+      "channelVisitAction": "How to get there"
+    },
+    "availability": {
+      "eyebrow": "Rooms",
+      "titleA": "Book your",
+      "titleEmphasis": "room.",
+      "lead": "Choose from our most-requested rooms. All include 5G Wi-Fi, breakfast, and flexible cancellation when you book direct with us.",
+      "ctaSeeAll": "See all rooms",
+      "badgeAvailable": "Available",
+      "cardEyebrow": "Room",
+      "ctaCheck": "Check availability",
+      "ctaAria": "Check availability for {room}"
+    },
+    "testimonials": {
+      "eyebrow": "Verified guests",
+      "titleA": "What our",
+      "titleEmphasis": "guests say.",
+      "lead": "Real reviews from those who already experienced Zentra. Short stories of comfortable stays, warm hospitality, and memorable moments in downtown Chiclayo.",
+      "ctaGoogle": "See reviews on Google Maps"
+    },
+    "location": {
+      "eyebrow": "Location",
+      "titleA": "In the heart of",
+      "titleEmphasis": "Chiclayo.",
+      "lead": "Our location on {balta}, {plaza}, and {sanJose} puts you steps from Av. Balta and the city's main shopping, dining, and tourist spots.",
+      "ctaDirections": "How to get there",
+      "mapTitle": "{brand} location on Google Maps",
+      "mapRatingBrand": "{brand}",
+      "mapRatingLabel": "Excellent on Google Maps",
+      "mapExpand": "See larger map"
+    },
+    "bookingWidget": {
+      "eyebrow": "Book direct",
+      "heading": "Check availability",
+      "checkIn": "Check-in",
+      "checkOut": "Check-out",
+      "guests": "Guests",
+      "guestsAria": "Number of adults",
+      "adult": "{n} {n, plural, one {adult} other {adults}}",
+      "rooms": "Rooms",
+      "roomsAria": "Number of rooms",
+      "room": "{n} {n, plural, one {room} other {rooms}}",
+      "promo": "Promo code",
+      "submit": "Check availability",
+      "footnote": "No hidden fees · Flexible cancellation · Instant confirmation"
+    }
+  },
+  "corporate": {
+    "hero": {
+      "sectionAria": "Corporate welcome",
+      "eyebrow": "Corporate hotel chain · 3 hotels 1 coworking",
+      "titleA": "Your team is up and running from",
+      "titleEmphasis": "minute one.",
+      "lead": "Pick executive lodging at any of our 3 hotels, plus premium coworking spaces.",
+      "ctaQuote": "Request your quote",
+      "ctaAdvisor": "Talk to an advisor",
+      "whatsappPrefill": "Hi, I'd like info on the Zentra Hotel & Cowork corporate agreement.",
+      "kpisAria": "Key agreement indicators"
+    },
+    "locations": {
+      "eyebrow": "Our hotel chain",
+      "titleA": "Four executive locations in",
+      "titleEmphasis": "downtown Chiclayo.",
+      "lead": "Wherever your team stays, they're always minutes from the financial district and Nexus Cowork offices. Pick the location that suits you best.",
+      "cardEyebrow": "Location",
+      "cta": "Request this location",
+      "ctaAria": "Request the {location} location"
+    },
+    "problem": {
+      "eyebrow": "The invisible cost of business travel",
+      "title": "Does your team travel to Chiclayo?",
+      "lead": "Bring lodging, workspace, and meetings together in one solution for your company. Less admin, more productivity."
+    },
+    "solution": {
+      "eyebrow": "The solution",
+      "titleEmphasis": "Zentra Hotel & Cowork cuts",
+      "titleTail": "logistical complexity",
+      "lead": "We're the first corporate hub in Chiclayo that brings a chain of three executive hotels and a premium coworking together under one agreement. Your team is ready to operate from minute one.",
+      "highlightsAria": "Hub highlights",
+      "ctaAdvisor": "Talk to an advisor",
+      "whatsappPrefill": "Hi, I'd like info on the Zentra Hotel & Cowork corporate agreement.",
+      "videoAria": "Corporate hub video",
+      "videoBadge": "Video · 0:26",
+      "muteAria": "Mute the corporate hub video",
+      "unmuteAria": "Unmute the corporate hub video",
+      "zentraEyebrow": "Zentra Hotel chain · Executive lodging",
+      "zentraTitle": "Three downtown locations designed for the business traveler.",
+      "zentraLead": "Comfort, technology, and service with no wait times. Rooms designed for teams that work late and start early.",
+      "nexusEyebrow": "Nexus Cowork · Premium workspaces",
+      "nexusTitle": "Private offices, coworking, and fully equipped meeting rooms.",
+      "nexusLead": "Your team works with the same tools as at HQ, uninterrupted. A single point of contact, friction-free operation."
+    },
+    "sectors": {
+      "eyebrow": "Companies that trust us",
+      "titleA": "Companies already traveling and working with",
+      "titleEmphasis": "Zentra Hotel & Cowork.",
+      "lead": "Corporate teams from different industries choose Zentra Hotel & Cowork for their operations in Chiclayo.",
+      "marqueeAria": "Companies that trust Zentra Hotel & Cowork",
+      "closingNote": "Isn't your company here yet? Tell us how your team operates. Our account executive will build a proposal tailored to you."
+    },
+    "benefits": {
+      "eyebrow": "Our agreements",
+      "titleA": "More than lodging: a",
+      "titleEmphasis": "solution for your team in Chiclayo.",
+      "lead": "When you sign your agreement with Zentra Hotel & Cowork, your company gets terms no hotel in Chiclayo can offer you in an integrated way.",
+      "ctaAdvisor": "Talk to an advisor"
+    },
+    "gallery": {
+      "eyebrow": "Our spaces",
+      "titleA": "See the hub",
+      "titleEmphasis": "before you arrive.",
+      "lead": "All photos are of the real Zentra chain and Nexus Cowork spaces in Chiclayo."
+    },
+    "video": {
+      "eyebrow": "In action · 26 seconds",
+      "titleA": "Watch a team operate at the",
+      "titleEmphasis": "corporate hub.",
+      "lead": "This is what a full day of operation looks like for your team in Chiclayo: from express check-in to a desk at Nexus, friction-free.",
+      "ctaMeeting": "Book a meeting",
+      "whatsappPrefill": "Hi, I'd like to schedule a meeting to review the Zentra Hotel & Cowork corporate proposal.",
+      "muteAria": "Mute the corporate hub video",
+      "unmuteAria": "Unmute the corporate hub video",
+      "videoBadge": "Video · 0:26"
+    },
+    "cta": {
+      "srTitle": "Request your corporate agreement",
+      "formTitle": "Start your corporate agreement here.",
+      "formLead": "Basics to build the proposal. Everything else, we sort out over WhatsApp."
+    },
+    "form": {
+      "aside": {
+        "eyebrow": "Activate your agreement",
+        "title": "An executive will reach out within 24 hours.",
+        "lead": "Fill out the form and our team will design a proposal tailored to your company. No commitments.",
+        "directCta": "Message us directly",
+        "whatsappPrefill": "Hi, I'd like info on the Zentra Hotel & Cowork corporate agreement."
+      },
+      "labelName": "Full name",
+      "labelCompany": "Company / Legal name",
+      "labelRole": "Role / Department",
+      "labelEmail": "Corporate email",
+      "labelPhone": "Phone /\nWhatsApp",
+      "labelFrequency": "How many people travel and how often?",
+      "labelSector": "Your company's industry",
+      "placeholderSelectFrequency": "Select an option",
+      "placeholderSelectSector": "Select an industry",
+      "errorName": "Enter your full name.",
+      "errorCompany": "Enter the company or legal name.",
+      "errorRole": "Enter your role or department.",
+      "errorEmail": "Enter a valid corporate email.",
+      "errorPhone": "Enter a valid phone or WhatsApp number.",
+      "errorFrequency": "Tell us how often your team travels.",
+      "errorSector": "Select your company's industry.",
+      "submit": "Request my corporate proposal",
+      "hint": "On submit, we open WhatsApp with your proposal pre-loaded at {phone}. No commitments.",
+      "successTitle": "Request received.",
+      "successLead": "We opened WhatsApp with your proposal pre-loaded. An account executive will contact you within 24 business hours.",
+      "waMessageLead": "Hi, I'd like to activate a corporate agreement with Zentra Hotel & Cowork.",
+      "waLabelContact": "Contact",
+      "waLabelCompany": "Company",
+      "waLabelEmail": "Email",
+      "waLabelPhone": "Phone",
+      "waLabelTravelers": "Travelers",
+      "waLabelSector": "Industry",
+      "waLabelLocation": "Preferred location"
+    }
+  },
+  "about": {
+    "hero": {
+      "sectionAria": "About · {brand}",
+      "eyebrow": "About · {brand}",
+      "titleA": "A boutique stay",
+      "titleEmphasis": "designed like home",
+      "titleB": "in downtown Chiclayo.",
+      "lead": "Zentra was born with a simple conviction: traveling for work or rest shouldn't feel impersonal. We combine prime location, warm design, and a human team that treats every stay like the first.",
+      "badgesAria": "Zentra hallmarks",
+      "ctaBook": "Book your stay",
+      "ctaTeam": "Talk to our team",
+      "whatsappPrefill": "Hi, I'd like to know more about Zentra Hotel.",
+      "statsAria": "Zentra in numbers"
+    },
+    "values": {
+      "eyebrow": "Why Zentra",
+      "titleA": "The experience that",
+      "titleEmphasis": "sets us apart",
+      "titleB": "in Chiclayo.",
+      "lead": "Every decision, from where our locations are to our welcome ritual, is designed so your rest feels genuinely cared for.",
+      "ctaSteps": "How to stay"
+    },
+    "experience": {
+      "imageAlt": "Warm reception at Zentra Hotel.",
+      "badge": "The Zentra experience",
+      "imageCaption": "From booking to rest, friction-free.",
+      "eyebrow": "How to stay · 04 steps",
+      "titleA": "Four steps to",
+      "titleEmphasis": "make Chiclayo feel like yours.",
+      "lead": "We simplify every touchpoint so your only concern is enjoying the city. Here's what a Zentra stay looks like:",
+      "ctaBook": "Start your booking"
+    },
+    "partners": {
+      "eyebrow": "Companies that trust us",
+      "titleA": "Teams and brands that stay",
+      "titleEmphasis": "at Zentra",
+      "titleB": ".",
+      "listAria": "Partner company logos"
+    }
+  }
+}

@@ -1,4 +1,5 @@
 // Sección "promociones": oferta destacada + cupones canjeables sobre fondo navy editorial.
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight, MessageCircle, Sparkles, TicketPercent } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -13,8 +14,8 @@ import styles from "./offers-section.module.css";
 
 const totalPromos = coupons.length + 1;
 
-function formatShortDate(iso: string): string {
-  return new Intl.DateTimeFormat("es-PE", {
+function formatShortDate(iso: string, locale: string): string {
+  return new Intl.DateTimeFormat(locale === "en" ? "en-US" : "es-PE", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
@@ -22,7 +23,10 @@ function formatShortDate(iso: string): string {
   }).format(new Date(iso));
 }
 
-export function OffersSection() {
+export async function OffersSection() {
+  const t = await getTranslations("home.offers");
+  const locale = await getLocale();
+
   return (
     <Section
       id="promociones"
@@ -41,21 +45,19 @@ export function OffersSection() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-white/60 uppercase">
               <span className="h-px w-8 bg-white/30" aria-hidden="true" />
-              Promociones · {totalPromos.toString().padStart(2, "0")}
+              {t("eyebrow")} · {totalPromos.toString().padStart(2, "0")}
             </p>
             <h2
               id="ofertas-titulo"
               className="mt-6 font-[family-name:var(--font-offers-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
             >
-              Ofertas por tiempo{" "}
+              {t("titleA")}{" "}
               <span className="italic font-normal text-primary">
-                limitado.
+                {t("titleEmphasis")}
               </span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/70">
-              Descuentos exclusivos para quienes reservan directo con nosotros.
-              Elige el código que mejor se ajuste a tu estadía y úsalo al
-              momento de reservar.
+              {t("lead")}
             </p>
           </div>
 
@@ -65,7 +67,7 @@ export function OffersSection() {
             rel="noopener noreferrer"
             className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none md:self-auto"
           >
-            Reservar ahora
+            {t("ctaBook")}
             <ArrowUpRight
               className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
               strokeWidth={2}
@@ -84,7 +86,7 @@ export function OffersSection() {
 
             <span className="inline-flex w-fit items-center gap-2 rounded-full bg-primary/15 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.2em] text-secondary uppercase">
               <Sparkles className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
-              Oferta destacada · Exclusivo web
+              {t("featuredBadge")}
             </span>
 
             <p
@@ -100,7 +102,7 @@ export function OffersSection() {
             <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-dashed border-secondary/25 bg-primary p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
               <div>
                 <p className="text-[0.65rem] font-mono tracking-[0.22em] text-white/95 uppercase">
-                  Usa el código
+                  {t("featuredCodeLabel")}
                 </p>
                 <p className="mt-2 font-[family-name:var(--font-offers-display)] text-xl font-normal tracking-[0.14em] text-white sm:text-2xl">
                   {featuredOffer.code}
@@ -112,7 +114,7 @@ export function OffersSection() {
                 rel="noopener noreferrer"
                 className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-secondary px-5 py-3 text-xs font-semibold tracking-[0.16em] text-secondary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                Reservar ahora
+                {t("featuredCtaBook")}
                 <ArrowUpRight
                   className="size-3.5 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
                   strokeWidth={2}
@@ -123,7 +125,12 @@ export function OffersSection() {
 
             <div className="mt-6 flex items-start gap-2 border-t border-secondary/10 pt-5 text-xs text-secondary/60">
               <TicketPercent className="mt-0.5 size-4 shrink-0 text-primary" strokeWidth={1.75} aria-hidden="true" />
-              <p>{featuredOffer.title} · Válida hasta el {formatShortDate(featuredOffer.expiresAt)}.</p>
+              <p>
+                {t("featuredValidUntil", {
+                  title: featuredOffer.title,
+                  date: formatShortDate(featuredOffer.expiresAt, locale),
+                })}
+              </p>
             </div>
           </article>
 
@@ -147,7 +154,7 @@ export function OffersSection() {
                         {(index + 2).toString().padStart(2, "0")}
                       </span>
                       <span className="h-px w-4 bg-white/25" aria-hidden="true" />
-                      Cupón
+                      {t("couponLabel")}
                     </p>
                     <TicketPercent
                       className="size-4 text-primary"
@@ -162,7 +169,7 @@ export function OffersSection() {
 
                   <div className="mt-1 rounded-xl border-2 border-dashed border-secondary bg-white px-4 py-3 text-center">
                     <p className="text-[0.62rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
-                      Código
+                      {t("couponCodeLabel")}
                     </p>
                     <p className="mt-1 font-[family-name:var(--font-offers-display)] text-lg font-normal tracking-[0.16em] text-secondary sm:text-xl">
                       {coupon.code}
@@ -170,16 +177,14 @@ export function OffersSection() {
                   </div>
 
                   <a
-                    href={buildWhatsAppUrl(
-                      `Hola, deseo reservar. Código de descuento: ${coupon.code}`,
-                    )}
+                    href={buildWhatsAppUrl(t("couponPrefill", { code: coupon.code }))}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Reservar por WhatsApp usando el código ${coupon.code}`}
+                    aria-label={t("couponAria", { code: coupon.code })}
                     className="group mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                   >
                     <MessageCircle className="size-4" strokeWidth={1.75} aria-hidden="true" />
-                    Reservar por WhatsApp
+                    {t("couponCta")}
                     <ArrowUpRight
                       className="size-3.5 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
                       strokeWidth={2}

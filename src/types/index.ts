@@ -1,7 +1,7 @@
 // Tipos globales compartidos entre features y componentes de layout.
 
-// Elemento de navegación con etiqueta visible y ruta destino.
+// Elemento de navegación con clave de traducción (namespace "nav") y ruta destino.
 export interface NavItem {
-  label: string;
+  key: string;
   href: string;
 }

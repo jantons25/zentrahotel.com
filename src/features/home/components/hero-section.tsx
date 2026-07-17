@@ -1,4 +1,5 @@
 // Hero principal: composición editorial premium con titular, chips de amenidad y widget de reservas.
+import { getTranslations } from "next-intl/server";
 import { BedDouble, ConciergeBell, Sparkles, Wifi } from "lucide-react";
 
 import { fontHeroDisplay } from "@/features/home/config/hero-fonts";
@@ -6,24 +7,26 @@ import { BookingWidget } from "@/features/home/components/booking-widget";
 
 import styles from "./hero-section.module.css";
 
-const highlights = [
-  { icon: Wifi, label: "Wi-Fi 5G" },
-  { icon: BedDouble, label: "Suite con jacuzzi" },
-  { icon: Sparkles, label: "Experiencia Zen" },
-  { icon: ConciergeBell, label: "Recepción 24 h" },
-];
+export async function HeroSection() {
+  const t = await getTranslations("home.hero");
 
-const stats = [
-  { value: "24 h", label: "Recepción y room service" },
-  { value: "5 min", label: "Plaza de Armas de Chiclayo" },
-  { value: "6", label: "Tipos de habitaciones" },
-  { value: "4.6★", label: "En reseñas de Google Maps" },
-];
+  const highlights = [
+    { icon: Wifi, label: t("amenityWifi") },
+    { icon: BedDouble, label: t("amenitySuite") },
+    { icon: Sparkles, label: t("amenityZen") },
+    { icon: ConciergeBell, label: t("amenityReception") },
+  ];
 
-export function HeroSection() {
+  const stats = [
+    { value: t("statReceptionValue"), label: t("statReceptionLabel") },
+    { value: t("statDistanceValue"), label: t("statDistanceLabel") },
+    { value: t("statRoomsValue"), label: t("statRoomsLabel") },
+    { value: t("statRatingValue"), label: t("statRatingLabel") },
+  ];
+
   return (
     <section
-      aria-label="Bienvenida"
+      aria-label={t("sectionAria")}
       className={`${fontHeroDisplay.variable} ${styles.hero} relative isolate -mt-16 overflow-hidden bg-secondary text-white md:-mt-20`}
     >
       <div className={styles.vignette} aria-hidden="true" />
@@ -40,18 +43,18 @@ export function HeroSection() {
                 className="size-1.5 rounded-full bg-primary"
                 aria-hidden="true"
               />
-              Zentra Hotel & Cowork
+              {t("eyebrow")}
             </p>
 
             <h1
               className={`${styles.reveal} mt-6 font-[family-name:var(--font-hero-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.75rem,6.5vw,5.5rem)]`}
               style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
             >
-              Bienvenido a Zentra,
+              {t("titleA")}
               <br />
-              donde Chiclayo se{" "}
+              {t("titleB")}{" "}
               <span className="italic font-normal text-primary">
-                hace hogar.
+                {t("titleEmphasis")}
               </span>
             </h1>
 
@@ -59,15 +62,13 @@ export function HeroSection() {
               className={`${styles.reveal} mt-6 max-w-xl text-base leading-relaxed text-white/80 md:text-lg`}
               style={{ "--reveal-delay": "220ms" } as React.CSSProperties}
             >
-              Un descanso pensado para ti en pleno corazón del centro histórico:
-              habitaciones modernas, atención cercana y experiencias diseñadas
-              para que la ciudad se sienta tuya desde el primer instante.
+              {t("lead")}
             </p>
 
             <ul
               className={`${styles.reveal} mt-8 flex flex-wrap gap-2`}
               style={{ "--reveal-delay": "320ms" } as React.CSSProperties}
-              aria-label="Amenidades incluidas"
+              aria-label={t("amenitiesAria")}
             >
               {highlights.map(({ icon: Icon, label }) => (
                 <li

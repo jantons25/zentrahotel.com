@@ -3,6 +3,7 @@
 // Formulario del convenio: valida con Zod y despacha al WhatsApp del ejecutivo con toda la data.
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import {
   ArrowUpRight,
@@ -21,41 +22,43 @@ import {
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { siteConfig } from "@/config/site";
 
-const schema = z.object({
-  name: z.string().min(2, "Ingresa tu nombre completo."),
-  company: z.string().min(2, "Ingresa el nombre o razón social."),
-  role: z.string().min(2, "Ingresa tu cargo o área."),
-  email: z.email("Ingresa un correo corporativo válido."),
-  phone: z.string().min(6, "Ingresa un número de teléfono o WhatsApp válido."),
-  frequency: z.string().min(1, "Cuéntanos con qué frecuencia viaja tu equipo."),
-  sector: z.string().min(1, "Selecciona el sector de tu empresa."),
-  location: z.string().optional(),
-});
-
-type FormValues = z.infer<typeof schema>;
-
 const INPUT_CLASS =
   "h-11 w-full rounded-xl border border-secondary/20 bg-white px-4 text-sm text-secondary placeholder:text-secondary/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] transition-colors duration-(--duration-fast) outline-none focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-primary/25 aria-invalid:border-destructive aria-invalid:ring-4 aria-invalid:ring-destructive/20";
 
-function buildMessage(values: FormValues): string {
-  const lines = [
-    "Hola, quiero activar un convenio corporativo con Zentra Hotel & Cowork.",
-    "",
-    `• Contacto: ${values.name} (${values.role})`,
-    `• Empresa: ${values.company}`,
-    `• Correo: ${values.email}`,
-    `• Teléfono: ${values.phone}`,
-    `• Viajeros: ${values.frequency}`,
-    `• Sector: ${values.sector}`,
-  ];
-  if (values.location && values.location !== "Sin preferencia") {
-    lines.push(`• Sede de preferencia: ${values.location}`);
-  }
-  return lines.join("\n");
-}
-
 export function CorporateForm() {
+  const t = useTranslations("corporate.form");
   const [submitted, setSubmitted] = useState(false);
+
+  const schema = z.object({
+    name: z.string().min(2, t("errorName")),
+    company: z.string().min(2, t("errorCompany")),
+    role: z.string().min(2, t("errorRole")),
+    email: z.email(t("errorEmail")),
+    phone: z.string().min(6, t("errorPhone")),
+    frequency: z.string().min(1, t("errorFrequency")),
+    sector: z.string().min(1, t("errorSector")),
+    location: z.string().optional(),
+  });
+
+  type FormValues = z.infer<typeof schema>;
+
+  function buildMessage(values: FormValues): string {
+    const lines = [
+      t("waMessageLead"),
+      "",
+      `• ${t("waLabelContact")}: ${values.name} (${values.role})`,
+      `• ${t("waLabelCompany")}: ${values.company}`,
+      `• ${t("waLabelEmail")}: ${values.email}`,
+      `• ${t("waLabelPhone")}: ${values.phone}`,
+      `• ${t("waLabelTravelers")}: ${values.frequency}`,
+      `• ${t("waLabelSector")}: ${values.sector}`,
+    ];
+    if (values.location && values.location !== "Sin preferencia") {
+      lines.push(`• ${t("waLabelLocation")}: ${values.location}`);
+    }
+    return lines.join("\n");
+  }
+
   const {
     register,
     handleSubmit,
@@ -93,11 +96,10 @@ export function CorporateForm() {
         </span>
         <div>
           <p className="font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-tight text-secondary">
-            Solicitud recibida.
+            {t("successTitle")}
           </p>
           <p className="mt-2 text-sm leading-relaxed text-secondary/75">
-            Abrimos WhatsApp con tu propuesta pre-cargada. Un ejecutivo de
-            cuenta te contactará en menos de 24 horas hábiles.
+            {t("successLead")}
           </p>
         </div>
       </div>
@@ -112,11 +114,7 @@ export function CorporateForm() {
       className="flex flex-col gap-4"
     >
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <Field
-          label="Nombre completo"
-          htmlFor="corp-name"
-          error={errors.name?.message}
-        >
+        <Field label={t("labelName")} htmlFor="corp-name" error={errors.name?.message}>
           <input
             id="corp-name"
             type="text"
@@ -126,11 +124,7 @@ export function CorporateForm() {
             {...register("name")}
           />
         </Field>
-        <Field
-          label="Empresa / Razón social"
-          htmlFor="corp-company"
-          error={errors.company?.message}
-        >
+        <Field label={t("labelCompany")} htmlFor="corp-company" error={errors.company?.message}>
           <input
             id="corp-company"
             type="text"
@@ -141,11 +135,7 @@ export function CorporateForm() {
           />
         </Field>
 
-        <Field
-          label="Cargo / Área"
-          htmlFor="corp-role"
-          error={errors.role?.message}
-        >
+        <Field label={t("labelRole")} htmlFor="corp-role" error={errors.role?.message}>
           <input
             id="corp-role"
             type="text"
@@ -155,11 +145,7 @@ export function CorporateForm() {
             {...register("role")}
           />
         </Field>
-        <Field
-          label="Correo corporativo"
-          htmlFor="corp-email"
-          error={errors.email?.message}
-        >
+        <Field label={t("labelEmail")} htmlFor="corp-email" error={errors.email?.message}>
           <input
             id="corp-email"
             type="email"
@@ -170,11 +156,7 @@ export function CorporateForm() {
           />
         </Field>
 
-        <Field
-          label={`Teléfono /\nWhatsApp`}
-          htmlFor="corp-phone"
-          error={errors.phone?.message}
-        >
+        <Field label={t("labelPhone")} htmlFor="corp-phone" error={errors.phone?.message}>
           <input
             id="corp-phone"
             type="tel"
@@ -185,18 +167,14 @@ export function CorporateForm() {
             {...register("phone")}
           />
         </Field>
-        <Field
-          label="¿Cuántas personas viajan y con qué frecuencia?"
-          htmlFor="corp-frequency"
-          error={errors.frequency?.message}
-        >
+        <Field label={t("labelFrequency")} htmlFor="corp-frequency" error={errors.frequency?.message}>
           <select
             id="corp-frequency"
             aria-invalid={Boolean(errors.frequency)}
             className={INPUT_CLASS}
             {...register("frequency")}
           >
-            <option value="">Selecciona una opción</option>
+            <option value="">{t("placeholderSelectFrequency")}</option>
             {corporateTravelFrequencyOptions.map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -205,18 +183,14 @@ export function CorporateForm() {
           </select>
         </Field>
 
-        <Field
-          label="Sector de tu empresa"
-          htmlFor="corp-sector"
-          error={errors.sector?.message}
-        >
+        <Field label={t("labelSector")} htmlFor="corp-sector" error={errors.sector?.message}>
           <select
             id="corp-sector"
             aria-invalid={Boolean(errors.sector)}
             className={INPUT_CLASS}
             {...register("sector")}
           >
-            <option value="">Selecciona un sector</option>
+            <option value="">{t("placeholderSelectSector")}</option>
             {corporateSectorOptions.map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -231,7 +205,7 @@ export function CorporateForm() {
         disabled={isSubmitting}
         className="group mt-4 inline-flex items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3.5 text-sm font-semibold tracking-[0.14em] text-secondary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary disabled:cursor-progress disabled:opacity-70 motion-reduce:transition-none motion-reduce:hover:translate-y-0 cursor-pointer"
       >
-        Solicitar mi propuesta corporativa
+        {t("submit")}
         <ArrowUpRight
           className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
           strokeWidth={2}
@@ -240,13 +214,8 @@ export function CorporateForm() {
       </button>
 
       <p className="mt-1 flex items-start gap-2 text-xs leading-relaxed text-secondary/70">
-        <Clock
-          className="mt-0.5 size-3.5 shrink-0 text-primary"
-          strokeWidth={1.75}
-          aria-hidden="true"
-        />
-        Al enviar, abrimos WhatsApp con tu propuesta pre-cargada al{" "}
-        {siteConfig.contact.phoneDisplay}. Sin compromisos.
+        <Clock className="mt-0.5 size-3.5 shrink-0 text-primary" strokeWidth={1.75} aria-hidden="true" />
+        {t("hint", { phone: siteConfig.contact.phoneDisplay })}
       </p>
     </form>
   );
@@ -279,6 +248,7 @@ function Field({ label, htmlFor, error, children }: FieldProps) {
 }
 
 export function CorporateFormAside() {
+  const t = useTranslations("corporate.form.aside");
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-start gap-3">
@@ -290,33 +260,24 @@ export function CorporateFormAside() {
         </span>
         <div>
           <p className="text-[0.8rem] font-mono tracking-[0.22em] text-secondary/60 uppercase">
-            Activa tu convenio
+            {t("eyebrow")}
           </p>
           <p className="mt-1 font-[family-name:var(--font-corporate-display)] text-2xl font-light leading-tight text-secondary tracking-tight text-balance sm:text-[1.75rem]">
-            Un ejecutivo te contactará en menos de 24 horas.
+            {t("title")}
           </p>
         </div>
       </div>
 
-      <p className="text-sm leading-relaxed text-muted-foreground">
-        Completa el formulario y nuestro equipo diseñará una propuesta
-        personalizada para tu empresa. Sin compromisos.
-      </p>
+      <p className="text-sm leading-relaxed text-muted-foreground">{t("lead")}</p>
 
       <a
-        href={buildWhatsAppUrl(
-          "Hola, quiero información sobre el convenio corporativo Zentra Hotel & Cowork.",
-        )}
+        href={buildWhatsAppUrl(t("whatsappPrefill"))}
         target="_blank"
         rel="noopener noreferrer"
         className="group inline-flex items-center gap-3 self-start rounded-full border border-secondary/20 bg-white px-5 py-2.5 text-xs font-semibold tracking-[0.14em] text-secondary uppercase transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none"
       >
-        <MessageCircle
-          className="size-4"
-          strokeWidth={1.75}
-          aria-hidden="true"
-        />
-        Escríbenos directo
+        <MessageCircle className="size-4" strokeWidth={1.75} aria-hidden="true" />
+        {t("directCta")}
         <ArrowUpRight
           className="size-3.5 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
           strokeWidth={2}

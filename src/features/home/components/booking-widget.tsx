@@ -3,6 +3,7 @@
 // Widget de reservas del Hero: formulario que redirige al Booking Engine Immersive 2.0 de Cloudbeds
 // con los parámetros de check-in, check-out, huéspedes y código promocional prellenados.
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { ArrowRight, CalendarDays, TicketPercent, UsersRound } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
@@ -41,15 +42,10 @@ function buildCloudbedsUrl(params: {
 }
 
 export function BookingWidget() {
+  const t = useTranslations("home.bookingWidget");
   const today = React.useMemo(() => toISODate(new Date()), []);
-  const defaultCheckIn = React.useMemo(
-    () => toISODate(addDays(new Date(), 1)),
-    [],
-  );
-  const defaultCheckOut = React.useMemo(
-    () => toISODate(addDays(new Date(), 3)),
-    [],
-  );
+  const defaultCheckIn = React.useMemo(() => toISODate(addDays(new Date(), 1)), []);
+  const defaultCheckOut = React.useMemo(() => toISODate(addDays(new Date(), 3)), []);
 
   const [checkin, setCheckin] = React.useState(defaultCheckIn);
   const [checkout, setCheckout] = React.useState(defaultCheckOut);
@@ -97,23 +93,21 @@ export function BookingWidget() {
         </span>
         <div>
           <p className="text-[0.62rem] font-mono text-secondary/55 uppercase tracking-tight text-balance sm:text-[1.7rem]">
-            Reserva directo
+            {t("eyebrow")}
           </p>
           <h3
             id="hero-booking-heading"
             className="font-[family-name:var(--font-hero-display)] text-lg font-normal leading-tight text-secondary"
           >
-            Consulta disponibilidad
+            {t("heading")}
           </h3>
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <label
-          className={`${styles.field} flex flex-col gap-1 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}
-        >
+        <label className={`${styles.field} flex flex-col gap-1 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}>
           <span className="text-[0.6rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
-            Check-in
+            {t("checkIn")}
           </span>
           <input
             type="date"
@@ -124,11 +118,9 @@ export function BookingWidget() {
             className="bg-transparent text-sm font-semibold text-secondary outline-none"
           />
         </label>
-        <label
-          className={`${styles.field} flex flex-col gap-1 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}
-        >
+        <label className={`${styles.field} flex flex-col gap-1 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}>
           <span className="text-[0.6rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
-            Check-out
+            {t("checkOut")}
           </span>
           <input
             type="date"
@@ -142,64 +134,50 @@ export function BookingWidget() {
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <label
-          className={`${styles.field} flex items-center gap-2 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}
-        >
-          <UsersRound
-            className="size-4 shrink-0 text-secondary/60"
-            strokeWidth={1.75}
-            aria-hidden="true"
-          />
+        <label className={`${styles.field} flex items-center gap-2 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}>
+          <UsersRound className="size-4 shrink-0 text-secondary/60" strokeWidth={1.75} aria-hidden="true" />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="text-[0.6rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
-              Huéspedes
+              {t("guests")}
             </span>
             <select
               value={adults}
               onChange={(e) => setAdults(e.target.value)}
               className="bg-transparent text-sm font-semibold text-secondary outline-none"
-              aria-label="Número de adultos"
+              aria-label={t("guestsAria")}
             >
               {[1, 2, 3, 4, 5, 6].map((n) => (
                 <option key={n} value={n}>
-                  {n} {n === 1 ? "adulto" : "adultos"}
+                  {t("adult", { n })}
                 </option>
               ))}
             </select>
           </div>
         </label>
-        <label
-          className={`${styles.field} flex flex-col gap-1 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}
-        >
+        <label className={`${styles.field} flex flex-col gap-1 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}>
           <span className="text-[0.6rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
-            Habitaciones
+            {t("rooms")}
           </span>
           <select
             value={rooms}
             onChange={(e) => setRooms(e.target.value)}
             className="bg-transparent text-sm font-semibold text-secondary outline-none"
-            aria-label="Número de habitaciones"
+            aria-label={t("roomsAria")}
           >
             {[1, 2, 3, 4].map((n) => (
               <option key={n} value={n}>
-                {n} {n === 1 ? "habitación" : "habitaciones"}
+                {t("room", { n })}
               </option>
             ))}
           </select>
         </label>
       </div>
 
-      <label
-        className={`${styles.field} flex items-center gap-3 rounded-2xl border border-dashed border-secondary/25 bg-white px-4 py-3`}
-      >
-        <TicketPercent
-          className="size-4 shrink-0 text-secondary/60"
-          strokeWidth={1.75}
-          aria-hidden="true"
-        />
+      <label className={`${styles.field} flex items-center gap-3 rounded-2xl border border-dashed border-secondary/25 bg-white px-4 py-3`}>
+        <TicketPercent className="size-4 shrink-0 text-secondary/60" strokeWidth={1.75} aria-hidden="true" />
         <div className="flex min-w-0 flex-1 flex-col">
           <span className="text-[0.6rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
-            Código promocional
+            {t("promo")}
           </span>
           <input
             type="text"
@@ -216,7 +194,7 @@ export function BookingWidget() {
         type="submit"
         className="group mt-1 inline-flex items-center justify-center gap-3 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold tracking-[0.16em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
       >
-        Ver disponibilidad
+        {t("submit")}
         <ArrowRight
           className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-1 motion-reduce:transition-none"
           strokeWidth={2}
@@ -225,7 +203,7 @@ export function BookingWidget() {
       </button>
 
       <p className="text-center text-[0.68rem] leading-relaxed text-secondary/55">
-        Sin cargos ocultos · Cancelación flexible · Confirmación inmediata
+        {t("footnote")}
       </p>
     </form>
   );

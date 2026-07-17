@@ -181,7 +181,7 @@ export const corporateProblems = [
     icon: ClipboardList,
     title: "Carga administrativa",
     description:
-      "Se gestionan reservas separadas y tienen que procesarse múltiples facturas.",
+      "Se necesita coordinar varias reservas y gestionar múltiples facturas.",
   },
   {
     number: "04",

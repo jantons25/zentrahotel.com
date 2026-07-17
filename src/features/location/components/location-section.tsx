@@ -1,4 +1,5 @@
 // Sección de ubicación: cards de ventajas cercanas + mapa embebido con panel de dirección.
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight, MapPin, Star } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -9,7 +10,8 @@ import { siteConfig } from "@/config/site";
 
 import styles from "./location-section.module.css";
 
-export function LocationSection() {
+export async function LocationSection() {
+  const t = await getTranslations("home.location");
   const total = locationHighlights.length;
 
   return (
@@ -29,21 +31,21 @@ export function LocationSection() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
               <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
-              Ubicación · {total.toString().padStart(2, "0")}
+              {t("eyebrow")} · {total.toString().padStart(2, "0")}
             </p>
             <h2
               id="ubicacion-titulo"
               className="mt-6 font-[family-name:var(--font-location-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
             >
-              En el corazón de{" "}
-              <span className="italic font-normal text-secondary/90">
-                Chiclayo.
-              </span>
+              {t("titleA")}{" "}
+              <span className="italic font-normal text-secondary/90">{t("titleEmphasis")}</span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
-              Nuestra ubicación en {siteConfig.contact.addressBalta}, {siteConfig.contact.addressPlaza} y {siteConfig.contact.addressSanJose} te deja a pasos de la Av.
-              Balta y los principales puntos comerciales, gastronómicos y
-              turísticos de la ciudad.
+              {t("lead", {
+                balta: siteConfig.contact.addressBalta,
+                plaza: siteConfig.contact.addressPlaza,
+                sanJose: siteConfig.contact.addressSanJose,
+              })}
             </p>
           </div>
 
@@ -53,7 +55,7 @@ export function LocationSection() {
             rel="noopener noreferrer"
             className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-secondary/30 bg-transparent px-6 py-3 text-sm font-semibold tracking-wide text-secondary uppercase transition-colors duration-(--duration-normal) hover:bg-secondary hover:text-secondary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none md:self-auto"
           >
-            Cómo llegar
+            {t("ctaDirections")}
             <ArrowUpRight
               className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
               strokeWidth={2}
@@ -93,11 +95,7 @@ export function LocationSection() {
                     {description}
                   </p>
                   <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-primary uppercase tracking-[0.16em]">
-                    <MapPin
-                      className="size-3.5"
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
+                    <MapPin className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
                     {distance}
                   </p>
                 </article>
@@ -110,12 +108,10 @@ export function LocationSection() {
           className={`${styles.reveal} mt-12 lg:mt-16`}
           style={{ "--reveal-delay": "460ms" } as React.CSSProperties}
         >
-          <div
-            className={`${styles.mapCard} relative overflow-hidden rounded-[1.75rem] border border-secondary/10 bg-card shadow-card`}
-          >
+          <div className={`${styles.mapCard} relative overflow-hidden rounded-[1.75rem] border border-secondary/10 bg-card shadow-card`}>
             <iframe
               src={siteConfig.contact.mapEmbedUrl}
-              title={`Ubicación de ${siteConfig.name} en Google Maps`}
+              title={t("mapTitle", { brand: siteConfig.name })}
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
@@ -136,7 +132,7 @@ export function LocationSection() {
                       {siteConfig.name}
                     </p>
                     <p className="mt-1 font-[family-name:var(--font-location-display)] text-lg font-normal leading-tight text-secondary">
-                      {siteConfig.contact.addressBalta}
+                      {siteConfig.contact.addressPlaza}
                     </p>
                   </div>
                 </div>
@@ -147,7 +143,7 @@ export function LocationSection() {
                     <span className="font-semibold text-secondary">4.6</span>
                   </span>
                   <span aria-hidden="true">·</span>
-                  <span>Excelente en Google Maps</span>
+                  <span>{t("mapRatingLabel")}</span>
                 </div>
 
                 <a
@@ -156,7 +152,7 @@ export function LocationSection() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 self-start text-sm font-semibold text-secondary transition-colors duration-(--duration-normal) hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none"
                 >
-                  Ver mapa ampliado
+                  {t("mapExpand")}
                   <ArrowUpRight
                     className="size-4 transition-transform duration-(--duration-normal) hover:translate-x-0.5 hover:-translate-y-0.5 motion-reduce:transition-none"
                     strokeWidth={2}

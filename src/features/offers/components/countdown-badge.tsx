@@ -2,6 +2,7 @@
 
 // Insignia con cuenta regresiva de días restantes de una oferta.
 import { useSyncExternalStore } from "react";
+import { useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
 
@@ -10,7 +11,7 @@ interface CountdownBadgeProps {
 }
 
 // Calcula los días completos que faltan hasta la fecha de expiración (negativo si ya venció).
-  function daysUntil(expiresAt: string): number {
+function daysUntil(expiresAt: string): number {
   const diff = new Date(expiresAt).getTime() - Date.now();
   return Math.ceil(diff / (1000 * 60 * 60 * 24));
 }
@@ -19,6 +20,7 @@ interface CountdownBadgeProps {
 const emptySubscribe = () => () => {};
 
 export function CountdownBadge({ expiresAt }: CountdownBadgeProps) {
+  const t = useTranslations("home.offers");
   // En el servidor se omite (null) para evitar diferencias de hidratación con la hora local.
   const days = useSyncExternalStore(
     emptySubscribe,
@@ -30,10 +32,10 @@ export function CountdownBadge({ expiresAt }: CountdownBadgeProps) {
 
   const label =
     days > 0
-      ? `Termina en ${days} ${days === 1 ? "día" : "días"}`
+      ? t("countdownEnds", { days })
       : days === 0
-        ? "Último día"
-        : "Oferta finalizada";
+        ? t("countdownLastDay")
+        : t("countdownEnded");
 
   return (
     <Badge

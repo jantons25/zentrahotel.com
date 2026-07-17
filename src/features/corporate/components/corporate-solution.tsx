@@ -1,12 +1,14 @@
 "use client";
 
 // Solución: campo oliva con diagrama del hub (signature) + doble columna Zentra + Nexus.
+import { useTranslations } from "next-intl";
 import {
   ArrowUpRight,
   Building2,
   Sparkles,
   Volume2,
   VolumeX,
+  MessageCircle,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/common/container";
@@ -18,27 +20,11 @@ import {
   corporateSolutionZentraFeatures,
 } from "@/features/corporate/data/corporate";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
-import { MessageCircle } from "lucide-react";
 
 import styles from "./corporate.module.css";
 
-const hubNodes = [
-  { label: "Zentra Balta", angle: 270 },
-  { label: "Zentra Plaza", angle: 342 },
-  { label: "Zentra San José", angle: 54 },
-  { label: "Nexus Cowork", angle: 126 },
-  { label: "1 factura", angle: 198 },
-];
-
-function nodePosition(angle: number, radius = 46) {
-  const rad = (angle * Math.PI) / 180;
-  return {
-    left: `${50 + radius * Math.cos(rad)}%`,
-    top: `${50 + radius * Math.sin(rad)}%`,
-  };
-}
-
 export function CorporateSolution() {
+  const t = useTranslations("corporate.solution");
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
 
@@ -80,7 +66,7 @@ export function CorporateSolution() {
               style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
             >
               <span className="h-px w-8 bg-secondary/50" aria-hidden="true" />
-              La solución
+              {t("eyebrow")}
             </p>
 
             <h2
@@ -89,25 +75,22 @@ export function CorporateSolution() {
               style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
             >
               <span className="italic font-normal text-white/95">
-                Zentra Hotel & Cowork te reduce
+                {t("titleEmphasis")}
               </span>{" "}
-              la complejidad logística
+              {t("titleTail")}
             </h2>
 
             <p
               className={`${styles.reveal} mt-6 max-w-xl text-[0.98rem] leading-relaxed text-secondary/85 md:text-base`}
               style={{ "--reveal-delay": "220ms" } as React.CSSProperties}
             >
-              Somos el primer hub corporativo en Chiclayo que integra una cadena
-              de tres hoteles ejecutivos y un Coworking premium bajo un mismo
-              convenio. Tu equipo estará listo para operar desde el primer
-              minuto.
+              {t("lead")}
             </p>
 
             <ul
               className={`${styles.reveal} mt-8 flex flex-wrap gap-2`}
               style={{ "--reveal-delay": "300ms" } as React.CSSProperties}
-              aria-label="Highlights del hub"
+              aria-label={t("highlightsAria")}
             >
               {corporateHubHighlights.map(({ value, label }) => (
                 <li
@@ -127,19 +110,13 @@ export function CorporateSolution() {
               style={{ "--reveal-delay": "380ms" } as React.CSSProperties}
             >
               <a
-                href={buildWhatsAppUrl(
-                  "Hola, quiero información sobre el convenio corporativo Zentra Hotel & Cowork.",
-                )}
+                href={buildWhatsAppUrl(t("whatsappPrefill"))}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3 text-sm font-semibold tracking-wide text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <MessageCircle
-                  className="size-4"
-                  strokeWidth={1.75}
-                  aria-hidden="true"
-                />
-                Hablar con un asesor
+                <MessageCircle className="size-4" strokeWidth={1.75} aria-hidden="true" />
+                {t("ctaAdvisor")}
               </a>
             </div>
           </div>
@@ -148,9 +125,7 @@ export function CorporateSolution() {
             className={`${styles.reveal} relative lg:col-span-6`}
             style={{ "--reveal-delay": "260ms" } as React.CSSProperties}
           >
-            <div
-              className={`${styles.card} relative mx-auto aspect-[9/16] w-full max-w-[320px] overflow-hidden rounded-[1.75rem] border border-white/12 bg-black sm:max-w-[360px]`}
-            >
+            <div className={`${styles.card} relative mx-auto aspect-[9/16] w-full max-w-[320px] overflow-hidden rounded-[1.75rem] border border-white/12 bg-black sm:max-w-[360px]`}>
               <video
                 ref={videoRef}
                 src="/videos/hub-corporativo.mp4"
@@ -164,11 +139,7 @@ export function CorporateSolution() {
               <button
                 type="button"
                 onClick={() => setIsMuted((muted) => !muted)}
-                aria-label={
-                  isMuted
-                    ? "Activar el sonido del video del hub corporativo"
-                    : "Silenciar el video del hub corporativo"
-                }
+                aria-label={isMuted ? t("unmuteAria") : t("muteAria")}
                 className="absolute top-4 right-4 grid size-9 place-items-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur transition-colors duration-(--duration-normal) hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:top-6 sm:right-6"
               >
                 {isMuted ? (
@@ -178,44 +149,10 @@ export function CorporateSolution() {
                 )}
               </button>
               <span className="pointer-events-none absolute right-4 bottom-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[0.62rem] font-semibold tracking-[0.22em] text-white uppercase backdrop-blur sm:right-6 sm:bottom-6">
-                <span
-                  className="size-1.5 rounded-full bg-primary"
-                  aria-hidden="true"
-                />
-                Video · 0:26
+                <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
+                {t("videoBadge")}
               </span>
             </div>
-            {/* <div className="relative p-6 sm:p-8">
-              <div className={styles.hubDiagram}>
-                <div className={styles.hubRing} />
-                <div className={`${styles.hubRing} ${styles.hubRingInner}`} />
-                <div className={styles.hubCore}>
-                  <div>
-                    <p className="text-[0.6rem] font-mono tracking-[0.24em] text-primary-foreground/80 uppercase">
-                      1 convenio
-                    </p>
-                    <p className="mt-1 font-[family-name:var(--font-corporate-display)] text-lg font-normal leading-tight tracking-tight text-primary-foreground">
-                      Zentra Hotel & Cowork
-                    </p>
-                  </div>
-                </div>
-                <div className={styles.hubNode}>
-                  {hubNodes.map((node) => (
-                    <span
-                      key={node.label}
-                      className={styles.hubNodeChip}
-                      style={nodePosition(node.angle)}
-                    >
-                      <span
-                        className="size-1.5 rounded-full bg-primary"
-                        aria-hidden="true"
-                      />
-                      {node.label}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
 
@@ -225,35 +162,19 @@ export function CorporateSolution() {
             style={{ "--reveal-delay": "440ms" } as React.CSSProperties}
           >
             <p className="flex items-center gap-2 text-[0.65rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
-              <Building2
-                className="size-3.5"
-                strokeWidth={1.75}
-                aria-hidden="true"
-              />
-              Cadena Zentra Hotel · Hospedaje ejecutivo
+              <Building2 className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
+              {t("zentraEyebrow")}
             </p>
             <h3 className="mt-4 font-[family-name:var(--font-corporate-display)] text-2xl font-light leading-tight text-secondary tracking-tight text-balance sm:text-[1.85rem]">
-              Tres establecimientos en el centro, diseñados para el viajero de
-              negocios.
+              {t("zentraTitle")}
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Comodidad, tecnología y servicio sin tiempos de espera.
-              Habitaciones pensadas para equipos que trabajan hasta tarde y
-              arrancan temprano.
+              {t("zentraLead")}
             </p>
-            <ul
-              className="mt-6 grid gap-3 sm:grid-cols-2"
-              style={{ whiteSpace: "pre-line" }}
-            >
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2" style={{ whiteSpace: "pre-line" }}>
               {corporateSolutionZentraFeatures.map(({ icon: Icon, label }) => (
-                <li
-                  key={label}
-                  className="flex items-start gap-3 text-sm text-secondary"
-                >
-                  <span
-                    className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-primary/15 text-secondary"
-                    aria-hidden="true"
-                  >
+                <li key={label} className="flex items-start gap-3 text-sm text-secondary">
+                  <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-primary/15 text-secondary" aria-hidden="true">
                     <Icon className="size-4" strokeWidth={1.75} />
                   </span>
                   {label}
@@ -267,34 +188,19 @@ export function CorporateSolution() {
             style={{ "--reveal-delay": "520ms" } as React.CSSProperties}
           >
             <p className="flex items-center gap-2 text-[0.65rem] font-mono tracking-[0.22em] text-white/60 uppercase">
-              <Sparkles
-                className="size-3.5"
-                strokeWidth={1.75}
-                aria-hidden="true"
-              />
-              Nexus Cowork · Espacios de trabajo premium
+              <Sparkles className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
+              {t("nexusEyebrow")}
             </p>
             <h3 className="mt-4 font-[family-name:var(--font-corporate-display)] text-2xl font-light leading-tight text-white tracking-tight text-balance sm:text-[1.85rem]">
-              Oficinas privadas, coworking y salas 100% implementadas.
+              {t("nexusTitle")}
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-white/75">
-              Tu equipo trabaja con las mismas herramientas que en la oficina
-              central, sin interrupciones. Un solo punto de contacto, operación
-              sin fricciones.
+              {t("nexusLead")}
             </p>
-            <ul
-              className="mt-6 grid gap-3 sm:grid-cols-2"
-              style={{ whiteSpace: "pre-line" }}
-            >
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2" style={{ whiteSpace: "pre-line" }}>
               {corporateSolutionNexusFeatures.map(({ icon: Icon, label }) => (
-                <li
-                  key={label}
-                  className="flex items-start gap-3 text-sm text-white/90"
-                >
-                  <span
-                    className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-primary/25 text-primary"
-                    aria-hidden="true"
-                  >
+                <li key={label} className="flex items-start gap-3 text-sm text-white/90">
+                  <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-primary/25 text-primary" aria-hidden="true">
                     <Icon className="size-4" strokeWidth={1.75} />
                   </span>
                   {label}

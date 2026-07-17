@@ -1,18 +1,20 @@
 "use client";
 
 // Encabezado sticky: transparente sobre el Hero, cambia a navy con blur al hacer scroll.
-import Link from "next/link";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { ArrowUpRight } from "lucide-react";
 
 import { BrandLogo } from "@/components/common/brand-logo";
 import { LanguageSelector } from "@/components/layout/language-selector";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { mainNavLeft, mainNavRight } from "@/config/site";
+import { Link } from "@/i18n/navigation";
 import { bookingLinkProps } from "@/lib/booking";
 import type { NavItem } from "@/types";
 
 function NavLinks({ items }: { items: NavItem[] }) {
+  const t = useTranslations("nav");
   return (
     <>
       {items.map((item) => (
@@ -21,7 +23,7 @@ function NavLinks({ items }: { items: NavItem[] }) {
           href={item.href}
           className="group relative text-[0.72rem] font-semibold tracking-[0.2em] text-white/80 uppercase transition-colors duration-(--duration-fast) hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none"
         >
-          {item.label}
+          {t(item.key)}
           <span
             aria-hidden="true"
             className="pointer-events-none absolute -bottom-2 left-0 h-px w-full origin-right scale-x-0 bg-primary transition-transform duration-(--duration-normal) group-hover:origin-left group-hover:scale-x-100 motion-reduce:transition-none"
@@ -33,6 +35,7 @@ function NavLinks({ items }: { items: NavItem[] }) {
 }
 
 export function Header() {
+  const t = useTranslations("nav");
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
@@ -53,7 +56,7 @@ export function Header() {
     >
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 md:h-20 lg:px-8">
         <nav
-          aria-label="Navegación principal"
+          aria-label={t("primary")}
           className="hidden flex-1 items-center gap-8 lg:flex"
         >
           <NavLinks items={mainNavLeft} />
@@ -65,7 +68,7 @@ export function Header() {
         />
 
         <div className="hidden flex-1 items-center justify-end gap-6 lg:flex">
-          <nav aria-label="Navegación secundaria" className="flex items-center gap-8">
+          <nav aria-label={t("secondary")} className="flex items-center gap-8">
             <NavLinks items={mainNavRight} />
           </nav>
           <div className="[&_button]:text-white/80 [&_button]:hover:text-white [&_svg]:text-white/70">
@@ -75,7 +78,7 @@ export function Header() {
             {...bookingLinkProps}
             className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-[0.72rem] font-semibold tracking-[0.16em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           >
-            Reservar
+            {t("reservar")}
             <ArrowUpRight
               className="size-3.5 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
               strokeWidth={2}

@@ -1,6 +1,5 @@
 // Post destacado del diario: imagen grande con overlay editorial + info sobre el gradiente.
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -8,6 +7,7 @@ import { Section } from "@/components/common/section";
 import { blogCategoryLabels } from "@/features/blog/data/blog";
 import { formatEditorialDate } from "@/features/blog/lib/format-date";
 import type { BlogPost } from "@/features/blog/types";
+import { Link } from "@/i18n/navigation";
 
 import styles from "./blog.module.css";
 

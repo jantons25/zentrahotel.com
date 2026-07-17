@@ -3,9 +3,11 @@
 // Experiencia interactiva de la sección viajero-titulo:
 // columna editorial (título + copy + CTA + contador) y carrusel de tarjetas.
 import Image from "next/image";
-import Link from "next/link";
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+
+import { Link } from "@/i18n/navigation";
 
 import {
   Carousel,
@@ -18,15 +20,15 @@ import { cn } from "@/lib/utils";
 import { travelerTypes } from "@/features/home/data/travelers";
 
 function CarouselNav() {
-  const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } =
-    useCarousel();
+  const t = useTranslations("home.traveler");
+  const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } = useCarousel();
   return (
     <div className="mt-8 flex items-center justify-end gap-2 pr-4 lg:pr-8">
       <button
         type="button"
         onClick={scrollPrev}
         disabled={!canScrollPrev}
-        aria-label="Categoría anterior"
+        aria-label={t("prevAria")}
         className="grid size-11 place-items-center rounded-full border border-secondary/25 text-secondary transition-colors hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
       >
         <ChevronLeft className="size-5" strokeWidth={1.75} />
@@ -35,7 +37,7 @@ function CarouselNav() {
         type="button"
         onClick={scrollNext}
         disabled={!canScrollNext}
-        aria-label="Siguiente categoría"
+        aria-label={t("nextAria")}
         className="grid size-11 place-items-center rounded-full border border-secondary/25 text-secondary transition-colors hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
       >
         <ChevronRight className="size-5" strokeWidth={1.75} />
@@ -47,6 +49,7 @@ function CarouselNav() {
 const total = travelerTypes.length;
 
 export function TravelerCarousel() {
+  const t = useTranslations("home.traveler");
   const [api, setApi] = React.useState<CarouselApi | null>(null);
   const [current, setCurrent] = React.useState(0);
 
@@ -70,30 +73,28 @@ export function TravelerCarousel() {
       <header className="lg:col-span-4 lg:pt-6">
         <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
           <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
-          Colecciones · {format(total)}
+          {t("eyebrow")} · {format(total)}
         </p>
 
         <h2
           id="viajero-titulo"
           className="mt-6 font-[family-name:var(--font-traveler-display)] font-light text-secondary leading-[0.92] tracking-[-0.02em] text-balance text-[clamp(2.75rem,6vw,4.75rem)]"
         >
-          Para cada
+          {t("titleA")}
           <br />
-          tipo de{" "}
-          <span className="italic font-normal text-secondary/90">viajero.</span>
+          {t("titleB")}{" "}
+          <span className="italic font-normal text-secondary/90">{t("titleEmphasis")}</span>
         </h2>
 
         <p className="mt-6 max-w-md text-[0.95rem] leading-relaxed text-muted-foreground">
-          Habitaciones, servicios y experiencias diseñadas para cada motivo de
-          tu viaje: negocios, turismo, celebraciones o un descanso pleno en el
-          corazón de Chiclayo.
+          {t("lead")}
         </p>
 
         <Link
           href="/habitaciones"
           className="group mt-8 inline-flex items-center gap-3 rounded-full bg-secondary px-6 py-3.5 text-sm font-semibold tracking-wide text-secondary-foreground uppercase transition-colors hover:bg-secondary/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
         >
-          Ver colecciones
+          {t("ctaCollections")}
           <ArrowUpRight
             className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             strokeWidth={2}
@@ -105,7 +106,7 @@ export function TravelerCarousel() {
           className="mt-12 max-w-xs"
           role="status"
           aria-live="polite"
-          aria-label={`Categoría ${current + 1} de ${total}`}
+          aria-label={t("statusAria", { current: current + 1, total })}
         >
           <div className="flex items-baseline gap-3 font-mono text-xs text-secondary/60">
             <span className="font-[family-name:var(--font-traveler-display)] text-3xl font-normal text-secondary">
@@ -136,10 +137,7 @@ export function TravelerCarousel() {
         >
           <CarouselContent className="-ml-4 md:-ml-6">
             {travelerTypes.map(
-              (
-                { title, description, icon: Icon, image, imageAlt, tag },
-                index,
-              ) => {
+              ({ title, description, icon: Icon, image, imageAlt, tag }, index) => {
                 const active = index === current;
                 return (
                   <CarouselItem

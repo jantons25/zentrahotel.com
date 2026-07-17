@@ -1,5 +1,6 @@
 // Aliados y empresas que confían en Zentra: marquee suave con logos monocromáticos.
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
@@ -8,7 +9,8 @@ import { aboutPartners } from "@/features/about/data/about";
 
 import styles from "./about.module.css";
 
-export function AboutPartners() {
+export async function AboutPartners() {
+  const t = await getTranslations("about.partners");
   const loop = [...aboutPartners, ...aboutPartners];
 
   return (
@@ -23,18 +25,16 @@ export function AboutPartners() {
         >
           <p className="flex items-center justify-center gap-3 text-[0.8rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
             <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
-            Empresas que confían en nosotros
+            {t("eyebrow")}
             <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
           </p>
           <h2
             id="aliados-titulo"
             className="mt-6 font-[family-name:var(--font-about-display)] font-light leading-[1] tracking-[-0.02em] text-secondary text-balance text-[clamp(1.9rem,3.8vw,2.8rem)]"
           >
-            Equipos y marcas que se hospedan{" "}
-            <span className="italic font-normal text-secondary/80">
-              en Zentra
-            </span>
-            .
+            {t("titleA")}{" "}
+            <span className="italic font-normal text-secondary/80">{t("titleEmphasis")}</span>
+            {t("titleB")}
           </h2>
         </header>
       </Container>
@@ -45,7 +45,7 @@ export function AboutPartners() {
       >
         <ul
           className={styles.marqueeTrack}
-          aria-label="Logos de empresas aliadas"
+          aria-label={t("listAria")}
         >
           {loop.map((partner, index) => (
             <li

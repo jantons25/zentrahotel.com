@@ -1,4 +1,5 @@
 // Sección "¿Cómo reservar?": lista editorial oscura con canales de contacto directos.
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight, Mail, MapPin, MessageCircle } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -20,37 +21,39 @@ interface BookingChannel {
   action: string;
 }
 
-const channels: BookingChannel[] = [
-  {
-    title: "WhatsApp",
-    hint: "Respuesta inmediata",
-    detail: siteConfig.contact.phoneDisplay,
-    href: buildWhatsAppUrl("Hola, deseo reservar una habitación."),
-    external: true,
-    icon: MessageCircle,
-    action: "Escribir por WhatsApp",
-  },
-  {
-    title: "Correo",
-    hint: "Ideal para grupos y facturación",
-    detail: siteConfig.contact.email,
-    href: `mailto:${siteConfig.contact.email}`,
-    external: false,
-    icon: Mail,
-    action: "Enviar un correo",
-  },
-  {
-    title: "Visítanos",
-    hint: "Estamos en el centro de Chiclayo",
-    detail: siteConfig.contact.addressBalta,
-    href: siteConfig.contact.mapShareUrl,
-    external: true,
-    icon: MapPin,
-    action: "Cómo llegar",
-  },
-];
+export async function BookingChannels() {
+  const t = await getTranslations("home.booking");
 
-export function BookingChannels() {
+  const channels: BookingChannel[] = [
+    {
+      title: t("channelWhatsappTitle"),
+      hint: t("channelWhatsappHint"),
+      detail: siteConfig.contact.phoneDisplay,
+      href: buildWhatsAppUrl(t("channelWhatsappPrefill")),
+      external: true,
+      icon: MessageCircle,
+      action: t("channelWhatsappAction"),
+    },
+    {
+      title: t("channelMailTitle"),
+      hint: t("channelMailHint"),
+      detail: siteConfig.contact.email,
+      href: `mailto:${siteConfig.contact.email}`,
+      external: false,
+      icon: Mail,
+      action: t("channelMailAction"),
+    },
+    {
+      title: t("channelVisitTitle"),
+      hint: t("channelVisitHint"),
+      detail: siteConfig.contact.addressBalta,
+      href: siteConfig.contact.mapShareUrl,
+      external: true,
+      icon: MapPin,
+      action: t("channelVisitAction"),
+    },
+  ];
+
   return (
     <Section
       aria-labelledby="reservas-titulo"
@@ -68,19 +71,17 @@ export function BookingChannels() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-white/70 uppercase">
               <span className="h-px w-8 bg-white/35" aria-hidden="true" />
-              Canales · {channels.length.toString().padStart(2, "0")}
+              {t("eyebrow")} · {channels.length.toString().padStart(2, "0")}
             </p>
             <h2
               id="reservas-titulo"
               className="mt-6 font-[family-name:var(--font-booking-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
             >
-              ¿Cómo{" "}
-              <span className="italic font-normal text-primary">reservar?</span>
+              {t("titleA")}{" "}
+              <span className="italic font-normal text-primary">{t("titleEmphasis")}</span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/70">
-              Reserva directo y ahorra en tu próxima estadía. Elige el canal
-              que prefieras — te respondemos en minutos, sin comisiones de
-              intermediarios.
+              {t("lead")}
             </p>
           </div>
 
@@ -90,7 +91,7 @@ export function BookingChannels() {
             rel="noopener noreferrer"
             className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full bg-primary px-6 py-3.5 text-sm font-semibold tracking-wide text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary md:self-auto motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           >
-            Reservar ahora
+            {t("ctaBook")}
             <ArrowUpRight
               className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
               strokeWidth={2}
@@ -110,7 +111,7 @@ export function BookingChannels() {
                 href={href}
                 target={external ? "_blank" : undefined}
                 rel={external ? "noopener noreferrer" : undefined}
-                aria-label={`${action}: ${detail}`}
+                aria-label={t("actionAria", { action, detail })}
                 className={`${styles.row} group relative flex items-center gap-5 border-t border-white/12 py-6 focus-visible:outline-none sm:gap-8 sm:py-8`}
               >
                 <span className={styles.rowGlow} aria-hidden="true" />

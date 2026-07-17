@@ -1,8 +1,8 @@
 // Logotipo oficial del hotel; conserva la tipografía original al ser imagen de marca.
 import Image from "next/image";
-import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 interface BrandLogoProps {
@@ -18,7 +18,7 @@ export function BrandLogo({ className, priority = false }: BrandLogoProps) {
       className={cn("inline-flex shrink-0 items-center", className)}
     >
       <Image
-        src="/images/logo.png"
+        src="/images/logo-zentra.png"
         alt={`Logotipo de ${siteConfig.name}`}
         width={640}
         height={276}

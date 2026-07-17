@@ -1,4 +1,6 @@
 // CTA final "Activa tu convenio": banner navy con aside + formulario en card cream.
+import { getTranslations } from "next-intl/server";
+
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
 import { fontCorporateDisplay } from "@/features/corporate/config/corporate-fonts";
@@ -9,7 +11,9 @@ import {
 
 import styles from "./corporate.module.css";
 
-export function CorporateCta() {
+export async function CorporateCta() {
+  const t = await getTranslations("corporate.cta");
+
   return (
     <Section
       id="convenio"
@@ -22,9 +26,7 @@ export function CorporateCta() {
       />
 
       <Container className="relative">
-        <p className="sr-only" id="convenio-titulo">
-          Solicita tu convenio corporativo
-        </p>
+        <p className="sr-only" id="convenio-titulo">{t("srTitle")}</p>
 
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-16">
           <div
@@ -43,11 +45,10 @@ export function CorporateCta() {
                 id="convenio-form-titulo"
                 className="font-[family-name:var(--font-corporate-display)] text-2xl font-light leading-tight text-secondary tracking-tight sm:text-[1.85rem]"
               >
-                Comienza aquí tu convenio empresarial.
+                {t("formTitle")}
               </p>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Datos básicos para armar la propuesta. Todo lo demás lo
-                conversamos por WhatsApp.
+                {t("formLead")}
               </p>
               <div className="mt-6">
                 <CorporateForm />

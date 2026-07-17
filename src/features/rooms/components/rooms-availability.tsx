@@ -1,5 +1,6 @@
 // Sección "Reserva tu habitación": grid editorial de habitaciones reservables.
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight, BedDouble, Users } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -10,7 +11,8 @@ import { siteConfig } from "@/config/site";
 
 import styles from "./rooms-availability.module.css";
 
-export function RoomsAvailability() {
+export async function RoomsAvailability() {
+  const t = await getTranslations("home.availability");
   const bookableRooms = rooms.filter((room) => room.bookable);
   const total = bookableRooms.length;
 
@@ -31,21 +33,17 @@ export function RoomsAvailability() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
               <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
-              Habitaciones · {total.toString().padStart(2, "0")}
+              {t("eyebrow")} · {total.toString().padStart(2, "0")}
             </p>
             <h2
               id="disponibilidad-titulo"
               className="mt-6 font-[family-name:var(--font-availability-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
             >
-              Reserva tu{" "}
-              <span className="italic font-normal text-secondary/90">
-                habitación.
-              </span>
+              {t("titleA")}{" "}
+              <span className="italic font-normal text-secondary/90">{t("titleEmphasis")}</span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
-              Elige entre nuestras habitaciones más pedidas. Todas incluyen
-              Wi-Fi 5G, desayuno y cancelación flexible al reservar directo
-              con nosotros.
+              {t("lead")}
             </p>
           </div>
 
@@ -53,7 +51,7 @@ export function RoomsAvailability() {
             href="/habitaciones"
             className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-secondary/30 bg-transparent px-6 py-3 text-sm font-semibold tracking-wide text-secondary uppercase transition-colors duration-(--duration-normal) hover:bg-secondary hover:text-secondary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none md:self-auto"
           >
-            Ver todas las habitaciones
+            {t("ctaSeeAll")}
             <ArrowUpRight
               className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
               strokeWidth={2}
@@ -94,40 +92,27 @@ export function RoomsAvailability() {
                       className="size-1.5 rounded-full bg-primary"
                       aria-hidden="true"
                     />
-                    {(index + 1).toString().padStart(2, "0")} · Disponible
+                    {(index + 1).toString().padStart(2, "0")} · {t("badgeAvailable")}
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
                   <p className="text-[0.68rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
-                    Habitación · {(index + 1).toString().padStart(2, "0")}
+                    {t("cardEyebrow")} · {(index + 1).toString().padStart(2, "0")}
                   </p>
                   <h3 className="mt-2 font-[family-name:var(--font-availability-display)] text-2xl font-light leading-tight text-secondary tracking-tight text-balance sm:text-[1.7rem]">
                     {room.name}
                   </h3>
                   <dl className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1.5">
-                      <Users
-                        className="size-4 text-secondary/60"
-                        strokeWidth={1.75}
-                        aria-hidden="true"
-                      />
-                      <dt className="sr-only">Capacidad</dt>
+                      <Users className="size-4 text-secondary/60" strokeWidth={1.75} aria-hidden="true" />
+                      <dt className="sr-only">Capacity</dt>
                       <dd>{room.capacity}</dd>
                     </div>
-                    <span
-                      className="text-secondary/25"
-                      aria-hidden="true"
-                    >
-                      ·
-                    </span>
+                    <span className="text-secondary/25" aria-hidden="true">·</span>
                     <div className="flex items-center gap-1.5">
-                      <BedDouble
-                        className="size-4 text-secondary/60"
-                        strokeWidth={1.75}
-                        aria-hidden="true"
-                      />
-                      <dt className="sr-only">Cama</dt>
+                      <BedDouble className="size-4 text-secondary/60" strokeWidth={1.75} aria-hidden="true" />
+                      <dt className="sr-only">Bed</dt>
                       <dd>{room.detail}</dd>
                     </div>
                   </dl>
@@ -138,9 +123,9 @@ export function RoomsAvailability() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-sm font-semibold text-secondary transition-colors duration-(--duration-normal) hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none"
-                      aria-label={`Ver disponibilidad de ${room.name}`}
+                      aria-label={t("ctaAria", { room: room.name })}
                     >
-                      Ver disponibilidad
+                      {t("ctaCheck")}
                       <ArrowUpRight
                         className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
                         strokeWidth={2}

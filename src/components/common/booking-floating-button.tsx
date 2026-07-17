@@ -3,6 +3,7 @@
 // Botón flotante de reservas: círculo persistente que se expande a píldora
 // para recordar la acción "Reservar" del header, en un ciclo suave e infinito.
 import * as React from "react";
+import { useTranslations } from "next-intl";
 import { CalendarCheck } from "lucide-react";
 
 import { bookingLinkProps } from "@/lib/booking";
@@ -13,6 +14,7 @@ const EXPANDED_HOLD = 2000;
 const IDLE_BETWEEN_CYCLES = 6000;
 
 export function BookingFloatingButton() {
+  const t = useTranslations("common.bookingFloat");
   const [autoExpanded, setAutoExpanded] = React.useState(false);
   const [interacting, setInteracting] = React.useState(false);
 
@@ -42,7 +44,7 @@ export function BookingFloatingButton() {
   return (
     <a
       {...bookingLinkProps}
-      aria-label="Reservar ahora"
+      aria-label={t("aria")}
       onMouseEnter={() => setInteracting(true)}
       onMouseLeave={() => setInteracting(false)}
       onFocus={() => setInteracting(true)}
@@ -62,7 +64,7 @@ export function BookingFloatingButton() {
           expanded ? "ml-2 max-w-[6rem] opacity-100" : "ml-0 max-w-0 opacity-0",
         )}
       >
-        Reservar
+        {t("label")}
       </span>
     </a>
   );

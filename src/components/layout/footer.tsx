@@ -1,5 +1,5 @@
 // Pie de página: composición editorial oscura con enlaces, contacto, redes y newsletter.
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -10,26 +10,30 @@ import {
 } from "@/components/common/social-icons";
 import { NewsletterForm } from "@/features/newsletter/components/newsletter-form";
 import { mainNavLeft, siteConfig } from "@/config/site";
+import { Link } from "@/i18n/navigation";
 
 import { fontFooterDisplay } from "./footer-fonts";
 import styles from "./footer.module.css";
 
 const socialLinks = [
-  { label: "Facebook", href: siteConfig.social.facebook, icon: FacebookIcon },
-  { label: "Instagram", href: siteConfig.social.instagram, icon: InstagramIcon },
-  { label: "TikTok", href: siteConfig.social.tiktok, icon: TikTokIcon },
+  { platform: "Facebook", href: siteConfig.social.facebook, icon: FacebookIcon },
+  { platform: "Instagram", href: siteConfig.social.instagram, icon: InstagramIcon },
+  { platform: "TikTok", href: siteConfig.social.tiktok, icon: TikTokIcon },
 ];
 
 const legalLinks = [
-  { label: "Políticas", href: "/politicas" },
-  { label: "Libro de reclamaciones", href: "/libro-de-reclamaciones" },
+  { key: "legalPolicies" as const, href: "/politicas" },
+  { key: "legalComplaints" as const, href: "/libro-de-reclamaciones" },
 ];
 
 const phoneHref = `tel:${siteConfig.contact.phoneDisplay.replaceAll(" ", "")}`;
 const mailHref = `mailto:${siteConfig.contact.email}`;
 const currentYear = new Date().getFullYear();
 
-export function Footer() {
+export async function Footer() {
+  const t = await getTranslations("footer");
+  const tNav = await getTranslations("nav");
+
   return (
     <footer
       className={`${fontFooterDisplay.variable} ${styles.footer} relative overflow-hidden bg-secondary text-secondary-foreground`}
@@ -47,7 +51,7 @@ export function Footer() {
           >
             <p className="flex items-center gap-3 text-[0.8rem] font-semibold tracking-[0.32em] text-white/60 uppercase">
               <span className="h-px w-8 bg-white/30" aria-hidden="true" />
-              Chiclayo
+              {t("eyebrow")}
             </p>
             <h2
               id="footer-brand"
@@ -59,8 +63,7 @@ export function Footer() {
               </span>
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
-              Hotel moderno y cómodo en el centro de Chiclayo. Reserva directo
-              en web y recibe atención cercana en cada estadía.
+              {t("description")}
             </p>
 
             <a
@@ -69,7 +72,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="group mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-5 py-3 text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
-              Reservar directo
+              {t("bookDirect")}
               <ArrowUpRight
                 className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
                 strokeWidth={2}
@@ -79,15 +82,15 @@ export function Footer() {
 
             <ul
               className="mt-10 flex items-center gap-3"
-              aria-label="Síguenos en redes sociales"
+              aria-label={t("socialAria")}
             >
-              {socialLinks.map(({ label, href, icon: Icon }) => (
-                <li key={label}>
+              {socialLinks.map(({ platform, href, icon: Icon }) => (
+                <li key={platform}>
                   <a
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${label} de ${siteConfig.name}`}
+                    aria-label={t("socialLinkAria", { brand: siteConfig.name, platform })}
                     className={`${styles.socialChip} grid size-10 place-items-center rounded-full border border-white/20 bg-white/5 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}
                   >
                     <Icon className="size-4" aria-hidden="true" />
@@ -107,20 +110,20 @@ export function Footer() {
               className="flex items-center gap-3 text-[0.68rem] font-semibold tracking-[0.28em] text-white/60 uppercase"
             >
               <span className="h-px w-6 bg-white/25" aria-hidden="true" />
-              Enlaces
+              {t("linksHeading")}
             </p>
             <ul className="mt-6 space-y-3 text-sm">
               {mainNavLeft.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className={`${styles.link} text-white/80`}>
-                    {item.label}
+                    {tNav(item.key)}
                   </Link>
                 </li>
               ))}
               {legalLinks.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className={`${styles.link} text-white/80`}>
-                    {item.label}
+                    {t(item.key)}
                   </Link>
                 </li>
               ))}
@@ -137,7 +140,7 @@ export function Footer() {
               className="flex items-center gap-3 text-[0.68rem] font-semibold tracking-[0.28em] text-white/60 uppercase"
             >
               <span className="h-px w-6 bg-white/25" aria-hidden="true" />
-              Contacto
+              {t("contactHeading")}
             </p>
             <address className="mt-6 space-y-4 text-sm not-italic text-white/80">
               <p className="flex items-start gap-3">
@@ -157,7 +160,7 @@ export function Footer() {
                 <a
                   href={phoneHref}
                   className={`${styles.link} text-white/80`}
-                  aria-label={`Llamar al ${siteConfig.contact.phoneDisplay}`}
+                  aria-label={t("phoneAria", { phone: siteConfig.contact.phoneDisplay })}
                 >
                   {siteConfig.contact.phoneDisplay}
                 </a>
@@ -171,7 +174,7 @@ export function Footer() {
                 <a
                   href={mailHref}
                   className={`${styles.link} text-white/80`}
-                  aria-label={`Escribir a ${siteConfig.contact.email}`}
+                  aria-label={t("mailAria", { email: siteConfig.contact.email })}
                 >
                   {siteConfig.contact.email}
                 </a>
@@ -181,7 +184,7 @@ export function Footer() {
                   className="mt-1 size-1.5 shrink-0 rounded-full bg-primary"
                   aria-hidden="true"
                 />
-                <span>Atención 24 horas · Check-in flexible</span>
+                <span>{t("hours")}</span>
               </p>
             </address>
           </section>
@@ -196,14 +199,15 @@ export function Footer() {
               className="flex items-center gap-3 text-[0.68rem] font-semibold tracking-[0.28em] text-white/60 uppercase"
             >
               <span className="h-px w-6 bg-white/25" aria-hidden="true" />
-              Código exclusivo
+              {t("newsletterHeading")}
             </p>
             <p className="mt-6 font-[family-name:var(--font-footer-display)] text-2xl font-light leading-tight text-white tracking-tight text-balance">
-              10% off en tu{" "}
-              <span className="italic text-primary">primera</span> reserva.
+              {t("discountLeadA")}{" "}
+              <span className="italic text-primary">{t("discountEmphasis")}</span>
+              {t("discountLeadB")}
             </p>
             <p className="mt-3 text-sm leading-relaxed text-white/70">
-              Suscríbete y recibe tu descuento directamente en tu correo.
+              {t("discountBody")}
             </p>
             <div className="mt-6">
               <NewsletterForm />
@@ -213,9 +217,7 @@ export function Footer() {
 
         <div className="relative border-t border-white/12 py-6">
           <div className="flex flex-col items-start gap-3 text-xs text-white/55 md:flex-row md:items-center md:justify-between">
-            <p>
-              © {currentYear} {siteConfig.name}. Todos los derechos reservados.
-            </p>
+            <p>{t("copyright", { year: currentYear, brand: siteConfig.name })}</p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               {legalLinks.map((item, i) => (
                 <span key={item.href} className="inline-flex items-center gap-4">
@@ -228,7 +230,7 @@ export function Footer() {
                     href={item.href}
                     className={`${styles.link} text-white/60`}
                   >
-                    {item.label}
+                    {t(item.key)}
                   </Link>
                 </span>
               ))}

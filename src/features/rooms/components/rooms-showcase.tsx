@@ -1,6 +1,6 @@
 // Sección "habitaciones": bento grid editorial en fondo oscuro con tarjetas de habitación.
 import Image from "next/image";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight, BedDouble, Users } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -8,66 +8,31 @@ import { Section } from "@/components/common/section";
 import { fontShowcaseDisplay } from "@/features/rooms/config/showcase-fonts";
 import { featuredRooms as rooms } from "@/features/rooms/data/rooms";
 import { siteConfig } from "@/config/site";
+import { Link } from "@/i18n/navigation";
 
 import styles from "./rooms-showcase.module.css";
 
-// Ubicación en la retícula bento (col-span, tono y taglines exclusivos de esta sección).
 type BentoTone = "solid" | "accent";
 
 interface BentoLayout {
   colSpan: string;
   aspect: string;
   tone: BentoTone;
-  tag: string;
-  tagline: string;
+  tagKey: string;
+  taglineKey: string;
 }
 
 const bentoLayout: BentoLayout[] = [
-  {
-    colSpan: "lg:col-span-2",
-    aspect: "aspect-[3/4]",
-    tone: "solid",
-    tag: "Confort esencial",
-    tagline: "Descanso ligero en el centro de Chiclayo.",
-  },
-  {
-    colSpan: "lg:col-span-4",
-    aspect: "aspect-[16/10]",
-    tone: "solid",
-    tag: "La más pedida",
-    tagline: "Suite matrimonial con ambientación cálida.",
-  },
-  {
-    colSpan: "lg:col-span-3",
-    aspect: "aspect-[3/2]",
-    tone: "solid",
-    tag: "Para tres",
-    tagline: "Cama doble más adicional para amigos o familia.",
-  },
-  {
-    colSpan: "lg:col-span-3",
-    aspect: "aspect-[3/2]",
-    tone: "accent",
-    tag: "Signature",
-    tagline: "Jacuzzi privado, luz cálida y vista a la ciudad.",
-  },
-  {
-    colSpan: "lg:col-span-4",
-    aspect: "aspect-[16/10]",
-    tone: "solid",
-    tag: "Experiencia",
-    tagline: "Cena romántica preparada por nuestro equipo.",
-  },
-  {
-    colSpan: "lg:col-span-2",
-    aspect: "aspect-[3/4]",
-    tone: "accent",
-    tag: "Bienestar",
-    tagline: "Ritual de masaje y aromaterapia en la suite.",
-  },
+  { colSpan: "lg:col-span-2", aspect: "aspect-[3/4]",  tone: "solid",  tagKey: "bentoTag0", taglineKey: "bentoTagline0" },
+  { colSpan: "lg:col-span-4", aspect: "aspect-[16/10]", tone: "solid",  tagKey: "bentoTag1", taglineKey: "bentoTagline1" },
+  { colSpan: "lg:col-span-3", aspect: "aspect-[3/2]",  tone: "solid",  tagKey: "bentoTag2", taglineKey: "bentoTagline2" },
+  { colSpan: "lg:col-span-3", aspect: "aspect-[3/2]",  tone: "accent", tagKey: "bentoTag3", taglineKey: "bentoTagline3" },
+  { colSpan: "lg:col-span-4", aspect: "aspect-[16/10]", tone: "solid",  tagKey: "bentoTag4", taglineKey: "bentoTagline4" },
+  { colSpan: "lg:col-span-2", aspect: "aspect-[3/4]",  tone: "accent", tagKey: "bentoTag5", taglineKey: "bentoTagline5" },
 ];
 
-export function RoomsShowcase() {
+export async function RoomsShowcase() {
+  const t = await getTranslations("home.roomsShowcase");
   const total = rooms.length;
 
   return (
@@ -88,21 +53,19 @@ export function RoomsShowcase() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-white/60 uppercase">
               <span className="h-px w-8 bg-white/30" aria-hidden="true" />
-              Habitaciones · {total.toString().padStart(2, "0")}
+              {t("eyebrow")} · {total.toString().padStart(2, "0")}
             </p>
             <h2
               id="habitaciones-titulo"
               className="mt-6 font-[family-name:var(--font-showcase-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
             >
-              Conoce nuestras{" "}
+              {t("titleA")}{" "}
               <span className="italic font-normal text-primary">
-                habitaciones.
+                {t("titleEmphasis")}
               </span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/70">
-              Elige entre habitaciones cómodas, suites con jacuzzi y
-              experiencias curadas. Cada espacio está diseñado para un ritmo
-              distinto — trabajo, descanso o celebración.
+              {t("lead")}
             </p>
           </div>
 
@@ -110,7 +73,7 @@ export function RoomsShowcase() {
             href="/habitaciones"
             className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none md:self-auto"
           >
-            Ver todas
+            {t("ctaSeeAll")}
             <ArrowUpRight
               className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
               strokeWidth={2}
@@ -123,10 +86,8 @@ export function RoomsShowcase() {
           {rooms.map((room, index) => {
             const layout = bentoLayout[index] ?? bentoLayout[0];
             const isAccent = layout.tone === "accent";
-            const ctaLabel = room.bookable ? "Reservar" : "Ver detalles";
-            const ctaHref = room.bookable
-              ? siteConfig.bookingUrl
-              : "/habitaciones";
+            const ctaLabel = room.bookable ? t("ctaBook") : t("ctaDetails");
+            const ctaHref = room.bookable ? siteConfig.bookingUrl : "/habitaciones";
             const ctaExternal = room.bookable;
 
             return (
@@ -160,18 +121,9 @@ export function RoomsShowcase() {
                   />
 
                   <div className="flex items-start justify-between gap-3">
-                    <span
-                      className={
-                        "inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] text-primary-foreground uppercase shadow-card"
-                      }
-                    >
-                      <span
-                        className={
-                          "size-1.5 rounded-full bg-primary-foreground"
-                        }
-                        aria-hidden="true"
-                      />
-                      {(index + 1).toString().padStart(2, "0")} · {layout.tag}
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] text-primary-foreground uppercase shadow-card">
+                      <span className="size-1.5 rounded-full bg-primary-foreground" aria-hidden="true" />
+                      {(index + 1).toString().padStart(2, "0")} · {t(layout.tagKey)}
                     </span>
                   </div>
 
@@ -180,28 +132,18 @@ export function RoomsShowcase() {
                       {room.name}
                     </h3>
                     <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/80">
-                      {layout.tagline}
+                      {t(layout.taglineKey)}
                     </p>
 
                     <dl className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-white/70">
                       <div className="flex items-center gap-1.5">
-                        <Users
-                          className="size-3.5 text-white/60"
-                          strokeWidth={1.75}
-                          aria-hidden="true"
-                        />
+                        <Users className="size-3.5 text-white/60" strokeWidth={1.75} aria-hidden="true" />
                         <dt className="sr-only">Capacidad</dt>
                         <dd>{room.capacity}</dd>
                       </div>
-                      <span className="text-white/30" aria-hidden="true">
-                        ·
-                      </span>
+                      <span className="text-white/30" aria-hidden="true">·</span>
                       <div className="flex items-center gap-1.5">
-                        <BedDouble
-                          className="size-3.5 text-white/60"
-                          strokeWidth={1.75}
-                          aria-hidden="true"
-                        />
+                        <BedDouble className="size-3.5 text-white/60" strokeWidth={1.75} aria-hidden="true" />
                         <dt className="sr-only">Cama</dt>
                         <dd>{room.detail}</dd>
                       </div>
@@ -211,10 +153,8 @@ export function RoomsShowcase() {
                       href={ctaHref}
                       target={ctaExternal ? "_blank" : undefined}
                       rel={ctaExternal ? "noopener noreferrer" : undefined}
-                      aria-label={`${ctaLabel}: ${room.name}`}
-                      className={
-                        "mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-                      }
+                      aria-label={t("ctaAria", { action: ctaLabel, room: room.name })}
+                      className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                     >
                       {ctaLabel}
                       <ArrowUpRight

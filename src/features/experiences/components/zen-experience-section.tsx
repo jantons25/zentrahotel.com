@@ -1,6 +1,6 @@
 // Sección "Experiencia Zen": grid editorial con historia destacada y stack de rituales.
 import Image from "next/image";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight, Clock } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -10,10 +10,13 @@ import {
   zenFeaturedStory,
   zenStories,
 } from "@/features/experiences/data/zen-experience";
+import { Link } from "@/i18n/navigation";
 
 const totalStories = zenStories.length + 1;
 
-export function ZenExperienceSection() {
+export async function ZenExperienceSection() {
+  const t = await getTranslations("home.zen");
+
   return (
     <Section
       aria-labelledby="zen-titulo"
@@ -28,25 +31,24 @@ export function ZenExperienceSection() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
               <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
-              Rituales · {totalStories.toString().padStart(2, "0")}
+              {t("eyebrow")} · {totalStories.toString().padStart(2, "0")}
             </p>
             <h2
               id="zen-titulo"
               className="mt-6 font-[family-name:var(--font-zen-display)] font-light text-secondary leading-[0.95] tracking-[-0.02em] text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
             >
-              Experiencia{" "}
-              <span className="italic font-normal text-secondary/90">Zen.</span>
+              {t("titleA")}{" "}
+              <span className="italic font-normal text-secondary/90">{t("titleEmphasis")}</span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
-              Descubre por qué somos uno de los mejores{" "}
+              {t("leadA")}{" "}
               <Link
                 href="/nosotros"
                 className="font-semibold text-secondary underline-offset-4 hover:underline"
               >
-                hoteles en Chiclayo
+                {t("leadLink")}
               </Link>
-              . Cada ritual está pensado para hacer una pausa de verdad —
-              masajes, aromaterapia y descanso en el centro de la ciudad.
+              {t("leadB")}
             </p>
           </div>
 
@@ -54,7 +56,7 @@ export function ZenExperienceSection() {
             href="/habitaciones"
             className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-secondary/30 bg-transparent px-6 py-3 text-sm font-semibold tracking-wide text-secondary uppercase transition-colors hover:bg-secondary hover:text-secondary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary md:self-auto"
           >
-            Ver paquetes
+            {t("ctaPackages")}
             <ArrowUpRight
               className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               strokeWidth={2}
@@ -76,7 +78,7 @@ export function ZenExperienceSection() {
               />
               <span className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-secondary/90 px-3.5 py-1.5 text-[0.68rem] font-semibold tracking-[0.2em] text-secondary-foreground uppercase backdrop-blur">
                 <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
-                Signature
+                {t("featuredBadge")}
               </span>
             </div>
 
@@ -144,6 +146,6 @@ export function ZenExperienceSection() {
           </ol>
         </div>
       </Container>
-x|    </Section>
+    </Section>
   );
 }

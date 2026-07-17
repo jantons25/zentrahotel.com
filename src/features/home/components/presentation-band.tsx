@@ -1,5 +1,6 @@
 // Banda de presentación: reformula la propuesta de valor de Zentra como un intermezzo editorial
 // entre el hero y las promociones, sobre un campo oliva (--primary) coherente con el resto del sitio.
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight, MapPin, MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -10,25 +11,27 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 import styles from "./presentation-band.module.css";
 
-const directBookingPerks = [
-  {
-    icon: MapPin,
-    title: "Ubicación privilegiada",
-    detail: "A cinco minutos de la Plaza de Armas.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Tarifa web garantizada",
-    detail: "Reserva directo y ahorra en cada noche.",
-  },
-  {
-    icon: Sparkles,
-    title: "Atención cercana 24 h",
-    detail: "Recepción y room service siempre listos.",
-  },
-];
+export async function PresentationBand() {
+  const t = await getTranslations("home.presentation");
 
-export function PresentationBand() {
+  const directBookingPerks = [
+    {
+      icon: MapPin,
+      title: t("perkLocationTitle"),
+      detail: t("perkLocationDetail"),
+    },
+    {
+      icon: ShieldCheck,
+      title: t("perkPriceTitle"),
+      detail: t("perkPriceDetail"),
+    },
+    {
+      icon: Sparkles,
+      title: t("perkCareTitle"),
+      detail: t("perkCareDetail"),
+    },
+  ];
+
   return (
     <Section
       aria-labelledby="presentacion-titulo"
@@ -52,7 +55,7 @@ export function PresentationBand() {
                 className="h-px w-8 bg-secondary/50"
                 aria-hidden="true"
               />
-              Zentra · Chiclayo, Perú
+              {t("eyebrow")}
             </p>
 
             <h2
@@ -60,9 +63,9 @@ export function PresentationBand() {
               className={`${styles.reveal} mt-6 font-[family-name:var(--font-presentation-display)] font-[1.5rem] leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.4rem,5.4vw,4.4rem)]`}
               style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
             >
-              {siteConfig.tagline.split("en el centro de Chiclayo")[0]}
+              {t("titleLead")}{" "}
               <span className="italic font-normal text-white/95">
-                en el centro de Chiclayo.
+                {t("titleTail")}
               </span>
             </h2>
 
@@ -70,9 +73,7 @@ export function PresentationBand() {
               className={`${styles.reveal} mt-6 max-w-xl text-[0.98rem] leading-relaxed text-secondary/85 md:text-base`}
               style={{ "--reveal-delay": "220ms" } as React.CSSProperties}
             >
-              Reserva directo en web y ahorra en tu próximo viaje a Chiclayo.
-              Una estadía pensada al detalle, con la calidez de un boutique
-              hotel a pasos del centro histórico.
+              {t("lead")}
             </p>
 
             <div
@@ -85,7 +86,7 @@ export function PresentationBand() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3 text-sm font-semibold tracking-wide text-secondary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                Reservar ahora
+                {t("ctaBook")}
                 <ArrowUpRight
                   className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
                   strokeWidth={2}
@@ -94,9 +95,7 @@ export function PresentationBand() {
               </a>
 
               <a
-                href={buildWhatsAppUrl(
-                  "Hola, quiero información para reservar en Zentra Hotel.",
-                )}
+                href={buildWhatsAppUrl(t("whatsappPrefill"))}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-3 rounded-full border border-secondary/40 bg-white/10 px-6 py-3 text-sm font-semibold tracking-wide text-secondary uppercase transition-colors duration-(--duration-normal) hover:bg-secondary hover:text-secondary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none"
@@ -106,7 +105,7 @@ export function PresentationBand() {
                   strokeWidth={1.75}
                   aria-hidden="true"
                 />
-                Escríbenos por WhatsApp
+                {t("ctaWhatsapp")}
               </a>
             </div>
           </div>
@@ -128,12 +127,12 @@ export function PresentationBand() {
                   id="presentacion-card-titulo"
                   className="text-[0.68rem] font-semibold tracking-[0.24em] text-secondary/70 uppercase"
                 >
-                  Reservando directo
+                  {t("cardEyebrow")}
                 </p>
               </div>
 
               <p className="mt-5 font-[family-name:var(--font-presentation-display)] text-2xl font-normal leading-tight text-secondary tracking-tight text-balance sm:text-[1.6rem]">
-                Tres razones para dejar los intermediarios.
+                {t("cardTitle")}
               </p>
 
               <ul className="mt-6 flex flex-col divide-y divide-secondary/10">

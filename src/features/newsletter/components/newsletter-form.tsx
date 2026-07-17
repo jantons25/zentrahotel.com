@@ -4,23 +4,26 @@
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-const newsletterSchema = z.object({
-  email: z
-    .string()
-    .min(1, "Ingresa tu correo electrónico")
-    .email("Ingresa un correo electrónico válido"),
-});
-
-type NewsletterValues = z.infer<typeof newsletterSchema>;
-
 export function NewsletterForm() {
+  const t = useTranslations("common.newsletter");
   const [submitted, setSubmitted] = useState(false);
+
+  const newsletterSchema = z.object({
+    email: z
+      .string()
+      .min(1, t("errorRequired"))
+      .email(t("errorInvalid")),
+  });
+
+  type NewsletterValues = z.infer<typeof newsletterSchema>;
+
   const {
     register,
     handleSubmit,
@@ -38,7 +41,7 @@ export function NewsletterForm() {
   if (submitted) {
     return (
       <p role="status" className="text-sm text-primary-foreground/90">
-        ¡Gracias por suscribirte! Pronto recibirás tu código exclusivo.
+        {t("success")}
       </p>
     );
   }
@@ -47,13 +50,13 @@ export function NewsletterForm() {
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-2">
       <div className="flex gap-2">
         <label htmlFor="newsletter-email" className="sr-only">
-          Correo electrónico
+          {t("emailLabel")}
         </label>
         <Input
           id="newsletter-email"
           type="email"
           autoComplete="email"
-          placeholder="Tu correo electrónico"
+          placeholder={t("emailPlaceholder")}
           aria-invalid={Boolean(errors.email)}
           className="h-11 flex-1 rounded-full border-white/30 bg-white/10 px-4 text-white placeholder:text-white/60"
           {...register("email")}
@@ -62,7 +65,7 @@ export function NewsletterForm() {
           type="submit"
           size="icon-lg"
           disabled={isSubmitting}
-          aria-label="Suscribirme al boletín"
+          aria-label={t("submitAria")}
           className="size-11 rounded-full bg-primary text-primary-foreground hover:bg-primary/85"
         >
           <Send className="size-4" aria-hidden="true" />

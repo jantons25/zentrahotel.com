@@ -1,10 +1,10 @@
 // Tarjeta editorial de un post: imagen, chip de categoría, título con subrayado hover, meta.
 import Image from "next/image";
-import Link from "next/link";
 
 import { blogCategoryLabels } from "@/features/blog/data/blog";
 import { formatEditorialDate } from "@/features/blog/lib/format-date";
 import type { BlogPost } from "@/features/blog/types";
+import { Link } from "@/i18n/navigation";
 
 import styles from "./blog.module.css";
 

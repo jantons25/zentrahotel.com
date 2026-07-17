@@ -1,5 +1,6 @@
 // Galería del hub: grid editorial mixto con las marcas Zentra + Nexus.
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
@@ -8,7 +9,6 @@ import { corporateGallery } from "@/features/corporate/data/corporate";
 
 import styles from "./corporate.module.css";
 
-// Misma retícula bento y tratamiento de tarjeta que "Conoce nuestras habitaciones".
 type GalleryTone = "solid" | "accent";
 
 interface GalleryLayout {
@@ -26,7 +26,9 @@ const galleryLayout: GalleryLayout[] = [
   { colSpan: "lg:col-span-2", aspect: "aspect-[3/4]", tone: "accent" },
 ];
 
-export function CorporateGallery() {
+export async function CorporateGallery() {
+  const t = await getTranslations("corporate.gallery");
+
   return (
     <Section
       id="galeria"
@@ -45,21 +47,17 @@ export function CorporateGallery() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-[0.8rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
               <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
-              Nuestros espacios ·{" "}
-              {corporateGallery.length.toString().padStart(2, "0")}
+              {t("eyebrow")} · {corporateGallery.length.toString().padStart(2, "0")}
             </p>
             <h2
               id="galeria-titulo"
               className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.3rem,5vw,4rem)]"
             >
-              Conoce el hub{" "}
-              <span className="italic font-normal text-secondary/90">
-                antes de llegar.
-              </span>
+              {t("titleA")}{" "}
+              <span className="italic font-normal text-secondary/90">{t("titleEmphasis")}</span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
-              Todas las fotos son de los espacios reales de la cadena Zentra y
-              Nexus Cowork en Chiclayo.
+              {t("lead")}
             </p>
           </div>
         </header>
@@ -103,17 +101,8 @@ export function CorporateGallery() {
                   />
 
                   <div className="flex items-start justify-between gap-3">
-                    <span
-                      className={
-                        "inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] text-primary-foreground uppercase shadow-card"
-                      }
-                    >
-                      <span
-                        className={
-                          "size-1.5 rounded-full bg-primary-foreground"
-                        }
-                        aria-hidden="true"
-                      />
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] text-primary-foreground uppercase shadow-card">
+                      <span className="size-1.5 rounded-full bg-primary-foreground" aria-hidden="true" />
                       {(index + 1).toString().padStart(2, "0")} · {item.brand}
                     </span>
                   </div>
