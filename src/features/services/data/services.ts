@@ -31,7 +31,7 @@ export const hotelServices: HotelService[] = [
   { label: "Servicio de habitación 24/7", icon: Bell },
   { label: "Jacuzzi", icon: Bath },
   { label: "Wi-Fi 5G", icon: Wifi },
-  { label: "Desayuno americano", icon: Utensils },
+  { label: "Desayuno buffet", icon: Utensils },
   { label: "Ducha española", icon: ShowerHead },
   { label: "Enchufe cerca a la cama", icon: Plug },
   { label: "Lavandería", icon: WashingMachine },

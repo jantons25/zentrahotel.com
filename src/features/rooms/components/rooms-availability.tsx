@@ -5,7 +5,7 @@ import { ArrowUpRight, BedDouble, Users } from "lucide-react";
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
 import { fontAvailabilityDisplay } from "@/features/rooms/config/availability-fonts";
-import { rooms } from "@/features/rooms/data/rooms";
+import { featuredRooms as rooms } from "@/features/rooms/data/rooms";
 import { siteConfig } from "@/config/site";
 
 import styles from "./rooms-availability.module.css";

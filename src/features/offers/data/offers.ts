@@ -5,13 +5,13 @@ export const featuredOffer: Offer = {
   id: "zentra-select",
   title: "¡Más noches, más ahorro!",
   description:
-    "Completa el formulario para acceder a un 10% en tu primera reserva.",
+    "Accede a un descuento del 10% en tu primera reserva.",
   highlight: "Obtén 10% off adicional",
-  code: "ZENTRASELECT",
-  expiresAt: "2026-05-09T23:59:59-05:00",
+  code: "ZENTRAWEB",
+  expiresAt: "2026-07-24T23:59:59-05:00",
 };
 
 export const coupons: Coupon[] = [
-  { code: "ZENTRA3N", description: "Descuento por 3 noches o más" },
-  { code: "ZENTRA9A9", description: "Descuento en tu próxima estadía" },
+  { code: "ZENTRA5N", description: "Descuento por 5 noches o más" },
+  { code: "ZENTRAPERU", description: "Descuento por fiestas patrias" },
 ];

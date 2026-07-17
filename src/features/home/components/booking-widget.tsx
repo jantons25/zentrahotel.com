@@ -205,7 +205,7 @@ export function BookingWidget() {
             type="text"
             value={promo}
             onChange={(e) => setPromo(e.target.value.toUpperCase())}
-            placeholder="Opcional · Ej. ZENTRASELECT"
+            placeholder=""
             className="bg-transparent text-sm font-semibold tracking-[0.08em] text-secondary uppercase outline-none placeholder:font-medium placeholder:tracking-normal placeholder:normal-case placeholder:text-secondary/40"
             autoComplete="off"
           />

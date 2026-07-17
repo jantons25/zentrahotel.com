@@ -97,12 +97,12 @@ export function OffersSection() {
               {featuredOffer.description}
             </p>
 
-            <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-dashed border-secondary/25 bg-secondary/[0.03] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+            <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-dashed border-secondary/25 bg-primary p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
               <div>
-                <p className="text-[0.65rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
+                <p className="text-[0.65rem] font-mono tracking-[0.22em] text-white/95 uppercase">
                   Usa el código
                 </p>
-                <p className="mt-2 font-[family-name:var(--font-offers-display)] text-xl font-normal tracking-[0.14em] text-secondary sm:text-2xl">
+                <p className="mt-2 font-[family-name:var(--font-offers-display)] text-xl font-normal tracking-[0.14em] text-white sm:text-2xl">
                   {featuredOffer.code}
                 </p>
               </div>
@@ -160,11 +160,11 @@ export function OffersSection() {
                     {coupon.description}
                   </p>
 
-                  <div className="mt-1 rounded-xl border-2 border-dashed border-primary/70 bg-secondary/40 px-4 py-3 text-center">
-                    <p className="text-[0.62rem] font-mono tracking-[0.22em] text-white/55 uppercase">
+                  <div className="mt-1 rounded-xl border-2 border-dashed border-secondary bg-white px-4 py-3 text-center">
+                    <p className="text-[0.62rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
                       Código
                     </p>
-                    <p className="mt-1 font-[family-name:var(--font-offers-display)] text-lg font-normal tracking-[0.16em] text-white sm:text-xl">
+                    <p className="mt-1 font-[family-name:var(--font-offers-display)] text-lg font-normal tracking-[0.16em] text-secondary sm:text-xl">
                       {coupon.code}
                     </p>
                   </div>

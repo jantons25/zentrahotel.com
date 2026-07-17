@@ -45,7 +45,7 @@ export function ServicesSection() {
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
               Todo pensado para que solo te preocupes por descansar. Wi-Fi 5G,
-              desayuno americano, servicio 24/7 y detalles que hacen tu
+              desayuno buffet, servicio 24/7 y detalles que hacen tu
               estadía sencilla, cómoda y segura.
             </p>
           </div>

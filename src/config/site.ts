@@ -12,7 +12,9 @@ export const siteConfig = {
     phoneDisplay: "+51 924 048 177",
     whatsappNumber: "51924048177",
     email: "zentra.hotel@gmail.com",
-    address: "Calle Leoncio Prado 919, centro de Chiclayo, Perú",
+    addressBalta: "Calle Leoncio Prado 919",
+    addressPlaza: "Calle Elias Aguire 520",
+    addressSanJose: "Calle San José 554",
     mapEmbedUrl:
       "https://www.google.com/maps?q=Calle+Leoncio+Prado+919+Chiclayo&output=embed",
     mapShareUrl: "https://maps.app.goo.gl/H5tjHo3GTp1SbkYr7",

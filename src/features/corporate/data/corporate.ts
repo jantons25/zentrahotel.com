@@ -90,7 +90,7 @@ export const corporateLocations: CorporateLocation[] = [
     ],
     stats: {
       capacity: { icon: BedDouble, label: "Habitaciones amplias" },
-      detail: { icon: Bath, label: "Jacuzzi disponible" },
+      detail: { icon: Bath, label: "Hotel de estreno" },
     },
   },
   {

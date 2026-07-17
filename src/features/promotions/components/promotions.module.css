@@ -1,0 +1,167 @@
+/* Estilos exclusivos de /promociones: reveal, auroras, cinta editorial de código y filtro. */
+
+.section {
+  isolation: isolate;
+}
+
+.auroraOne,
+.auroraTwo {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(90px);
+  z-index: 0;
+}
+
+.auroraOne {
+  top: -14rem;
+  right: -10rem;
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklab, var(--primary) 45%, transparent),
+    transparent 70%
+  );
+  opacity: 0.5;
+}
+
+.auroraTwo {
+  bottom: -18rem;
+  left: -8rem;
+  width: 28rem;
+  height: 28rem;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklab, white 15%, transparent),
+    transparent 70%
+  );
+  opacity: 0.3;
+}
+
+@keyframes promo-hero-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes promo-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  animation: promo-reveal-in 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+/* Tarjeta editorial de promoción: elevación suave + acercamiento de imagen al hover. */
+.card {
+  transition:
+    transform var(--duration-normal, 250ms) cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow var(--duration-normal, 250ms) ease,
+    border-color var(--duration-normal, 250ms) ease;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px rgb(0 0 0 / 0.14);
+  border-color: color-mix(in oklab, var(--primary) 55%, transparent);
+}
+
+.cardImage {
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .cardImage,
+.card:focus-within .cardImage {
+  transform: scale(1.05);
+}
+
+/* Cinta con el código promocional: horizontal, mono, con perforación tipo ticket. */
+.codeStrip {
+  position: relative;
+  background: color-mix(in oklab, var(--secondary) 96%, black);
+  color: #fff;
+  padding: 0.55rem 1rem;
+  border-radius: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  overflow: hidden;
+}
+
+.codeStrip::before,
+.codeStrip::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  background: var(--card);
+  border-radius: 9999px;
+  transform: translateY(-50%);
+}
+
+.codeStrip::before {
+  left: -0.375rem;
+}
+
+.codeStrip::after {
+  right: -0.375rem;
+}
+
+/* En el fondo crema del grid, el "recorte" debe ir con ese color. */
+.cardOnCream .codeStrip::before,
+.cardOnCream .codeStrip::after {
+  background: color-mix(in oklab, var(--accent) 60%, white);
+}
+
+.copyButton {
+  transition: color var(--duration-normal, 250ms) ease;
+}
+
+.copyButton:hover,
+.copyButton:focus-visible {
+  color: color-mix(in oklab, var(--primary) 60%, white);
+}
+
+/* Chips del filtro por sede. */
+.filterPill {
+  transition:
+    background-color var(--duration-normal, 250ms) ease,
+    border-color var(--duration-normal, 250ms) ease,
+    color var(--duration-normal, 250ms) ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .card,
+  .card:hover,
+  .card:focus-within,
+  .cardImage,
+  .card:hover .cardImage,
+  .card:focus-within .cardImage,
+  .filterPill,
+  .copyButton {
+    transform: none;
+    transition: none;
+  }
+}

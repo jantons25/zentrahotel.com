@@ -1,0 +1,221 @@
+/* Efectos exclusivos de la página /habitaciones: reveal, auroras, mosaico Airbnb. */
+
+.section {
+  isolation: isolate;
+}
+
+.auroraOne,
+.auroraTwo {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(90px);
+  z-index: 0;
+}
+
+.auroraOne {
+  top: -18rem;
+  right: -12rem;
+  width: 34rem;
+  height: 34rem;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklab, var(--primary) 32%, transparent),
+    transparent 70%
+  );
+  opacity: 0.55;
+}
+
+.auroraTwo {
+  bottom: -20rem;
+  left: -10rem;
+  width: 32rem;
+  height: 32rem;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklab, white 18%, transparent),
+    transparent 70%
+  );
+  opacity: 0.3;
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(
+      color-mix(in oklab, white 5%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 3px 3px;
+  mix-blend-mode: overlay;
+  opacity: 0.35;
+}
+
+@keyframes rooms-hero-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes rooms-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  animation: rooms-reveal-in 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+/* Mosaico principal + galería secundaria estilo Airbnb. */
+.mosaic {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  align-items: start;
+}
+
+.mosaicMain {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: color-mix(in oklab, var(--secondary) 8%, white);
+}
+
+.mosaicThumbs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+}
+
+.mosaicThumbs[data-count="1"] {
+  grid-template-columns: 1fr;
+}
+
+.mosaicThumb {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: color-mix(in oklab, var(--secondary) 8%, white);
+}
+
+@media (min-width: 640px) {
+  .mosaicThumbs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .mosaicThumbs[data-count="1"] {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 24rem;
+  }
+  .mosaicThumbs[data-count="2"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mosaicThumbs[data-count="4"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .mosaic {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: 0.85rem;
+  }
+  .mosaicMain {
+    border-radius: 1.75rem;
+  }
+  .mosaicThumbs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    max-width: none;
+  }
+  .mosaicThumbs[data-count="1"] {
+    grid-template-columns: 1fr;
+  }
+  .mosaicThumbs[data-count="2"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mosaicThumb {
+    border-radius: 1.5rem;
+  }
+}
+
+.image {
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mosaicMain:hover .image,
+.mosaicThumb:hover .image {
+  transform: scale(1.05);
+}
+
+/* Capa que envuelve cada foto del mosaico; al cambiarse la imagen principal
+   por una miniatura (y viceversa), esta capa se remonta y hace un fundido
+   suave para que el intercambio se note. */
+.imageSwapLayer {
+  position: absolute;
+  inset: 0;
+  animation: rooms-image-swap-in 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes rooms-image-swap-in {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Chips del filtro por sede. */
+.filterPill {
+  transition:
+    background-color var(--duration-normal, 250ms) ease,
+    border-color var(--duration-normal, 250ms) ease,
+    color var(--duration-normal, 250ms) ease;
+}
+
+/* Etiqueta vertical de categoría, inspirada en la "Sala" del reference. */
+.verticalLabel {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: color-mix(in oklab, var(--secondary) 55%, white);
+  padding-block: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .image,
+  .mosaicMain:hover .image,
+  .mosaicThumb:hover .image {
+    transform: none;
+    transition: none;
+  }
+  .imageSwapLayer {
+    animation: none;
+  }
+}

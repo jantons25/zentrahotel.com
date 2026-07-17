@@ -1,0 +1,130 @@
+/* Efectos exclusivos del diario Zentra: reveal, auroras, zoom del hero y hover editorial de tarjetas. */
+
+.section {
+  isolation: isolate;
+}
+
+.auroraOne,
+.auroraTwo {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(90px);
+  z-index: 0;
+}
+
+.auroraOne {
+  top: -14rem;
+  right: -10rem;
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklab, var(--primary) 45%, transparent),
+    transparent 70%
+  );
+  opacity: 0.5;
+}
+
+.auroraTwo {
+  bottom: -20rem;
+  left: -8rem;
+  width: 28rem;
+  height: 28rem;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklab, white 15%, transparent),
+    transparent 70%
+  );
+  opacity: 0.3;
+}
+
+@keyframes blog-hero-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes blog-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  animation: blog-reveal-in 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+/* Card editorial: elevación suave + acercamiento de imagen al hover. */
+.card {
+  transition:
+    transform var(--duration-normal, 250ms) cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow var(--duration-normal, 250ms) ease,
+    border-color var(--duration-normal, 250ms) ease;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px rgb(0 0 0 / 0.14);
+}
+
+.cardImage {
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .cardImage,
+.card:focus-within .cardImage {
+  transform: scale(1.05);
+}
+
+/* Subrayado que crece bajo el título al hacer hover — signature editorial. */
+.cardTitle {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--primary) 80%, transparent),
+    color-mix(in oklab, var(--primary) 80%, transparent)
+  );
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  padding-bottom: 0.15em;
+}
+
+.card:hover .cardTitle,
+.card:focus-within .cardTitle {
+  background-size: 100% 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .card,
+  .card:hover,
+  .card:focus-within,
+  .cardImage,
+  .card:hover .cardImage,
+  .card:focus-within .cardImage {
+    transform: none;
+    transition: none;
+  }
+  .cardTitle {
+    transition: none;
+    background-size: 100% 2px;
+  }
+}

@@ -37,7 +37,7 @@ export const zenStories: ZenStory[] = [
   },
   {
     category: "Alimentos y bebidas",
-    title: "Infusiones relajantes y desayuno americano",
+    title: "Infusiones relajantes y desayuno buffet",
     excerpt:
       "Cerramos la noche con una infusión de la casa y despertamos con desayuno completo.",
     duration: "Desayuno servido 7 · 10 am",

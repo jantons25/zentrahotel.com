@@ -16,7 +16,7 @@ export function AboutHero() {
       className={`${fontAboutDisplay.variable} ${styles.section} relative isolate -mt-16 overflow-hidden bg-secondary text-white md:-mt-20`}
     >
       <Image
-        src="/images/hero-collage.webp"
+        src="/images/cowork-plaza.webp"
         alt=""
         fill
         priority

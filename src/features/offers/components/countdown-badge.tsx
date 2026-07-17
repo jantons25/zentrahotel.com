@@ -10,7 +10,7 @@ interface CountdownBadgeProps {
 }
 
 // Calcula los días completos que faltan hasta la fecha de expiración (negativo si ya venció).
-function daysUntil(expiresAt: string): number {
+  function daysUntil(expiresAt: string): number {
   const diff = new Date(expiresAt).getTime() - Date.now();
   return Math.ceil(diff / (1000 * 60 * 60 * 24));
 }
@@ -40,7 +40,7 @@ export function CountdownBadge({ expiresAt }: CountdownBadgeProps) {
       className={`absolute -top-3 right-4 rounded-full px-4 py-1.5 text-xs font-bold shadow-card md:text-sm ${
         days < 0
           ? "bg-muted text-muted-foreground"
-          : "bg-secondary text-secondary-foreground"
+          : "bg-primary text-secondary-foreground"
       }`}
     >
       {label}

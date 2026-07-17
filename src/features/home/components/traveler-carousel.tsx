@@ -18,7 +18,8 @@ import { cn } from "@/lib/utils";
 import { travelerTypes } from "@/features/home/data/travelers";
 
 function CarouselNav() {
-  const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } = useCarousel();
+  const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } =
+    useCarousel();
   return (
     <div className="mt-8 flex items-center justify-end gap-2 pr-4 lg:pr-8">
       <button
@@ -83,9 +84,9 @@ export function TravelerCarousel() {
         </h2>
 
         <p className="mt-6 max-w-md text-[0.95rem] leading-relaxed text-muted-foreground">
-          Cuartos, servicios y experiencias curadas según el motivo de tu
-          visita: negocios, turismo, celebraciones o descanso profundo en el
-          centro de Chiclayo.
+          Habitaciones, servicios y experiencias diseñadas para cada motivo de
+          tu viaje: negocios, turismo, celebraciones o un descanso pleno en el
+          corazón de Chiclayo.
         </p>
 
         <Link
@@ -110,7 +111,9 @@ export function TravelerCarousel() {
             <span className="font-[family-name:var(--font-traveler-display)] text-3xl font-normal text-secondary">
               {format(current + 1)}
             </span>
-            <span className="translate-y-[-2px] tracking-[0.2em]">/ {format(total)}</span>
+            <span className="translate-y-[-2px] tracking-[0.2em]">
+              / {format(total)}
+            </span>
             <span className="ml-auto uppercase tracking-[0.24em]">
               {travelerTypes[current]?.tag}
             </span>
@@ -132,59 +135,64 @@ export function TravelerCarousel() {
           className="lg:-mr-[max(1rem,calc((100vw-80rem)/2))]"
         >
           <CarouselContent className="-ml-4 md:-ml-6">
-            {travelerTypes.map(({ title, description, icon: Icon, image, imageAlt, tag }, index) => {
-              const active = index === current;
-              return (
-                <CarouselItem
-                  key={title}
-                  className="pl-4 md:pl-6 basis-[78%] sm:basis-[46%] lg:basis-[42%] xl:basis-[38%]"
-                >
-                  <article
-                    className={cn(
-                      "group relative flex aspect-[3/4] w-full flex-col justify-between overflow-hidden rounded-[2rem] bg-secondary p-6 text-secondary-foreground shadow-card transition-transform duration-500 will-change-transform sm:p-7",
-                      active ? "sm:translate-y-0" : "sm:translate-y-2",
-                    )}
+            {travelerTypes.map(
+              (
+                { title, description, icon: Icon, image, imageAlt, tag },
+                index,
+              ) => {
+                const active = index === current;
+                return (
+                  <CarouselItem
+                    key={title}
+                    className="pl-4 md:pl-6 basis-[78%] sm:basis-[46%] lg:basis-[42%] xl:basis-[38%]"
                   >
-                    <Image
-                      src={image}
-                      alt={imageAlt}
-                      fill
-                      loading="lazy"
-                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 46vw, 32vw"
-                      className="absolute inset-0 -z-10 object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
-                    />
-                    <div
-                      className="absolute inset-0 -z-10 bg-gradient-to-t from-secondary via-secondary/70 to-secondary/10"
-                      aria-hidden="true"
-                    />
-
-                    <div className="flex items-start justify-between">
-                      <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[0.68rem] font-semibold tracking-[0.18em] uppercase backdrop-blur">
-                        {tag}
-                      </span>
-                      <span
-                        className="grid size-10 place-items-center rounded-full bg-primary text-primary-foreground shadow-card"
+                    <article
+                      className={cn(
+                        "group relative flex aspect-[3/4] w-full flex-col justify-between overflow-hidden rounded-[2rem] bg-secondary p-6 text-secondary-foreground shadow-card transition-transform duration-500 will-change-transform sm:p-7",
+                        active ? "sm:translate-y-0" : "sm:translate-y-2",
+                      )}
+                    >
+                      <Image
+                        src={image}
+                        alt={imageAlt}
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 640px) 80vw, (max-width: 1024px) 46vw, 32vw"
+                        className="absolute inset-0 -z-10 object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
+                      />
+                      <div
+                        className="absolute inset-0 -z-10 bg-gradient-to-t from-secondary via-secondary/30 to-secondary/10"
                         aria-hidden="true"
-                      >
-                        <Icon className="size-4" strokeWidth={1.75} />
-                      </span>
-                    </div>
+                      />
 
-                    <div>
-                      <p className="text-[0.7rem] font-mono tracking-[0.24em] text-white/60">
-                        · {(index + 1).toString().padStart(2, "0")}
-                      </p>
-                      <h3 className="mt-2 font-[family-name:var(--font-traveler-display)] text-3xl font-light leading-[1] tracking-tight sm:text-[2.1rem]">
-                        {title}
-                      </h3>
-                      <p className="mt-3 max-w-[22ch] text-sm leading-relaxed text-white/80">
-                        {description}
-                      </p>
-                    </div>
-                  </article>
-                </CarouselItem>
-              );
-            })}
+                      <div className="flex items-start justify-between">
+                        <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[0.68rem] font-semibold tracking-[0.18em] uppercase backdrop-blur">
+                          {tag}
+                        </span>
+                        <span
+                          className="grid size-10 place-items-center rounded-full bg-primary text-primary-foreground shadow-card"
+                          aria-hidden="true"
+                        >
+                          <Icon className="size-4" strokeWidth={1.75} />
+                        </span>
+                      </div>
+
+                      <div>
+                        <p className="text-[0.7rem] font-mono tracking-[0.24em] text-white/60">
+                          · {(index + 1).toString().padStart(2, "0")}
+                        </p>
+                        <h3 className="mt-2 font-[family-name:var(--font-traveler-display)] text-3xl font-light leading-[1] tracking-tight sm:text-[2.1rem]">
+                          {title}
+                        </h3>
+                        <p className="mt-3 max-w-[22ch] text-sm leading-relaxed text-white/80">
+                          {description}
+                        </p>
+                      </div>
+                    </article>
+                  </CarouselItem>
+                );
+              },
+            )}
           </CarouselContent>
 
           <CarouselNav />

@@ -9,8 +9,6 @@ import { siteConfig } from "@/config/site";
 
 import styles from "./location-section.module.css";
 
-const streetAddress = siteConfig.contact.address.replace(", Perú", "");
-
 export function LocationSection() {
   const total = locationHighlights.length;
 
@@ -43,7 +41,7 @@ export function LocationSection() {
               </span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
-              Nuestra ubicación en {streetAddress} te deja a pasos de la Av.
+              Nuestra ubicación en {siteConfig.contact.addressBalta}, {siteConfig.contact.addressPlaza} y {siteConfig.contact.addressSanJose} te deja a pasos de la Av.
               Balta y los principales puntos comerciales, gastronómicos y
               turísticos de la ciudad.
             </p>
@@ -138,7 +136,7 @@ export function LocationSection() {
                       {siteConfig.name}
                     </p>
                     <p className="mt-1 font-[family-name:var(--font-location-display)] text-lg font-normal leading-tight text-secondary">
-                      {streetAddress}
+                      {siteConfig.contact.addressBalta}
                     </p>
                   </div>
                 </div>
