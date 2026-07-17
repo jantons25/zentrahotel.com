@@ -42,7 +42,7 @@ const channels: BookingChannel[] = [
   {
     title: "Visítanos",
     hint: "Estamos en el centro de Chiclayo",
-    detail: siteConfig.contact.address,
+    detail: siteConfig.contact.addressBalta,
     href: siteConfig.contact.mapShareUrl,
     external: true,
     icon: MapPin,

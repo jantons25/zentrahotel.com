@@ -74,7 +74,7 @@ export function MobileNav() {
             />
           </a>
           <p className="mt-6 border-t border-white/10 pt-4 text-[0.68rem] leading-relaxed text-white/55">
-            {siteConfig.contact.address} · {siteConfig.contact.phoneDisplay}
+            {siteConfig.contact.addressBalta} · {siteConfig.contact.phoneDisplay}
           </p>
         </nav>
       </SheetContent>
