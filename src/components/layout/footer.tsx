@@ -146,7 +146,7 @@ export function Footer() {
                   strokeWidth={1.75}
                   aria-hidden="true"
                 />
-                <span>{siteConfig.contact.address}</span>
+                <span>{siteConfig.contact.addressBalta}</span>
               </p>
               <p className="flex items-start gap-3">
                 <Phone

@@ -109,8 +109,8 @@ export const corporateLocations: CorporateLocation[] = [
       "Soporte técnico especializado",
     ],
     stats: {
-      capacity: { icon: Presentation, label: "Salas 5 y 10 pax" },
-      detail: { icon: MonitorPlay, label: "Videoconferencia" },
+      capacity: { icon: Presentation, label: "Sala de videoconferencia" },
+      detail: { icon: MonitorPlay, label: "5 - 10 personas" },
     },
   },
   {
@@ -130,7 +130,7 @@ export const corporateLocations: CorporateLocation[] = [
     ],
     stats: {
       capacity: { icon: MoonStar, label: "Ambiente silencioso" },
-      detail: { icon: Wifi, label: "WiFi 5G · fibra" },
+      detail: { icon: Wifi, label: "Internet estable y de alta velocidad" },
     },
   },
   {
