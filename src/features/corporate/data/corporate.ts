@@ -91,7 +91,7 @@ export const corporateLocations: CorporateLocation[] = [
     ],
     stats: {
       location: { icon: MapPin, label: "Elias Aguirre 520"},
-      detail: { icon: Bath, label: "Cerca a la catedral" },
+      detail: { icon: Timer, label: "Cerca a la catedral" },
       capacity: { icon: BedDouble, label: "Hotel de estreno"},
     },
   },
@@ -112,7 +112,7 @@ export const corporateLocations: CorporateLocation[] = [
     ],
     stats: {
       location: { icon: MapPin, label: "Balta 506"},
-      detail: { icon: MonitorPlay, label: "Centro Financiero" },
+      detail: { icon: Timer, label: "Centro Financiero" },
       capacity: { icon: Presentation, label: "Salas y oficinas equipadas" },
     },
   },
@@ -133,7 +133,7 @@ export const corporateLocations: CorporateLocation[] = [
     ],
     stats: {
       location: { icon: MapPin, label: "San José 554"},
-      detail: { icon: Wifi, label: "Cerca a la catedral" },
+      detail: { icon: Timer, label: "Cerca a la catedral" },
       capacity: { icon: MoonStar, label: "Habitaciones amplias" },
     },
   },
@@ -155,8 +155,8 @@ export const corporateLocations: CorporateLocation[] = [
     ],
     stats: {
       location: { icon: MapPin, label: "Leoncio Prado 919"},
-      detail: { icon: Timer, label: "Habitaciones modernas" },
-      capacity: { icon: MapPin, label: "Cerca a la Zona Comercial de Chiclayo" },
+      detail: { icon: Timer, label: "Cerca a la Zona Comercial de Chiclayo" },
+      capacity: { icon: BedDouble, label: "Habitaciones modernas" },
     },
   },
 ];
