@@ -69,6 +69,7 @@ export interface CorporateLocation {
   stats: {
     capacity: { icon: LucideIcon; label: string };
     detail: { icon: LucideIcon; label: string };
+    location: { icon: LucideIcon; label: string};
   };
 }
 
@@ -89,8 +90,9 @@ export const corporateLocations: CorporateLocation[] = [
       "Lavandería y factura electrónica",
     ],
     stats: {
-      capacity: { icon: BedDouble, label: "Habitaciones amplias" },
-      detail: { icon: Bath, label: "Hotel de estreno" },
+      location: { icon: MapPin, label: "Elias Aguirre 520"},
+      detail: { icon: Bath, label: "Cerca a la catedral" },
+      capacity: { icon: BedDouble, label: "Hotel de estreno"},
     },
   },
   {
@@ -109,8 +111,9 @@ export const corporateLocations: CorporateLocation[] = [
       "Soporte técnico especializado",
     ],
     stats: {
-      capacity: { icon: Presentation, label: "Sala de videoconferencia" },
-      detail: { icon: MonitorPlay, label: "5 - 10 personas" },
+      location: { icon: MapPin, label: "Balta 506"},
+      detail: { icon: MonitorPlay, label: "Centro Financiero" },
+      capacity: { icon: Presentation, label: "Salas y oficinas equipadas" },
     },
   },
   {
@@ -129,8 +132,9 @@ export const corporateLocations: CorporateLocation[] = [
       "Servicio 24 h y room service",
     ],
     stats: {
-      capacity: { icon: MoonStar, label: "Ambiente silencioso" },
-      detail: { icon: Wifi, label: "Internet estable y de alta velocidad" },
+      location: { icon: MapPin, label: "San José 554"},
+      detail: { icon: Wifi, label: "Cerca a la catedral" },
+      capacity: { icon: MoonStar, label: "Habitaciones amplias" },
     },
   },
   {
@@ -150,8 +154,9 @@ export const corporateLocations: CorporateLocation[] = [
       "Traslado al aeropuerto",
     ],
     stats: {
-      capacity: { icon: MapPin, label: "Av. Balta · Centro" },
-      detail: { icon: Timer, label: "Check-in 3 min" },
+      location: { icon: MapPin, label: "Leoncio Prado 919"},
+      detail: { icon: Timer, label: "Habitaciones modernas" },
+      capacity: { icon: MapPin, label: "Cerca a la Zona Comercial de Chiclayo" },
     },
   },
 ];
@@ -162,26 +167,26 @@ export const corporateProblems = [
     icon: LineChart,
     title: "Pérdida de productividad",
     description:
-      "Tu equipo llega a Chiclayo sin espacio adecuado y pierde las primeras horas del día buscando dónde trabajar.",
+      "Viajar sin reservas expone a tu equipo a un menor rendimiento, debido a espacios deficientes y mal equipados.",
   },
   {
     number: "02",
     icon: TrendingDown,
     title: "Mayor costo operativo",
     description:
-      "Los tiempos de desplazamiento entre el hotel y la oficina se facturan como horas productivas. Cada viaje mal coordinado es dinero perdido.",
+      "Los tiempos de desplazamiento entre el hotel y la oficina se facturan como horas productivas. Un viaje mal coordinado, desperdicia dinero",
   },
   {
     number: "03",
     icon: ClipboardList,
     title: "Carga administrativa",
     description:
-      "RR.HH. gestiona reservas separadas y recibe múltiples facturas que luego hay que conciliar mes tras mes.",
+      "Se gestionan reservas separadas y tienen que procesarse múltiples facturas.",
   },
   {
     number: "04",
     icon: LayoutGrid,
-    title: "Proveedores fragmentados",
+    title: "Proveedores dispersos",
     description:
       "Más proveedores, más riesgo de fallo, más coordinación y menos control sobre el presupuesto de viajes corporativos.",
   },

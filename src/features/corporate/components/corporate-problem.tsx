@@ -1,4 +1,6 @@
 // Problema: fondo navy con 4 costos ocultos numerados 01–04.
+import { getTranslations } from "next-intl/server";
+
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
 import { fontCorporateDisplay } from "@/features/corporate/config/corporate-fonts";
@@ -6,7 +8,9 @@ import { corporateProblems } from "@/features/corporate/data/corporate";
 
 import styles from "./corporate.module.css";
 
-export function CorporateProblem() {
+export async function CorporateProblem() {
+  const t = await getTranslations("corporate.problem");
+
   return (
     <Section
       id="problema"
@@ -24,18 +28,16 @@ export function CorporateProblem() {
         >
           <p className="flex items-center justify-center gap-3 text-[.8rem] font-semibold tracking-[0.32em] text-white/60 uppercase">
             <span className="h-px w-10 bg-white/30" aria-hidden="true" />
-            El costo invisible del viaje corporativo
+            {t("eyebrow")}
             <span className="h-px w-10 bg-white/30" aria-hidden="true" />
           </p>
           <h2
             id="problema-titulo"
             className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.98] tracking-[-0.02em] text-white text-balance text-[clamp(2.3rem,5vw,4rem)]"
           >
-            ¿Tu equipo viaja a Chiclayo?
+            {t("title")}
           </h2>
-          <p className="mt-5 text-[0.95rem] leading-relaxed text-white/70">
-            Unifique alojamiento, espacios de trabajo y reuniones en una sola solución para su empresa. Menos gestión, más productividad
-          </p>
+          <p className="mt-5 text-[0.95rem] leading-relaxed text-white/70">{t("lead")}</p>
         </header>
 
         <ol className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">

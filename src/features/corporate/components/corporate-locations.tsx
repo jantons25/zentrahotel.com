@@ -1,5 +1,6 @@
 // Sedes corporativas: grid uniforme espejando el layout de "Reserva tu habitación".
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -9,7 +10,8 @@ import { corporateLocations } from "@/features/corporate/data/corporate";
 
 import styles from "./corporate.module.css";
 
-export function CorporateLocations() {
+export async function CorporateLocations() {
+  const t = await getTranslations("corporate.locations");
   const total = corporateLocations.length;
 
   return (
@@ -30,22 +32,19 @@ export function CorporateLocations() {
           <div className="max-w-2xl">
             <p className="flex items-center gap-3 text-[0.8rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
               <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
-              Nuestra cadena hotelera · {total.toString().padStart(2, "0")}
+              {t("eyebrow")} · {total.toString().padStart(2, "0")}
             </p>
             <h2
               id="sedes-titulo"
               className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.4rem,5.2vw,4.2rem)]"
             >
-              Cuatro establecimientos ejecutivos en el{" "}
+              {t("titleA")}{" "}
               <span className="italic font-normal text-secondary/90">
-                centro de Chiclayo.
+                {t("titleEmphasis")}
               </span>
             </h2>
             <p className="mt-5 max-w-2xl text-[0.95rem] leading-relaxed text-muted-foreground">
-              Donde se aloje tu equipo, siempre estará a pocos minutos del
-              centro financiero y de las oficinas de Nexus Cowork. Elige la sede
-              más conveniente o reserva en las tres según la rotación de tu
-              equipo.
+              {t("lead")}
             </p>
           </div>
         </header>
@@ -54,6 +53,7 @@ export function CorporateLocations() {
           {corporateLocations.map((location, index) => {
             const CapacityIcon = location.stats.capacity.icon;
             const DetailIcon = location.stats.detail.icon;
+            const LocationIcon = location.stats.location.icon;
             const background =
               location.brand === "Nexus Cowork" ? "bg-secondary" : "bg-card";
             const text =
@@ -86,9 +86,11 @@ export function CorporateLocations() {
                       className="absolute inset-0 bg-gradient-to-t from-secondary/40 via-transparent to-transparent opacity-70"
                       aria-hidden="true"
                     />
-                    <span className={`absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full ${background}/95 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] ${text} uppercase shadow-card backdrop-blur`}>
+                    <span
+                      className={`absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full ${background}/95 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] ${text} uppercase shadow-card backdrop-blur`}
+                    >
                       <span
-                        className={`size-1.5 rounded-full bg-primary`}
+                        className="size-1.5 rounded-full bg-primary"
                         aria-hidden="true"
                       />
                       {(index + 1).toString().padStart(2, "0")} ·{" "}
@@ -100,7 +102,8 @@ export function CorporateLocations() {
                     <p
                       className={`text-[0.68rem] font-mono tracking-[0.22em] ${text}/55 uppercase`}
                     >
-                      Sede · {(index + 1).toString().padStart(2, "0")}
+                      {t("cardEyebrow")} ·{" "}
+                      {(index + 1).toString().padStart(2, "0")}
                     </p>
                     <h3
                       className={`mt-2 font-[family-name:var(--font-corporate-display)] text-2xl font-light leading-tight ${text} tracking-tight text-balance sm:text-[1.7rem]`}
@@ -109,18 +112,18 @@ export function CorporateLocations() {
                     </h3>
                     <dl className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-muted-foreground">
                       <div className="flex items-center gap-1.5">
-                        <CapacityIcon
+                        <LocationIcon
                           className={`size-4 ${text}/60`}
                           strokeWidth={1.75}
                           aria-hidden="true"
                         />
-                        <dt className="sr-only">Perfil</dt>
+                        <dt className="sr-only">Profile</dt>
                         <dd
                           className={
                             location.brand == "Nexus Cowork" ? "text-white" : ""
                           }
                         >
-                          {location.stats.capacity.label}
+                          {location.stats.location.label}
                         </dd>
                       </div>
                       <span className="text-secondary/25" aria-hidden="true">
@@ -128,12 +131,11 @@ export function CorporateLocations() {
                       </span>
                       <div className="flex items-center gap-1.5">
                         <DetailIcon
-                          className={`size-4 ${text}60`
-                          }
+                          className={`size-4 ${text}60`}
                           strokeWidth={1.75}
                           aria-hidden="true"
                         />
-                        <dt className="sr-only">Detalle</dt>
+                        <dt className="sr-only">Detail</dt>
                         <dd
                           className={
                             location.brand == "Nexus Cowork" ? "text-white" : ""
@@ -142,16 +144,33 @@ export function CorporateLocations() {
                           {location.stats.detail.label}
                         </dd>
                       </div>
+                      <span className="text-secondary/25" aria-hidden="true">
+                        ·
+                      </span>
+                      <div className="flex items-center gap-1.5">
+                        <CapacityIcon
+                          className={`size-4 ${text}60`}
+                          strokeWidth={1.75}
+                          aria-hidden="true"
+                        />
+                        <dt className="sr-only">Detail</dt>
+                        <dd
+                          className={
+                            location.brand == "Nexus Cowork" ? "text-white" : ""
+                          }
+                        >
+                          {location.stats.capacity.label}
+                        </dd>
+                      </div>
                     </dl>
 
                     <div className="mt-auto pt-6">
                       <a
                         href="#convenio"
-                        className={`inline-flex items-center gap-2 text-sm font-semibold ${text} transition-colors duration-(--duration-normal) hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none`
-                        }
-                        aria-label={`Solicitar sede ${location.name}`}
+                        className={`inline-flex items-center gap-2 text-sm font-semibold ${text} transition-colors duration-(--duration-normal) hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none`}
+                        aria-label={t("ctaAria", { location: location.name })}
                       >
-                        Solicitar sede
+                        {t("cta")}
                         <ArrowUpRight
                           className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
                           strokeWidth={2}
