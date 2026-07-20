@@ -40,24 +40,12 @@ export async function CorporateBenefits() {
               className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.3rem,5vw,4rem)]"
             >
               {t("titleA")}{" "}
-              <span className="italic font-normal text-secondary/85">{t("titleEmphasis")}</span>
+              <span className="italic font-normal text-primary/85">{t("titleEmphasis")}</span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
               {t("lead")}
             </p>
           </div>
-
-          <a
-            href="#convenio"
-            className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-secondary/20 bg-white px-6 py-3 text-sm font-semibold tracking-wide text-secondary uppercase transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none md:self-auto"
-          >
-            {t("ctaAdvisor")}
-            <ArrowUpRight
-              className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
-              strokeWidth={2}
-              aria-hidden="true"
-            />
-          </a>
         </header>
 
         <ol className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">
@@ -73,11 +61,11 @@ export async function CorporateBenefits() {
             >
               <article className={`${styles.card} ${styles.cardDark} group flex h-full flex-col gap-6 rounded-[1.5rem] border border-secondary/15 bg-card p-6 shadow-card backdrop-blur sm:p-7`}>
                 <div className="flex items-baseline justify-between gap-3">
-                  <span className="font-[family-name:var(--font-corporate-display)] text-4xl font-light leading-none text-secondary tracking-tight">
+                  <span className="font-[family-name:var(--font-corporate-display)] text-4xl font-light leading-none text-primary tracking-tight">
                     {number}
                   </span>
                   <span
-                    className={`${styles.iconChip} grid size-11 place-items-center rounded-xl bg-secondary/15 text-secondary`}
+                    className={`${styles.iconChip} grid size-11 place-items-center rounded-xl bg-primary/15 text-secondary`}
                     aria-hidden="true"
                   >
                     <Icon className="size-5" strokeWidth={1.75} />

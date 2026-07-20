@@ -16,8 +16,16 @@ import { fontFooterDisplay } from "./footer-fonts";
 import styles from "./footer.module.css";
 
 const socialLinks = [
-  { platform: "Facebook", href: siteConfig.social.facebook, icon: FacebookIcon },
-  { platform: "Instagram", href: siteConfig.social.instagram, icon: InstagramIcon },
+  {
+    platform: "Facebook",
+    href: siteConfig.social.facebook,
+    icon: FacebookIcon,
+  },
+  {
+    platform: "Instagram",
+    href: siteConfig.social.instagram,
+    icon: InstagramIcon,
+  },
   { platform: "TikTok", href: siteConfig.social.tiktok, icon: TikTokIcon },
 ];
 
@@ -66,20 +74,6 @@ export async function Footer() {
               {t("description")}
             </p>
 
-            <a
-              href={siteConfig.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group mt-8 inline-flex items-center gap-3 rounded-full bg-primary px-5 py-3 text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-            >
-              {t("bookDirect")}
-              <ArrowUpRight
-                className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
-                strokeWidth={2}
-                aria-hidden="true"
-              />
-            </a>
-
             <ul
               className="mt-10 flex items-center gap-3"
               aria-label={t("socialAria")}
@@ -90,7 +84,10 @@ export async function Footer() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={t("socialLinkAria", { brand: siteConfig.name, platform })}
+                    aria-label={t("socialLinkAria", {
+                      brand: siteConfig.name,
+                      platform,
+                    })}
                     className={`${styles.socialChip} grid size-10 place-items-center rounded-full border border-white/20 bg-white/5 text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}
                   >
                     <Icon className="size-4" aria-hidden="true" />
@@ -115,14 +112,20 @@ export async function Footer() {
             <ul className="mt-6 space-y-3 text-sm">
               {mainNavLeft.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className={`${styles.link} text-white/80`}>
+                  <Link
+                    href={item.href}
+                    className={`${styles.link} text-white/80`}
+                  >
                     {tNav(item.key)}
                   </Link>
                 </li>
               ))}
               {legalLinks.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className={`${styles.link} text-white/80`}>
+                  <Link
+                    href={item.href}
+                    className={`${styles.link} text-white/80`}
+                  >
                     {t(item.key)}
                   </Link>
                 </li>
@@ -160,7 +163,9 @@ export async function Footer() {
                 <a
                   href={phoneHref}
                   className={`${styles.link} text-white/80`}
-                  aria-label={t("phoneAria", { phone: siteConfig.contact.phoneDisplay })}
+                  aria-label={t("phoneAria", {
+                    phone: siteConfig.contact.phoneDisplay,
+                  })}
                 >
                   {siteConfig.contact.phoneDisplay}
                 </a>
@@ -174,7 +179,9 @@ export async function Footer() {
                 <a
                   href={mailHref}
                   className={`${styles.link} text-white/80`}
-                  aria-label={t("mailAria", { email: siteConfig.contact.email })}
+                  aria-label={t("mailAria", {
+                    email: siteConfig.contact.email,
+                  })}
                 >
                   {siteConfig.contact.email}
                 </a>
@@ -188,39 +195,19 @@ export async function Footer() {
               </p>
             </address>
           </section>
-
-          <section
-            aria-labelledby="footer-newsletter-heading"
-            className={`${styles.reveal} lg:col-span-3`}
-            style={{ "--reveal-delay": "320ms" } as React.CSSProperties}
-          >
-            <p
-              id="footer-newsletter-heading"
-              className="flex items-center gap-3 text-[0.68rem] font-semibold tracking-[0.28em] text-white/60 uppercase"
-            >
-              <span className="h-px w-6 bg-white/25" aria-hidden="true" />
-              {t("newsletterHeading")}
-            </p>
-            <p className="mt-6 font-[family-name:var(--font-footer-display)] text-2xl font-light leading-tight text-white tracking-tight text-balance">
-              {t("discountLeadA")}{" "}
-              <span className="italic text-primary">{t("discountEmphasis")}</span>
-              {t("discountLeadB")}
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-white/70">
-              {t("discountBody")}
-            </p>
-            <div className="mt-6">
-              <NewsletterForm />
-            </div>
-          </section>
         </div>
 
         <div className="relative border-t border-white/12 py-6">
           <div className="flex flex-col items-start gap-3 text-xs text-white/55 md:flex-row md:items-center md:justify-between">
-            <p>{t("copyright", { year: currentYear, brand: siteConfig.name })}</p>
+            <p>
+              {t("copyright", { year: currentYear, brand: siteConfig.name })}
+            </p>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               {legalLinks.map((item, i) => (
-                <span key={item.href} className="inline-flex items-center gap-4">
+                <span
+                  key={item.href}
+                  className="inline-flex items-center gap-4"
+                >
                   {i > 0 ? (
                     <span aria-hidden="true" className="text-white/25">
                       ·

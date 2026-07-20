@@ -9,7 +9,7 @@ import { BrandLogo } from "@/components/common/brand-logo";
 import { LanguageSelector } from "@/components/layout/language-selector";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { mainNavLeft, mainNavRight } from "@/config/site";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { bookingLinkProps } from "@/lib/booking";
 import type { NavItem } from "@/types";
 
@@ -36,7 +36,10 @@ function NavLinks({ items }: { items: NavItem[] }) {
 
 export function Header() {
   const t = useTranslations("nav");
+  const pathname = usePathname();
   const [scrolled, setScrolled] = React.useState(false);
+  // En la landing corporativa el CTA "Reservar" cede su lugar al asesor B2B.
+  const isCorporate = pathname === "/empresa";
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -74,17 +77,19 @@ export function Header() {
           <div className="[&_button]:text-white/80 [&_button]:hover:text-white [&_svg]:text-white/70">
             <LanguageSelector />
           </div>
-          <a
-            {...bookingLinkProps}
-            className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-[0.72rem] font-semibold tracking-[0.16em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-          >
-            {t("reservar")}
-            <ArrowUpRight
-              className="size-3.5 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
-              strokeWidth={2}
-              aria-hidden="true"
-            />
-          </a>
+          {!isCorporate && (
+            <a
+              {...bookingLinkProps}
+              className="group inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-[0.72rem] font-semibold tracking-[0.16em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+            >
+              {t("reservar")}
+              <ArrowUpRight
+                className="size-3.5 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+            </a>
+          )}
         </div>
 
         <MobileNav />

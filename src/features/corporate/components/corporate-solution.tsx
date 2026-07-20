@@ -97,43 +97,30 @@ export function CorporateSolution() {
               {corporateHubHighlights.map(({ value, label }) => {
                 const labelText = pick(label, locale);
                 return (
-                <li
-                  key={labelText}
-                  className="inline-flex items-center gap-2 rounded-full border border-secondary/25 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-secondary backdrop-blur"
-                >
-                  <span className="font-[family-name:var(--font-corporate-display)] text-base font-normal leading-none tracking-tight text-secondary">
-                    {value}
-                  </span>
-                  {labelText}
-                </li>
+                  <li
+                    key={labelText}
+                    className="inline-flex items-center gap-2 rounded-full border border-secondary/25 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-secondary backdrop-blur"
+                  >
+                    <span className="font-[family-name:var(--font-corporate-display)] text-base font-normal leading-none tracking-tight text-secondary">
+                      {value}
+                    </span>
+                    {labelText}
+                  </li>
                 );
               })}
             </ul>
-
-            <div
-              className={`${styles.reveal} mt-9`}
-              style={{ "--reveal-delay": "380ms" } as React.CSSProperties}
-            >
-              <a
-                href={buildWhatsAppUrl(t("whatsappPrefill"))}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 rounded-full bg-secondary px-6 py-3 text-sm font-semibold tracking-wide text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-              >
-                <MessageCircle className="size-4" strokeWidth={1.75} aria-hidden="true" />
-                {t("ctaAdvisor")}
-              </a>
-            </div>
           </div>
 
           <div
             className={`${styles.reveal} relative lg:col-span-6`}
             style={{ "--reveal-delay": "260ms" } as React.CSSProperties}
           >
-            <div className={`${styles.card} relative mx-auto aspect-[9/16] w-full max-w-[320px] overflow-hidden rounded-[1.75rem] border border-white/12 bg-black sm:max-w-[360px]`}>
+            <div
+              className={`${styles.card} relative mx-auto aspect-video w-full max-w-[560px] overflow-hidden rounded-[1.75rem] border border-white/12 bg-black lg:max-w-none`}
+            >
               <video
                 ref={videoRef}
-                src="/videos/hub-corporativo.mp4"
+                src="/videos/corporativo-A.mp4"
                 muted={isMuted}
                 loop
                 playsInline
@@ -154,7 +141,10 @@ export function CorporateSolution() {
                 )}
               </button>
               <span className="pointer-events-none absolute right-4 bottom-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[0.62rem] font-semibold tracking-[0.22em] text-white uppercase backdrop-blur sm:right-6 sm:bottom-6">
-                <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
+                <span
+                  className="size-1.5 rounded-full bg-primary"
+                  aria-hidden="true"
+                />
                 {t("videoBadge")}
               </span>
             </div>
@@ -167,7 +157,11 @@ export function CorporateSolution() {
             style={{ "--reveal-delay": "440ms" } as React.CSSProperties}
           >
             <p className="flex items-center gap-2 text-[0.65rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
-              <Building2 className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
+              <Building2
+                className="size-3.5"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
               {t("zentraEyebrow")}
             </p>
             <h3 className="mt-4 font-[family-name:var(--font-corporate-display)] text-2xl font-light leading-tight text-secondary tracking-tight text-balance sm:text-[1.85rem]">
@@ -176,16 +170,25 @@ export function CorporateSolution() {
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               {t("zentraLead")}
             </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2" style={{ whiteSpace: "pre-line" }}>
+            <ul
+              className="mt-6 grid gap-3 sm:grid-cols-2"
+              style={{ whiteSpace: "pre-line" }}
+            >
               {corporateSolutionZentraFeatures.map(({ icon: Icon, label }) => {
                 const labelText = pick(label, locale);
                 return (
-                <li key={labelText} className="flex items-start gap-3 text-sm text-secondary">
-                  <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-primary/15 text-secondary" aria-hidden="true">
-                    <Icon className="size-4" strokeWidth={1.75} />
-                  </span>
-                  {labelText}
-                </li>
+                  <li
+                    key={labelText}
+                    className="flex items-start gap-3 text-sm text-secondary"
+                  >
+                    <span
+                      className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-primary/15 text-secondary"
+                      aria-hidden="true"
+                    >
+                      <Icon className="size-4" strokeWidth={1.75} />
+                    </span>
+                    {labelText}
+                  </li>
                 );
               })}
             </ul>
@@ -196,7 +199,11 @@ export function CorporateSolution() {
             style={{ "--reveal-delay": "520ms" } as React.CSSProperties}
           >
             <p className="flex items-center gap-2 text-[0.65rem] font-mono tracking-[0.22em] text-white/60 uppercase">
-              <Sparkles className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
+              <Sparkles
+                className="size-3.5"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
               {t("nexusEyebrow")}
             </p>
             <h3 className="mt-4 font-[family-name:var(--font-corporate-display)] text-2xl font-light leading-tight text-white tracking-tight text-balance sm:text-[1.85rem]">
@@ -205,16 +212,25 @@ export function CorporateSolution() {
             <p className="mt-4 text-sm leading-relaxed text-white/75">
               {t("nexusLead")}
             </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2" style={{ whiteSpace: "pre-line" }}>
+            <ul
+              className="mt-6 grid gap-3 sm:grid-cols-2"
+              style={{ whiteSpace: "pre-line" }}
+            >
               {corporateSolutionNexusFeatures.map(({ icon: Icon, label }) => {
                 const labelText = pick(label, locale);
                 return (
-                <li key={labelText} className="flex items-start gap-3 text-sm text-white/90">
-                  <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-primary/25 text-primary" aria-hidden="true">
-                    <Icon className="size-4" strokeWidth={1.75} />
-                  </span>
-                  {labelText}
-                </li>
+                  <li
+                    key={labelText}
+                    className="flex items-start gap-3 text-sm text-white/90"
+                  >
+                    <span
+                      className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-primary/25 text-primary"
+                      aria-hidden="true"
+                    >
+                      <Icon className="size-4" strokeWidth={1.75} />
+                    </span>
+                    {labelText}
+                  </li>
                 );
               })}
             </ul>

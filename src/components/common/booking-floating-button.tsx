@@ -6,6 +6,7 @@ import * as React from "react";
 import { useTranslations } from "next-intl";
 import { CalendarCheck } from "lucide-react";
 
+import { usePathname } from "@/i18n/navigation";
 import { bookingLinkProps } from "@/lib/booking";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +16,7 @@ const IDLE_BETWEEN_CYCLES = 6000;
 
 export function BookingFloatingButton() {
   const t = useTranslations("common.bookingFloat");
+  const pathname = usePathname();
   const [autoExpanded, setAutoExpanded] = React.useState(false);
   const [interacting, setInteracting] = React.useState(false);
 
@@ -40,6 +42,9 @@ export function BookingFloatingButton() {
   }, []);
 
   const expanded = autoExpanded || interacting;
+
+  // En la landing corporativa se sustituye por el botón "Hablar con un asesor".
+  if (pathname === "/empresa") return null;
 
   return (
     <a

@@ -56,7 +56,7 @@ export async function CorporateGallery() {
               className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.3rem,5vw,4rem)]"
             >
               {t("titleA")}{" "}
-              <span className="italic font-normal text-secondary/90">{t("titleEmphasis")}</span>
+              <span className="italic font-normal text-primary/90">{t("titleEmphasis")}</span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
               {t("lead")}
@@ -104,8 +104,8 @@ export async function CorporateGallery() {
                   />
 
                   <div className="flex items-start justify-between gap-3">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] text-primary-foreground uppercase shadow-card">
-                      <span className="size-1.5 rounded-full bg-primary-foreground" aria-hidden="true" />
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] text-primary-foreground uppercase shadow-card">
+                      <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
                       {(index + 1).toString().padStart(2, "0")} · {item.brand}
                     </span>
                   </div>

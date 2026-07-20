@@ -41,7 +41,7 @@ export async function CorporateLocations() {
               className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.4rem,5.2vw,4.2rem)]"
             >
               {t("titleA")}{" "}
-              <span className="italic font-normal text-secondary/90">
+              <span className="italic font-normal text-primary/90">
                 {t("titleEmphasis")}
               </span>
             </h2>
@@ -89,7 +89,7 @@ export async function CorporateLocations() {
                       aria-hidden="true"
                     />
                     <span
-                      className={`absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full ${background}/95 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] ${text} uppercase shadow-card backdrop-blur`}
+                      className={`absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full ${background} px-3 py-1 text-[0.65rem] font-semibold tracking-[0.18em] ${text} uppercase shadow-card backdrop-blur`}
                     >
                       <span
                         className="size-1.5 rounded-full bg-primary"

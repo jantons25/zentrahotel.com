@@ -282,17 +282,16 @@
       "nexusLead": "Tu equipo trabaja con las mismas herramientas que en la oficina central, sin interrupciones. Un solo punto de contacto, operación sin fricciones."
     },
     "plans": {
-      "eyebrow": "Oficinas virtuales",
-      "titleA": "Tu dirección fiscal",
-      "titleEmphasis": "en Chiclayo.",
-      "lead": "Presencia empresarial sin oficina física. Correspondencia gestionada, notificación de visitas y dirección válida para SUNAT — todo bajo tu marca.",
+      "eyebrow": "Niveles de convenio",
+      "titleA": "Un convenio que escala",
+      "titleEmphasis": "con tu operación.",
+      "lead": "Cuatro niveles según cuántas personas viajan cada mes. Mientras más crece tu equipo, mejores condiciones y más servicios incluidos.",
       "ctaAdvisor": "Hablar con un asesor",
       "whatsappPrefill": "Hola, quiero información sobre el convenio corporativo Zentra Hotel & Cowork.",
-      "featuredBadge": "El más elegido",
-      "priceLabel": "Promo mensual",
-      "ctaPlan": "Consultar por WhatsApp",
-      "ctaPlanAria": "Consultar por WhatsApp sobre el {plan}",
-      "whatsappPlanPrefill": "Hola, quiero información sobre el {plan} de oficina virtual (S/ {price} al mes)."
+      "cardEyebrow": "Nivel",
+      "ctaPlan": "Solicitar este nivel",
+      "ctaPlanAria": "Solicitar información sobre el {plan}",
+      "whatsappPlanPrefill": "Hola, quiero información sobre el {plan} del convenio corporativo Zentra Hotel & Cowork."
     },
     "sectors": {
       "eyebrow": "Empresas que confían en nosotros",
@@ -328,8 +327,13 @@
     },
     "cta": {
       "srTitle": "Solicita tu convenio corporativo",
-      "formTitle": "Comienza aquí tu convenio empresarial.",
+      "formTitle": "Consulta sobre nuestro convenio empresarial.",
       "formLead": "Datos básicos para armar la propuesta. Todo lo demás lo conversamos por WhatsApp."
+    },
+    "advisorFloat": {
+      "aria": "Hablar con un asesor por WhatsApp",
+      "label": "Hablar con un asesor",
+      "prefill": "Hola, quiero hablar con un asesor sobre el convenio corporativo Zentra Hotel & Cowork."
     },
     "form": {
       "aside": {

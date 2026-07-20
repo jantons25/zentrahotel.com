@@ -4,10 +4,16 @@
 import { useTranslations } from "next-intl";
 import { MessageCircle } from "lucide-react";
 
+import { usePathname } from "@/i18n/navigation";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export function WhatsAppButton() {
   const t = useTranslations("common.whatsapp");
+  const pathname = usePathname();
+
+  // En la landing corporativa se sustituye por el botón "Hablar con un asesor".
+  if (pathname === "/empresa") return null;
+
   return (
     <a
       href={buildWhatsAppUrl(t("prefill"))}

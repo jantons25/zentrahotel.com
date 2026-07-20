@@ -15,12 +15,15 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { mainNav, siteConfig } from "@/config/site";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { bookingLinkProps } from "@/lib/booking";
 
 export function MobileNav() {
   const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  // En la landing corporativa el CTA "Reservar" cede su lugar al asesor B2B.
+  const isCorporate = pathname === "/empresa";
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -65,17 +68,19 @@ export function MobileNav() {
               </span>
             </Link>
           ))}
-          <a
-            {...bookingLinkProps}
-            className="group mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-xs font-semibold tracking-[0.18em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-          >
-            {t("reservarAhora")}
-            <ArrowUpRight
-              className="size-3.5 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
-              strokeWidth={2}
-              aria-hidden="true"
-            />
-          </a>
+          {!isCorporate && (
+            <a
+              {...bookingLinkProps}
+              className="group mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-xs font-semibold tracking-[0.18em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+            >
+              {t("reservarAhora")}
+              <ArrowUpRight
+                className="size-3.5 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
+                strokeWidth={2}
+                aria-hidden="true"
+              />
+            </a>
+          )}
           <div className="mt-6 flex items-center gap-3 border-t border-white/10 pt-5 [&_button]:text-white/80 [&_button]:hover:text-white [&_svg]:text-white/70">
             <LanguageSelector />
           </div>

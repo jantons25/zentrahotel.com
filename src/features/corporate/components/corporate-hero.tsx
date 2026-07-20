@@ -1,7 +1,7 @@
 // Hero corporativo: foto de Nexus Cowork detrás, capa oscura al 50% y statement editorial.
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
-import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Download, MessageCircle } from "lucide-react";
 
 import { fontCorporateDisplay } from "@/features/corporate/config/corporate-fonts";
 import { corporateHeroKpis } from "@/features/corporate/data/corporate";
@@ -31,7 +31,7 @@ export async function CorporateHero() {
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-secondary/15 via-transparent to-secondary/30" aria-hidden="true" />
       <div className={styles.auroraOne} aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 pt-32 pb-12 sm:px-6 md:pt-40 md:pb-16 lg:px-8 lg:pt-44 lg:pb-20">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 pt-32 pb-12 sm:px-6 md:pt-40 md:pb-16 lg:min-h-[calc(100vh-2rem)] lg:justify-between lg:px-8 lg:pt-44 lg:pb-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-16">
           <div className="lg:col-span-8">
             <p
@@ -73,15 +73,7 @@ export async function CorporateHero() {
                 />
               </a>
 
-              <a
-                href={buildWhatsAppUrl(t("whatsappPrefill"))}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none"
-              >
-                <MessageCircle className="size-4" strokeWidth={1.75} aria-hidden="true" />
-                {t("ctaAdvisor")}
-              </a>
+              
             </div>
           </div>
         </div>
@@ -91,7 +83,7 @@ export async function CorporateHero() {
           style={{ "--reveal-delay": "440ms" } as React.CSSProperties}
           aria-label={t("kpisAria")}
         >
-          {corporateHeroKpis.map(({ icon: Icon, label }) => {
+          {corporateHeroKpis.map(({ icon: Icon, label, href }) => {
             const labelText = pick(label, locale);
             return (
             <li key={labelText} className="flex items-center gap-3">
@@ -102,9 +94,24 @@ export async function CorporateHero() {
                 <Icon className="size-4" strokeWidth={1.75} />
               </span>
               <div className="min-w-0">
-                <p className="font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-none text-secondary tracking-tight sm:text-2xl">
-                  {labelText}
-                </p>
+                {href ? (
+                  <a
+                    href={href}
+                    download
+                    className="group inline-flex items-center gap-2 font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-none text-secondary tracking-tight sm:text-2xl transition-colors duration-(--duration-normal) hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                  >
+                    {labelText}
+                    <Download
+                      className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-y-0.5 motion-reduce:transition-none"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                  </a>
+                ) : (
+                  <p className="font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-none text-secondary tracking-tight sm:text-2xl">
+                    {labelText}
+                  </p>
+                )}
               </div>
             </li>
             );

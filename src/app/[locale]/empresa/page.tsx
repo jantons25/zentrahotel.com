@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 
+import { CorporateAdvisorButton } from "@/features/corporate/components/corporate-advisor-button";
 import { CorporateBenefits } from "@/features/corporate/components/corporate-benefits";
 import { CorporateCta } from "@/features/corporate/components/corporate-cta";
 import { CorporateGallery } from "@/features/corporate/components/corporate-gallery";
@@ -42,6 +43,7 @@ export default async function EmpresaPage({ params }: Props) {
       <CorporatePlans />
       <CorporateVideo />
       <CorporateCta />
+      <CorporateAdvisorButton />
     </>
   );
 }

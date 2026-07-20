@@ -282,17 +282,16 @@
       "nexusLead": "Your team works with the same tools as at HQ, uninterrupted. A single point of contact, friction-free operation."
     },
     "plans": {
-      "eyebrow": "Virtual offices",
-      "titleA": "Your tax address",
-      "titleEmphasis": "in Chiclayo.",
-      "lead": "Business presence without a physical office. Managed mail, visitor notifications, and a SUNAT-valid address — all under your brand.",
+      "eyebrow": "Partnership tiers",
+      "titleA": "A partnership that scales",
+      "titleEmphasis": "with your operation.",
+      "lead": "Four tiers based on how many people travel each month. The more your team grows, the better the terms and the more services included.",
       "ctaAdvisor": "Talk to an advisor",
       "whatsappPrefill": "Hi, I'd like info on the Zentra Hotel & Cowork corporate agreement.",
-      "featuredBadge": "Most chosen",
-      "priceLabel": "Monthly promo",
-      "ctaPlan": "Ask on WhatsApp",
-      "ctaPlanAria": "Ask on WhatsApp about the {plan}",
-      "whatsappPlanPrefill": "Hi, I'd like info on the {plan} virtual office plan (S/ {price} per month)."
+      "cardEyebrow": "Tier",
+      "ctaPlan": "Request this tier",
+      "ctaPlanAria": "Request info about the {plan}",
+      "whatsappPlanPrefill": "Hi, I'd like info on the {plan} of the Zentra Hotel & Cowork corporate agreement."
     },
     "sectors": {
       "eyebrow": "Companies that trust us",
@@ -330,6 +329,11 @@
       "srTitle": "Request your corporate agreement",
       "formTitle": "Start your corporate agreement here.",
       "formLead": "Basics to build the proposal. Everything else, we sort out over WhatsApp."
+    },
+    "advisorFloat": {
+      "aria": "Talk to an advisor on WhatsApp",
+      "label": "Talk to an advisor",
+      "prefill": "Hi, I'd like to talk to an advisor about the Zentra Hotel & Cowork corporate agreement."
     },
     "form": {
       "aside": {

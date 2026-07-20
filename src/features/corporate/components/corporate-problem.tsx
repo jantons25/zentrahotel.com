@@ -12,6 +12,8 @@ import styles from "./corporate.module.css";
 export async function CorporateProblem() {
   const t = await getTranslations("corporate.problem");
   const locale = await getLocale();
+  const ciudad = "Chiclayo"
+  const [antes, despues] = t("title").split(ciudad);
 
   return (
     <Section
@@ -35,9 +37,11 @@ export async function CorporateProblem() {
           </p>
           <h2
             id="problema-titulo"
-            className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.98] tracking-[-0.02em] text-white text-balance text-[clamp(2.3rem,5vw,4rem)]"
+            className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.98] tracking-[-0.02em] text-balance text-[clamp(2.3rem,5vw,4rem)]"
           >
-            {t("title")}
+            <span className="text-white">{antes}</span>
+            <span className="text-primary">{ciudad}</span>
+            <span className="text-white">{despues}</span>
           </h2>
           <p className="mt-5 text-[0.95rem] leading-relaxed text-white/70">{t("lead")}</p>
         </header>
@@ -58,12 +62,12 @@ export async function CorporateProblem() {
               >
                 <div className="flex items-start justify-between gap-3">
                   <span
-                    className={`${styles.iconChip} grid size-11 place-items-center rounded-xl bg-secondary/15 text-secondary`}
+                    className={`${styles.iconChip} grid size-11 place-items-center rounded-xl bg-primary/15 text-secondary`}
                     aria-hidden="true"
                   >
                     <Icon className="size-5" strokeWidth={1.75} />
                   </span>
-                  <span className="font-[family-name:var(--font-corporate-display)] text-3xl font-light leading-none text-secondary/85 tracking-tight">
+                  <span className="font-[family-name:var(--font-corporate-display)] text-3xl font-light leading-none text-primary/85 tracking-tight">
                     {number}
                   </span>
                 </div>

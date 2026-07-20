@@ -40,7 +40,9 @@ export async function LocationSection() {
               className="mt-6 font-[family-name:var(--font-location-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
             >
               {t("titleA")}{" "}
-              <span className="italic font-normal text-white/90">{t("titleEmphasis")}</span>
+              <span className="italic font-normal text-primary/90">
+                {t("titleEmphasis")}
+              </span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/70">
               {t("lead", {
@@ -66,54 +68,13 @@ export async function LocationSection() {
           </a>
         </header>
 
-        <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">
-          {locationHighlights.map(
-            ({ icon: Icon, category, title, distance, description }, index) => {
-              const titleText = pick(title, locale);
-              return (
-              <li
-                key={titleText}
-                className={styles.reveal}
-                style={
-                  {
-                    "--reveal-delay": `${120 + index * 80}ms`,
-                  } as React.CSSProperties
-                }
-              >
-                <article
-                  className={`${styles.card} group flex h-full flex-col rounded-[1.5rem] border border-white/12 bg-card p-6 shadow-card sm:p-7`}
-                >
-                  <span
-                    className={`${styles.iconWrap} grid size-12 place-items-center rounded-2xl bg-primary/15 text-secondary`}
-                    aria-hidden="true"
-                  >
-                    <Icon className="size-5" strokeWidth={1.75} />
-                  </span>
-                  <p className="mt-6 text-[0.68rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
-                    {(index + 1).toString().padStart(2, "0")} · {pick(category, locale)}
-                  </p>
-                  <h3 className="mt-2 font-[family-name:var(--font-location-display)] text-xl font-normal leading-tight text-secondary tracking-tight text-balance sm:text-[1.5rem]">
-                    {titleText}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {pick(description, locale)}
-                  </p>
-                  <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-primary uppercase tracking-[0.16em]">
-                    <MapPin className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
-                    {pick(distance, locale)}
-                  </p>
-                </article>
-              </li>
-              );
-            },
-          )}
-        </ul>
-
         <div
           className={`${styles.reveal} mt-12 lg:mt-16`}
           style={{ "--reveal-delay": "460ms" } as React.CSSProperties}
         >
-          <div className={`${styles.mapCard} relative overflow-hidden rounded-[1.75rem] border border-white/12 bg-card shadow-card`}>
+          <div
+            className={`${styles.mapCard} relative overflow-hidden rounded-[1.75rem] border border-white/12 bg-card shadow-card`}
+          >
             <iframe
               src={siteConfig.contact.mapEmbedUrl}
               title={t("mapTitle", { brand: siteConfig.name })}
@@ -144,7 +105,11 @@ export async function LocationSection() {
 
                 <div className="flex items-center gap-2 text-xs text-secondary/70">
                   <span className="inline-flex items-center gap-1 text-primary">
-                    <Star className="size-3.5 fill-primary" strokeWidth={0} aria-hidden="true" />
+                    <Star
+                      className="size-3.5 fill-primary"
+                      strokeWidth={0}
+                      aria-hidden="true"
+                    />
                     <span className="font-semibold text-secondary">4.6</span>
                   </span>
                   <span aria-hidden="true">·</span>
@@ -168,6 +133,53 @@ export async function LocationSection() {
             </aside>
           </div>
         </div>
+        <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">
+          {locationHighlights.map(
+            ({ icon: Icon, category, title, distance, description }, index) => {
+              const titleText = pick(title, locale);
+              return (
+                <li
+                  key={titleText}
+                  className={styles.reveal}
+                  style={
+                    {
+                      "--reveal-delay": `${120 + index * 80}ms`,
+                    } as React.CSSProperties
+                  }
+                >
+                  <article
+                    className={`${styles.card} group flex h-full flex-col rounded-[1.5rem] border border-white/12 bg-card p-6 shadow-card sm:p-7`}
+                  >
+                    <span
+                      className={`${styles.iconWrap} grid size-12 place-items-center rounded-2xl bg-primary/15 text-secondary`}
+                      aria-hidden="true"
+                    >
+                      <Icon className="size-5" strokeWidth={1.75} />
+                    </span>
+                    <p className="mt-6 text-[0.68rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
+                      {(index + 1).toString().padStart(2, "0")} ·{" "}
+                      {pick(category, locale)}
+                    </p>
+                    <h3 className="mt-2 font-[family-name:var(--font-location-display)] text-xl font-normal leading-tight text-secondary tracking-tight text-balance sm:text-[1.5rem]">
+                      {titleText}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {pick(description, locale)}
+                    </p>
+                    <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-primary uppercase tracking-[0.16em]">
+                      <MapPin
+                        className="size-3.5"
+                        strokeWidth={1.75}
+                        aria-hidden="true"
+                      />
+                      {pick(distance, locale)}
+                    </p>
+                  </article>
+                </li>
+              );
+            },
+          )}
+        </ul>
       </Container>
     </Section>
   );

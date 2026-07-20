@@ -11,6 +11,7 @@ export const siteConfig = {
   contact: {
     phoneDisplay: "+51 924 048 177",
     whatsappNumber: "51924048177",
+    advisorWhatsappNumber: "51921597372",
     email: "zentra.hotel@gmail.com",
     addressBalta: "Calle Leoncio Prado 919",
     addressPlaza: "Calle Elias Aguire 520",

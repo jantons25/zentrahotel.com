@@ -37,13 +37,14 @@ export interface CorporateHeroKpi {
   label: LocalizedString;
   detail: LocalizedString;
   icon: LucideIcon;
+  href?: string;
 }
 
 export const corporateHeroKpis: readonly CorporateHeroKpi[] = [
   { label: { es: "3 hoteles", en: "3 hotels" }, detail: { es: "", en: "" }, icon: Building2 },
   { label: { es: "1 coworking", en: "1 coworking" }, detail: { es: "", en: "" }, icon: Handshake },
-  { label: { es: "Desayuno Buffet", en: "Buffet breakfast" }, detail: { es: "", en: "" }, icon: Timer },
-  { label: { es: "WiFi 5G", en: "5G Wi-Fi" }, detail: { es: "", en: "" }, icon: Wifi },
+  { label: { es: "Tarifas Corporativas", en: "Corporate Rates" }, detail: { es: "", en: "" }, icon: Wifi },
+  { label: { es: "Brochure", en: "Brochure" }, detail: { es: "", en: "" }, icon: Timer, href: "/docs/Brochure%20Zentra%20General.pdf" }
 ] as const;
 
 export interface CorporateLocation {
@@ -395,9 +396,7 @@ export const corporateGallery: CorporateGalleryItem[] = [
 export interface CorporatePlan {
   number: string;
   name: LocalizedString;
-  durationBadge: LocalizedString;
-  priceCurrent: string;
-  priceOriginal: string;
+  rangeBadge: LocalizedString;
   features: LocalizedString[];
   featured?: boolean;
 }
@@ -405,80 +404,47 @@ export interface CorporatePlan {
 export const corporatePlans: readonly CorporatePlan[] = [
   {
     number: "01",
-    name: { es: "Plan Emprendimiento", en: "Startup Plan" },
-    durationBadge: { es: "3 meses", en: "3 months" },
-    priceCurrent: "150",
-    priceOriginal: "180",
+    name: { es: "Nivel Operativo", en: "Operational Tier" },
+    rangeBadge: { es: "1–5 personas/mes", en: "1–5 people/mo" },
     features: [
-      { es: "Dirección comercial", en: "Business address" },
-      {
-        es: "Gestión de correspondencia: recepción, escaneo y envío digital de documentos",
-        en: "Mail management: receiving, scanning, and digital forwarding of documents",
-      },
-      {
-        es: "Registro y notificación de visitas vía WhatsApp o email",
-        en: "Visitor logging and notifications via WhatsApp or email",
-      },
-      {
-        es: "Descuentos en salas de reuniones, oficinas privadas e impresiones",
-        en: "Discounts on meeting rooms, private offices, and printing",
-      },
+      { es: "Habitación ejecutiva", en: "Executive room" },
+      { es: "Desayuno incluido", en: "Breakfast included" },
+      { es: "1 factura mensual consolidada", en: "1 consolidated monthly invoice" },
     ],
   },
   {
     number: "02",
-    name: { es: "Plan Crecimiento", en: "Growth Plan" },
-    durationBadge: { es: "6 meses", en: "6 months" },
-    priceCurrent: "250",
-    priceOriginal: "280",
-    featured: true,
+    name: { es: "Nivel Equipo", en: "Team Tier" },
+    rangeBadge: { es: "6–15 personas/mes", en: "6–15 people/mo" },
     features: [
-      {
-        es: "Dirección comercial y fiscal válida para SUNAT",
-        en: "Business and tax address valid for SUNAT",
-      },
-      {
-        es: "Gestión de correspondencia: recepción, escaneo y envío digital de documentos",
-        en: "Mail management: receiving, scanning, and digital forwarding of documents",
-      },
-      {
-        es: "Registro y notificación de visitas vía WhatsApp o email",
-        en: "Visitor logging and notifications via WhatsApp or email",
-      },
-      {
-        es: "Descuentos en salas de reuniones, oficinas privadas e impresiones",
-        en: "Discounts on meeting rooms, private offices, and printing",
-      },
-      { es: "2 horas totales en Sala de Reuniones B", en: "2 total hours in Meeting Room B" },
+      { es: "Todo lo del Nivel Operativo", en: "Everything in the Operational Tier" },
+      { es: "Acceso a coworking compartido", en: "Access to shared coworking" },
+      { es: "Tarifa preferencial escalonada", en: "Tiered preferential rates" },
     ],
   },
   {
     number: "03",
-    name: { es: "Plan Prosperidad", en: "Prosperity Plan" },
-    durationBadge: { es: "6 meses", en: "6 months" },
-    priceCurrent: "380",
-    priceOriginal: "450",
+    name: { es: "Nivel Corporativo", en: "Corporate Tier" },
+    rangeBadge: { es: "16–40 personas/mes", en: "16–40 people/mo" },
     features: [
+      { es: "Todo lo del Nivel Equipo", en: "Everything in the Team Tier" },
       {
-        es: "Dirección comercial y fiscal válida para SUNAT",
-        en: "Business and tax address valid for SUNAT",
+        es: "Horas de sala de reuniones incluidas al mes",
+        en: "Meeting room hours included each month",
       },
-      {
-        es: "Gestión de correspondencia: recepción, escaneo y envío digital de documentos",
-        en: "Mail management: receiving, scanning, and digital forwarding of documents",
-      },
-      {
-        es: "Registro y notificación de visitas vía WhatsApp o email",
-        en: "Visitor logging and notifications via WhatsApp or email",
-      },
-      {
-        es: "Descuentos en salas de reuniones, oficinas privadas e impresiones",
-        en: "Discounts on meeting rooms, private offices, and printing",
-      },
-      {
-        es: "2 horas en Sala de Reuniones B + 12 horas de sala flex",
-        en: "2 hours in Meeting Room B + 12 hours in the flex room",
-      },
+      { es: "Prioridad de disponibilidad", en: "Priority availability" },
+    ],
+  },
+  {
+    number: "04",
+    name: { es: "Nivel Enterprise", en: "Enterprise Tier" },
+    rangeBadge: { es: "+40 personas/mes", en: "40+ people/mo" },
+    featured: true,
+    features: [
+      { es: "Oficina privada en Nexus Cowork", en: "Private office at Nexus Cowork" },
+      { es: "Ejecutivo de cuenta dedicado", en: "Dedicated account executive" },
+      { es: "SLA de respuesta garantizado", en: "Guaranteed response SLA" },
+      { es: "Condiciones a medida", en: "Tailored terms" },
     ],
   },
 ] as const;
