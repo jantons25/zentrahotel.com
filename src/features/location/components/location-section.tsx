@@ -1,5 +1,5 @@
 // Sección de ubicación: cards de ventajas cercanas + mapa embebido con panel de dirección.
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight, MapPin, Star } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -7,20 +7,22 @@ import { Section } from "@/components/common/section";
 import { fontLocationDisplay } from "@/features/location/config/location-fonts";
 import { locationHighlights } from "@/features/location/data/location-highlights";
 import { siteConfig } from "@/config/site";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./location-section.module.css";
 
 export async function LocationSection() {
   const t = await getTranslations("home.location");
+  const locale = await getLocale();
   const total = locationHighlights.length;
 
   return (
     <Section
       aria-labelledby="ubicacion-titulo"
-      className={`${fontLocationDisplay.variable} relative overflow-hidden bg-[color-mix(in_oklab,var(--accent)_65%,white)]`}
+      className={`${fontLocationDisplay.variable} relative overflow-hidden bg-secondary text-secondary-foreground`}
     >
       <div
-        className="pointer-events-none absolute -top-32 -right-24 size-[26rem] rounded-full bg-primary/10 blur-3xl"
+        className="pointer-events-none absolute -top-32 -right-24 size-[26rem] rounded-full bg-primary/20 blur-3xl"
         aria-hidden="true"
       />
       <Container className="relative">
@@ -29,18 +31,18 @@ export async function LocationSection() {
           style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
         >
           <div className="max-w-2xl">
-            <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
-              <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
+            <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-white/60 uppercase">
+              <span className="h-px w-8 bg-white/30" aria-hidden="true" />
               {t("eyebrow")} · {total.toString().padStart(2, "0")}
             </p>
             <h2
               id="ubicacion-titulo"
-              className="mt-6 font-[family-name:var(--font-location-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
+              className="mt-6 font-[family-name:var(--font-location-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
             >
               {t("titleA")}{" "}
-              <span className="italic font-normal text-secondary/90">{t("titleEmphasis")}</span>
+              <span className="italic font-normal text-white/90">{t("titleEmphasis")}</span>
             </h2>
-            <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
+            <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/70">
               {t("lead", {
                 balta: siteConfig.contact.addressBalta,
                 plaza: siteConfig.contact.addressPlaza,
@@ -53,7 +55,7 @@ export async function LocationSection() {
             href={siteConfig.contact.mapShareUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-secondary/30 bg-transparent px-6 py-3 text-sm font-semibold tracking-wide text-secondary uppercase transition-colors duration-(--duration-normal) hover:bg-secondary hover:text-secondary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none md:self-auto"
+            className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase backdrop-blur-md transition-colors duration-(--duration-normal) hover:bg-white hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none md:self-auto"
           >
             {t("ctaDirections")}
             <ArrowUpRight
@@ -66,9 +68,11 @@ export async function LocationSection() {
 
         <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">
           {locationHighlights.map(
-            ({ icon: Icon, category, title, distance, description }, index) => (
+            ({ icon: Icon, category, title, distance, description }, index) => {
+              const titleText = pick(title, locale);
+              return (
               <li
-                key={title}
+                key={titleText}
                 className={styles.reveal}
                 style={
                   {
@@ -77,7 +81,7 @@ export async function LocationSection() {
                 }
               >
                 <article
-                  className={`${styles.card} group flex h-full flex-col rounded-[1.5rem] border border-secondary/10 bg-card p-6 shadow-card sm:p-7`}
+                  className={`${styles.card} group flex h-full flex-col rounded-[1.5rem] border border-white/12 bg-card p-6 shadow-card sm:p-7`}
                 >
                   <span
                     className={`${styles.iconWrap} grid size-12 place-items-center rounded-2xl bg-primary/15 text-secondary`}
@@ -86,21 +90,22 @@ export async function LocationSection() {
                     <Icon className="size-5" strokeWidth={1.75} />
                   </span>
                   <p className="mt-6 text-[0.68rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
-                    {(index + 1).toString().padStart(2, "0")} · {category}
+                    {(index + 1).toString().padStart(2, "0")} · {pick(category, locale)}
                   </p>
                   <h3 className="mt-2 font-[family-name:var(--font-location-display)] text-xl font-normal leading-tight text-secondary tracking-tight text-balance sm:text-[1.5rem]">
-                    {title}
+                    {titleText}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {description}
+                    {pick(description, locale)}
                   </p>
                   <p className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-primary uppercase tracking-[0.16em]">
                     <MapPin className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
-                    {distance}
+                    {pick(distance, locale)}
                   </p>
                 </article>
               </li>
-            ),
+              );
+            },
           )}
         </ul>
 
@@ -108,7 +113,7 @@ export async function LocationSection() {
           className={`${styles.reveal} mt-12 lg:mt-16`}
           style={{ "--reveal-delay": "460ms" } as React.CSSProperties}
         >
-          <div className={`${styles.mapCard} relative overflow-hidden rounded-[1.75rem] border border-secondary/10 bg-card shadow-card`}>
+          <div className={`${styles.mapCard} relative overflow-hidden rounded-[1.75rem] border border-white/12 bg-card shadow-card`}>
             <iframe
               src={siteConfig.contact.mapEmbedUrl}
               title={t("mapTitle", { brand: siteConfig.name })}

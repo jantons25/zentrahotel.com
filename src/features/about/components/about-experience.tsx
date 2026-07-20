@@ -1,6 +1,6 @@
 // "Cómo hospedarte en 4 pasos": imagen editorial a la izquierda, lista numerada a la derecha.
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -8,11 +8,13 @@ import { Section } from "@/components/common/section";
 import { fontAboutDisplay } from "@/features/about/config/about-fonts";
 import { aboutSteps } from "@/features/about/data/about";
 import { siteConfig } from "@/config/site";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./about.module.css";
 
 export async function AboutExperience() {
   const t = await getTranslations("about.experience");
+  const locale = await getLocale();
 
   return (
     <Section
@@ -76,7 +78,9 @@ export async function AboutExperience() {
             </p>
 
             <ol className="mt-10 flex flex-col gap-6 sm:gap-7">
-              {aboutSteps.map(({ number, icon: Icon, title, description }, index) => (
+              {aboutSteps.map(({ number, icon: Icon, title, description }, index) => {
+                const titleText = pick(title, locale);
+                return (
                 <li
                   key={number}
                   className={`${styles.reveal} relative`}
@@ -98,17 +102,18 @@ export async function AboutExperience() {
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-3">
                         <h3 className="font-[family-name:var(--font-about-display)] text-xl font-normal leading-tight text-secondary tracking-tight text-balance sm:text-[1.35rem]">
-                          {title}
+                          {titleText}
                         </h3>
                         <Icon className="hidden size-4 text-secondary/60 sm:block" strokeWidth={1.75} aria-hidden="true" />
                       </div>
                       <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
-                        {description}
+                        {pick(description, locale)}
                       </p>
                     </div>
                   </article>
                 </li>
-              ))}
+                );
+              })}
             </ol>
 
             <div

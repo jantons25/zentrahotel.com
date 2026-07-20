@@ -1,17 +1,19 @@
 // Hero editorial de la página Nosotros: photo backdrop navy + statement + barra de KPIs.
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 
 import { fontAboutDisplay } from "@/features/about/config/about-fonts";
 import { aboutHeroBadges, aboutStats } from "@/features/about/data/about";
 import { siteConfig } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./about.module.css";
 
 export async function AboutHero() {
   const t = await getTranslations("about.hero");
+  const locale = await getLocale();
 
   return (
     <section
@@ -62,15 +64,18 @@ export async function AboutHero() {
               style={{ "--reveal-delay": "320ms" } as React.CSSProperties}
               aria-label={t("badgesAria")}
             >
-              {aboutHeroBadges.map(({ icon: Icon, label }) => (
+              {aboutHeroBadges.map(({ icon: Icon, label }) => {
+                const labelText = pick(label, locale);
+                return (
                 <li
-                  key={label}
+                  key={labelText}
                   className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white/90 backdrop-blur"
                 >
                   <Icon className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
-                  {label}
+                  {labelText}
                 </li>
-              ))}
+                );
+              })}
             </ul>
 
             <div
@@ -105,16 +110,19 @@ export async function AboutHero() {
           style={{ "--reveal-delay": "520ms" } as React.CSSProperties}
           aria-label={t("statsAria")}
         >
-          {aboutStats.map(({ value, label }) => (
-            <li key={label} className="flex flex-col gap-1">
+          {aboutStats.map(({ value, label }) => {
+            const labelText = pick(label, locale);
+            return (
+            <li key={labelText} className="flex flex-col gap-1">
               <p className="font-[family-name:var(--font-about-display)] text-3xl font-normal leading-none text-secondary tracking-tight sm:text-4xl">
                 {value}
               </p>
               <p className="text-[0.75rem] leading-snug text-secondary/70 sm:text-sm">
-                {label}
+                {labelText}
               </p>
             </li>
-          ))}
+            );
+          })}
         </ul>
       </div>
     </section>

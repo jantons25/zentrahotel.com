@@ -1,6 +1,6 @@
 // Sección "habitaciones": bento grid editorial en fondo oscuro con tarjetas de habitación.
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight, BedDouble, Users } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -9,6 +9,7 @@ import { fontShowcaseDisplay } from "@/features/rooms/config/showcase-fonts";
 import { featuredRooms as rooms } from "@/features/rooms/data/rooms";
 import { siteConfig } from "@/config/site";
 import { Link } from "@/i18n/navigation";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./rooms-showcase.module.css";
 
@@ -33,6 +34,7 @@ const bentoLayout: BentoLayout[] = [
 
 export async function RoomsShowcase() {
   const t = await getTranslations("home.roomsShowcase");
+  const locale = await getLocale();
   const total = rooms.length;
 
   return (
@@ -89,6 +91,7 @@ export async function RoomsShowcase() {
             const ctaLabel = room.bookable ? t("ctaBook") : t("ctaDetails");
             const ctaHref = room.bookable ? siteConfig.bookingUrl : "/habitaciones";
             const ctaExternal = room.bookable;
+            const roomName = pick(room.name, locale);
 
             return (
               <li
@@ -105,7 +108,7 @@ export async function RoomsShowcase() {
                 >
                   <Image
                     src={room.image}
-                    alt={room.imageAlt}
+                    alt={pick(room.imageAlt, locale)}
                     fill
                     loading="lazy"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1440px) 40vw, 33vw"
@@ -129,7 +132,7 @@ export async function RoomsShowcase() {
 
                   <div>
                     <h3 className="font-[family-name:var(--font-showcase-display)] text-2xl font-light leading-tight tracking-tight text-balance sm:text-[1.9rem] lg:text-[2.05rem]">
-                      {room.name}
+                      {roomName}
                     </h3>
                     <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/80">
                       {t(layout.taglineKey)}
@@ -139,13 +142,13 @@ export async function RoomsShowcase() {
                       <div className="flex items-center gap-1.5">
                         <Users className="size-3.5 text-white/60" strokeWidth={1.75} aria-hidden="true" />
                         <dt className="sr-only">Capacidad</dt>
-                        <dd>{room.capacity}</dd>
+                        <dd>{pick(room.capacity, locale)}</dd>
                       </div>
                       <span className="text-white/30" aria-hidden="true">·</span>
                       <div className="flex items-center gap-1.5">
                         <BedDouble className="size-3.5 text-white/60" strokeWidth={1.75} aria-hidden="true" />
                         <dt className="sr-only">Cama</dt>
-                        <dd>{room.detail}</dd>
+                        <dd>{pick(room.detail, locale)}</dd>
                       </div>
                     </dl>
 
@@ -153,7 +156,7 @@ export async function RoomsShowcase() {
                       href={ctaHref}
                       target={ctaExternal ? "_blank" : undefined}
                       rel={ctaExternal ? "noopener noreferrer" : undefined}
-                      aria-label={t("ctaAria", { action: ctaLabel, room: room.name })}
+                      aria-label={t("ctaAria", { action: ctaLabel, room: roomName })}
                       className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                     >
                       {ctaLabel}

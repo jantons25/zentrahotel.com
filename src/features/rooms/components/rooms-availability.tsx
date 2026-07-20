@@ -1,6 +1,6 @@
 // Sección "Reserva tu habitación": grid editorial de habitaciones reservables.
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight, BedDouble, Users } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -8,11 +8,13 @@ import { Section } from "@/components/common/section";
 import { fontAvailabilityDisplay } from "@/features/rooms/config/availability-fonts";
 import { featuredRooms as rooms } from "@/features/rooms/data/rooms";
 import { siteConfig } from "@/config/site";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./rooms-availability.module.css";
 
 export async function RoomsAvailability() {
   const t = await getTranslations("home.availability");
+  const locale = await getLocale();
   const bookableRooms = rooms.filter((room) => room.bookable);
   const total = bookableRooms.length;
 
@@ -61,7 +63,9 @@ export async function RoomsAvailability() {
         </header>
 
         <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8">
-          {bookableRooms.map((room, index) => (
+          {bookableRooms.map((room, index) => {
+            const roomName = pick(room.name, locale);
+            return (
             <li
               key={room.slug}
               className={styles.reveal}
@@ -77,7 +81,7 @@ export async function RoomsAvailability() {
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-secondary/5">
                   <Image
                     src={room.image}
-                    alt={room.imageAlt}
+                    alt={pick(room.imageAlt, locale)}
                     fill
                     loading="lazy"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
@@ -101,19 +105,19 @@ export async function RoomsAvailability() {
                     {t("cardEyebrow")} · {(index + 1).toString().padStart(2, "0")}
                   </p>
                   <h3 className="mt-2 font-[family-name:var(--font-availability-display)] text-2xl font-light leading-tight text-secondary tracking-tight text-balance sm:text-[1.7rem]">
-                    {room.name}
+                    {roomName}
                   </h3>
                   <dl className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1.5">
                       <Users className="size-4 text-secondary/60" strokeWidth={1.75} aria-hidden="true" />
                       <dt className="sr-only">Capacity</dt>
-                      <dd>{room.capacity}</dd>
+                      <dd>{pick(room.capacity, locale)}</dd>
                     </div>
                     <span className="text-secondary/25" aria-hidden="true">·</span>
                     <div className="flex items-center gap-1.5">
                       <BedDouble className="size-4 text-secondary/60" strokeWidth={1.75} aria-hidden="true" />
                       <dt className="sr-only">Bed</dt>
-                      <dd>{room.detail}</dd>
+                      <dd>{pick(room.detail, locale)}</dd>
                     </div>
                   </dl>
 
@@ -123,7 +127,7 @@ export async function RoomsAvailability() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-sm font-semibold text-secondary transition-colors duration-(--duration-normal) hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none"
-                      aria-label={t("ctaAria", { room: room.name })}
+                      aria-label={t("ctaAria", { room: roomName })}
                     >
                       {t("ctaCheck")}
                       <ArrowUpRight
@@ -136,7 +140,8 @@ export async function RoomsAvailability() {
                 </div>
               </article>
             </li>
-          ))}
+            );
+          })}
         </ul>
       </Container>
     </Section>

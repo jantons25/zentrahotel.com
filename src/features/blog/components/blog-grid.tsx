@@ -1,4 +1,6 @@
 // Retícula de posts del diario (excluye el destacado) con reveal escalonado.
+import { getTranslations } from "next-intl/server";
+
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
 import { BlogCard } from "@/features/blog/components/blog-card";
@@ -10,7 +12,8 @@ interface BlogGridProps {
   posts: BlogPost[];
 }
 
-export function BlogGrid({ posts }: BlogGridProps) {
+export async function BlogGrid({ posts }: BlogGridProps) {
+  const t = await getTranslations("blog.grid");
   return (
     <Section
       aria-labelledby="reciente-titulo"
@@ -26,17 +29,14 @@ export function BlogGrid({ posts }: BlogGridProps) {
           <div>
             <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
               <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
-              Publicaciones recientes ·{" "}
-              {posts.length.toString().padStart(2, "0")}
+              {t("eyebrow")} · {posts.length.toString().padStart(2, "0")}
             </p>
             <h2
               id="reciente-titulo"
               className="mt-5 font-[family-name:var(--font-blog-display)] font-light leading-[0.98] tracking-[-0.02em] text-secondary text-balance text-[clamp(2rem,4.4vw,3.2rem)]"
             >
-              Lo último del{" "}
-              <span className="italic font-normal text-secondary/85">
-                diario.
-              </span>
+              {t("titleA")}{" "}
+              <span className="italic font-normal text-secondary/85">{t("titleEmphasis")}</span>
             </h2>
           </div>
         </header>

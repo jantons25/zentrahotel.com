@@ -1,16 +1,18 @@
 // "Por qué elegir Zentra": navy dark con 3 tarjetas serifadas siguiendo la estética corporativa.
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
 import { fontAboutDisplay } from "@/features/about/config/about-fonts";
 import { aboutValues } from "@/features/about/data/about";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./about.module.css";
 
 export async function AboutValues() {
   const t = await getTranslations("about.values");
+  const locale = await getLocale();
   const total = aboutValues.length;
 
   return (
@@ -56,9 +58,11 @@ export async function AboutValues() {
         </header>
 
         <ul className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3 lg:mt-16 lg:gap-6">
-          {aboutValues.map(({ icon: Icon, title, description }, index) => (
+          {aboutValues.map(({ icon: Icon, title, description }, index) => {
+            const titleText = pick(title, locale);
+            return (
             <li
-              key={title}
+              key={titleText}
               className={styles.reveal}
               style={
                 {
@@ -77,15 +81,16 @@ export async function AboutValues() {
                 </div>
                 <div>
                   <h3 className="font-[family-name:var(--font-about-display)] text-2xl font-normal leading-tight text-secondary tracking-tight text-balance sm:text-[1.55rem]">
-                    {title}
+                    {titleText}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-secondary/75">
-                    {description}
+                    {pick(description, locale)}
                   </p>
                 </div>
               </article>
             </li>
-          ))}
+            );
+          })}
         </ul>
       </Container>
     </Section>

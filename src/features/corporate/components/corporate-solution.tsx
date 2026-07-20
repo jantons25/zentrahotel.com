@@ -1,7 +1,8 @@
 "use client";
 
 // Solución: campo oliva con diagrama del hub (signature) + doble columna Zentra + Nexus.
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { pick } from "@/lib/i18n-pick";
 import {
   ArrowUpRight,
   Building2,
@@ -25,6 +26,7 @@ import styles from "./corporate.module.css";
 
 export function CorporateSolution() {
   const t = useTranslations("corporate.solution");
+  const locale = useLocale();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
 
@@ -92,17 +94,20 @@ export function CorporateSolution() {
               style={{ "--reveal-delay": "300ms" } as React.CSSProperties}
               aria-label={t("highlightsAria")}
             >
-              {corporateHubHighlights.map(({ value, label }) => (
+              {corporateHubHighlights.map(({ value, label }) => {
+                const labelText = pick(label, locale);
+                return (
                 <li
-                  key={label}
+                  key={labelText}
                   className="inline-flex items-center gap-2 rounded-full border border-secondary/25 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-secondary backdrop-blur"
                 >
                   <span className="font-[family-name:var(--font-corporate-display)] text-base font-normal leading-none tracking-tight text-secondary">
                     {value}
                   </span>
-                  {label}
+                  {labelText}
                 </li>
-              ))}
+                );
+              })}
             </ul>
 
             <div
@@ -172,14 +177,17 @@ export function CorporateSolution() {
               {t("zentraLead")}
             </p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2" style={{ whiteSpace: "pre-line" }}>
-              {corporateSolutionZentraFeatures.map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-start gap-3 text-sm text-secondary">
+              {corporateSolutionZentraFeatures.map(({ icon: Icon, label }) => {
+                const labelText = pick(label, locale);
+                return (
+                <li key={labelText} className="flex items-start gap-3 text-sm text-secondary">
                   <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-primary/15 text-secondary" aria-hidden="true">
                     <Icon className="size-4" strokeWidth={1.75} />
                   </span>
-                  {label}
+                  {labelText}
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </article>
 
@@ -198,14 +206,17 @@ export function CorporateSolution() {
               {t("nexusLead")}
             </p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2" style={{ whiteSpace: "pre-line" }}>
-              {corporateSolutionNexusFeatures.map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-start gap-3 text-sm text-white/90">
+              {corporateSolutionNexusFeatures.map(({ icon: Icon, label }) => {
+                const labelText = pick(label, locale);
+                return (
+                <li key={labelText} className="flex items-start gap-3 text-sm text-white/90">
                   <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-primary/25 text-primary" aria-hidden="true">
                     <Icon className="size-4" strokeWidth={1.75} />
                   </span>
-                  {label}
+                  {labelText}
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </article>
         </div>

@@ -1,27 +1,29 @@
-// Beneficios B2B: navy dark con 4 tarjetas serifadas y CTA integrado.
-import { getTranslations } from "next-intl/server";
+// Beneficios B2B: campo accent (cream) con 4 tarjetas serifadas y CTA integrado.
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
 import { fontCorporateDisplay } from "@/features/corporate/config/corporate-fonts";
 import { corporateBenefits } from "@/features/corporate/data/corporate";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./corporate.module.css";
 
 export async function CorporateBenefits() {
   const t = await getTranslations("corporate.benefits");
+  const locale = await getLocale();
   const total = corporateBenefits.length;
 
   return (
     <Section
       id="beneficios"
       aria-labelledby="beneficios-titulo"
-      className={`${fontCorporateDisplay.variable} ${styles.section} relative overflow-hidden bg-secondary text-secondary-foreground`}
+      className={`${fontCorporateDisplay.variable} ${styles.section} relative overflow-hidden bg-accent text-secondary`}
     >
       <div className={styles.auroraOne} aria-hidden="true" />
-      <div className={styles.auroraTwo} aria-hidden="true" />
-      <div className={styles.grain} aria-hidden="true" />
+      <div className={styles.auroraThree} aria-hidden="true" />
+      <div className={styles.grainDark} aria-hidden="true" />
 
       <Container className="relative">
         <header
@@ -29,25 +31,25 @@ export async function CorporateBenefits() {
           style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
         >
           <div className="max-w-2xl">
-            <p className="flex items-center gap-3 text-[0.8rem] font-semibold tracking-[0.28em] text-white/60 uppercase">
-              <span className="h-px w-8 bg-white/30" aria-hidden="true" />
+            <p className="flex items-center gap-3 text-[0.8rem] font-semibold tracking-[0.28em] text-secondary/60 uppercase">
+              <span className="h-px w-8 bg-secondary/30" aria-hidden="true" />
               {t("eyebrow")} · {total.toString().padStart(2, "0")}
             </p>
             <h2
               id="beneficios-titulo"
-              className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.3rem,5vw,4rem)]"
+              className="mt-6 font-[family-name:var(--font-corporate-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.3rem,5vw,4rem)]"
             >
               {t("titleA")}{" "}
-              <span className="italic font-normal text-primary">{t("titleEmphasis")}</span>
+              <span className="italic font-normal text-secondary/85">{t("titleEmphasis")}</span>
             </h2>
-            <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/70">
+            <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
               {t("lead")}
             </p>
           </div>
 
           <a
             href="#convenio"
-            className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none md:self-auto"
+            className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-secondary/20 bg-white px-6 py-3 text-sm font-semibold tracking-wide text-secondary uppercase transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none md:self-auto"
           >
             {t("ctaAdvisor")}
             <ArrowUpRight
@@ -69,7 +71,7 @@ export async function CorporateBenefits() {
                 } as React.CSSProperties
               }
             >
-              <article className={`${styles.card} ${styles.cardDark} group flex h-full flex-col gap-6 rounded-[1.5rem] border border-white/12 bg-white p-6 backdrop-blur sm:p-7`}>
+              <article className={`${styles.card} ${styles.cardDark} group flex h-full flex-col gap-6 rounded-[1.5rem] border border-secondary/15 bg-card p-6 shadow-card backdrop-blur sm:p-7`}>
                 <div className="flex items-baseline justify-between gap-3">
                   <span className="font-[family-name:var(--font-corporate-display)] text-4xl font-light leading-none text-secondary tracking-tight">
                     {number}
@@ -83,10 +85,10 @@ export async function CorporateBenefits() {
                 </div>
                 <div>
                   <h3 className="font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-tight text-secondary tracking-tight text-balance sm:text-[1.35rem]">
-                    {title}
+                    {pick(title, locale)}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-secondary/75">
-                    {description}
+                    {pick(description, locale)}
                   </p>
                 </div>
               </article>

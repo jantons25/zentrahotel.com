@@ -1,4 +1,4 @@
-// CTA final "Activa tu convenio": banner navy con aside + formulario en card cream.
+// CTA final "Activa tu convenio": banner accent (cream) con aside + formulario en card blanca.
 import { getTranslations } from "next-intl/server";
 
 import { Container } from "@/components/common/container";
@@ -18,7 +18,7 @@ export async function CorporateCta() {
     <Section
       id="convenio"
       aria-labelledby="convenio-titulo"
-      className={`${fontCorporateDisplay.variable} ${styles.section} relative overflow-hidden bg-[color-mix(in_oklab,var(--accent)_65%,white)]`}
+      className={`${fontCorporateDisplay.variable} ${styles.section} relative overflow-hidden bg-accent`}
     >
       <div
         className="pointer-events-none absolute -top-40 -right-32 size-[28rem] rounded-full bg-primary/10 blur-3xl"

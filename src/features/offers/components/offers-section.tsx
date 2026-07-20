@@ -9,6 +9,7 @@ import { CountdownBadge } from "@/features/offers/components/countdown-badge";
 import { coupons, featuredOffer } from "@/features/offers/data/offers";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { siteConfig } from "@/config/site";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./offers-section.module.css";
 
@@ -93,10 +94,10 @@ export async function OffersSection() {
               id="promocion-destacada"
               className="mt-5 font-[family-name:var(--font-offers-display)] text-3xl font-light leading-[1.05] text-secondary tracking-tight text-balance sm:text-[2.4rem] lg:text-[2.75rem]"
             >
-              {featuredOffer.highlight}
+              {pick(featuredOffer.highlight, locale)}
             </p>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">
-              {featuredOffer.description}
+              {pick(featuredOffer.description, locale)}
             </p>
 
             <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-dashed border-secondary/25 bg-primary p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
@@ -127,7 +128,7 @@ export async function OffersSection() {
               <TicketPercent className="mt-0.5 size-4 shrink-0 text-primary" strokeWidth={1.75} aria-hidden="true" />
               <p>
                 {t("featuredValidUntil", {
-                  title: featuredOffer.title,
+                  title: pick(featuredOffer.title, locale),
                   date: formatShortDate(featuredOffer.expiresAt, locale),
                 })}
               </p>
@@ -164,7 +165,7 @@ export async function OffersSection() {
                   </div>
 
                   <p className="font-[family-name:var(--font-offers-display)] text-xl font-normal leading-tight text-white tracking-tight text-balance sm:text-[1.35rem]">
-                    {coupon.description}
+                    {pick(coupon.description, locale)}
                   </p>
 
                   <div className="mt-1 rounded-xl border-2 border-dashed border-secondary bg-white px-4 py-3 text-center">

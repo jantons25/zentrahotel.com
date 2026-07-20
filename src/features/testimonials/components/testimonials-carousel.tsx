@@ -2,6 +2,7 @@
 
 // Carrusel interactivo de testimonios: 1/2/3 tarjetas visibles, dots + prev/next.
 import * as React from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 import {
@@ -12,6 +13,7 @@ import {
   useCarousel,
 } from "@/components/ui/carousel";
 import { testimonials } from "@/features/testimonials/data/testimonials";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./testimonials-section.module.css";
 
@@ -25,10 +27,11 @@ function initialsOf(name: string) {
 }
 
 function StarRating({ rating }: { rating: number }) {
+  const t = useTranslations("home.testimonials");
   return (
     <div
       role="img"
-      aria-label={`Calificación: ${rating} de 5 estrellas`}
+      aria-label={t("ratingAria", { rating })}
       className="flex gap-0.5"
     >
       {Array.from({ length: 5 }, (_, i) => (
@@ -54,13 +57,14 @@ function CarouselControls({
   current: number;
   total: number;
 }) {
+  const t = useTranslations("home.testimonials");
   const { scrollPrev, scrollNext, api } = useCarousel();
   return (
     <div className="mt-10 flex flex-col items-center gap-6">
       <div
         className="flex items-center gap-2"
         role="tablist"
-        aria-label="Testimonios disponibles"
+        aria-label={t("listAria")}
       >
         {Array.from({ length: total }, (_, i) => {
           const active = i === current;
@@ -70,7 +74,7 @@ function CarouselControls({
               type="button"
               role="tab"
               aria-selected={active}
-              aria-label={`Ir al testimonio ${i + 1} de ${total}`}
+              aria-label={t("goToAria", { current: i + 1, total })}
               onClick={() => api?.scrollTo(i)}
               className={
                 active
@@ -85,7 +89,7 @@ function CarouselControls({
         <button
           type="button"
           onClick={scrollPrev}
-          aria-label="Testimonio anterior"
+          aria-label={t("prevAria")}
           className="grid size-12 place-items-center rounded-full border border-white/25 bg-white/5 text-white transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-reduce:transition-none"
         >
           <ChevronLeft className="size-5" strokeWidth={1.75} />
@@ -93,7 +97,7 @@ function CarouselControls({
         <button
           type="button"
           onClick={scrollNext}
-          aria-label="Siguiente testimonio"
+          aria-label={t("nextAria")}
           className="grid size-12 place-items-center rounded-full border border-white/25 bg-white/5 text-white transition-colors duration-(--duration-normal) hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-reduce:transition-none"
         >
           <ChevronRight className="size-5" strokeWidth={1.75} />
@@ -104,6 +108,7 @@ function CarouselControls({
 }
 
 export function TestimonialsCarousel() {
+  const locale = useLocale();
   const [api, setApi] = React.useState<CarouselApi | null>(null);
   const [current, setCurrent] = React.useState(0);
 
@@ -150,7 +155,7 @@ export function TestimonialsCarousel() {
                   id={`testimonio-${index}`}
                   className="font-[family-name:var(--font-testimonials-display)] text-xl font-light leading-[1.35] text-secondary tracking-tight text-balance sm:text-[1.35rem]"
                 >
-                  {testimonial.quote}
+                  {pick(testimonial.quote, locale)}
                 </p>
               </blockquote>
 
@@ -166,7 +171,7 @@ export function TestimonialsCarousel() {
                     {testimonial.author}
                   </p>
                   <p className="text-[0.72rem] font-mono tracking-[0.2em] text-secondary/55 uppercase truncate">
-                    {testimonial.role}
+                    {pick(testimonial.role, locale)}
                   </p>
                 </div>
               </div>

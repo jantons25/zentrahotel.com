@@ -1,15 +1,17 @@
 // Problema: fondo navy con 4 costos ocultos numerados 01–04.
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
 import { fontCorporateDisplay } from "@/features/corporate/config/corporate-fonts";
 import { corporateProblems } from "@/features/corporate/data/corporate";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./corporate.module.css";
 
 export async function CorporateProblem() {
   const t = await getTranslations("corporate.problem");
+  const locale = await getLocale();
 
   return (
     <Section
@@ -66,10 +68,10 @@ export async function CorporateProblem() {
                   </span>
                 </div>
                 <h3 className="mt-6 font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-tight text-secondary tracking-tight text-balance sm:text-[1.35rem]">
-                  {title}
+                  {pick(title, locale)}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-secondary/70">
-                  {description}
+                  {pick(description, locale)}
                 </p>
               </article>
             </li>

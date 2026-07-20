@@ -4,7 +4,7 @@
 // columna editorial (título + copy + CTA + contador) y carrusel de tarjetas.
 import Image from "next/image";
 import * as React from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 import { Link } from "@/i18n/navigation";
@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import { travelerTypes } from "@/features/home/data/travelers";
+import { pick } from "@/lib/i18n-pick";
 
 function CarouselNav() {
   const t = useTranslations("home.traveler");
@@ -50,6 +51,7 @@ const total = travelerTypes.length;
 
 export function TravelerCarousel() {
   const t = useTranslations("home.traveler");
+  const locale = useLocale();
   const [api, setApi] = React.useState<CarouselApi | null>(null);
   const [current, setCurrent] = React.useState(0);
 
@@ -116,7 +118,7 @@ export function TravelerCarousel() {
               / {format(total)}
             </span>
             <span className="ml-auto uppercase tracking-[0.24em]">
-              {travelerTypes[current]?.tag}
+              {travelerTypes[current]?.tag && pick(travelerTypes[current].tag, locale)}
             </span>
           </div>
           <div className="relative mt-4 h-px w-full bg-secondary/15">
@@ -139,9 +141,10 @@ export function TravelerCarousel() {
             {travelerTypes.map(
               ({ title, description, icon: Icon, image, imageAlt, tag }, index) => {
                 const active = index === current;
+                const titleText = pick(title, locale);
                 return (
                   <CarouselItem
-                    key={title}
+                    key={titleText}
                     className="pl-4 md:pl-6 basis-[78%] sm:basis-[46%] lg:basis-[42%] xl:basis-[38%]"
                   >
                     <article
@@ -152,7 +155,7 @@ export function TravelerCarousel() {
                     >
                       <Image
                         src={image}
-                        alt={imageAlt}
+                        alt={pick(imageAlt, locale)}
                         fill
                         loading="lazy"
                         sizes="(max-width: 640px) 80vw, (max-width: 1024px) 46vw, 32vw"
@@ -165,7 +168,7 @@ export function TravelerCarousel() {
 
                       <div className="flex items-start justify-between">
                         <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[0.68rem] font-semibold tracking-[0.18em] uppercase backdrop-blur">
-                          {tag}
+                          {pick(tag, locale)}
                         </span>
                         <span
                           className="grid size-10 place-items-center rounded-full bg-primary text-primary-foreground shadow-card"
@@ -180,10 +183,10 @@ export function TravelerCarousel() {
                           · {(index + 1).toString().padStart(2, "0")}
                         </p>
                         <h3 className="mt-2 font-[family-name:var(--font-traveler-display)] text-3xl font-light leading-[1] tracking-tight sm:text-[2.1rem]">
-                          {title}
+                          {titleText}
                         </h3>
                         <p className="mt-3 max-w-[22ch] text-sm leading-relaxed text-white/80">
-                          {description}
+                          {pick(description, locale)}
                         </p>
                       </div>
                     </article>

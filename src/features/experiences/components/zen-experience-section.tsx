@@ -1,6 +1,6 @@
 // Sección "Experiencia Zen": grid editorial con historia destacada y stack de rituales.
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight, Clock } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -11,11 +11,13 @@ import {
   zenStories,
 } from "@/features/experiences/data/zen-experience";
 import { Link } from "@/i18n/navigation";
+import { pick } from "@/lib/i18n-pick";
 
 const totalStories = zenStories.length + 1;
 
 export async function ZenExperienceSection() {
   const t = await getTranslations("home.zen");
+  const locale = await getLocale();
 
   return (
     <Section
@@ -70,7 +72,7 @@ export async function ZenExperienceSection() {
             <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[2rem] bg-secondary shadow-card sm:aspect-[16/11] lg:aspect-[6/5]">
               <Image
                 src={zenFeaturedStory.image}
-                alt={zenFeaturedStory.imageAlt}
+                alt={pick(zenFeaturedStory.imageAlt, locale)}
                 fill
                 loading="lazy"
                 sizes="(max-width: 1024px) 100vw, 58vw"
@@ -84,33 +86,35 @@ export async function ZenExperienceSection() {
 
             <div className="mt-6">
               <p className="text-[0.7rem] font-mono tracking-[0.24em] text-secondary/60 uppercase">
-                {zenFeaturedStory.category}
+                {pick(zenFeaturedStory.category, locale)}
               </p>
               <h3 className="mt-3 font-[family-name:var(--font-zen-display)] text-2xl font-light leading-[1.1] text-secondary tracking-tight text-balance sm:text-3xl lg:text-[2.15rem]">
-                {zenFeaturedStory.title}
+                {pick(zenFeaturedStory.title, locale)}
               </h3>
               <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium text-secondary/60">
                 <span className="inline-flex items-center gap-1.5">
                   <Clock className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
-                  {zenFeaturedStory.duration}
+                  {pick(zenFeaturedStory.duration, locale)}
                 </span>
                 <span className="text-secondary/30" aria-hidden="true">·</span>
-                <span>{zenFeaturedStory.releaseLabel}</span>
+                <span>{pick(zenFeaturedStory.releaseLabel, locale)}</span>
               </div>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                {zenFeaturedStory.excerpt}
+                {pick(zenFeaturedStory.excerpt, locale)}
               </p>
             </div>
           </article>
 
           <ol className="flex flex-col gap-6 lg:col-span-5">
-            {zenStories.map((story, index) => (
-              <li key={story.title}>
+            {zenStories.map((story, index) => {
+              const storyTitle = pick(story.title, locale);
+              return (
+              <li key={storyTitle}>
                 <article className="group grid grid-cols-[7rem_1fr] items-start gap-4 sm:grid-cols-[9rem_1fr] sm:gap-6">
                   <div className="relative aspect-square overflow-hidden rounded-2xl bg-secondary shadow-card">
                     <Image
                       src={story.image}
-                      alt={story.imageAlt}
+                      alt={pick(story.imageAlt, locale)}
                       fill
                       loading="lazy"
                       sizes="(max-width: 640px) 7rem, 9rem"
@@ -123,18 +127,18 @@ export async function ZenExperienceSection() {
                         {(index + 2).toString().padStart(2, "0")}
                       </span>
                       <span className="h-px w-4 bg-secondary/25" aria-hidden="true" />
-                      {story.category}
+                      {pick(story.category, locale)}
                     </p>
                     <h3 className="mt-2 font-[family-name:var(--font-zen-display)] text-lg font-normal leading-tight text-secondary tracking-tight text-balance sm:text-[1.35rem]">
-                      {story.title}
+                      {storyTitle}
                     </h3>
                     <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.72rem] font-medium text-secondary/55">
                       <span className="inline-flex items-center gap-1">
                         <Clock className="size-3" strokeWidth={1.75} aria-hidden="true" />
-                        {story.duration}
+                        {pick(story.duration, locale)}
                       </span>
                       <span className="text-secondary/25" aria-hidden="true">·</span>
-                      <span>{story.releaseLabel}</span>
+                      <span>{pick(story.releaseLabel, locale)}</span>
                     </div>
                   </div>
                 </article>
@@ -142,7 +146,8 @@ export async function ZenExperienceSection() {
                   <div className="mt-6 h-px w-full bg-secondary/12" aria-hidden="true" />
                 ) : null}
               </li>
-            ))}
+              );
+            })}
           </ol>
         </div>
       </Container>

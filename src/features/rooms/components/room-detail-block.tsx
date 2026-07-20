@@ -1,4 +1,5 @@
 // Bloque editorial por habitación: mosaico tipo galería + ficha con capacidad, amenidades y CTA.
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight, BedDouble, Eye, MessageCircle, Ruler, Users } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -8,6 +9,7 @@ import { sedeLabels } from "@/features/rooms/data/rooms";
 import { siteConfig } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import type { Room } from "@/features/rooms/types";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./rooms-page.module.css";
 
@@ -18,6 +20,8 @@ interface RoomDetailBlockProps {
 }
 
 export function RoomDetailBlock({ room, index, total }: RoomDetailBlockProps) {
+  const t = useTranslations("rooms.detail");
+  const locale = useLocale();
   const isAlt = index % 2 === 1;
   const gallery = room.gallery ?? [{ src: room.image, alt: room.imageAlt }];
   const [mainImage, ...thumbs] = gallery;
@@ -25,22 +29,25 @@ export function RoomDetailBlock({ room, index, total }: RoomDetailBlockProps) {
 
   const number = (index + 1).toString().padStart(2, "0");
   const totalLabel = total.toString().padStart(2, "0");
-  const sedeLabel = sedeLabels[room.sede];
+  const sedeLabel = pick(sedeLabels[room.sede], locale);
+
+  const roomName = pick(room.name, locale);
+  const category = pick(room.category, locale);
+  const tagline = pick(room.tagline, locale);
+  const description = pick(room.description, locale);
+  const capacity = pick(room.capacity, locale);
+  const detail = pick(room.detail, locale);
 
   const ctaHref = room.pending
-    ? buildWhatsAppUrl(
-        `Hola, me interesa la ${room.name.toLowerCase()} de ${sedeLabel}. ¿Podrían confirmarme fotos, tarifa y disponibilidad?`,
-      )
+    ? buildWhatsAppUrl(t("waPending", { room: roomName.toLowerCase(), sede: sedeLabel }))
     : room.bookable
       ? siteConfig.bookingUrl
-      : buildWhatsAppUrl(
-          `Hola, me gustaría reservar la experiencia "${room.name}" en Zentra Hotel.`,
-        );
+      : buildWhatsAppUrl(t("waExperience", { room: roomName }));
   const ctaLabel = room.pending
-    ? "Consultar disponibilidad"
+    ? t("ctaPending")
     : room.bookable
-      ? "Reservar"
-      : "Solicitar por WhatsApp";
+      ? t("ctaBookable")
+      : t("ctaExperience");
   const ctaExternal = true;
 
   return (
@@ -64,19 +71,19 @@ export function RoomDetailBlock({ room, index, total }: RoomDetailBlockProps) {
                 className={`${styles.verticalLabel} hidden shrink-0 lg:inline-flex`}
                 aria-hidden="true"
               >
-                {room.category}
+                {category}
               </span>
 
               <div className="flex-1 min-w-0">
                 <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.68rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
-                  <span>Habitación · {number} / {totalLabel}</span>
+                  <span>{t("eyebrow", { number, total: totalLabel })}</span>
                   <span aria-hidden="true">·</span>
                   <span className="text-primary">{sedeLabel}</span>
                 </p>
 
                 {room.pending ? (
                   <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[0.62rem] font-semibold tracking-[0.18em] text-primary uppercase">
-                    Fotos y detalle próximamente
+                    {t("pendingBadge")}
                   </p>
                 ) : null}
 
@@ -84,66 +91,54 @@ export function RoomDetailBlock({ room, index, total }: RoomDetailBlockProps) {
                   id={`${room.slug}-titulo`}
                   className="mt-3 font-[family-name:var(--font-rooms-display)] font-light leading-[0.98] tracking-[-0.02em] text-secondary text-balance text-[clamp(2rem,4.2vw,3.2rem)]"
                 >
-                  {room.name.split(" ").slice(0, -1).join(" ")}{" "}
+                  {roomName.split(" ").slice(0, -1).join(" ")}{" "}
                   <span className="italic font-normal text-secondary/85">
-                    {room.name.split(" ").slice(-1).join(" ")}.
+                    {roomName.split(" ").slice(-1).join(" ")}.
                   </span>
                 </h2>
 
                 <p className="mt-4 text-[0.85rem] leading-relaxed font-medium tracking-wide text-primary uppercase">
-                  {room.tagline}
+                  {tagline}
                 </p>
 
                 <p className="mt-6 text-[0.95rem] leading-relaxed text-muted-foreground">
-                  {room.description}
+                  {description}
                 </p>
 
                 <dl className="mt-8 grid grid-cols-1 gap-4 border-y border-secondary/10 py-6 sm:grid-cols-2">
                   <div className="flex items-start gap-3">
-                    <Users
-                      className="mt-0.5 size-4 text-primary"
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
+                    <Users className="mt-0.5 size-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
                     <div>
                       <dt className="text-[0.62rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
-                        Capacidad
+                        {t("labelCapacity")}
                       </dt>
                       <dd className="mt-1 text-sm font-medium text-secondary">
-                        {room.capacity}
+                        {capacity}
                       </dd>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <BedDouble
-                      className="mt-0.5 size-4 text-primary"
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
+                    <BedDouble className="mt-0.5 size-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
                     <div>
                       <dt className="text-[0.62rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
-                        Cama
+                        {t("labelBed")}
                       </dt>
                       <dd className="mt-1 text-sm font-medium text-secondary">
-                        {room.detail}
+                        {detail}
                       </dd>
                     </div>
                   </div>
 
                   {room.size ? (
                     <div className="flex items-start gap-3">
-                      <Ruler
-                        className="mt-0.5 size-4 text-primary"
-                        strokeWidth={1.75}
-                        aria-hidden="true"
-                      />
+                      <Ruler className="mt-0.5 size-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
                       <div>
                         <dt className="text-[0.62rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
-                          Tamaño
+                          {t("labelSize")}
                         </dt>
                         <dd className="mt-1 text-sm font-medium text-secondary">
-                          {room.size}
+                          {pick(room.size, locale)}
                         </dd>
                       </div>
                     </div>
@@ -151,17 +146,13 @@ export function RoomDetailBlock({ room, index, total }: RoomDetailBlockProps) {
 
                   {room.view ? (
                     <div className="flex items-start gap-3">
-                      <Eye
-                        className="mt-0.5 size-4 text-primary"
-                        strokeWidth={1.75}
-                        aria-hidden="true"
-                      />
+                      <Eye className="mt-0.5 size-4 text-primary" strokeWidth={1.75} aria-hidden="true" />
                       <div>
                         <dt className="text-[0.62rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
-                          Vista
+                          {t("labelView")}
                         </dt>
                         <dd className="mt-1 text-sm font-medium text-secondary">
-                          {room.view}
+                          {pick(room.view, locale)}
                         </dd>
                       </div>
                     </div>
@@ -171,22 +162,21 @@ export function RoomDetailBlock({ room, index, total }: RoomDetailBlockProps) {
                 {room.amenities && room.amenities.length > 0 ? (
                   <div className="mt-6">
                     <p className="text-[0.62rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
-                      Incluye
+                      {t("labelIncludes")}
                     </p>
                     <ul className="mt-3 flex flex-wrap gap-2">
-                      {room.amenities.map((amenity) => (
+                      {room.amenities.map((amenity) => {
+                        const amenityText = pick(amenity.label, locale);
+                        return (
                         <li
-                          key={amenity.label}
+                          key={amenityText}
                           className="inline-flex items-center gap-2 rounded-full border border-secondary/15 bg-white px-3 py-1.5 text-xs font-medium text-secondary"
                         >
-                          <amenity.icon
-                            className="size-3.5 text-primary"
-                            strokeWidth={1.75}
-                            aria-hidden="true"
-                          />
-                          {amenity.label}
+                          <amenity.icon className="size-3.5 text-primary" strokeWidth={1.75} aria-hidden="true" />
+                          {amenityText}
                         </li>
-                      ))}
+                        );
+                      })}
                     </ul>
                   </div>
                 ) : null}
@@ -197,31 +187,21 @@ export function RoomDetailBlock({ room, index, total }: RoomDetailBlockProps) {
                     target={ctaExternal ? "_blank" : undefined}
                     rel={ctaExternal ? "noopener noreferrer" : undefined}
                     className="group inline-flex items-center justify-center gap-2 rounded-full bg-secondary px-6 py-3 text-sm font-semibold tracking-wide text-secondary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-                    aria-label={`${ctaLabel}: ${room.name}`}
+                    aria-label={t("ctaAria", { action: ctaLabel, room: roomName })}
                   >
                     {ctaLabel}
-                    <ArrowUpRight
-                      className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
-                      strokeWidth={2}
-                      aria-hidden="true"
-                    />
+                    <ArrowUpRight className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none" strokeWidth={2} aria-hidden="true" />
                   </a>
 
                   {room.bookable ? (
                     <a
-                      href={buildWhatsAppUrl(
-                        `Hola, me interesa la ${room.name} en Zentra Hotel. ¿Podrían darme más información?`,
-                      )}
+                      href={buildWhatsAppUrl(t("waConsult", { room: roomName }))}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group inline-flex items-center justify-center gap-2 rounded-full border border-secondary/30 bg-transparent px-6 py-3 text-sm font-semibold tracking-wide text-secondary uppercase transition-colors duration-(--duration-normal) hover:border-secondary hover:bg-secondary hover:text-secondary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none"
                     >
-                      <MessageCircle
-                        className="size-4"
-                        strokeWidth={1.75}
-                        aria-hidden="true"
-                      />
-                      Consultar
+                      <MessageCircle className="size-4" strokeWidth={1.75} aria-hidden="true" />
+                      {t("ctaConsult")}
                     </a>
                   ) : null}
                 </div>
@@ -236,9 +216,9 @@ export function RoomDetailBlock({ room, index, total }: RoomDetailBlockProps) {
             <RoomGallery
               mainImage={mainImage}
               thumbs={visibleThumbs}
-              badge={`${number} · ${room.category}`}
+              badge={`${number} · ${category}`}
               priority={index === 0}
-              srLabel={`Fotografías de ${room.name} en Zentra Hotel.`}
+              srLabel={t("galleryAria", { room: roomName })}
             />
           </div>
         </div>

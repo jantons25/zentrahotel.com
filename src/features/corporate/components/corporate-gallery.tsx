@@ -1,11 +1,12 @@
 // Galería del hub: grid editorial mixto con las marcas Zentra + Nexus.
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
 import { fontCorporateDisplay } from "@/features/corporate/config/corporate-fonts";
 import { corporateGallery } from "@/features/corporate/data/corporate";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./corporate.module.css";
 
@@ -28,6 +29,7 @@ const galleryLayout: GalleryLayout[] = [
 
 export async function CorporateGallery() {
   const t = await getTranslations("corporate.gallery");
+  const locale = await getLocale();
 
   return (
     <Section
@@ -66,9 +68,10 @@ export async function CorporateGallery() {
           {corporateGallery.map((item, index) => {
             const layout = galleryLayout[index] ?? galleryLayout[0];
             const isAccent = layout.tone === "accent";
-            const [title, tagline] = item.caption.includes(" · ")
-              ? item.caption.split(" · ")
-              : [item.caption, ""];
+            const captionText = pick(item.caption, locale);
+            const [title, tagline] = captionText.includes(" · ")
+              ? captionText.split(" · ")
+              : [captionText, ""];
 
             return (
               <li
@@ -85,7 +88,7 @@ export async function CorporateGallery() {
                 >
                   <Image
                     src={item.src}
-                    alt={item.alt}
+                    alt={pick(item.alt, locale)}
                     fill
                     loading="lazy"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1440px) 40vw, 33vw"

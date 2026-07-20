@@ -202,7 +202,12 @@
       "titleA": "What our",
       "titleEmphasis": "guests say.",
       "lead": "Real reviews from those who already experienced Zentra. Short stories of comfortable stays, warm hospitality, and memorable moments in downtown Chiclayo.",
-      "ctaGoogle": "See reviews on Google Maps"
+      "ctaGoogle": "See reviews on Google Maps",
+      "ratingAria": "Rating: {rating} of 5 stars",
+      "listAria": "Available testimonials",
+      "goToAria": "Go to testimonial {current} of {total}",
+      "prevAria": "Previous testimonial",
+      "nextAria": "Next testimonial"
     },
     "location": {
       "eyebrow": "Location",
@@ -275,6 +280,19 @@
       "nexusEyebrow": "Nexus Cowork · Premium workspaces",
       "nexusTitle": "Private offices, coworking, and fully equipped meeting rooms.",
       "nexusLead": "Your team works with the same tools as at HQ, uninterrupted. A single point of contact, friction-free operation."
+    },
+    "plans": {
+      "eyebrow": "Virtual offices",
+      "titleA": "Your tax address",
+      "titleEmphasis": "in Chiclayo.",
+      "lead": "Business presence without a physical office. Managed mail, visitor notifications, and a SUNAT-valid address — all under your brand.",
+      "ctaAdvisor": "Talk to an advisor",
+      "whatsappPrefill": "Hi, I'd like info on the Zentra Hotel & Cowork corporate agreement.",
+      "featuredBadge": "Most chosen",
+      "priceLabel": "Monthly promo",
+      "ctaPlan": "Ask on WhatsApp",
+      "ctaPlanAria": "Ask on WhatsApp about the {plan}",
+      "whatsappPlanPrefill": "Hi, I'd like info on the {plan} virtual office plan (S/ {price} per month)."
     },
     "sectors": {
       "eyebrow": "Companies that trust us",
@@ -389,6 +407,104 @@
       "titleEmphasis": "at Zentra",
       "titleB": ".",
       "listAria": "Partner company logos"
+    }
+  },
+  "rooms": {
+    "hero": {
+      "sectionAria": "Welcome rooms",
+      "eyebrow": "Lodging · 3 locations · {total} options",
+      "titleA": "Pick the location and",
+      "titleEmphasis": "the room your trip calls for.",
+      "lead": "From the single designed for work to the suite with jacuzzi for celebrating, in Balta, Plaza, or San José. Filter by location and find the room you want."
+    },
+    "explorer": {
+      "filterEyebrow": "Filter by location",
+      "titleA": "Pick the location,",
+      "titleEmphasis": "find your room.",
+      "filterAll": "All",
+      "filterAria": "Filter by location",
+      "emptyEyebrow": "No results",
+      "emptyTitle": "No rooms loaded for this location.",
+      "emptyLead": "Message us on WhatsApp and we'll help you find the best option."
+    },
+    "detail": {
+      "eyebrow": "Room · {number} / {total}",
+      "pendingBadge": "Photos and details coming soon",
+      "labelCapacity": "Capacity",
+      "labelBed": "Bed",
+      "labelSize": "Size",
+      "labelView": "View",
+      "labelIncludes": "Includes",
+      "ctaBookable": "Book",
+      "ctaPending": "Check availability",
+      "ctaExperience": "Request via WhatsApp",
+      "ctaAria": "{action}: {room}",
+      "ctaConsult": "Ask us",
+      "waPending": "Hi, I'm interested in the {room} at {sede}. Could you confirm photos, rate, and availability?",
+      "waExperience": "Hi, I'd like to book the \"{room}\" experience at Zentra Hotel.",
+      "waConsult": "Hi, I'm interested in the {room} at Zentra Hotel. Could you send me more info?",
+      "galleryAria": "Photos of {room} at Zentra Hotel."
+    },
+    "gallery": {
+      "thumbAria": "Set as main photo: {alt}"
+    },
+    "card": {
+      "ctaCheck": "Check availability"
+    }
+  },
+  "blog": {
+    "hero": {
+      "sectionAria": "Welcome to the Zentra journal",
+      "eyebrow": "Zentra Journal · {total} articles",
+      "titleA": "Stories",
+      "titleEmphasis": "that stay with you.",
+      "lead": "Local guides, travel tips, and stories from the house. What we tell guests before they arrive — so the city and the hotel feel yours from day one.",
+      "categoriesAria": "Journal categories",
+      "categoriesEyebrow": "Browse by topic"
+    },
+    "featured": {
+      "eyebrow": "This week's cover",
+      "badge": "Featured · {category}",
+      "readingTime": "{minutes} min read",
+      "readingAria": "Reading time {minutes} minutes",
+      "cta": "Read article"
+    },
+    "grid": {
+      "eyebrow": "Recent posts",
+      "titleA": "Latest from the",
+      "titleEmphasis": "journal."
+    },
+    "card": {
+      "readingAria": "Reading time {minutes} minutes",
+      "readingLabel": "{minutes} min"
+    }
+  },
+  "promotions": {
+    "hero": {
+      "sectionAria": "Welcome to offers",
+      "eyebrow": "Active offers · {total}",
+      "titleA": "House deals,",
+      "titleEmphasis": "by location.",
+      "lead": "Long stays, workation, first coworking day. Pick the location near you and grab the deal with a direct booking. All include 5G Wi-Fi and breakfast."
+    },
+    "explorer": {
+      "filterEyebrow": "Filter by location",
+      "titleA": "Pick the location,",
+      "titleEmphasis": "find the offer.",
+      "filterAll": "All",
+      "filterAria": "Filter by location",
+      "emptyEyebrow": "No results",
+      "emptyTitle": "No active offers for this location.",
+      "emptyLead": "Message us on WhatsApp and we'll put one together for you."
+    },
+    "card": {
+      "discountAria": "Discount {discount}",
+      "codeLabel": "Code",
+      "copy": "Copy",
+      "copied": "Copied",
+      "copyAria": "Copy code {code}",
+      "copiedAria": "Code copied",
+      "ctaAria": "{action}: {title}"
     }
   }
 }

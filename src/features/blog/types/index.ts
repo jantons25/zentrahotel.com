@@ -1,4 +1,5 @@
 // Tipos del diario editorial de Zentra: autores, categorías y posts.
+import type { LocalizedString } from "@/lib/i18n-pick";
 
 export type BlogCategory =
   | "chiclayo"
@@ -8,17 +9,17 @@ export type BlogCategory =
 
 export interface BlogAuthor {
   name: string;
-  role: string;
+  role: LocalizedString;
   avatar: string;
 }
 
 export interface BlogPost {
   slug: string;
   category: BlogCategory;
-  title: string;
-  excerpt: string;
+  title: LocalizedString;
+  excerpt: LocalizedString;
   cover: string;
-  coverAlt: string;
+  coverAlt: LocalizedString;
   author: BlogAuthor;
   publishedAt: string;
   readingMinutes: number;

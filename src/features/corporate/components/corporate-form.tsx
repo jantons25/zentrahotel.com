@@ -3,7 +3,7 @@
 // Formulario del convenio: valida con Zod y despacha al WhatsApp del ejecutivo con toda la data.
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import {
   ArrowUpRight,
@@ -21,12 +21,14 @@ import {
 } from "@/features/corporate/data/corporate";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { siteConfig } from "@/config/site";
+import { pick } from "@/lib/i18n-pick";
 
 const INPUT_CLASS =
   "h-11 w-full rounded-xl border border-secondary/20 bg-white px-4 text-sm text-secondary placeholder:text-secondary/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] transition-colors duration-(--duration-fast) outline-none focus-visible:border-primary focus-visible:ring-4 focus-visible:ring-primary/25 aria-invalid:border-destructive aria-invalid:ring-4 aria-invalid:ring-destructive/20";
 
 export function CorporateForm() {
   const t = useTranslations("corporate.form");
+  const locale = useLocale();
   const [submitted, setSubmitted] = useState(false);
 
   const schema = z.object({
@@ -175,11 +177,14 @@ export function CorporateForm() {
             {...register("frequency")}
           >
             <option value="">{t("placeholderSelectFrequency")}</option>
-            {corporateTravelFrequencyOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
+            {corporateTravelFrequencyOptions.map((option) => {
+              const optionText = pick(option, locale);
+              return (
+              <option key={optionText} value={optionText}>
+                {optionText}
               </option>
-            ))}
+              );
+            })}
           </select>
         </Field>
 
@@ -191,11 +196,14 @@ export function CorporateForm() {
             {...register("sector")}
           >
             <option value="">{t("placeholderSelectSector")}</option>
-            {corporateSectorOptions.map((option) => (
-              <option key={option} value={option}>
-                {option}
+            {corporateSectorOptions.map((option) => {
+              const optionText = pick(option, locale);
+              return (
+              <option key={optionText} value={optionText}>
+                {optionText}
               </option>
-            ))}
+              );
+            })}
           </select>
         </Field>
       </div>

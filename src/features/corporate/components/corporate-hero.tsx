@@ -1,16 +1,18 @@
 // Hero corporativo: foto de Nexus Cowork detrás, capa oscura al 50% y statement editorial.
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
 
 import { fontCorporateDisplay } from "@/features/corporate/config/corporate-fonts";
 import { corporateHeroKpis } from "@/features/corporate/data/corporate";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./corporate.module.css";
 
 export async function CorporateHero() {
   const t = await getTranslations("corporate.hero");
+  const locale = await getLocale();
 
   return (
     <section
@@ -89,8 +91,10 @@ export async function CorporateHero() {
           style={{ "--reveal-delay": "440ms" } as React.CSSProperties}
           aria-label={t("kpisAria")}
         >
-          {corporateHeroKpis.map(({ icon: Icon, label }) => (
-            <li key={label} className="flex items-center gap-3">
+          {corporateHeroKpis.map(({ icon: Icon, label }) => {
+            const labelText = pick(label, locale);
+            return (
+            <li key={labelText} className="flex items-center gap-3">
               <span
                 className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-xl bg-primary/15 text-secondary"
                 aria-hidden="true"
@@ -99,11 +103,12 @@ export async function CorporateHero() {
               </span>
               <div className="min-w-0">
                 <p className="font-[family-name:var(--font-corporate-display)] text-xl font-normal leading-none text-secondary tracking-tight sm:text-2xl">
-                  {label}
+                  {labelText}
                 </p>
               </div>
             </li>
-          ))}
+            );
+          })}
         </ul>
       </div>
     </section>

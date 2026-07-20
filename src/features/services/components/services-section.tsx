@@ -1,5 +1,5 @@
 // Sección "Nuestros servicios": grid editorial con todas las amenidades del hotel.
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -7,6 +7,7 @@ import { Section } from "@/components/common/section";
 import { fontServicesDisplay } from "@/features/services/config/services-fonts";
 import { hotelServices } from "@/features/services/data/services";
 import { siteConfig } from "@/config/site";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./services-section.module.css";
 
@@ -15,6 +16,7 @@ const MAX_STAGGER_INDEX = 12;
 
 export async function ServicesSection() {
   const t = await getTranslations("home.services");
+  const locale = await getLocale();
   const total = hotelServices.length;
 
   return (
@@ -69,9 +71,11 @@ export async function ServicesSection() {
           className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:mt-16 lg:grid-cols-6 lg:gap-5"
           aria-label={t("listAria", { count: total })}
         >
-          {hotelServices.map(({ label, icon: Icon }, index) => (
+          {hotelServices.map(({ label, icon: Icon }, index) => {
+            const labelText = pick(label, locale);
+            return (
             <li
-              key={label}
+              key={labelText}
               className={styles.reveal}
               style={
                 {
@@ -89,11 +93,12 @@ export async function ServicesSection() {
                   <Icon className="size-5" strokeWidth={1.75} />
                 </span>
                 <p className="text-sm font-medium leading-snug text-secondary text-balance sm:text-[0.95rem]">
-                  {label}
+                  {labelText}
                 </p>
               </article>
             </li>
-          ))}
+            );
+          })}
         </ul>
       </Container>
     </Section>

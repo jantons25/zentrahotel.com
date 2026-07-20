@@ -2,6 +2,7 @@
 
 // Explorador de promociones: filtro por sede + retícula responsive con estado local.
 import { useMemo, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
@@ -12,21 +13,24 @@ import {
   sedeShortLabels,
 } from "@/features/promotions/data/promotions";
 import type { PromotionSede } from "@/features/promotions/types";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./promotions.module.css";
 
 type Filter = "todas" | PromotionSede;
 
-const filterLabels: Record<Filter, string> = {
-  todas: "Todas",
-  balta: sedeShortLabels.balta,
-  plaza: sedeShortLabels.plaza,
-  "san-jose": sedeShortLabels["san-jose"],
-  nexus: sedeShortLabels.nexus,
-};
-
 export function PromotionsExplorer() {
+  const t = useTranslations("promotions.explorer");
+  const locale = useLocale();
   const [active, setActive] = useState<Filter>("todas");
+
+  const filterLabels: Record<Filter, string> = {
+    todas: t("filterAll"),
+    balta: pick(sedeShortLabels.balta, locale),
+    plaza: pick(sedeShortLabels.plaza, locale),
+    "san-jose": pick(sedeShortLabels["san-jose"], locale),
+    nexus: pick(sedeShortLabels.nexus, locale),
+  };
 
   const counts = useMemo(() => {
     return promotions.reduce<Record<PromotionSede, number>>(
@@ -60,16 +64,14 @@ export function PromotionsExplorer() {
           <div>
             <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
               <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
-              Filtra por sede
+              {t("filterEyebrow")}
             </p>
             <h2
               id="promociones-titulo"
               className="mt-5 font-[family-name:var(--font-promotions-display)] font-light leading-[0.98] tracking-[-0.02em] text-secondary text-balance text-[clamp(2rem,4.4vw,3.2rem)]"
             >
-              Elige la sede,{" "}
-              <span className="italic font-normal text-secondary/85">
-                encuentra la oferta.
-              </span>
+              {t("titleA")}{" "}
+              <span className="italic font-normal text-secondary/85">{t("titleEmphasis")}</span>
             </h2>
           </div>
         </header>
@@ -80,7 +82,7 @@ export function PromotionsExplorer() {
         >
           <div
             role="tablist"
-            aria-label="Filtro por sede"
+            aria-label={t("filterAria")}
             className="inline-flex min-w-max items-center gap-2 sm:flex-wrap"
           >
             {filters.map((filter) => {
@@ -143,13 +145,13 @@ export function PromotionsExplorer() {
             className="mt-14 rounded-[1.5rem] border border-secondary/15 bg-white/80 p-10 text-center"
           >
             <p className="text-[0.72rem] font-semibold tracking-[0.24em] text-secondary/60 uppercase">
-              Sin resultados
+              {t("emptyEyebrow")}
             </p>
             <p className="mt-3 font-[family-name:var(--font-promotions-display)] text-2xl font-light text-secondary">
-              No hay promociones vigentes en esta sede.
+              {t("emptyTitle")}
             </p>
             <p className="mt-3 text-sm text-muted-foreground">
-              Escríbenos por WhatsApp y armamos una a tu medida.
+              {t("emptyLead")}
             </p>
           </div>
         )}

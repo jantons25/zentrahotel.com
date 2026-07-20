@@ -29,7 +29,7 @@
 .card:focus-within {
   transform: translateY(-4px);
   box-shadow: var(--shadow-card-hover);
-  border-color: color-mix(in oklab, var(--secondary) 30%, transparent);
+  border-color: color-mix(in oklab, var(--primary) 55%, transparent);
 }
 
 .iconWrap {

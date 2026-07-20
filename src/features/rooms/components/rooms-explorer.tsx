@@ -2,6 +2,7 @@
 
 // Explorador de habitaciones: filtro por sede + bloques editoriales, misma lógica que /promociones.
 import { useMemo, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
@@ -12,20 +13,23 @@ import {
   sedeShortLabels,
 } from "@/features/rooms/data/rooms";
 import type { RoomSede } from "@/features/rooms/types";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./rooms-page.module.css";
 
 type Filter = "todas" | RoomSede;
 
-const filterLabels: Record<Filter, string> = {
-  todas: "Todas",
-  balta: sedeShortLabels.balta,
-  plaza: sedeShortLabels.plaza,
-  "san-jose": sedeShortLabels["san-jose"],
-};
-
 export function RoomsExplorer() {
+  const t = useTranslations("rooms.explorer");
+  const locale = useLocale();
   const [active, setActive] = useState<Filter>("todas");
+
+  const filterLabels: Record<Filter, string> = {
+    todas: t("filterAll"),
+    balta: pick(sedeShortLabels.balta, locale),
+    plaza: pick(sedeShortLabels.plaza, locale),
+    "san-jose": pick(sedeShortLabels["san-jose"], locale),
+  };
 
   const counts = useMemo(() => {
     return rooms.reduce<Record<RoomSede, number>>(
@@ -60,16 +64,14 @@ export function RoomsExplorer() {
             <div>
               <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
                 <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
-                Filtra por sede
+                {t("filterEyebrow")}
               </p>
               <h2
                 id="habitaciones-filtro-titulo"
                 className="mt-5 font-[family-name:var(--font-rooms-display)] font-light leading-[0.98] tracking-[-0.02em] text-secondary text-balance text-[clamp(2rem,4.4vw,3.2rem)]"
               >
-                Elige la sede,{" "}
-                <span className="italic font-normal text-secondary/85">
-                  encuentra tu habitación.
-                </span>
+                {t("titleA")}{" "}
+                <span className="italic font-normal text-secondary/85">{t("titleEmphasis")}</span>
               </h2>
             </div>
           </header>
@@ -80,13 +82,12 @@ export function RoomsExplorer() {
           >
             <div
               role="tablist"
-              aria-label="Filtro por sede"
+              aria-label={t("filterAria")}
               className="inline-flex min-w-max items-center gap-2 sm:flex-wrap"
             >
               {filters.map((filter) => {
                 const isActive = active === filter;
-                const count =
-                  filter === "todas" ? rooms.length : counts[filter as RoomSede];
+                const count = filter === "todas" ? rooms.length : counts[filter as RoomSede];
                 return (
                   <button
                     key={filter}
@@ -136,13 +137,13 @@ export function RoomsExplorer() {
         >
           <div className="rounded-[1.5rem] border border-secondary/15 bg-white/80 p-10 text-center">
             <p className="text-[0.72rem] font-semibold tracking-[0.24em] text-secondary/60 uppercase">
-              Sin resultados
+              {t("emptyEyebrow")}
             </p>
             <p className="mt-3 font-[family-name:var(--font-rooms-display)] text-2xl font-light text-secondary">
-              No hay habitaciones cargadas en esta sede.
+              {t("emptyTitle")}
             </p>
             <p className="mt-3 text-sm text-muted-foreground">
-              Escríbenos por WhatsApp y te ayudamos a encontrar la mejor opción.
+              {t("emptyLead")}
             </p>
           </div>
         </div>

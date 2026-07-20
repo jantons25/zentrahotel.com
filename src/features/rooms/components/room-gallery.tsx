@@ -3,8 +3,10 @@
 // Mosaico de fotos tipo Airbnb: clic en una miniatura la intercambia con la foto principal.
 import { useState } from "react";
 import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
 
 import type { RoomGalleryImage } from "@/features/rooms/types";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./rooms-page.module.css";
 
@@ -23,13 +25,14 @@ export function RoomGallery({
   priority,
   srLabel,
 }: RoomGalleryProps) {
+  const t = useTranslations("rooms.gallery");
+  const locale = useLocale();
   const [gallery, setGallery] = useState<RoomGalleryImage[]>(() => [
     initialMainImage,
     ...initialThumbs,
   ]);
   const [mainImage, ...thumbs] = gallery;
 
-  // Intercambia la miniatura seleccionada con la foto principal.
   function handleSelectImage(galleryIndex: number) {
     setGallery((prev) => {
       const next = [...prev];
@@ -44,7 +47,7 @@ export function RoomGallery({
         <div key={mainImage.src} className={styles.imageSwapLayer}>
           <Image
             src={mainImage.src}
-            alt={mainImage.alt}
+            alt={pick(mainImage.alt, locale)}
             fill
             sizes="(max-width: 1024px) 100vw, 55vw"
             className={`${styles.image} object-cover`}
@@ -61,18 +64,19 @@ export function RoomGallery({
         <div className={styles.mosaicThumbs} data-count={thumbs.length}>
           {thumbs.map((thumb, thumbPosition) => {
             const galleryIndex = thumbPosition + 1;
+            const altText = pick(thumb.alt, locale);
             return (
               <button
                 key={`thumb-slot-${thumbPosition}`}
                 type="button"
                 onClick={() => handleSelectImage(galleryIndex)}
-                aria-label={`Ver como foto principal: ${thumb.alt}`}
+                aria-label={t("thumbAria", { alt: altText })}
                 className={`${styles.mosaicThumb} block w-full cursor-pointer appearance-none border-0 bg-transparent p-0 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}
               >
                 <div key={thumb.src} className={styles.imageSwapLayer}>
                   <Image
                     src={thumb.src}
-                    alt={thumb.alt}
+                    alt={altText}
                     fill
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 22vw"
                     loading="lazy"

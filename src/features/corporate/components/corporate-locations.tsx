@@ -1,17 +1,19 @@
 // Sedes corporativas: grid uniforme espejando el layout de "Reserva tu habitación".
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
 import { fontCorporateDisplay } from "@/features/corporate/config/corporate-fonts";
 import { corporateLocations } from "@/features/corporate/data/corporate";
+import { pick } from "@/lib/i18n-pick";
 
 import styles from "./corporate.module.css";
 
 export async function CorporateLocations() {
   const t = await getTranslations("corporate.locations");
+  const locale = await getLocale();
   const total = corporateLocations.length;
 
   return (
@@ -76,7 +78,7 @@ export async function CorporateLocations() {
                   <div className="relative aspect-[4/5] w-full overflow-hidden bg-secondary/5">
                     <Image
                       src={location.image}
-                      alt={location.imageAlt}
+                      alt={pick(location.imageAlt, locale)}
                       fill
                       loading="lazy"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
@@ -123,7 +125,7 @@ export async function CorporateLocations() {
                             location.brand == "Nexus Cowork" ? "text-white" : ""
                           }
                         >
-                          {location.stats.location.label}
+                          {pick(location.stats.location.label, locale)}
                         </dd>
                       </div>
                       <span className="text-secondary/25" aria-hidden="true">
@@ -141,7 +143,7 @@ export async function CorporateLocations() {
                             location.brand == "Nexus Cowork" ? "text-white" : ""
                           }
                         >
-                          {location.stats.detail.label}
+                          {pick(location.stats.detail.label, locale)}
                         </dd>
                       </div>
                       <span className="text-secondary/25" aria-hidden="true">
@@ -159,7 +161,7 @@ export async function CorporateLocations() {
                             location.brand == "Nexus Cowork" ? "text-white" : ""
                           }
                         >
-                          {location.stats.capacity.label}
+                          {pick(location.stats.capacity.label, locale)}
                         </dd>
                       </div>
                     </dl>

@@ -202,7 +202,12 @@
       "titleA": "Lo que dicen nuestros",
       "titleEmphasis": "huéspedes.",
       "lead": "Reseñas reales de quienes ya vivieron Zentra. Historias breves de estadías cómodas, atención cercana y momentos memorables en el centro de Chiclayo.",
-      "ctaGoogle": "Ver reseñas en Google Maps"
+      "ctaGoogle": "Ver reseñas en Google Maps",
+      "ratingAria": "Calificación: {rating} de 5 estrellas",
+      "listAria": "Testimonios disponibles",
+      "goToAria": "Ir al testimonio {current} de {total}",
+      "prevAria": "Testimonio anterior",
+      "nextAria": "Siguiente testimonio"
     },
     "location": {
       "eyebrow": "Ubicación",
@@ -261,7 +266,7 @@
       "eyebrow": "La solución",
       "titleEmphasis": "Zentra Hotel & Cowork te reduce",
       "titleTail": "la complejidad logística",
-      "lead": "Somos el primer hub corporativo en Chiclayo que integra una cadena de tres hoteles ejecutivos y un Coworking premium bajo un mismo convenio. Tu equipo estará listo para operar desde el primer minuto.",
+      "lead": "Somos el primer hub corporativo en Chiclayo que integra una cadena de tres hoteles ejecutivos y un Coworking premium. Tu equipo estará listo para operar desde el primer minuto.",
       "highlightsAria": "Highlights del hub",
       "ctaAdvisor": "Hablar con un asesor",
       "whatsappPrefill": "Hola, quiero información sobre el convenio corporativo Zentra Hotel & Cowork.",
@@ -275,6 +280,19 @@
       "nexusEyebrow": "Nexus Cowork · Espacios de trabajo premium",
       "nexusTitle": "Oficinas privadas, coworking y salas 100% implementadas.",
       "nexusLead": "Tu equipo trabaja con las mismas herramientas que en la oficina central, sin interrupciones. Un solo punto de contacto, operación sin fricciones."
+    },
+    "plans": {
+      "eyebrow": "Oficinas virtuales",
+      "titleA": "Tu dirección fiscal",
+      "titleEmphasis": "en Chiclayo.",
+      "lead": "Presencia empresarial sin oficina física. Correspondencia gestionada, notificación de visitas y dirección válida para SUNAT — todo bajo tu marca.",
+      "ctaAdvisor": "Hablar con un asesor",
+      "whatsappPrefill": "Hola, quiero información sobre el convenio corporativo Zentra Hotel & Cowork.",
+      "featuredBadge": "El más elegido",
+      "priceLabel": "Promo mensual",
+      "ctaPlan": "Consultar por WhatsApp",
+      "ctaPlanAria": "Consultar por WhatsApp sobre el {plan}",
+      "whatsappPlanPrefill": "Hola, quiero información sobre el {plan} de oficina virtual (S/ {price} al mes)."
     },
     "sectors": {
       "eyebrow": "Empresas que confían en nosotros",
@@ -389,6 +407,104 @@
       "titleEmphasis": "en Zentra",
       "titleB": ".",
       "listAria": "Logos de empresas aliadas"
+    }
+  },
+  "rooms": {
+    "hero": {
+      "sectionAria": "Bienvenida habitaciones",
+      "eyebrow": "Alojamiento · 3 sedes · {total} opciones",
+      "titleA": "Elige la sede y",
+      "titleEmphasis": "el cuarto que tu viaje pide.",
+      "lead": "Desde la individual pensada para trabajo hasta la suite con jacuzzi para celebrar, en Balta, Plaza o San José. Filtra por sede y encuentra la habitación que buscas."
+    },
+    "explorer": {
+      "filterEyebrow": "Filtra por sede",
+      "titleA": "Elige la sede,",
+      "titleEmphasis": "encuentra tu habitación.",
+      "filterAll": "Todas",
+      "filterAria": "Filtro por sede",
+      "emptyEyebrow": "Sin resultados",
+      "emptyTitle": "No hay habitaciones cargadas en esta sede.",
+      "emptyLead": "Escríbenos por WhatsApp y te ayudamos a encontrar la mejor opción."
+    },
+    "detail": {
+      "eyebrow": "Habitación · {number} / {total}",
+      "pendingBadge": "Fotos y detalle próximamente",
+      "labelCapacity": "Capacidad",
+      "labelBed": "Cama",
+      "labelSize": "Tamaño",
+      "labelView": "Vista",
+      "labelIncludes": "Incluye",
+      "ctaBookable": "Reservar",
+      "ctaPending": "Consultar disponibilidad",
+      "ctaExperience": "Solicitar por WhatsApp",
+      "ctaAria": "{action}: {room}",
+      "ctaConsult": "Consultar",
+      "waPending": "Hola, me interesa la {room} de {sede}. ¿Podrían confirmarme fotos, tarifa y disponibilidad?",
+      "waExperience": "Hola, me gustaría reservar la experiencia \"{room}\" en Zentra Hotel.",
+      "waConsult": "Hola, me interesa la {room} en Zentra Hotel. ¿Podrían darme más información?",
+      "galleryAria": "Fotografías de {room} en Zentra Hotel."
+    },
+    "gallery": {
+      "thumbAria": "Ver como foto principal: {alt}"
+    },
+    "card": {
+      "ctaCheck": "Ver disponibilidad"
+    }
+  },
+  "blog": {
+    "hero": {
+      "sectionAria": "Bienvenida al diario Zentra",
+      "eyebrow": "Diario Zentra · {total} artículos",
+      "titleA": "Historias",
+      "titleEmphasis": "que se quedan.",
+      "lead": "Guías locales, tips de viaje y crónicas de la casa. Lo que le contamos a los huéspedes antes de que lleguen — para que la ciudad y el hotel se sientan tuyos desde el primer día.",
+      "categoriesAria": "Categorías del diario",
+      "categoriesEyebrow": "Explora por tema"
+    },
+    "featured": {
+      "eyebrow": "Portada de esta semana",
+      "badge": "Destacado · {category}",
+      "readingTime": "{minutes} min de lectura",
+      "readingAria": "Tiempo de lectura {minutes} minutos",
+      "cta": "Leer artículo"
+    },
+    "grid": {
+      "eyebrow": "Publicaciones recientes",
+      "titleA": "Lo último del",
+      "titleEmphasis": "diario."
+    },
+    "card": {
+      "readingAria": "Tiempo de lectura {minutes} minutos",
+      "readingLabel": "{minutes} min"
+    }
+  },
+  "promotions": {
+    "hero": {
+      "sectionAria": "Bienvenida a promociones",
+      "eyebrow": "Ofertas vigentes · {total}",
+      "titleA": "Promociones de la casa,",
+      "titleEmphasis": "por sede.",
+      "lead": "Larga estadía, workation, primer día de coworking. Elige la sede que te queda cerca y aprovecha la oferta con reserva directa. Todas incluyen Wi-Fi 5G y desayuno."
+    },
+    "explorer": {
+      "filterEyebrow": "Filtra por sede",
+      "titleA": "Elige la sede,",
+      "titleEmphasis": "encuentra la oferta.",
+      "filterAll": "Todas",
+      "filterAria": "Filtro por sede",
+      "emptyEyebrow": "Sin resultados",
+      "emptyTitle": "No hay promociones vigentes en esta sede.",
+      "emptyLead": "Escríbenos por WhatsApp y armamos una a tu medida."
+    },
+    "card": {
+      "discountAria": "Descuento {discount}",
+      "codeLabel": "Código",
+      "copy": "Copiar",
+      "copied": "Copiado",
+      "copyAria": "Copiar código {code}",
+      "copiedAria": "Código copiado",
+      "ctaAria": "{action}: {title}"
     }
   }
 }
