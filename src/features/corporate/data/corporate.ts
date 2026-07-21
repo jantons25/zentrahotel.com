@@ -371,9 +371,9 @@ export const corporateGallery: CorporateGalleryItem[] = [
     brand: "Nexus Cowork",
   },
   {
-    src: "/images/nexus/sala-flex.webp",
-    alt: { es: "Espacio flex de trabajo corporativo.", en: "Flex corporate workspace." },
-    caption: { es: "Nexus Cowork · Sala Flex", en: "Nexus Cowork · Flex room" },
+    src: "/images/nexus/oficina-privada.webp",
+    alt: { es: "Oficina privada de Nexus Cowork.", en: "Nexus Cowork private office." },
+    caption: { es: "Nexus Cowork · Oficina privada", en: "Nexus Cowork · Private office" },
     brand: "Nexus Cowork",
   },
   {
@@ -389,6 +389,48 @@ export const corporateGallery: CorporateGalleryItem[] = [
     src: "/images/sanjose/comedor.webp",
     alt: { es: "Sala de comedor y coworking.", en: "Dining and coworking area." },
     caption: { es: "Zentra San José · Comedor", en: "Zentra San José · Dining area" },
+    brand: "Zentra Hotel",
+  },
+  {
+    src: "/images/nexus/sala-flex.webp",
+    alt: { es: "Espacio flex de trabajo corporativo.", en: "Flex corporate workspace." },
+    caption: { es: "Nexus Cowork · Sala Flex", en: "Nexus Cowork · Flex room" },
+    brand: "Nexus Cowork",
+  },
+  {
+    src: "/images/plaza/cowork-plaza-tres.webp",
+    alt: { es: "Zona de coworking de Zentra Plaza.", en: "Zentra Plaza coworking area." },
+    caption: { es: "Zentra Plaza · Espacios de trabajo", en: "Zentra Plaza · Workspaces" },
+    brand: "Zentra Hotel",
+  },
+  {
+    src: "/images/nexus/sala-a.webp",
+    alt: { es: "Sala de reuniones A de Nexus Cowork.", en: "Nexus Cowork meeting room A." },
+    caption: { es: "Nexus Cowork · Sala A", en: "Nexus Cowork · Room A" },
+    brand: "Nexus Cowork",
+  },
+  {
+    src: "/images/sanjose/hab-matrimonial.webp",
+    alt: {
+      es: "Habitación matrimonial de Zentra San José.",
+      en: "Zentra San José queen room.",
+    },
+    caption: { es: "Zentra San José · Matrimonial", en: "Zentra San José · Queen room" },
+    brand: "Zentra Hotel",
+  },
+  {
+    src: "/images/balta/hab-suite.webp",
+    alt: {
+      es: "Habitación ejecutiva de Zentra Balta con cama king.",
+      en: "Zentra Balta executive room with king bed.",
+    },
+    caption: { es: "Zentra Balta · Ejecutiva", en: "Zentra Balta · Executive" },
+    brand: "Zentra Hotel",
+  },
+  {
+    src: "/images/sanjose/hab-doble.webp",
+    alt: { es: "Habitación doble de Zentra San José.", en: "Zentra San José double room." },
+    caption: { es: "Zentra San José · Doble", en: "Zentra San José · Double room" },
     brand: "Zentra Hotel",
   },
 ];

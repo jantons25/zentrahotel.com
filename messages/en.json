@@ -215,10 +215,7 @@
       "titleEmphasis": "Chiclayo.",
       "lead": "Our location on {balta}, {plaza}, and {sanJose} puts you steps from Av. Balta and the city's main shopping, dining, and tourist spots.",
       "ctaDirections": "How to get there",
-      "mapTitle": "{brand} location on Google Maps",
-      "mapRatingBrand": "{brand}",
-      "mapRatingLabel": "Excellent on Google Maps",
-      "mapExpand": "See larger map"
+      "mapTitle": "{brand} location sketch map"
     },
     "bookingWidget": {
       "eyebrow": "Book direct",

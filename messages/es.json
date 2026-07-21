@@ -215,10 +215,7 @@
       "titleEmphasis": "Chiclayo.",
       "lead": "Nuestra ubicación en {balta}, {plaza} y {sanJose} te deja a pasos de la Av. Balta y los principales puntos comerciales, gastronómicos y turísticos de la ciudad.",
       "ctaDirections": "Cómo llegar",
-      "mapTitle": "Ubicación de {brand} en Google Maps",
-      "mapRatingBrand": "{brand}",
-      "mapRatingLabel": "Excelente en Google Maps",
-      "mapExpand": "Ver mapa ampliado"
+      "mapTitle": "Croquis de ubicación de {brand}"
     },
     "bookingWidget": {
       "eyebrow": "Reserva directo",

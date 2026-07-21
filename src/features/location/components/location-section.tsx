@@ -1,6 +1,7 @@
-// Sección de ubicación: cards de ventajas cercanas + mapa embebido con panel de dirección.
+// Sección de ubicación: cards de ventajas cercanas + croquis de ubicación con panel de dirección.
+import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
-import { ArrowUpRight, MapPin, Star } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
@@ -75,62 +76,16 @@ export async function LocationSection() {
           <div
             className={`${styles.mapCard} relative overflow-hidden rounded-[1.75rem] border border-white/12 bg-card shadow-card`}
           >
-            <iframe
-              src={siteConfig.contact.mapEmbedUrl}
-              title={t("mapTitle", { brand: siteConfig.name })}
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              className="block h-80 w-full border-0 md:h-[28rem]"
-            />
-
-            <aside className="pointer-events-none absolute inset-x-4 bottom-4 md:inset-x-auto md:bottom-6 md:left-6 md:max-w-sm">
-              <div className="pointer-events-auto flex flex-col gap-3 rounded-2xl border border-secondary/10 bg-card/95 p-5 shadow-card backdrop-blur">
-                <div className="flex items-start gap-3">
-                  <span
-                    className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary/15 text-secondary"
-                    aria-hidden="true"
-                  >
-                    <MapPin className="size-4" strokeWidth={1.75} />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-[0.65rem] font-mono tracking-[0.22em] text-secondary/55 uppercase">
-                      {siteConfig.name}
-                    </p>
-                    <p className="mt-1 font-[family-name:var(--font-location-display)] text-lg font-normal leading-tight text-secondary">
-                      {siteConfig.contact.addressPlaza}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 text-xs text-secondary/70">
-                  <span className="inline-flex items-center gap-1 text-primary">
-                    <Star
-                      className="size-3.5 fill-primary"
-                      strokeWidth={0}
-                      aria-hidden="true"
-                    />
-                    <span className="font-semibold text-secondary">4.6</span>
-                  </span>
-                  <span aria-hidden="true">·</span>
-                  <span>{t("mapRatingLabel")}</span>
-                </div>
-
-                <a
-                  href={siteConfig.contact.mapShareUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 self-start text-sm font-semibold text-secondary transition-colors duration-(--duration-normal) hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none"
-                >
-                  {t("mapExpand")}
-                  <ArrowUpRight
-                    className="size-4 transition-transform duration-(--duration-normal) hover:translate-x-0.5 hover:-translate-y-0.5 motion-reduce:transition-none"
-                    strokeWidth={2}
-                    aria-hidden="true"
-                  />
-                </a>
-              </div>
-            </aside>
+            <div className="relative h-80 w-full md:h-[28rem]">
+              <Image
+                src="/images/croquis-01.jpeg"
+                alt={t("mapTitle", { brand: siteConfig.name })}
+                fill
+                loading="lazy"
+                sizes="(max-width: 1024px) 100vw, 1152px"
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
         <ul className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6">
