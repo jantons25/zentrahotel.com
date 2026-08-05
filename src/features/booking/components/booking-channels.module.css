@@ -82,6 +82,30 @@
   padding-inline-start: 1rem;
 }
 
+/* Riel de acento que se enciende en hover, anclado al borde izquierdo de la fila. */
+.rail {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 2px;
+  height: 58%;
+  border-radius: 9999px;
+  background: var(--primary);
+  opacity: 0;
+  transform: translateY(-50%) scaleY(0.35);
+  transform-origin: center;
+  transition:
+    opacity var(--duration-normal, 250ms) ease,
+    transform var(--duration-slow, 400ms) cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.row:hover .rail,
+.row:focus-visible .rail {
+  opacity: 1;
+  transform: translateY(-50%) scaleY(1);
+}
+
 .rowGlow {
   position: absolute;
   inset: 0;
@@ -114,11 +138,15 @@
     animation: none;
   }
   .row,
-  .rowGlow {
+  .rowGlow,
+  .rail {
     transition: none;
   }
   .row:hover,
   .row:focus-visible {
     padding-inline-start: 0;
+  }
+  .rail {
+    transform: translateY(-50%) scaleY(1);
   }
 }

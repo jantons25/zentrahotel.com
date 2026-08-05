@@ -73,7 +73,7 @@ export const corporateLocations: CorporateLocation[] = [
       es: "Frente a la plaza principal, para equipos que se quedan una semana o más. Habitaciones amplias con espacio para trabajar.",
       en: "Facing the main square, for teams staying a week or more. Spacious rooms with space to work.",
     },
-    image: "/images/plaza/cowork-plaza-tres.webp",
+    image: "/images/plaza/cowork-plaza-cuatro.webp",
     imageAlt: {
       es: "Habitación de Zentra Plaza con dos camas y zona de estudio.",
       en: "Zentra Plaza room with two beds and a work area.",
@@ -99,7 +99,7 @@ export const corporateLocations: CorporateLocation[] = [
       es: "Oficinas privadas, coworking y salas de reuniones 100% implementadas para trabajar sin interrupciones.",
       en: "Private offices, coworking, and fully equipped meeting rooms so your team works uninterrupted.",
     },
-    image: "/images/nexus/sala-a-dos.webp",
+    image: "/images/nexus/sala-a-02.webp",
     imageAlt: {
       es: "Sala de reuniones de Nexus Cowork con smart TV y pared pizarra.",
       en: "Nexus Cowork meeting room with smart TV and whiteboard wall.",
@@ -154,7 +154,7 @@ export const corporateLocations: CorporateLocation[] = [
       es: "Sobre la Av. Balta, a pasos del centro financiero. Ideal para ejecutivos con agenda intensa.",
       en: "On Av. Balta, steps from the financial district. Ideal for executives with a packed agenda.",
     },
-    image: "/images/balta/hab-suite.webp",
+    image: "/images/balta/hab-suite-002.webp",
     imageAlt: {
       es: "Habitación ejecutiva de Zentra Balta con cama king y escritorio.",
       en: "Zentra Balta executive room with king bed and desk.",
@@ -353,13 +353,13 @@ export interface CorporateGalleryItem {
 
 export const corporateGallery: CorporateGalleryItem[] = [
   {
-    src: "/images/plaza/individual.webp",
+    src: "/images/plaza/habitacion-001.webp",
     alt: { es: "Habitación Individual.", en: "Single room." },
     caption: { es: "Zentra Plaza · Habitaciones", en: "Zentra Plaza · Rooms" },
     brand: "Zentra Hotel",
   },
   {
-    src: "/images/plaza/cowork-plaza-uno.webp",
+    src: "/images/plaza/cowork-plaza-cuatro.webp",
     alt: { es: "Suite Zentra con jacuzzi privado.", en: "Zentra suite with private jacuzzi." },
     caption: { es: "Zentra Plaza · Coworking integrado", en: "Zentra Plaza · Integrated coworking" },
     brand: "Zentra Hotel",
@@ -377,7 +377,7 @@ export const corporateGallery: CorporateGalleryItem[] = [
     brand: "Nexus Cowork",
   },
   {
-    src: "/images/balta/hab-suite-dos.webp",
+    src: "/images/balta/hab-suite-002.webp",
     alt: {
       es: "Habitación ejecutiva de Zentra con cama matrimonial.",
       en: "Zentra executive room with queen bed.",
@@ -386,7 +386,7 @@ export const corporateGallery: CorporateGalleryItem[] = [
     brand: "Zentra Hotel",
   },
   {
-    src: "/images/sanjose/comedor.webp",
+    src: "/images/sanjose/comedor-001.webp",
     alt: { es: "Sala de comedor y coworking.", en: "Dining and coworking area." },
     caption: { es: "Zentra San José · Comedor", en: "Zentra San José · Dining area" },
     brand: "Zentra Hotel",
@@ -398,13 +398,13 @@ export const corporateGallery: CorporateGalleryItem[] = [
     brand: "Nexus Cowork",
   },
   {
-    src: "/images/plaza/cowork-plaza-tres.webp",
+    src: "/images/plaza/individual.webp",
     alt: { es: "Zona de coworking de Zentra Plaza.", en: "Zentra Plaza coworking area." },
     caption: { es: "Zentra Plaza · Espacios de trabajo", en: "Zentra Plaza · Workspaces" },
     brand: "Zentra Hotel",
   },
   {
-    src: "/images/nexus/sala-a.webp",
+    src: "/images/nexus/sala-a-02.webp",
     alt: { es: "Sala de reuniones A de Nexus Cowork.", en: "Nexus Cowork meeting room A." },
     caption: { es: "Nexus Cowork · Sala A", en: "Nexus Cowork · Room A" },
     brand: "Nexus Cowork",

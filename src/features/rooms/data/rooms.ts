@@ -65,6 +65,34 @@ export const rooms: Room[] = [
           en: "Single room with twin bed and white linens",
         },
       },
+      {
+        src: "/images/balta/hab-suite.webp",
+        alt: {
+          es: "Detalle del cabecero y mesa de noche",
+          en: "Headboard and nightstand detail",
+        },
+      },
+      {
+        src: "/images/balta/hab-suite-dos.webp",
+        alt: {
+          es: "Vista general con escritorio y cortinas blackout",
+          en: "Overall view with desk and blackout curtains",
+        },
+      },
+      {
+        src: "/images/balta/comedor.webp",
+        alt: {
+          es: "Área común y comedor cercano a la habitación",
+          en: "Common and dining area near the room",
+        },
+      },
+      {
+        src: "/images/room-matrimonial.jpg",
+        alt: {
+          es: "Ambiente cálido y ropa de cama premium",
+          en: "Warm atmosphere and premium linens",
+        },
+      },
     ],
     image: "/images/room-individual.jpg",
     imageAlt: {
@@ -113,6 +141,20 @@ export const rooms: Room[] = [
           en: "Overall view with desk and blackout curtains",
         },
       },
+      {
+        src: "/images/balta/comedor.webp",
+        alt: {
+          es: "Área común y comedor cercano a la habitación",
+          en: "Common and dining area near the room",
+        },
+      },
+      {
+        src: "/images/room-doble.jpg",
+        alt: {
+          es: "Ambiente amplio con luz natural",
+          en: "Spacious room with natural light",
+        },
+      },
     ],
     image: "/images/room-matrimonial.jpg",
     imageAlt: {
@@ -155,6 +197,27 @@ export const rooms: Room[] = [
         alt: {
           es: "Área común y comedor cercano a la habitación",
           en: "Common and dining area near the room",
+        },
+      },
+      {
+        src: "/images/balta/hab-suite.webp",
+        alt: {
+          es: "Detalle del cabecero y mesa de noche",
+          en: "Headboard and nightstand detail",
+        },
+      },
+      {
+        src: "/images/balta/hab-suite-dos.webp",
+        alt: {
+          es: "Vista general con escritorio y cortinas blackout",
+          en: "Overall view with desk and blackout curtains",
+        },
+      },
+      {
+        src: "/images/room-matrimonial.jpg",
+        alt: {
+          es: "Zona de descanso con ropa de cama premium",
+          en: "Rest area with premium linens",
         },
       },
     ],
@@ -282,6 +345,20 @@ export const rooms: Room[] = [
           en: "Room lit with warm light and a candle",
         },
       },
+      {
+        src: "/images/zen-room.jpg",
+        alt: {
+          es: "Jacuzzi con copas de vino y pétalos de rosa",
+          en: "Jacuzzi with wine glasses and rose petals",
+        },
+      },
+      {
+        src: "/images/zen-room3.webp",
+        alt: {
+          es: "Detalle del ambiente con iluminación cálida",
+          en: "Ambience detail with warm lighting",
+        },
+      },
     ],
     image: "/images/velada-romantica2.webp",
     imageAlt: {
@@ -323,6 +400,27 @@ export const rooms: Room[] = [
           en: "Massage-with-aromatherapy ritual detail",
         },
       },
+      {
+        src: "/images/zen-room5.webp",
+        alt: {
+          es: "Ambiente relajante de la suite",
+          en: "Relaxing suite atmosphere",
+        },
+      },
+      {
+        src: "/images/velada-romantica.webp",
+        alt: {
+          es: "Detalle decorativo con pétalos sobre la cama",
+          en: "Decorative petal detail on the bed",
+        },
+      },
+      {
+        src: "/images/zen-room6.webp",
+        alt: {
+          es: "Detalles decorativos y luz cálida",
+          en: "Decorative details and warm light",
+        },
+      },
     ],
     image: "/images/masajes.webp",
     imageAlt: {
@@ -356,6 +454,34 @@ export const rooms: Room[] = [
           en: "Zentra Plaza single room with natural light",
         },
       },
+      {
+        src: "/images/plaza/cowork-plaza-uno.webp",
+        alt: {
+          es: "Espacio de Zentra Plaza frente a la plaza principal",
+          en: "Zentra Plaza space facing the main square",
+        },
+      },
+      {
+        src: "/images/plaza/cowork-plaza-tres.webp",
+        alt: {
+          es: "Zona de estudio y coworking en Zentra Plaza",
+          en: "Study and coworking area at Zentra Plaza",
+        },
+      },
+      {
+        src: "/images/cowork-plaza.webp",
+        alt: {
+          es: "Área común de Zentra Plaza",
+          en: "Zentra Plaza common area",
+        },
+      },
+      {
+        src: "/images/room-individual.jpg",
+        alt: {
+          es: "Cama de 1.5 plazas con ropa de cama blanca",
+          en: "Twin bed with white linens",
+        },
+      },
     ],
     image: "/images/plaza/individual.webp",
     imageAlt: {
@@ -385,6 +511,34 @@ export const rooms: Room[] = [
         alt: {
           es: "Habitación matrimonial con cama de dos plazas y decoración cálida",
           en: "Queen room with queen bed and warm decor",
+        },
+      },
+      {
+        src: "/images/plaza/individual.webp",
+        alt: {
+          es: "Ambiente luminoso de Zentra Plaza",
+          en: "Bright Zentra Plaza setting",
+        },
+      },
+      {
+        src: "/images/plaza/cowork-plaza-tres.webp",
+        alt: {
+          es: "Zona de estudio y coworking en Zentra Plaza",
+          en: "Study and coworking area at Zentra Plaza",
+        },
+      },
+      {
+        src: "/images/plaza/cowork-plaza-uno.webp",
+        alt: {
+          es: "Espacio de Zentra Plaza frente a la plaza principal",
+          en: "Zentra Plaza space facing the main square",
+        },
+      },
+      {
+        src: "/images/cowork-plaza.webp",
+        alt: {
+          es: "Área común de Zentra Plaza",
+          en: "Zentra Plaza common area",
         },
       },
     ],
@@ -428,6 +582,27 @@ export const rooms: Room[] = [
           en: "Double room with two beds and natural light",
         },
       },
+      {
+        src: "/images/plaza/cowork-plaza-uno.webp",
+        alt: {
+          es: "Espacio de Zentra Plaza frente a la plaza principal",
+          en: "Zentra Plaza space facing the main square",
+        },
+      },
+      {
+        src: "/images/plaza/individual.webp",
+        alt: {
+          es: "Ambiente luminoso de Zentra Plaza",
+          en: "Bright Zentra Plaza setting",
+        },
+      },
+      {
+        src: "/images/cowork-plaza.webp",
+        alt: {
+          es: "Área común de Zentra Plaza",
+          en: "Zentra Plaza common area",
+        },
+      },
     ],
     image: "/images/plaza/cowork-plaza-tres.webp",
     imageAlt: {
@@ -457,6 +632,34 @@ export const rooms: Room[] = [
         alt: {
           es: "Espacio de Zentra Plaza — fotos de la habitación cuádruple próximamente",
           en: "Zentra Plaza space — quadruple room photos coming soon",
+        },
+      },
+      {
+        src: "/images/plaza/cowork-plaza-tres.webp",
+        alt: {
+          es: "Zona de estudio y coworking en Zentra Plaza",
+          en: "Study and coworking area at Zentra Plaza",
+        },
+      },
+      {
+        src: "/images/plaza/individual.webp",
+        alt: {
+          es: "Ambiente luminoso de Zentra Plaza",
+          en: "Bright Zentra Plaza setting",
+        },
+      },
+      {
+        src: "/images/cowork-plaza.webp",
+        alt: {
+          es: "Área común de Zentra Plaza",
+          en: "Zentra Plaza common area",
+        },
+      },
+      {
+        src: "/images/room-doble.jpg",
+        alt: {
+          es: "Referencia de habitación amplia con varias camas",
+          en: "Reference of a spacious room with several beds",
         },
       },
     ],
@@ -489,6 +692,34 @@ export const rooms: Room[] = [
         alt: {
           es: "Espacio de Zentra Plaza — fotos de la habitación quíntuple próximamente",
           en: "Zentra Plaza space — quintuple room photos coming soon",
+        },
+      },
+      {
+        src: "/images/plaza/cowork-plaza-tres.webp",
+        alt: {
+          es: "Zona de estudio y coworking en Zentra Plaza",
+          en: "Study and coworking area at Zentra Plaza",
+        },
+      },
+      {
+        src: "/images/cowork-plaza.webp",
+        alt: {
+          es: "Área común de Zentra Plaza",
+          en: "Zentra Plaza common area",
+        },
+      },
+      {
+        src: "/images/plaza/individual.webp",
+        alt: {
+          es: "Ambiente luminoso de Zentra Plaza",
+          en: "Bright Zentra Plaza setting",
+        },
+      },
+      {
+        src: "/images/room-doble.jpg",
+        alt: {
+          es: "Referencia de habitación amplia con varias camas",
+          en: "Reference of a spacious room with several beds",
         },
       },
     ],
@@ -525,6 +756,34 @@ export const rooms: Room[] = [
           en: "Single room with twin bed and white linens",
         },
       },
+      {
+        src: "/images/sanjose/hab-matrimonial.webp",
+        alt: {
+          es: "Ambiente ejecutivo silencioso de Zentra San José",
+          en: "Quiet executive setting at Zentra San José",
+        },
+      },
+      {
+        src: "/images/sanjose/hab-doble.webp",
+        alt: {
+          es: "Habitación con luz natural en Zentra San José",
+          en: "Room with natural light at Zentra San José",
+        },
+      },
+      {
+        src: "/images/sanjose/comedor.webp",
+        alt: {
+          es: "Espacios comunes disponibles para huéspedes",
+          en: "Common spaces available for guests",
+        },
+      },
+      {
+        src: "/images/room-matrimonial.jpg",
+        alt: {
+          es: "Ropa de cama premium y ambiente cálido",
+          en: "Premium linens and warm atmosphere",
+        },
+      },
     ],
     image: "/images/room-individual.jpg",
     imageAlt: {
@@ -557,6 +816,34 @@ export const rooms: Room[] = [
         alt: {
           es: "Habitación matrimonial ejecutiva de Zentra San José",
           en: "Zentra San José executive queen room",
+        },
+      },
+      {
+        src: "/images/sanjose/hab-doble.webp",
+        alt: {
+          es: "Habitación con luz natural en Zentra San José",
+          en: "Room with natural light at Zentra San José",
+        },
+      },
+      {
+        src: "/images/sanjose/comedor.webp",
+        alt: {
+          es: "Espacios comunes disponibles para huéspedes",
+          en: "Common spaces available for guests",
+        },
+      },
+      {
+        src: "/images/room-matrimonial.jpg",
+        alt: {
+          es: "Cama de dos plazas con ropa de cama premium",
+          en: "Queen bed with premium linens",
+        },
+      },
+      {
+        src: "/images/room-individual.jpg",
+        alt: {
+          es: "Escritorio y ambiente de trabajo tranquilo",
+          en: "Desk and quiet work setting",
         },
       },
     ],
@@ -603,6 +890,27 @@ export const rooms: Room[] = [
           en: "Common spaces available for guests",
         },
       },
+      {
+        src: "/images/sanjose/hab-matrimonial.webp",
+        alt: {
+          es: "Ambiente ejecutivo silencioso de Zentra San José",
+          en: "Quiet executive setting at Zentra San José",
+        },
+      },
+      {
+        src: "/images/room-doble.jpg",
+        alt: {
+          es: "Habitación con dos camas y luz natural",
+          en: "Room with two beds and natural light",
+        },
+      },
+      {
+        src: "/images/room-matrimonial.jpg",
+        alt: {
+          es: "Zona de descanso con ropa de cama premium",
+          en: "Rest area with premium linens",
+        },
+      },
     ],
     image: "/images/sanjose/hab-doble.webp",
     imageAlt: {
@@ -632,6 +940,34 @@ export const rooms: Room[] = [
         alt: {
           es: "Zona común de Zentra San José — fotos de la habitación triple próximamente",
           en: "Zentra San José common area — triple room photos coming soon",
+        },
+      },
+      {
+        src: "/images/sanjose/hab-doble.webp",
+        alt: {
+          es: "Habitación con luz natural en Zentra San José",
+          en: "Room with natural light at Zentra San José",
+        },
+      },
+      {
+        src: "/images/sanjose/hab-matrimonial.webp",
+        alt: {
+          es: "Ambiente ejecutivo silencioso de Zentra San José",
+          en: "Quiet executive setting at Zentra San José",
+        },
+      },
+      {
+        src: "/images/room-doble.jpg",
+        alt: {
+          es: "Referencia de habitación amplia con varias camas",
+          en: "Reference of a spacious room with several beds",
+        },
+      },
+      {
+        src: "/images/room-matrimonial.jpg",
+        alt: {
+          es: "Zona de descanso con ropa de cama premium",
+          en: "Rest area with premium linens",
         },
       },
     ],
