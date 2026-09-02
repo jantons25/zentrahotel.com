@@ -479,6 +479,31 @@
     "card": {
       "readingAria": "Tiempo de lectura {minutes} minutos",
       "readingLabel": "{minutes} min"
+    },
+    "article": {
+      "breadcrumbAria": "Ruta de navegación",
+      "breadcrumbHome": "Inicio",
+      "breadcrumbBlog": "Diario",
+      "readingTime": "{minutes} min de lectura",
+      "readingAria": "Tiempo de lectura {minutes} minutos",
+      "tocTitle": "En este artículo",
+      "tags": "Etiquetas",
+      "writtenBy": "Escrito por",
+      "backToBlog": "Volver al diario",
+      "relatedEyebrow": "Te puede interesar",
+      "relatedTitle": "Sigue leyendo el diario.",
+      "asideEyebrow": "Zentra Hotel & Cowork",
+      "asideTitle": "Chiclayo, desde el centro y sin complicarte",
+      "asideText": "Tres sedes en el centro de la ciudad, cowork propio y reserva directa sin intermediarios.",
+      "asideCta": "Reservar ahora",
+      "share": {
+        "label": "Compartir",
+        "whatsapp": "Compartir por WhatsApp",
+        "facebook": "Compartir en Facebook",
+        "x": "Compartir en X",
+        "copy": "Copiar enlace",
+        "copied": "Enlace copiado"
+      }
     }
   },
   "promotions": {

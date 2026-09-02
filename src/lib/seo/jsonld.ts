@@ -40,3 +40,37 @@ export function buildHotelJsonLd() {
     ],
   };
 }
+
+// Datos estructurados de un artículo del diario (Schema.org BlogPosting).
+export function buildArticleJsonLd(input: {
+  url: string;
+  title: string;
+  description: string;
+  image: string;
+  publishedAt: string;
+  authorName: string;
+  section: string;
+  locale: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: input.title,
+    description: input.description,
+    image: [`${siteConfig.url}${input.image}`],
+    datePublished: input.publishedAt,
+    dateModified: input.publishedAt,
+    inLanguage: input.locale,
+    articleSection: input.section,
+    mainEntityOfPage: { "@type": "WebPage", "@id": input.url },
+    author: { "@type": "Organization", name: input.authorName },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/images/logo-zentra.png`,
+      },
+    },
+  };
+}

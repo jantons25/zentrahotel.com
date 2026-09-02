@@ -29,6 +29,27 @@ const authors: Record<string, BlogAuthor> = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "ruta-del-papa-chiclayo",
+    category: "chiclayo",
+    title: {
+      es: "Guía completa de la Ruta del Papa en Chiclayo",
+      en: "The complete guide to the Pope's Route in Chiclayo",
+    },
+    excerpt: {
+      es: "Templos, santuarios y pueblos vinculados al Papa León XIV, con distancias reales desde el Parque Principal y cuánto tiempo tomará cada tramo. La guía para armar el recorrido en uno o dos días.",
+      en: "Churches, sanctuaries and towns tied to Pope Leo XIV, with real distances from the main park and how long each leg takes. The guide to planning the route in one or two days.",
+    },
+    cover: "/images/blog/ruta-del-papa/portada.webp",
+    coverAlt: {
+      es: "El Papa León XIV frente a la Catedral de Chiclayo",
+      en: "Pope Leo XIV in front of Chiclayo Cathedral",
+    },
+    author: authors.editorial,
+    publishedAt: "2026-09-02",
+    readingMinutes: 9,
+    featured: true,
+  },
+  {
     slug: "chiclayo-en-48-horas",
     category: "chiclayo",
     title: {
@@ -47,7 +68,6 @@ export const blogPosts: BlogPost[] = [
     author: authors.concierge,
     publishedAt: "2026-07-12",
     readingMinutes: 8,
-    featured: true,
   },
   {
     slug: "arroz-con-pato-conserje",

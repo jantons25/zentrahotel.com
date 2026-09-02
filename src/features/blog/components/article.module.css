@@ -1,0 +1,102 @@
+/* Estilos exclusivos de la página de artículo: barra de progreso, prosa editorial y sidebar sticky. */
+
+/* Barra de lectura fija bajo el header. */
+.progressTrack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: calc(var(--z-header) + 1);
+  background: transparent;
+  pointer-events: none;
+}
+
+.progressBar {
+  height: 100%;
+  width: var(--progress, 0%);
+  background: linear-gradient(
+    to right,
+    var(--primary),
+    color-mix(in oklab, var(--primary) 55%, var(--secondary))
+  );
+  transition: width 80ms linear;
+}
+
+/* Prosa del artículo: ritmo vertical y tipografía editorial. */
+.prose {
+  --measure: 68ch;
+}
+
+.prose > * + * {
+  margin-top: 1.5rem;
+}
+
+.prose p {
+  max-width: var(--measure);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  color: color-mix(in oklab, var(--foreground) 88%, transparent);
+}
+
+@media (min-width: 768px) {
+  .prose p {
+    font-size: 1.125rem;
+  }
+}
+
+/* Capitular del primer párrafo — firma editorial. */
+.prose > p:first-child::first-letter {
+  float: left;
+  margin: 0.1em 0.12em 0 0;
+  font-family: var(--font-blog-display), serif;
+  font-size: 3.4em;
+  line-height: 0.78;
+  font-weight: 400;
+  color: var(--secondary);
+}
+
+.prose h2 {
+  margin-top: 3.5rem;
+  scroll-margin-top: 7rem;
+}
+
+.prose h3 {
+  margin-top: 2.5rem;
+  scroll-margin-top: 7rem;
+}
+
+.prose figure {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Enlace activo de la tabla de contenidos. */
+.tocLink[data-active="true"] {
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.tocLink[data-active="true"]::before {
+  transform: scaleY(1);
+}
+
+.tocLink::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  width: 2px;
+  background: var(--primary);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressBar,
+  .tocLink::before {
+    transition: none;
+  }
+}
