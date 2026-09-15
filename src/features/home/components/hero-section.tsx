@@ -1,115 +1,45 @@
-// Hero principal: composición editorial premium con titular, chips de amenidad y widget de reservas.
-import { getTranslations } from "next-intl/server";
-import { BedDouble, ConciergeBell, Sparkles, Wifi } from "lucide-react";
+// Hero principal de la home: carrusel de fondo a pantalla completa con el motor de
+// reservas horizontal de Cloudbeds anclado al pie.
+//
+// Geometría: el header sticky mide `--h-header` (banner flash + barra de navegación).
+// El hero sube `--h-navbar` para que la barra flote sobre la imagen y mide
+// `100dvh - --h-flash`; header + hero suman exactamente una pantalla.
+import { getLocale, getTranslations } from "next-intl/server";
 
+import { CloudbedsSearchBar } from "@/features/booking/components/cloudbeds-search-bar";
+import { HeroCarousel } from "@/features/home/components/hero-carousel";
 import { fontHeroDisplay } from "@/features/home/config/hero-fonts";
-import { BookingWidget } from "@/features/home/components/booking-widget";
-
-import styles from "./hero-section.module.css";
+import { heroSlides } from "@/features/home/data/hero-slides";
+import { pick } from "@/lib/i18n-pick";
 
 export async function HeroSection() {
   const t = await getTranslations("home.hero");
+  const locale = await getLocale();
 
-  const highlights = [
-    { icon: Wifi, label: t("amenityWifi") },
-    { icon: BedDouble, label: t("amenitySuite") },
-    { icon: Sparkles, label: t("amenityZen") },
-    { icon: ConciergeBell, label: t("amenityReception") },
-  ];
-
-  const stats = [
-    { value: t("statReceptionValue"), label: t("statReceptionLabel") },
-    { value: t("statDistanceValue"), label: t("statDistanceLabel") },
-    { value: t("statRoomsValue"), label: t("statRoomsLabel") },
-    { value: t("statRatingValue"), label: t("statRatingLabel") },
-  ];
+  const slides = heroSlides.map((slide) => ({
+    id: slide.id,
+    image: slide.image,
+    alt: pick(slide.alt, locale),
+    title: pick(slide.title, locale),
+    titleEmphasis: pick(slide.titleEmphasis, locale),
+    subtitle: pick(slide.subtitle, locale),
+  }));
 
   return (
     <section
       aria-label={t("sectionAria")}
-      className={`${fontHeroDisplay.variable} ${styles.hero} relative isolate -mt-16 overflow-hidden bg-secondary text-white md:-mt-20`}
+      className={`${fontHeroDisplay.variable} relative isolate h-[calc(100dvh-var(--h-flash))] mt-[calc(var(--h-navbar)*-1)] overflow-hidden bg-secondary text-white`}
     >
-      <div className={styles.vignette} aria-hidden="true" />
-      <div className={styles.grain} aria-hidden="true" />
-
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 pt-32 pb-16 sm:px-6 md:pt-40 lg:min-h-[calc(100vh-2rem)] lg:px-8 lg:pt-44 lg:pb-24">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
-          <div className="lg:col-span-7">
-            <p
-              className={`${styles.reveal} inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[0.62rem] font-semibold tracking-[0.28em] text-white/85 uppercase backdrop-blur`}
-              style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
-            >
-              <span
-                className="size-1.5 rounded-full bg-primary"
-                aria-hidden="true"
-              />
-              {t("eyebrow")}
-            </p>
-
-            <h1
-              className={`${styles.reveal} mt-6 font-[family-name:var(--font-hero-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.75rem,6.5vw,5.5rem)]`}
-              style={{ "--reveal-delay": "120ms" } as React.CSSProperties}
-            >
-              {t("titleA")}
-              <br />
-              {t("titleB")}{" "}
-              <span className="italic font-normal text-primary">
-                {t("titleEmphasis")}
-              </span>
-            </h1>
-
-            <p
-              className={`${styles.reveal} mt-6 max-w-xl text-base leading-relaxed text-white/80 md:text-lg`}
-              style={{ "--reveal-delay": "220ms" } as React.CSSProperties}
-            >
-              {t("lead")}
-            </p>
-
-            <ul
-              className={`${styles.reveal} mt-8 flex flex-wrap gap-2`}
-              style={{ "--reveal-delay": "320ms" } as React.CSSProperties}
-              aria-label={t("amenitiesAria")}
-            >
-              {highlights.map(({ icon: Icon, label }) => (
-                <li
-                  key={label}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white/90 backdrop-blur"
-                >
-                  <Icon
-                    className="size-3.5"
-                    strokeWidth={1.75}
-                    aria-hidden="true"
-                  />
-                  {label}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div
-            className={`${styles.reveal} lg:col-span-5`}
-            style={{ "--reveal-delay": "260ms" } as React.CSSProperties}
-          >
-            <BookingWidget />
-          </div>
-        </div>
-
-        <ul
-          className={`${styles.reveal} grid grid-cols-2 gap-3 rounded-[1.5rem] border border-white/15 bg-white/95 p-4 backdrop-blur sm:p-6 md:grid-cols-4 md:gap-6`}
-          style={{ "--reveal-delay": "440ms" } as React.CSSProperties}
-        >
-          {stats.map(({ value, label }) => (
-            <li key={label} className="flex flex-col gap-1">
-              <p className="font-[family-name:var(--font-hero-display)] text-2xl font-normal leading-none text-secondary tracking-tight sm:text-3xl">
-                {value}
-              </p>
-              <p className="text-[0.72rem] leading-snug text-secondary/70 sm:text-sm">
-                {label}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <HeroCarousel
+        slides={slides}
+        labels={{
+          prev: t("prevAria"),
+          next: t("nextAria"),
+          status: t("eyebrow"),
+        }}
+      >
+        <CloudbedsSearchBar />
+      </HeroCarousel>
     </section>
   );
 }

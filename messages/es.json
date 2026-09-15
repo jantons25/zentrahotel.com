@@ -11,7 +11,15 @@
     "primary": "Navegación principal",
     "secondary": "Navegación secundaria",
     "mobile": "Navegación móvil",
-    "openMenu": "Abrir menú de navegación"
+    "openMenu": "Abrir menú de navegación",
+    "menu": "Menú",
+    "closeMenu": "Cerrar menú",
+    "contactHeading": "Contacto",
+    "sedes": "Sedes",
+    "sedeBalta": "Balta",
+    "sedePlaza": "Plaza",
+    "sedeSanJose": "San José",
+    "galeria": "Galería"
   },
   "languageSelector": {
     "trigger": "Cambiar idioma",
@@ -62,7 +70,7 @@
   "home": {
     "hero": {
       "sectionAria": "Bienvenida",
-      "eyebrow": "Zentra Hotel & Cowork",
+      "eyebrow": "Zentra Hotel & Cowork · Chiclayo",
       "titleA": "Bienvenido a Zentra,",
       "titleB": "donde Chiclayo se",
       "titleEmphasis": "hace hogar.",
@@ -79,7 +87,9 @@
       "statRoomsValue": "6",
       "statRoomsLabel": "Tipos de habitaciones",
       "statRatingValue": "4.6★",
-      "statRatingLabel": "En reseñas de Google Maps"
+      "statRatingLabel": "En reseñas de Google Maps",
+      "prevAria": "Imagen anterior",
+      "nextAria": "Siguiente imagen"
     },
     "presentation": {
       "eyebrow": "Zentra · Chiclayo, Perú",
@@ -232,6 +242,44 @@
       "promo": "Código promocional",
       "submit": "Ver disponibilidad",
       "footnote": "Sin cargos ocultos · Cancelación flexible · Confirmación inmediata"
+    },
+    "searchBar": {
+      "aria": "Buscar disponibilidad",
+      "checkIn": "Check-in",
+      "checkOut": "Check-out",
+      "guests": "Huéspedes",
+      "guestsAria": "Número de adultos",
+      "adult": "{n} {n, plural, one {adulto} other {adultos}}",
+      "submit": "Ver disponibilidad"
+    },
+    "specialOffers": {
+      "eyebrow": "Promociones",
+      "titleA": "Promociones y ofertas",
+      "titleEmphasis": "especiales.",
+      "lead": "Tarifas y paquetes vigentes en nuestras tres sedes y en Nexus Cowork. Reserva directo por WhatsApp y confirma en minutos, sin comisiones de intermediarios.",
+      "ctaAll": "Ver todas por WhatsApp",
+      "ctaPrefill": "Hola, quiero conocer todas las promociones vigentes de Zentra Hotel.",
+      "prevAria": "Promoción anterior",
+      "nextAria": "Siguiente promoción",
+      "listAria": "Promociones y ofertas especiales",
+      "priceFromLabel": "Tarifa lista",
+      "priceWebLabel": "Tarifa web",
+      "nightFrom": "por noche desde",
+      "validUntil": "Válida hasta el",
+      "codeLabel": "Código",
+      "cta": "Reservar por WhatsApp",
+      "ctaAria": "Reservar por WhatsApp: {offer}",
+      "whatsappPrefill": "Hola, quiero reservar la promoción «{offer}» en {venue}. Código: {code}"
+    },
+    "venues": {
+      "eyebrow": "Nuestras sedes",
+      "titleA": "Tres hoteles y un coworking en el",
+      "titleEmphasis": "centro de Chiclayo.",
+      "lead": "Elige la sede que mejor te queda: todas están a pocos minutos de la Plaza de Armas, el centro financiero y la zona comercial.",
+      "cardEyebrow": "Sede",
+      "cta": "Solicitar sede",
+      "ctaAria": "Solicitar información de {venue}",
+      "whatsappPrefill": "Hola, quiero información sobre {venue}."
     }
   },
   "corporate": {
@@ -533,5 +581,47 @@
       "copiedAria": "Código copiado",
       "ctaAria": "{action}: {title}"
     }
+  },
+  "flashOffers": {
+    "aria": "Ofertas flash",
+    "prefix": "Oferta flash"
+  },
+  "welcomePromo": {
+    "floatingEyebrow": "Regístrate y gana",
+    "floatingTitle": "Hasta 10% de descuento adicional",
+    "dismiss": "Ocultar la promoción",
+    "close": "Cerrar",
+    "title": "Regístrate y gana hasta 10% de descuento",
+    "titleEmphasis": "adicional.",
+    "lead": "Únete al programa de beneficios de Zentra Hotel, sin costo de membresía, y recibe tu código de bienvenida en el correo.",
+    "benefitRates": "Tarifas y beneficios exclusivos para socios.",
+    "benefitExperiences": "Acceso preferente a las experiencias Zen.",
+    "benefitBirthday": "Sorpresa de cumpleaños en tu estadía.",
+    "form": {
+      "firstName": "Nombres",
+      "lastName": "Apellidos",
+      "documentType": "Tipo de documento",
+      "documentDni": "DNI",
+      "documentCe": "Carné de extranjería",
+      "documentPassport": "Pasaporte",
+      "documentNumber": "Número de documento",
+      "email": "Correo electrónico",
+      "terms": "Acepto los Términos y Condiciones y la Política de privacidad de Zentra Hotel.",
+      "marketing": "Acepto recibir publicidad y el tratamiento de mis datos con fines comerciales.",
+      "submit": "Quiero mi descuento",
+      "submitting": "Enviando…",
+      "footnote": "Enviamos tu código de bienvenida al correo que registres. Puedes darte de baja cuando quieras.",
+      "errorFirstName": "Ingresa tus nombres.",
+      "errorLastName": "Ingresa tus apellidos.",
+      "errorDocument": "Ingresa un número de documento válido.",
+      "errorEmail": "Ingresa un correo electrónico válido.",
+      "errorTerms": "Debes aceptar los términos y condiciones.",
+      "errorSubmit": "No pudimos completar tu registro. Inténtalo de nuevo en unos minutos.",
+      "successTitle": "¡Listo! Ya eres parte de Zentra.",
+      "successLead": "Revisa tu correo: te enviamos el código de bienvenida para usarlo en tu próxima reserva directa.",
+      "successCta": "Cerrar"
+    },
+    "floatingLead": "Afíliate sin costo y recibe tu código de bienvenida en el correo.",
+    "floatingCta": "Quiero mi descuento"
   }
 }

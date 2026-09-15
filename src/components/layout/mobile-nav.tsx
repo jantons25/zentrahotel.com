@@ -48,10 +48,7 @@ export function MobileNav() {
             {siteConfig.name}
           </SheetTitle>
         </SheetHeader>
-        <nav
-          aria-label={t("mobile")}
-          className="mt-4 flex flex-col gap-1 px-4"
-        >
+        <nav aria-label={t("mobile")} className="mt-4 flex flex-col gap-1 px-4">
           {mainNav.map((item, index) => (
             <Link
               key={item.href}
@@ -85,7 +82,8 @@ export function MobileNav() {
             <LanguageSelector />
           </div>
           <p className="mt-6 text-[0.68rem] leading-relaxed text-white/55">
-            {siteConfig.contact.addressBalta} · {siteConfig.contact.phoneDisplay}
+            {siteConfig.contact.addressBalta} ·{" "}
+            {siteConfig.contact.phoneDisplay}
           </p>
         </nav>
       </SheetContent>

@@ -1,0 +1,77 @@
+/* Pasarela de promociones: scrollbar discreta, hover de tarjeta y zoom de la foto. */
+
+.track {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--secondary) 25%, transparent)
+    transparent;
+  scroll-padding-inline: 0.25rem;
+}
+
+.track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.track::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--secondary) 22%, transparent);
+}
+
+.card {
+  transition:
+    transform var(--duration-normal, 250ms) cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow var(--duration-normal, 250ms) ease,
+    border-color var(--duration-normal, 250ms) ease;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: color-mix(in oklab, var(--primary) 55%, transparent);
+}
+
+.media {
+  object-fit: cover;
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .media,
+.card:focus-within .media {
+  transform: scale(1.06);
+}
+
+@keyframes special-offers-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  animation: special-offers-reveal-in 700ms cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .card,
+  .media,
+  .card:hover,
+  .card:focus-within,
+  .card:hover .media,
+  .card:focus-within .media {
+    transform: none;
+    transition: none;
+  }
+}

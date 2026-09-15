@@ -1,5 +1,6 @@
 // Layout raíz por locale: tipografía global, metadata SEO y estructura común (header, footer, flotantes).
 import type { Metadata } from "next";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -9,6 +10,8 @@ import { ScrollToTop } from "@/components/common/scroll-to-top";
 import { WhatsAppButton } from "@/components/common/whatsapp-button";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { FlashOffersBanner } from "@/features/flash-offers/components/flash-offers-banner";
+import { WelcomePromo } from "@/features/promo-modal/components/welcome-promo";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 import { routing } from "@/i18n/routing";
@@ -62,12 +65,19 @@ export default async function LocaleLayout({ children, params }: Props) {
       className={`${fontSans.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        {/* Web components del Booking Engine de Cloudbeds (Immersive Experience 2.0).
+            Debe cargarse antes de que el navegador analice las etiquetas <cb-*>. */}
+        <Script
+          src={siteConfig.cloudbeds.scriptUrl}
+          strategy="beforeInteractive"
+        />
         <NextIntlClientProvider>
-          <Header />
+          <Header banner={<FlashOffersBanner />} />
           <main className="flex-1">{children}</main>
           <Footer />
           <WhatsAppButton />
           <BookingFloatingButton />
+          <WelcomePromo />
           <ScrollToTop />
         </NextIntlClientProvider>
       </body>

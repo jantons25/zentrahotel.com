@@ -25,7 +25,7 @@ export async function ArticleHero({ post, url }: ArticleHeroProps) {
   const title = pick(post.title, locale);
 
   return (
-    <header className="relative isolate -mt-16 overflow-hidden bg-secondary pt-28 pb-40 text-white md:-mt-20 md:pt-36 md:pb-48">
+    <header className="relative isolate mt-[calc(var(--h-navbar)*-1)] overflow-hidden bg-secondary pt-[calc(var(--h-navbar)+2rem)] pb-40 text-white md:pt-[calc(var(--h-navbar)+3.5rem)] md:pb-48">
       <div className={styles.auroraOne} aria-hidden="true" />
       <Container className="relative">
         <nav

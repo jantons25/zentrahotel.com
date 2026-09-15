@@ -1,6 +1,11 @@
 // Sección "promociones": oferta destacada + cupones canjeables sobre fondo navy editorial.
 import { getLocale, getTranslations } from "next-intl/server";
-import { ArrowUpRight, MessageCircle, Sparkles, TicketPercent } from "lucide-react";
+import {
+  ArrowUpRight,
+  MessageCircle,
+  Sparkles,
+  TicketPercent,
+} from "lucide-react";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
@@ -86,7 +91,11 @@ export async function OffersSection() {
             <CountdownBadge expiresAt={featuredOffer.expiresAt} />
 
             <span className="inline-flex w-fit items-center gap-2 rounded-full bg-primary/15 px-3 py-1 text-[0.65rem] font-semibold tracking-[0.2em] text-secondary uppercase">
-              <Sparkles className="size-3.5" strokeWidth={1.75} aria-hidden="true" />
+              <Sparkles
+                className="size-3.5"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
               {t("featuredBadge")}
             </span>
 
@@ -125,7 +134,11 @@ export async function OffersSection() {
             </div>
 
             <div className="mt-6 flex items-start gap-2 border-t border-secondary/10 pt-5 text-xs text-secondary/60">
-              <TicketPercent className="mt-0.5 size-4 shrink-0 text-primary" strokeWidth={1.75} aria-hidden="true" />
+              <TicketPercent
+                className="mt-0.5 size-4 shrink-0 text-primary"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
               <p>
                 {t("featuredValidUntil", {
                   title: pick(featuredOffer.title, locale),
@@ -154,7 +167,10 @@ export async function OffersSection() {
                       <span aria-hidden="true">
                         {(index + 2).toString().padStart(2, "0")}
                       </span>
-                      <span className="h-px w-4 bg-white/25" aria-hidden="true" />
+                      <span
+                        className="h-px w-4 bg-white/25"
+                        aria-hidden="true"
+                      />
                       {t("couponLabel")}
                     </p>
                     <TicketPercent
@@ -178,13 +194,19 @@ export async function OffersSection() {
                   </div>
 
                   <a
-                    href={buildWhatsAppUrl(t("couponPrefill", { code: coupon.code }))}
+                    href={buildWhatsAppUrl(
+                      t("couponPrefill", { code: coupon.code }),
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={t("couponAria", { code: coupon.code })}
                     className="group mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-xs font-semibold tracking-[0.14em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                   >
-                    <MessageCircle className="size-4" strokeWidth={1.75} aria-hidden="true" />
+                    <MessageCircle
+                      className="size-4"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
                     {t("couponCta")}
                     <ArrowUpRight
                       className="size-3.5 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"

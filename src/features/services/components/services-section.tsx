@@ -1,4 +1,6 @@
-// Sección "Nuestros servicios": grid editorial con todas las amenidades del hotel.
+// Tercera sección de la home: "Nuestros servicios".
+// Tarjetas con foto + icono + nombre, en un flex-wrap siempre centrado horizontalmente.
+import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 
@@ -21,6 +23,7 @@ export async function ServicesSection() {
 
   return (
     <Section
+      id="servicios"
       aria-labelledby="servicios-titulo"
       className={`${fontServicesDisplay.variable} relative overflow-hidden bg-[color-mix(in_oklab,var(--accent)_65%,white)]`}
     >
@@ -40,10 +43,10 @@ export async function ServicesSection() {
             </p>
             <h2
               id="servicios-titulo"
-              className="mt-6 font-[family-name:var(--font-services-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
+              className="mt-6 font-[family-name:var(--font-services-display)] text-[clamp(2.25rem,5vw,4rem)] leading-[0.98] font-light tracking-[-0.02em] text-balance text-secondary"
             >
               {t("titleA")}{" "}
-              <span className="italic font-normal text-secondary/90">
+              <span className="font-normal text-primary italic">
                 {t("titleEmphasis")}
               </span>
             </h2>
@@ -68,35 +71,53 @@ export async function ServicesSection() {
         </header>
 
         <ul
-          className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:mt-16 lg:grid-cols-6 lg:gap-5"
+          className="mt-12 flex flex-wrap justify-center gap-4 lg:mt-16 lg:gap-5"
           aria-label={t("listAria", { count: total })}
         >
-          {hotelServices.map(({ label, icon: Icon }, index) => {
+          {hotelServices.map(({ label, icon: Icon, image }, index) => {
             const labelText = pick(label, locale);
             return (
-            <li
-              key={labelText}
-              className={styles.reveal}
-              style={
-                {
-                  "--reveal-delay": `${80 + Math.min(index, MAX_STAGGER_INDEX) * 55}ms`,
-                } as React.CSSProperties
-              }
-            >
-              <article
-                className={`${styles.card} group flex h-full flex-col items-start gap-4 rounded-2xl border border-secondary/10 bg-card p-4 shadow-card sm:p-5`}
+              <li
+                key={labelText}
+                className={`${styles.reveal} w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] md:w-[15rem] lg:w-[15.5rem]`}
+                style={
+                  {
+                    "--reveal-delay": `${80 + Math.min(index, MAX_STAGGER_INDEX) * 55}ms`,
+                  } as React.CSSProperties
+                }
               >
-                <span
-                  className={`${styles.iconChip} grid size-11 place-items-center rounded-xl bg-primary/15 text-secondary`}
-                  aria-hidden="true"
+                <article
+                  className={`${styles.card} group flex h-full flex-col overflow-hidden rounded-2xl border border-secondary/10 bg-card text-center shadow-card`}
                 >
-                  <Icon className="size-5" strokeWidth={1.75} />
-                </span>
-                <p className="text-sm font-medium leading-snug text-secondary text-balance sm:text-[0.95rem]">
-                  {labelText}
-                </p>
-              </article>
-            </li>
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-secondary/5">
+                    <Image
+                      src={image}
+                      alt=""
+                      fill
+                      loading="lazy"
+                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 16rem"
+                      className={styles.media}
+                    />
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-secondary/55 via-secondary/10 to-transparent"
+                      aria-hidden="true"
+                    />
+                  </div>
+
+                  {/* El chip del icono monta sobre la foto para coser imagen y texto. */}
+                  <div className="relative z-10 -mt-7 flex flex-1 flex-col items-center px-4 pb-5">
+                    <span
+                      className={`${styles.iconChip} grid size-14 place-items-center rounded-full border-4 border-card bg-card text-secondary shadow-card`}
+                      aria-hidden="true"
+                    >
+                      <Icon className="size-5" strokeWidth={1.75} />
+                    </span>
+                    <p className="mt-3 text-sm leading-snug font-medium text-balance text-secondary">
+                      {labelText}
+                    </p>
+                  </div>
+                </article>
+              </li>
             );
           })}
         </ul>

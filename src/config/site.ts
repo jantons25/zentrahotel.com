@@ -1,5 +1,5 @@
 // Configuración global del sitio: identidad, contacto, navegación, redes sociales e idiomas.
-import type { NavItem } from "@/types";
+import type { NavItem, NavNode } from "@/types";
 
 export const siteConfig = {
   name: "Zentra Hotel & Cowork",
@@ -8,6 +8,22 @@ export const siteConfig = {
     "Zentra Hotel: hotel moderno y cómodo en el centro de Chiclayo. Reserva directo en web y ahorra en tu próximo viaje.",
   url: "https://zentrahotel.com",
   bookingUrl: "https://hotels.cloudbeds.com/es/reservation/h4UU3o?currency=pen",
+  // Motor de reservas embebido (web components de Cloudbeds Immersive Experience 2.0).
+  // `orgSubdomain` es el subdominio de la Organización de Cloudbeds — el texto que
+  // antecede a `.cloudbeds.com` en la URL del Group Booking Engine. NO es el dominio
+  // del sitio ni el código de propiedad de `hotels.cloudbeds.com/reservation/XXXX`.
+  cloudbeds: {
+    scriptUrl:
+      "https://static1.cloudbeds.com/booking-engine/latest/static/js/immersive-experience/cb-immersive-experience.js",
+    orgSubdomain: process.env.NEXT_PUBLIC_CLOUDBEDS_SUBDOMAIN ?? "",
+    currency: "pen",
+    // Orden y nombre visible de las sedes dentro del selector de propiedades.
+    properties: [
+      { code: "h4UU3o", name: "Zentra Balta" },
+      { code: "", name: "Zentra Plaza" },
+      { code: "", name: "Zentra San José" },
+    ],
+  },
   contact: {
     phoneDisplay: "+51 924 048 177",
     whatsappNumber: "51924048177",
@@ -33,18 +49,47 @@ export const siteConfig = {
   ],
 } as const;
 
-// Navegación principal dividida en dos grupos alrededor del logo (izquierda / derecha).
-// Cada item lleva una `key` que resuelve a `messages/{locale}.json` bajo el namespace `nav`.
-export const mainNavLeft: NavItem[] = [
+// Árbol de navegación del menú desplegable a pantalla completa.
+// Cada `key` resuelve a `messages/{locale}.json` bajo el namespace `nav`.
+// Los nodos con `hidden: true` siguen existiendo (rutas y sitemap) pero no se
+// pintan en el menú; basta con quitar la bandera para recuperarlos.
+export const mainNavTree: NavNode[] = [
   { key: "inicio", href: "/" },
-  { key: "nosotros", href: "/nosotros" },
-  { key: "habitaciones", href: "/habitaciones" },
+  {
+    key: "sedes",
+    children: [
+      { key: "sedeBalta", href: "/#sede-balta" },
+      { key: "sedePlaza", href: "/#sede-plaza" },
+      { key: "sedeSanJose", href: "/#sede-san-jose" },
+    ],
+  },
   { key: "empresa", href: "/empresa" },
-];
-
-export const mainNavRight: NavItem[] = [
   { key: "blog", href: "/blog" },
-  { key: "promociones", href: "/promociones" },
+  { key: "galeria", href: "/galeria" },
+  { key: "promociones", href: "/promociones", hidden: true },
+  { key: "nosotros", href: "/nosotros", hidden: true },
+  { key: "habitaciones", href: "/habitaciones", hidden: true },
 ];
 
-export const mainNav: NavItem[] = [...mainNavLeft, ...mainNavRight];
+// Solo los nodos visibles, ya listos para pintar en el menú.
+export const visibleNavTree: NavNode[] = mainNavTree
+  .filter((node) => !node.hidden)
+  .map((node) => ({
+    ...node,
+    children: node.children?.filter((child) => !child.hidden),
+  }));
+
+// Aplana el árbol a rutas reales (ignora anclas y grupos sin href) para sitemap y footer.
+function flattenRoutes(nodes: NavNode[]): NavItem[] {
+  return nodes.flatMap((node) => [
+    ...(node.href && !node.href.includes("#")
+      ? [{ key: node.key, href: node.href }]
+      : []),
+    ...(node.children ? flattenRoutes(node.children) : []),
+  ]);
+}
+
+export const mainNav: NavItem[] = flattenRoutes(mainNavTree);
+
+// Enlaces del pie de página: solo lo que hoy está visible en el menú.
+export const mainNavLeft: NavItem[] = flattenRoutes(visibleNavTree);

@@ -14,7 +14,7 @@ export async function PromotionsPageHero() {
   return (
     <section
       aria-label={t("sectionAria")}
-      className={`${fontPromotionsDisplay.variable} ${styles.section} relative isolate -mt-16 overflow-hidden bg-secondary text-white md:-mt-20`}
+      className={`${fontPromotionsDisplay.variable} ${styles.section} relative isolate mt-[calc(var(--h-navbar)*-1)] overflow-hidden bg-secondary text-white`}
     >
       <Image
         src="/images/balta/hab-suite.webp"
@@ -28,7 +28,7 @@ export async function PromotionsPageHero() {
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-secondary/15 via-transparent to-secondary/30" aria-hidden="true" />
       <div className={styles.auroraOne} aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 pt-32 pb-16 sm:px-6 md:pt-40 md:pb-20 lg:px-8 lg:pt-44 lg:pb-24">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 pt-[calc(var(--h-navbar)+3rem)] pb-16 sm:px-6 md:pt-[calc(var(--h-navbar)+4rem)] md:pb-20 lg:px-8 lg:pt-[calc(var(--h-navbar)+5rem)] lg:pb-24">
         <div className="max-w-4xl">
           <p
             className={`${styles.reveal} inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[0.62rem] font-semibold tracking-[0.28em] text-white/85 uppercase backdrop-blur`}

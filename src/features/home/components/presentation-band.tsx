@@ -1,7 +1,13 @@
 // Banda de presentación: reformula la propuesta de valor de Zentra como un intermezzo editorial
 // entre el hero y las promociones, sobre un campo oliva (--primary) coherente con el resto del sitio.
 import { getTranslations } from "next-intl/server";
-import { ArrowUpRight, MapPin, MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
+import {
+  ArrowUpRight,
+  MapPin,
+  MessageCircle,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 
 import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
@@ -51,10 +57,7 @@ export async function PresentationBand() {
               className={`${styles.reveal} flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary uppercase`}
               style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
             >
-              <span
-                className="h-px w-8 bg-secondary/50"
-                aria-hidden="true"
-              />
+              <span className="h-px w-8 bg-secondary/50" aria-hidden="true" />
               {t("eyebrow")}
             </p>
 

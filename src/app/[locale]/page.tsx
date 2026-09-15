@@ -7,11 +7,12 @@ import { HeroSection } from "@/features/home/components/hero-section";
 import { PresentationBand } from "@/features/home/components/presentation-band";
 import { TravelerSection } from "@/features/home/components/traveler-section";
 import { LocationSection } from "@/features/location/components/location-section";
-import { OffersSection } from "@/features/offers/components/offers-section";
+import { SpecialOffersSection } from "@/features/offers/components/special-offers-section";
 import { RoomsAvailability } from "@/features/rooms/components/rooms-availability";
 import { RoomsShowcase } from "@/features/rooms/components/rooms-showcase";
 import { ServicesSection } from "@/features/services/components/services-section";
 import { TestimonialsSection } from "@/features/testimonials/components/testimonials-section";
+import { VenuesSection } from "@/features/venues/components/venues-section";
 import { buildHotelJsonLd } from "@/lib/seo/jsonld";
 
 type Props = {
@@ -29,9 +30,10 @@ export default async function HomePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buildHotelJsonLd()) }}
       />
       <HeroSection />
-      <PresentationBand />
-      <OffersSection />
+      <SpecialOffersSection />
       <ServicesSection />
+      <VenuesSection />
+      <PresentationBand />
       <RoomsShowcase />
       <ZenExperienceSection />
       <TravelerSection />

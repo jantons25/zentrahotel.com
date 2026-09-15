@@ -1,6 +1,12 @@
 // Sección "¿Cómo reservar?": lista editorial oscura con canales de contacto directos.
 import { getTranslations } from "next-intl/server";
-import { ArrowUpRight, Mail, MapPin, MessageCircle, ShieldCheck } from "lucide-react";
+import {
+  ArrowUpRight,
+  Mail,
+  MapPin,
+  MessageCircle,
+  ShieldCheck,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import { Container } from "@/components/common/container";
@@ -78,7 +84,9 @@ export async function BookingChannels() {
               className="mt-6 font-[family-name:var(--font-booking-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
             >
               {t("titleA")}{" "}
-              <span className="italic font-normal text-primary">{t("titleEmphasis")}</span>
+              <span className="italic font-normal text-primary">
+                {t("titleEmphasis")}
+              </span>
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/70">
               {t("lead")}
@@ -100,76 +108,85 @@ export async function BookingChannels() {
               />
             </a>
             <p className="inline-flex items-center gap-2 text-[0.72rem] font-medium tracking-[0.04em] text-white/55">
-              <ShieldCheck className="size-3.5 text-primary" strokeWidth={2} aria-hidden="true" />
+              <ShieldCheck
+                className="size-3.5 text-primary"
+                strokeWidth={2}
+                aria-hidden="true"
+              />
               {t("ctaNote")}
             </p>
           </div>
         </header>
 
         <ol className="mt-12 lg:mt-16">
-          {channels.map(({ title, hint, detail, href, external, icon: Icon, action }, index) => (
-            <li
-              key={title}
-              className={styles.reveal}
-              style={{ animationDelay: `${120 + index * 90}ms` }}
-            >
-              <a
-                href={href}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noopener noreferrer" : undefined}
-                aria-label={t("actionAria", { action, detail })}
-                className={`${styles.row} group relative flex items-center gap-4 border-t border-white/12 py-6 focus-visible:outline-none sm:gap-6 sm:py-8`}
+          {channels.map(
+            (
+              { title, hint, detail, href, external, icon: Icon, action },
+              index,
+            ) => (
+              <li
+                key={title}
+                className={styles.reveal}
+                style={{ animationDelay: `${120 + index * 90}ms` }}
               >
-                <span className={styles.rowGlow} aria-hidden="true" />
-                <span className={styles.rail} aria-hidden="true" />
-
-                <span
-                  className="relative font-[family-name:var(--font-booking-display)] font-normal text-white/35 leading-none tracking-tight transition-colors duration-(--duration-normal) group-hover:text-primary motion-reduce:transition-none text-[clamp(1.5rem,3vw,2.4rem)]"
-                  aria-hidden="true"
+                <a
+                  href={href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  aria-label={t("actionAria", { action, detail })}
+                  className={`${styles.row} group relative flex items-center gap-4 border-t border-white/12 py-6 focus-visible:outline-none sm:gap-6 sm:py-8`}
                 >
-                  {(index + 1).toString().padStart(2, "0")}
-                </span>
+                  <span className={styles.rowGlow} aria-hidden="true" />
+                  <span className={styles.rail} aria-hidden="true" />
 
-                <span
-                  className="relative grid size-11 shrink-0 place-items-center rounded-full border border-white/20 text-white/85 transition-colors duration-(--duration-normal) group-hover:border-primary/60 group-hover:text-primary motion-reduce:transition-none sm:size-13"
-                  aria-hidden="true"
-                >
-                  <Icon className="size-5" strokeWidth={1.6} />
-                </span>
+                  <span
+                    className="relative font-[family-name:var(--font-booking-display)] font-normal text-white/35 leading-none tracking-tight transition-colors duration-(--duration-normal) group-hover:text-primary motion-reduce:transition-none text-[clamp(1.5rem,3vw,2.4rem)]"
+                    aria-hidden="true"
+                  >
+                    {(index + 1).toString().padStart(2, "0")}
+                  </span>
 
-                <span className="relative flex flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-8">
-                  <span className="flex flex-col gap-1 sm:w-52">
-                    <span className="text-[0.68rem] font-semibold tracking-[0.22em] text-white/50 uppercase">
-                      {hint}
+                  <span
+                    className="relative grid size-11 shrink-0 place-items-center rounded-full border border-white/20 text-white/85 transition-colors duration-(--duration-normal) group-hover:border-primary/60 group-hover:text-primary motion-reduce:transition-none sm:size-13"
+                    aria-hidden="true"
+                  >
+                    <Icon className="size-5" strokeWidth={1.6} />
+                  </span>
+
+                  <span className="relative flex flex-1 flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-8">
+                    <span className="flex flex-col gap-1 sm:w-52">
+                      <span className="text-[0.68rem] font-semibold tracking-[0.22em] text-white/50 uppercase">
+                        {hint}
+                      </span>
+                      <span className="font-[family-name:var(--font-booking-display)] text-2xl font-light leading-tight text-white transition-colors duration-(--duration-normal) group-hover:text-primary motion-reduce:transition-none sm:text-[1.8rem]">
+                        {title}
+                      </span>
                     </span>
-                    <span className="font-[family-name:var(--font-booking-display)] text-2xl font-light leading-tight text-white transition-colors duration-(--duration-normal) group-hover:text-primary motion-reduce:transition-none sm:text-[1.8rem]">
-                      {title}
+                    <span className="font-mono text-[0.82rem] leading-relaxed tracking-tight text-white/70 sm:text-sm">
+                      {detail}
                     </span>
                   </span>
-                  <span className="font-mono text-[0.82rem] leading-relaxed tracking-tight text-white/70 sm:text-sm">
-                    {detail}
+
+                  <span
+                    className="relative hidden shrink-0 items-center gap-2 text-xs font-semibold tracking-[0.18em] text-white/55 uppercase transition-colors duration-(--duration-normal) group-hover:text-primary motion-reduce:transition-none lg:inline-flex"
+                    aria-hidden="true"
+                  >
+                    {action}
                   </span>
-                </span>
 
-                <span
-                  className="relative hidden shrink-0 items-center gap-2 text-xs font-semibold tracking-[0.18em] text-white/55 uppercase transition-colors duration-(--duration-normal) group-hover:text-primary motion-reduce:transition-none lg:inline-flex"
-                  aria-hidden="true"
-                >
-                  {action}
-                </span>
-
-                <span
-                  className="relative grid size-11 shrink-0 place-items-center rounded-full border border-white/25 text-white transition-all duration-(--duration-normal) group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground motion-reduce:transition-none"
-                  aria-hidden="true"
-                >
-                  <ArrowUpRight
-                    className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
-                    strokeWidth={1.75}
-                  />
-                </span>
-              </a>
-            </li>
-          ))}
+                  <span
+                    className="relative grid size-11 shrink-0 place-items-center rounded-full border border-white/25 text-white transition-all duration-(--duration-normal) group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground motion-reduce:transition-none"
+                    aria-hidden="true"
+                  >
+                    <ArrowUpRight
+                      className="size-4 transition-transform duration-(--duration-normal) group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none"
+                      strokeWidth={1.75}
+                    />
+                  </span>
+                </a>
+              </li>
+            ),
+          )}
           <li aria-hidden="true">
             <div className="border-t border-white/12" />
           </li>

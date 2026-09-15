@@ -22,7 +22,8 @@ import { pick } from "@/lib/i18n-pick";
 
 function CarouselNav() {
   const t = useTranslations("home.traveler");
-  const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } = useCarousel();
+  const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } =
+    useCarousel();
   return (
     <div className="mt-8 flex items-center justify-end gap-2 pr-4 lg:pr-8">
       <button
@@ -85,7 +86,9 @@ export function TravelerCarousel() {
           {t("titleA")}
           <br />
           {t("titleB")}{" "}
-          <span className="italic font-normal text-secondary/90">{t("titleEmphasis")}</span>
+          <span className="italic font-normal text-secondary/90">
+            {t("titleEmphasis")}
+          </span>
         </h2>
 
         <p className="mt-6 max-w-md text-[0.95rem] leading-relaxed text-muted-foreground">
@@ -118,7 +121,8 @@ export function TravelerCarousel() {
               / {format(total)}
             </span>
             <span className="ml-auto uppercase tracking-[0.24em]">
-              {travelerTypes[current]?.tag && pick(travelerTypes[current].tag, locale)}
+              {travelerTypes[current]?.tag &&
+                pick(travelerTypes[current].tag, locale)}
             </span>
           </div>
           <div className="relative mt-4 h-px w-full bg-secondary/15">
@@ -139,7 +143,10 @@ export function TravelerCarousel() {
         >
           <CarouselContent className="-ml-4 md:-ml-6">
             {travelerTypes.map(
-              ({ title, description, icon: Icon, image, imageAlt, tag }, index) => {
+              (
+                { title, description, icon: Icon, image, imageAlt, tag },
+                index,
+              ) => {
                 const active = index === current;
                 const titleText = pick(title, locale);
                 return (

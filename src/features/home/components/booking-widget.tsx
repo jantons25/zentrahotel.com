@@ -4,7 +4,12 @@
 // con los parámetros de check-in, check-out, huéspedes y código promocional prellenados.
 import * as React from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, CalendarDays, TicketPercent, UsersRound } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarDays,
+  TicketPercent,
+  UsersRound,
+} from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 
@@ -44,8 +49,14 @@ function buildCloudbedsUrl(params: {
 export function BookingWidget() {
   const t = useTranslations("home.bookingWidget");
   const today = React.useMemo(() => toISODate(new Date()), []);
-  const defaultCheckIn = React.useMemo(() => toISODate(addDays(new Date(), 1)), []);
-  const defaultCheckOut = React.useMemo(() => toISODate(addDays(new Date(), 3)), []);
+  const defaultCheckIn = React.useMemo(
+    () => toISODate(addDays(new Date(), 1)),
+    [],
+  );
+  const defaultCheckOut = React.useMemo(
+    () => toISODate(addDays(new Date(), 3)),
+    [],
+  );
 
   const [checkin, setCheckin] = React.useState(defaultCheckIn);
   const [checkout, setCheckout] = React.useState(defaultCheckOut);
@@ -105,7 +116,9 @@ export function BookingWidget() {
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <label className={`${styles.field} flex flex-col gap-1 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}>
+        <label
+          className={`${styles.field} flex flex-col gap-1 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}
+        >
           <span className="text-[0.6rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
             {t("checkIn")}
           </span>
@@ -118,7 +131,9 @@ export function BookingWidget() {
             className="bg-transparent text-sm font-semibold text-secondary outline-none"
           />
         </label>
-        <label className={`${styles.field} flex flex-col gap-1 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}>
+        <label
+          className={`${styles.field} flex flex-col gap-1 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}
+        >
           <span className="text-[0.6rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
             {t("checkOut")}
           </span>
@@ -134,8 +149,14 @@ export function BookingWidget() {
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <label className={`${styles.field} flex items-center gap-2 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}>
-          <UsersRound className="size-4 shrink-0 text-secondary/60" strokeWidth={1.75} aria-hidden="true" />
+        <label
+          className={`${styles.field} flex items-center gap-2 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}
+        >
+          <UsersRound
+            className="size-4 shrink-0 text-secondary/60"
+            strokeWidth={1.75}
+            aria-hidden="true"
+          />
           <div className="flex min-w-0 flex-1 flex-col">
             <span className="text-[0.6rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
               {t("guests")}
@@ -154,7 +175,9 @@ export function BookingWidget() {
             </select>
           </div>
         </label>
-        <label className={`${styles.field} flex flex-col gap-1 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}>
+        <label
+          className={`${styles.field} flex flex-col gap-1 rounded-2xl border border-secondary/15 bg-white px-4 py-3`}
+        >
           <span className="text-[0.6rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
             {t("rooms")}
           </span>
@@ -173,8 +196,14 @@ export function BookingWidget() {
         </label>
       </div>
 
-      <label className={`${styles.field} flex items-center gap-3 rounded-2xl border border-dashed border-secondary/25 bg-white px-4 py-3`}>
-        <TicketPercent className="size-4 shrink-0 text-secondary/60" strokeWidth={1.75} aria-hidden="true" />
+      <label
+        className={`${styles.field} flex items-center gap-3 rounded-2xl border border-dashed border-secondary/25 bg-white px-4 py-3`}
+      >
+        <TicketPercent
+          className="size-4 shrink-0 text-secondary/60"
+          strokeWidth={1.75}
+          aria-hidden="true"
+        />
         <div className="flex min-w-0 flex-1 flex-col">
           <span className="text-[0.6rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
             {t("promo")}

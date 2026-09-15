@@ -45,9 +45,9 @@
   pointer-events: none;
   z-index: 0;
   background-image: radial-gradient(
-      color-mix(in oklab, white 5%, transparent) 1px,
-      transparent 1px
-    );
+    color-mix(in oklab, white 5%, transparent) 1px,
+    transparent 1px
+  );
   background-size: 3px 3px;
   mix-blend-mode: overlay;
   opacity: 0.35;

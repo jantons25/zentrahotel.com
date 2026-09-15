@@ -18,7 +18,7 @@ export async function AboutHero() {
   return (
     <section
       aria-label={t("sectionAria", { brand: siteConfig.name })}
-      className={`${fontAboutDisplay.variable} ${styles.section} relative isolate -mt-16 overflow-hidden bg-secondary text-white md:-mt-20`}
+      className={`${fontAboutDisplay.variable} ${styles.section} relative isolate mt-[calc(var(--h-navbar)*-1)] overflow-hidden bg-secondary text-white`}
     >
       <Image
         src="/images/cowork-plaza.webp"
@@ -32,7 +32,7 @@ export async function AboutHero() {
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-secondary/25 via-transparent to-secondary/40" aria-hidden="true" />
       <div className={styles.auroraOne} aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 pt-32 pb-12 sm:px-6 md:pt-40 md:pb-16 lg:px-8 lg:pt-44 lg:pb-20">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 pt-[calc(var(--h-navbar)+3rem)] pb-12 sm:px-6 md:pt-[calc(var(--h-navbar)+4rem)] md:pb-16 lg:px-8 lg:pt-[calc(var(--h-navbar)+5rem)] lg:pb-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end lg:gap-16">
           <div className="lg:col-span-8">
             <p

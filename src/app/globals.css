@@ -70,6 +70,19 @@
   --duration-fast: 150ms;
   --duration-normal: 250ms;
   --duration-slow: 400ms;
+  /* Alturas del header: banner de ofertas flash + barra de navegación.
+     `--h-header` es la referencia única para que el hero ocupe exactamente
+     el resto del viewport (header + hero = 100dvh, sin sobrar ni faltar). */
+  --h-flash: 2.1rem;
+  --h-navbar: 4rem;
+  --h-header: calc(var(--h-flash) + var(--h-navbar));
+}
+
+@media (min-width: 768px) {
+  :root {
+    --h-flash: 3rem;
+    --h-navbar: 5rem;
+  }
 }
 
 .dark {
@@ -106,4 +119,51 @@
   body {
     @apply bg-background text-foreground antialiased;
   }
+  /* Tailwind v4 ya no pone `cursor: pointer` en los controles: lo reponemos para
+     que todo lo accionable (botones, triggers de modal, tabs) lo muestre. */
+  button:not(:disabled),
+  summary,
+  [role="button"]:not([aria-disabled="true"]),
+  label:has(> input[type="checkbox"]),
+  label:has(> input[type="radio"]) {
+    cursor: pointer;
+  }
+  button:disabled,
+  [role="button"][aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+}
+
+/* Marquesina horizontal infinita (banner de ofertas flash y cintas similares).
+   El contenido se duplica en el DOM y se desplaza medio ancho: el bucle no corta. */
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-x {
+    animation: none !important;
+  }
+}
+
+.animate-marquee-x {
+  animation: marquee-x var(--marquee-duration, 40s) linear infinite;
+  will-change: transform;
+}
+
+/* Contenedor del motor de reservas de Cloudbeds: el web component se pinta en
+   shadow DOM, así que solo podemos controlar su caja externa y el ancho. */
+.cb-embed {
+  width: 100%;
+}
+
+.cb-embed cb-multi-property-date-picker,
+.cb-embed cb-property-date-picker {
+  display: block;
+  width: 100%;
 }

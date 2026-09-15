@@ -5,3 +5,13 @@ export interface NavItem {
   key: string;
   href: string;
 }
+
+// Nodo del árbol de navegación del menú desplegable a pantalla completa.
+// - `children`: convierte el nodo en un grupo con submenús (p. ej. "Sedes").
+// - `hidden`: lo retira del menú sin borrarlo del código ni del sitemap.
+export interface NavNode {
+  key: string;
+  href?: string;
+  hidden?: boolean;
+  children?: NavNode[];
+}
