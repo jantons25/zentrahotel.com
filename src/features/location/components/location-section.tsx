@@ -1,4 +1,5 @@
 // Sección de ubicación: cards de ventajas cercanas + croquis de ubicación con panel de dirección.
+// Va sobre el tono claro de marca (--accent) para abrir el bloque tras el campo navy de sedes.
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight, MapPin } from "lucide-react";
@@ -20,10 +21,10 @@ export async function LocationSection() {
   return (
     <Section
       aria-labelledby="ubicacion-titulo"
-      className={`${fontLocationDisplay.variable} relative overflow-hidden bg-secondary text-secondary-foreground`}
+      className={`${fontLocationDisplay.variable} relative overflow-hidden bg-accent text-foreground`}
     >
       <div
-        className="pointer-events-none absolute -top-32 -right-24 size-[26rem] rounded-full bg-primary/20 blur-3xl"
+        className="pointer-events-none absolute -top-32 -right-24 size-[26rem] rounded-full bg-primary/12 blur-3xl"
         aria-hidden="true"
       />
       <Container className="relative">
@@ -32,20 +33,20 @@ export async function LocationSection() {
           style={{ "--reveal-delay": "0ms" } as React.CSSProperties}
         >
           <div className="max-w-2xl">
-            <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-white/60 uppercase">
-              <span className="h-px w-8 bg-white/30" aria-hidden="true" />
+            <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
+              <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
               {t("eyebrow")} · {total.toString().padStart(2, "0")}
             </p>
             <h2
               id="ubicacion-titulo"
-              className="mt-6 font-[family-name:var(--font-location-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
+              className="mt-6 font-[family-name:var(--font-location-display)] font-light leading-[0.95] tracking-[-0.02em] text-secondary text-balance text-[clamp(2.5rem,5.5vw,4.5rem)]"
             >
               {t("titleA")}{" "}
-              <span className="italic font-normal text-primary/90">
+              <span className="italic font-normal text-primary">
                 {t("titleEmphasis")}
               </span>
             </h2>
-            <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-white/70">
+            <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
               {t("lead", {
                 balta: siteConfig.contact.addressBalta,
                 plaza: siteConfig.contact.addressPlaza,
@@ -58,7 +59,7 @@ export async function LocationSection() {
             href={siteConfig.contact.mapShareUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase backdrop-blur-md transition-colors duration-(--duration-normal) hover:bg-white hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none md:self-auto"
+            className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full border border-secondary/30 bg-transparent px-6 py-3 text-sm font-semibold tracking-wide text-secondary uppercase transition-colors duration-(--duration-normal) hover:bg-secondary hover:text-secondary-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary motion-reduce:transition-none md:self-auto"
           >
             {t("ctaDirections")}
             <ArrowUpRight
@@ -74,7 +75,7 @@ export async function LocationSection() {
           style={{ "--reveal-delay": "460ms" } as React.CSSProperties}
         >
           <div
-            className={`${styles.mapCard} relative overflow-hidden rounded-[1.75rem] border border-white/12 bg-card shadow-card`}
+            className={`${styles.mapCard} relative overflow-hidden rounded-[1.75rem] border border-secondary/10 bg-card shadow-card`}
           >
             <div className="relative h-80 w-full md:h-[28rem]">
               <Image
@@ -103,7 +104,7 @@ export async function LocationSection() {
                   }
                 >
                   <article
-                    className={`${styles.card} group flex h-full flex-col rounded-[1.5rem] border border-white/12 bg-card p-6 shadow-card sm:p-7`}
+                    className={`${styles.card} group flex h-full flex-col rounded-[1.5rem] border border-secondary/10 bg-card p-6 shadow-card sm:p-7`}
                   >
                     <span
                       className={`${styles.iconWrap} grid size-12 place-items-center rounded-2xl bg-primary/15 text-secondary`}

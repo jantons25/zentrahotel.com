@@ -167,17 +167,6 @@
       "ctaPackages": "See packages",
       "featuredBadge": "Signature"
     },
-    "traveler": {
-      "eyebrow": "Collections",
-      "titleA": "For every",
-      "titleB": "kind of",
-      "titleEmphasis": "traveler.",
-      "lead": "Rooms, services, and experiences designed for every reason you travel: business, tourism, celebrations, or full-on rest in the heart of Chiclayo.",
-      "ctaCollections": "See collections",
-      "prevAria": "Previous category",
-      "nextAria": "Next category",
-      "statusAria": "Category {current} of {total}"
-    },
     "booking": {
       "eyebrow": "Channels",
       "titleA": "How to",
@@ -245,12 +234,15 @@
     },
     "searchBar": {
       "aria": "Search availability",
+      "venue": "Property",
+      "venueAria": "Choose a property",
+      "venueSoon": "(coming soon)",
       "checkIn": "Check-in",
       "checkOut": "Check-out",
       "guests": "Guests",
       "guestsAria": "Number of adults",
       "adult": "{n} {n, plural, one {adult} other {adults}}",
-      "submit": "Check availability"
+      "submit": "Search"
     },
     "specialOffers": {
       "eyebrow": "Offers",
@@ -519,10 +511,24 @@
       "readingAria": "Reading time {minutes} minutes",
       "cta": "Read article"
     },
+    "collections": {
+      "eyebrow": "Collections",
+      "titleA": "For every",
+      "titleB": "kind of",
+      "titleEmphasis": "traveler.",
+      "lead": "Rooms, services, and experiences designed for every reason you travel: business, tourism, celebrations, or full-on rest in the heart of Chiclayo.",
+      "prevAria": "Previous category",
+      "nextAria": "Next category",
+      "statusAria": "Category {current} of {total}",
+      "ctaMore": "See more",
+      "ctaAria": "See more about the {collection} collection"
+    },
     "grid": {
       "eyebrow": "Recent posts",
       "titleA": "Latest from the",
-      "titleEmphasis": "journal."
+      "titleEmphasis": "journal.",
+      "moreEyebrow": "Keep reading",
+      "listAria": "More journal articles"
     },
     "card": {
       "readingAria": "Reading time {minutes} minutes",

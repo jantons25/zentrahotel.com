@@ -1,9 +1,10 @@
 "use client";
 
 // Promoción flotante + modal de registro.
-// La tarjeta flotante vive abajo a la izquierda (los botones de WhatsApp y reserva
-// ocupan la derecha) y abre un modal con el formulario de afiliación. Al enviarlo,
-// `/api/welcome` registra al huésped y le manda el correo de bienvenida con el código.
+// La tarjeta flotante se ancla siempre a la esquina inferior izquierda, en escritorio
+// y en móvil, para no chocar con los botones de WhatsApp y reserva. Abre el modal de
+// afiliación y, al enviarlo, `/api/welcome` registra al huésped y le manda el correo
+// de bienvenida con el código.
 import * as React from "react";
 import Image from "next/image";
 import { Dialog } from "@base-ui/react/dialog";
@@ -80,7 +81,7 @@ export function WelcomePromo() {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <div className="fixed bottom-4 left-4 z-(--z-floating) w-[min(19rem,calc(100vw-2rem))] md:bottom-6 md:left-6">
+      <div className="fixed bottom-4 left-4 z-(--z-floating) w-[min(19rem,calc(100vw-2rem))]">
         <Dialog.Trigger className="group block w-full overflow-hidden rounded-[1.25rem] border border-primary/40 bg-secondary text-left text-white shadow-card-hover transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0">
           <span className="relative block aspect-[16/9] w-full overflow-hidden bg-secondary">
             <Image
@@ -92,7 +93,7 @@ export function WelcomePromo() {
             />
             <span
               aria-hidden="true"
-              className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/45 to-transparent"
+              className="absolute inset-0 bg-gradient-to-t from-secondary/50 via-secondary/22 to-transparent"
             />
             <span className="absolute bottom-2.5 left-3 inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1 text-[0.6rem] font-semibold tracking-[0.18em] text-primary-foreground uppercase">
               <Gift className="size-3.5" strokeWidth={2} aria-hidden="true" />

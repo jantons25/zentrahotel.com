@@ -15,13 +15,18 @@ export const siteConfig = {
   cloudbeds: {
     scriptUrl:
       "https://static1.cloudbeds.com/booking-engine/latest/static/js/immersive-experience/cb-immersive-experience.js",
+    // Vacío a propósito: "zentrahotels" no es una Organización real de Cloudbeds y el
+    // web component respondía "Error al cargar las propiedades", dejando la barra
+    // inutilizable. Sin subdominio se pinta la barra propia, que ya redirige al
+    // Booking Engine de cada sede. Se rellena por env cuando exista la Organización.
     orgSubdomain: process.env.NEXT_PUBLIC_CLOUDBEDS_SUBDOMAIN ?? "",
     currency: "pen",
     // Orden y nombre visible de las sedes dentro del selector de propiedades.
+    // `code` es el identificador de hotels.cloudbeds.com/es/reservation/<code>.
     properties: [
       { code: "h4UU3o", name: "Zentra Balta" },
-      { code: "", name: "Zentra Plaza" },
-      { code: "", name: "Zentra San José" },
+      { code: "6lEIN9", name: "Zentra Plaza" },
+      { code: "NXhCN9", name: "Zentra San José" },
     ],
   },
   contact: {

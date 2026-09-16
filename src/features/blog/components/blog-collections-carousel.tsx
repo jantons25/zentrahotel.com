@@ -1,7 +1,8 @@
 "use client";
 
-// Experiencia interactiva de la sección viajero-titulo:
-// columna editorial (título + copy + CTA + contador) y carrusel de tarjetas.
+// Carrusel del separador "Colecciones" del blog: columna editorial (título + copy
+// + contador) y tarjetas con foto. Cada tarjeta lleva un botón "Ver más" que abre
+// el artículo del diario correspondiente.
 import Image from "next/image";
 import * as React from "react";
 import { useLocale, useTranslations } from "next-intl";
@@ -17,11 +18,11 @@ import {
   useCarousel,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
-import { travelerTypes } from "@/features/home/data/travelers";
+import { collections } from "@/features/blog/data/collections";
 import { pick } from "@/lib/i18n-pick";
 
 function CarouselNav() {
-  const t = useTranslations("home.traveler");
+  const t = useTranslations("blog.collections");
   const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } =
     useCarousel();
   return (
@@ -31,7 +32,7 @@ function CarouselNav() {
         onClick={scrollPrev}
         disabled={!canScrollPrev}
         aria-label={t("prevAria")}
-        className="grid size-11 place-items-center rounded-full border border-secondary/25 text-secondary transition-colors hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+        className="grid size-11 place-items-center rounded-full border border-white/30 text-white transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
       >
         <ChevronLeft className="size-5" strokeWidth={1.75} />
       </button>
@@ -40,7 +41,7 @@ function CarouselNav() {
         onClick={scrollNext}
         disabled={!canScrollNext}
         aria-label={t("nextAria")}
-        className="grid size-11 place-items-center rounded-full border border-secondary/25 text-secondary transition-colors hover:bg-secondary hover:text-secondary-foreground disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+        className="grid size-11 place-items-center rounded-full border border-white/30 text-white transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
       >
         <ChevronRight className="size-5" strokeWidth={1.75} />
       </button>
@@ -48,10 +49,10 @@ function CarouselNav() {
   );
 }
 
-const total = travelerTypes.length;
+const total = collections.length;
 
-export function TravelerCarousel() {
-  const t = useTranslations("home.traveler");
+export function BlogCollectionsCarousel() {
+  const t = useTranslations("blog.collections");
   const locale = useLocale();
   const [api, setApi] = React.useState<CarouselApi | null>(null);
   const [current, setCurrent] = React.useState(0);
@@ -74,58 +75,46 @@ export function TravelerCarousel() {
   return (
     <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
       <header className="lg:col-span-4 lg:pt-6">
-        <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-secondary/70 uppercase">
-          <span className="h-px w-8 bg-secondary/40" aria-hidden="true" />
+        <p className="flex items-center gap-3 text-[0.72rem] font-semibold tracking-[0.28em] text-white/60 uppercase">
+          <span className="h-px w-8 bg-white/30" aria-hidden="true" />
           {t("eyebrow")} · {format(total)}
         </p>
 
         <h2
-          id="viajero-titulo"
-          className="mt-6 font-[family-name:var(--font-traveler-display)] font-light text-secondary leading-[0.92] tracking-[-0.02em] text-balance text-[clamp(2.75rem,6vw,4.75rem)]"
+          id="colecciones-titulo"
+          className="mt-6 font-[family-name:var(--font-collections-display)] text-[clamp(2.75rem,6vw,4.75rem)] leading-[0.92] font-light tracking-[-0.02em] text-balance text-white"
         >
           {t("titleA")}
           <br />
           {t("titleB")}{" "}
-          <span className="italic font-normal text-secondary/90">
+          <span className="font-normal text-primary italic">
             {t("titleEmphasis")}
           </span>
         </h2>
 
-        <p className="mt-6 max-w-md text-[0.95rem] leading-relaxed text-muted-foreground">
+        <p className="mt-6 max-w-md text-[0.95rem] leading-relaxed text-white/70">
           {t("lead")}
         </p>
 
-        <Link
-          href="/habitaciones"
-          className="group mt-8 inline-flex items-center gap-3 rounded-full bg-secondary px-6 py-3.5 text-sm font-semibold tracking-wide text-secondary-foreground uppercase transition-colors hover:bg-secondary/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
-        >
-          {t("ctaCollections")}
-          <ArrowUpRight
-            className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            strokeWidth={2}
-            aria-hidden="true"
-          />
-        </Link>
-
         <div
-          className="mt-12 max-w-xs"
+          className="mt-10 max-w-xs"
           role="status"
           aria-live="polite"
           aria-label={t("statusAria", { current: current + 1, total })}
         >
-          <div className="flex items-baseline gap-3 font-mono text-xs text-secondary/60">
-            <span className="font-[family-name:var(--font-traveler-display)] text-3xl font-normal text-secondary">
+          <div className="flex items-baseline gap-3 font-mono text-xs text-white/60">
+            <span className="font-[family-name:var(--font-collections-display)] text-3xl font-normal text-white">
               {format(current + 1)}
             </span>
             <span className="translate-y-[-2px] tracking-[0.2em]">
               / {format(total)}
             </span>
-            <span className="ml-auto uppercase tracking-[0.24em]">
-              {travelerTypes[current]?.tag &&
-                pick(travelerTypes[current].tag, locale)}
+            <span className="ml-auto tracking-[0.24em] uppercase">
+              {collections[current]?.tag &&
+                pick(collections[current].tag, locale)}
             </span>
           </div>
-          <div className="relative mt-4 h-px w-full bg-secondary/15">
+          <div className="relative mt-4 h-px w-full bg-white/20">
             <div
               className="absolute inset-y-0 left-0 bg-primary transition-[width] duration-[400ms] ease-out"
               style={{ width: `${progress}%` }}
@@ -142,9 +131,17 @@ export function TravelerCarousel() {
           className="lg:-mr-[max(1rem,calc((100vw-80rem)/2))]"
         >
           <CarouselContent className="-ml-4 md:-ml-6">
-            {travelerTypes.map(
+            {collections.map(
               (
-                { title, description, icon: Icon, image, imageAlt, tag },
+                {
+                  title,
+                  description,
+                  icon: Icon,
+                  image,
+                  imageAlt,
+                  tag,
+                  postSlug,
+                },
                 index,
               ) => {
                 const active = index === current;
@@ -152,11 +149,11 @@ export function TravelerCarousel() {
                 return (
                   <CarouselItem
                     key={titleText}
-                    className="pl-4 md:pl-6 basis-[78%] sm:basis-[46%] lg:basis-[42%] xl:basis-[38%]"
+                    className="basis-[78%] pl-4 sm:basis-[46%] md:pl-6 lg:basis-[42%] xl:basis-[38%]"
                   >
                     <article
                       className={cn(
-                        "group relative flex aspect-[3/4] w-full flex-col justify-between overflow-hidden rounded-[2rem] bg-secondary p-6 text-secondary-foreground shadow-card transition-transform duration-500 will-change-transform sm:p-7",
+                        "group relative flex aspect-[3/4] w-full flex-col justify-between overflow-hidden rounded-[2rem] bg-secondary p-6 text-secondary-foreground ring-1 ring-white/15 transition-transform duration-500 will-change-transform sm:p-7",
                         active ? "sm:translate-y-0" : "sm:translate-y-2",
                       )}
                     >
@@ -169,7 +166,7 @@ export function TravelerCarousel() {
                         className="absolute inset-0 -z-10 object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
                       />
                       <div
-                        className="absolute inset-0 -z-10 bg-gradient-to-t from-secondary via-secondary/30 to-secondary/10"
+                        className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/35 to-black/10"
                         aria-hidden="true"
                       />
 
@@ -186,15 +183,28 @@ export function TravelerCarousel() {
                       </div>
 
                       <div>
-                        <p className="text-[0.7rem] font-mono tracking-[0.24em] text-white/60">
+                        <p className="font-mono text-[0.7rem] tracking-[0.24em] text-white/60">
                           · {(index + 1).toString().padStart(2, "0")}
                         </p>
-                        <h3 className="mt-2 font-[family-name:var(--font-traveler-display)] text-3xl font-light leading-[1] tracking-tight sm:text-[2.1rem]">
+                        <h3 className="mt-2 font-[family-name:var(--font-collections-display)] text-3xl leading-[1] font-light tracking-tight sm:text-[2.1rem]">
                           {titleText}
                         </h3>
-                        <p className="mt-3 max-w-[22ch] text-sm leading-relaxed text-white/80">
+                        <p className="mt-3 max-w-[24ch] text-sm leading-relaxed text-white/80">
                           {pick(description, locale)}
                         </p>
+
+                        <Link
+                          href={`/blog/${postSlug}`}
+                          aria-label={t("ctaAria", { collection: titleText })}
+                          className="group/cta mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-[0.7rem] font-semibold tracking-[0.16em] text-primary-foreground uppercase transition-transform duration-(--duration-normal) hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                        >
+                          {t("ctaMore")}
+                          <ArrowUpRight
+                            className="size-3.5 transition-transform duration-(--duration-normal) group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 motion-reduce:transition-none"
+                            strokeWidth={2}
+                            aria-hidden="true"
+                          />
+                        </Link>
                       </div>
                     </article>
                   </CarouselItem>

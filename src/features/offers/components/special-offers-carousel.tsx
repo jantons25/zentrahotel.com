@@ -26,7 +26,7 @@ export interface SpecialOfferCard {
   includes: string[];
   priceFrom: string;
   priceWeb: string;
-  code?: string;
+  code: string;
   validUntil: string;
   href: string;
   ctaAria: string;
@@ -88,7 +88,7 @@ export function SpecialOffersCarousel({ offers, labels }: Props) {
             className="w-[82vw] max-w-[22rem] shrink-0 snap-start sm:w-[20rem] lg:w-[21.5rem]"
           >
             <article
-              className={`${styles.card} flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-secondary/10 bg-card shadow-card`}
+              className={`${styles.card} flex h-full flex-col overflow-hidden rounded-none border border-secondary/10 bg-card shadow-card`}
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-secondary/5">
                 <Image
@@ -100,7 +100,7 @@ export function SpecialOffersCarousel({ offers, labels }: Props) {
                   className={styles.media}
                 />
                 <span
-                  className={`absolute top-0 right-0 rounded-bl-[1.25rem] px-4 py-2.5 text-[0.68rem] font-semibold tracking-[0.12em] uppercase ${
+                  className={`absolute top-0 right-0 px-4 py-2.5 text-[0.68rem] font-semibold tracking-[0.12em] uppercase ${
                     offer.tone === "primary"
                       ? "bg-primary text-primary-foreground"
                       : "bg-secondary text-secondary-foreground"
@@ -118,7 +118,7 @@ export function SpecialOffersCarousel({ offers, labels }: Props) {
                   {offer.title}
                 </h3>
 
-                <ul className="mt-4 space-y-2">
+                <ul className="mt-4 flex-1 space-y-2">
                   {offer.includes.map((item) => (
                     <li
                       key={item}
@@ -134,7 +134,7 @@ export function SpecialOffersCarousel({ offers, labels }: Props) {
                   ))}
                 </ul>
 
-                <div className="mt-6 rounded-2xl border border-secondary/10 bg-muted p-4">
+                <div className="mt-6 rounded-[0.9rem] border border-secondary/10 bg-muted p-4">
                   <div className="flex items-end justify-between gap-3">
                     <span className="text-[0.62rem] leading-tight font-semibold tracking-[0.16em] text-secondary/55 uppercase">
                       {labels.priceFromLabel}
@@ -156,20 +156,20 @@ export function SpecialOffersCarousel({ offers, labels }: Props) {
                   </div>
                 </div>
 
-                <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[0.68rem] text-secondary/60">
+                {/* Dos filas fijas (vigencia + código) para que todas las tarjetas
+                    midan lo mismo por debajo del bloque de tarifas. */}
+                <div className="mt-4 flex flex-col items-start gap-1.5 text-[0.68rem] text-secondary/60">
                   <span className="inline-flex items-center gap-1.5">
                     <CalendarCheck
-                      className="size-3.5 text-primary"
+                      className="size-3.5 shrink-0 text-primary"
                       strokeWidth={1.75}
                       aria-hidden="true"
                     />
                     {labels.validUntil} {offer.validUntil}
                   </span>
-                  {offer.code ? (
-                    <span className="rounded-full border border-dashed border-secondary/30 px-2.5 py-0.5 font-mono tracking-[0.14em] uppercase">
-                      {labels.codeLabel}: {offer.code}
-                    </span>
-                  ) : null}
+                  <span className="rounded-full border border-dashed border-secondary/30 px-2.5 py-0.5 font-mono tracking-[0.14em] uppercase">
+                    {labels.codeLabel}: {offer.code}
+                  </span>
                 </div>
 
                 <a

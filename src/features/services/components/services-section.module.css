@@ -25,11 +25,34 @@
     border-color var(--duration-normal, 250ms) ease;
 }
 
+/* Expansión suave: la tarjeta crece un poco y abre el bloque de detalle. */
 .card:hover,
 .card:focus-within {
-  transform: translateY(-3px);
+  transform: translateY(-6px) scale(1.03);
   box-shadow: var(--shadow-card-hover);
-  border-color: color-mix(in oklab, var(--secondary) 30%, transparent);
+  border-color: color-mix(in oklab, var(--primary) 45%, transparent);
+}
+
+/* El detalle se pliega con grid-template-rows: 0fr -> 1fr (transición real de alto). */
+.detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  width: 100%;
+  opacity: 0;
+  transition:
+    grid-template-rows var(--duration-slow, 400ms) cubic-bezier(0.22, 1, 0.36, 1),
+    opacity var(--duration-normal, 250ms) ease;
+}
+
+.detailInner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.card:hover .detail,
+.card:focus-within .detail {
+  grid-template-rows: 1fr;
+  opacity: 1;
 }
 
 .media {
@@ -72,6 +95,14 @@
   .card:hover .iconChip,
   .card:focus-within .iconChip {
     transform: none;
+    transition: none;
+  }
+  /* Sin animación: el detalle queda siempre visible. */
+  .detail,
+  .card:hover .detail,
+  .card:focus-within .detail {
+    grid-template-rows: 1fr;
+    opacity: 1;
     transition: none;
   }
 }

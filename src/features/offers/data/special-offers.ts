@@ -21,8 +21,8 @@ export interface SpecialOffer {
   priceFrom: number;
   /** Tarifa reservando directo en la web, en soles. */
   priceWeb: number;
-  /** Código promocional asociado, si lo hay. */
-  code?: string;
+  /** Código promocional: toda promoción debe tener uno. */
+  code: string;
   /** Vigencia en formato ISO. */
   validUntil: string;
 }
@@ -79,6 +79,7 @@ export const specialOffers: SpecialOffer[] = [
     ],
     priceFrom: 349,
     priceWeb: 315,
+    code: "ZENTRALOVE",
     validUntil: "2026-12-31T23:59:59-05:00",
   },
   {
@@ -162,6 +163,7 @@ export const specialOffers: SpecialOffer[] = [
     ],
     priceFrom: 259,
     priceWeb: 229,
+    code: "ZENTRACORP",
     validUntil: "2026-12-31T23:59:59-05:00",
   },
   {
@@ -188,6 +190,7 @@ export const specialOffers: SpecialOffer[] = [
     ],
     priceFrom: 299,
     priceWeb: 265,
+    code: "ZENTRAZEN",
     validUntil: "2026-12-31T23:59:59-05:00",
   },
 ];

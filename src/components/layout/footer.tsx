@@ -1,6 +1,8 @@
-// Pie de página: composición editorial oscura con enlaces, contacto, redes y newsletter.
+// Pie de página: composición editorial en navy (--secondary) con enlaces, contacto y redes.
+// Sobre el fondo azul el texto va en blanco a distintas opacidades y los acentos en el
+// oliva de marca (--primary), que contrasta de sobra contra el navy.
 import { getTranslations } from "next-intl/server";
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 import { Container } from "@/components/common/container";
 import {
@@ -8,7 +10,6 @@ import {
   InstagramIcon,
   TikTokIcon,
 } from "@/components/common/social-icons";
-import { NewsletterForm } from "@/features/newsletter/components/newsletter-form";
 import { mainNavLeft, siteConfig } from "@/config/site";
 import { Link } from "@/i18n/navigation";
 
@@ -63,10 +64,10 @@ export async function Footer() {
             </p>
             <h2
               id="footer-brand"
-              className="mt-5 font-[family-name:var(--font-footer-display)] font-light leading-[0.95] tracking-[-0.02em] text-white text-balance text-[clamp(2.25rem,4vw,3.5rem)]"
+              className="mt-5 font-[family-name:var(--font-footer-display)] text-[clamp(2.25rem,4vw,3.5rem)] leading-[0.95] font-light tracking-[-0.02em] text-balance text-white"
             >
               {siteConfig.name.split(" ")[0]}{" "}
-              <span className="italic font-normal text-primary">
+              <span className="font-normal text-primary italic">
                 {siteConfig.name.split(" ").slice(1).join(" ")}.
               </span>
             </h2>
@@ -145,7 +146,7 @@ export async function Footer() {
               <span className="h-px w-6 bg-white/25" aria-hidden="true" />
               {t("contactHeading")}
             </p>
-            <address className="mt-6 space-y-4 text-sm not-italic text-white/80">
+            <address className="mt-6 space-y-4 text-sm text-white/80 not-italic">
               <p className="flex items-start gap-3">
                 <MapPin
                   className="mt-0.5 size-4 shrink-0 text-primary"

@@ -1,14 +1,14 @@
 "use client";
 
 // Encabezado sticky en dos pisos: banner negro de ofertas flash (marquesina infinita)
-// y barra de navegación con logo, menú desplegable único y conmutador ES | EN.
+// y barra de navegación con logo, menú desplegable flotante y conmutador ES | EN.
 // Su altura total vive en `--h-header` (globals.css) para que el hero de la home
 // ocupe exactamente el resto del viewport.
 import * as React from "react";
 import { useTranslations } from "next-intl";
 
 import { BrandLogo } from "@/components/common/brand-logo";
-import { FullscreenMenu } from "@/components/layout/fullscreen-menu";
+import { NavMenu } from "@/components/layout/nav-menu";
 import { LocaleSwitch } from "@/components/layout/locale-switch";
 
 export function Header({ banner }: { banner: React.ReactNode }) {
@@ -43,7 +43,7 @@ export function Header({ banner }: { banner: React.ReactNode }) {
             aria-label={t("primary")}
             className="flex items-center gap-3 md:gap-6"
           >
-            <FullscreenMenu />
+            <NavMenu />
             <LocaleSwitch className="text-white" />
           </nav>
         </div>

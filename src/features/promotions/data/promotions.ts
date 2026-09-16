@@ -82,6 +82,7 @@ export const promotions: Promotion[] = [
       es: "Interior de habitación de Zentra Balta con escritorio",
       en: "Interior of a Zentra Balta room with a desk",
     },
+    code: "BALTAWELCOME",
     ctaLabel: { es: "Consultar por WhatsApp", en: "Ask on WhatsApp" },
     ctaHref: {
       es: buildWhatsAppUrl("Hola, quiero información sobre la bienvenida ejecutiva de Zentra Balta."),
@@ -207,6 +208,7 @@ export const promotions: Promotion[] = [
       es: "Habitación matrimonial ejecutiva de Zentra San José",
       en: "Zentra San José executive queen room",
     },
+    code: "SANJOSEUP",
     ctaLabel: { es: "Consultar por WhatsApp", en: "Ask on WhatsApp" },
     ctaHref: {
       es: buildWhatsAppUrl("Hola, quiero información sobre el upgrade cortesía en Zentra San José."),

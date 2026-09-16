@@ -7,12 +7,18 @@
 // fila (`layout="horizontal"`) y redirige al Booking Engine de la propiedad elegida.
 // El script se carga una vez en el layout raíz (`siteConfig.cloudbeds.scriptUrl`).
 //
-// Mientras no exista el subdominio de Organización de Cloudbeds, se pinta un
-// formulario propio con el mismo aspecto que apunta al Booking Engine actual,
-// para que el hero nunca quede vacío.
+// El web component ya pinta su propia tarjeta blanca, por eso su contenedor aquí no
+// lleva fondo ni sombra: duplicarlos dejaba un panel blanco alrededor del motor.
+//
+// El selector de sede lo dibuja el propio web component: según la documentación de
+// Cloudbeds, `<cb-multi-property-date-picker>` solo carga la lista de propiedades a
+// partir del atributo `sub-domain` (subdominio de la Organización). Sin Organización
+// creada no hay lista que pedir, así que mientras tanto se pinta un formulario propio
+// con el mismo aspecto —incluido su propio selector de sede— que apunta al Booking
+// Engine de la propiedad elegida.
 import * as React from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowRight, CalendarDays, UsersRound } from "lucide-react";
+import { ArrowRight, CalendarDays, MapPin, UsersRound } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 
@@ -31,11 +37,17 @@ function addDays(base: Date, days: number) {
 
 const { cloudbeds } = siteConfig;
 
-// Orden del selector de sedes: solo las propiedades que ya tienen código asignado.
-const propertyOrder = cloudbeds.properties
-  .map((property) => property.code)
-  .filter(Boolean)
-  .join(";");
+// Orden del selector de sedes. Se envía solo cuando TODAS las propiedades tienen
+// código: una lista parcial en `property-order` dejaría fuera del desplegable a las
+// sedes que faltan, y es preferible el orden por defecto de Cloudbeds.
+const propertyOrder = cloudbeds.properties.every((property) => property.code)
+  ? cloudbeds.properties.map((property) => property.code).join(";")
+  : "";
+
+// Booking Engine individual de cada propiedad (el que sirve mientras no hay Organización).
+function propertyBookingUrl(code: string) {
+  return `https://hotels.cloudbeds.com/es/reservation/${code}?currency=${cloudbeds.currency}`;
+}
 
 export function CloudbedsSearchBar() {
   const t = useTranslations("home.searchBar");
@@ -43,7 +55,7 @@ export function CloudbedsSearchBar() {
 
   if (cloudbeds.orgSubdomain) {
     return (
-      <div className="cb-embed rounded-[1.5rem] border border-white/25 bg-white/95 p-3 shadow-[0_24px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl sm:p-4">
+      <div className="cb-embed">
         <cb-multi-property-date-picker
           sub-domain={cloudbeds.orgSubdomain}
           layout="horizontal"
@@ -67,6 +79,11 @@ function FallbackSearchBar() {
   const t = useTranslations("home.searchBar");
 
   const today = React.useMemo(() => toISODate(new Date()), []);
+  // Las tres sedes ya tienen código de propiedad. La guarda se mantiene para que una
+  // sede nueva sin código se liste inhabilitada en vez de romper la redirección.
+  const [property, setProperty] = React.useState<string>(
+    () => cloudbeds.properties.find((item) => item.code)?.code ?? "",
+  );
   const [checkin, setCheckin] = React.useState(() =>
     toISODate(addDays(new Date(), 1)),
   );
@@ -90,7 +107,9 @@ function FallbackSearchBar() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const url = new URL(siteConfig.bookingUrl);
+    const url = new URL(
+      property ? propertyBookingUrl(property) : siteConfig.bookingUrl,
+    );
     url.searchParams.set("checkin", checkin);
     url.searchParams.set("checkout", checkout);
     url.searchParams.set("adults", adults);
@@ -105,6 +124,31 @@ function FallbackSearchBar() {
       aria-label={t("aria")}
       className="flex flex-col gap-2.5 rounded-[1.5rem] border border-white/25 bg-white/95 p-3 text-secondary shadow-[0_24px_60px_rgba(0,0,0,0.32)] backdrop-blur-xl sm:p-4 lg:flex-row lg:items-stretch lg:gap-3"
     >
+      <label className="flex flex-1 items-center gap-3 rounded-2xl border border-secondary/15 bg-white px-4 py-2.5 transition-colors duration-(--duration-normal) focus-within:border-secondary/35 hover:border-secondary/30 motion-reduce:transition-none lg:max-w-[15rem]">
+        <MapPin
+          className="size-4 shrink-0 text-secondary/60"
+          strokeWidth={1.75}
+          aria-hidden="true"
+        />
+        <span className="flex min-w-0 flex-1 flex-col">
+          <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
+            {t("venue")}
+          </span>
+          <select
+            value={property}
+            onChange={(e) => setProperty(e.target.value)}
+            aria-label={t("venueAria")}
+            className="bg-transparent text-sm font-semibold text-secondary outline-none"
+          >
+            {cloudbeds.properties.map(({ code, name }) => (
+              <option key={name} value={code} disabled={!code}>
+                {code ? name : `${name} ${t("venueSoon")}`}
+              </option>
+            ))}
+          </select>
+        </span>
+      </label>
+
       <label className="flex flex-1 items-center gap-3 rounded-2xl border border-secondary/15 bg-white px-4 py-2.5 transition-colors duration-(--duration-normal) focus-within:border-secondary/35 hover:border-secondary/30 motion-reduce:transition-none">
         <CalendarDays
           className="size-4 shrink-0 text-secondary/60"

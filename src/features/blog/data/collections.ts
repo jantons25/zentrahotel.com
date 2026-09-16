@@ -1,20 +1,23 @@
-// Categorías de tipo de viajero mostradas en el carrusel de la home.
+// Colecciones por tipo de viajero: separador editorial dentro de la página de blog.
+// Cada colección apunta al artículo del diario que la desarrolla.
 import { Briefcase, Compass, HeartPulse, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import type { LocalizedString } from "@/lib/i18n-pick";
 
-// Categoría de viajero con icono, descripción breve e imagen editorial.
-export interface TravelerType {
+// Colección con icono, descripción breve, imagen editorial y post asociado.
+export interface Collection {
   title: LocalizedString;
   description: LocalizedString;
   icon: LucideIcon;
   image: string;
   imageAlt: LocalizedString;
   tag: LocalizedString;
+  /** Slug del artículo del diario al que lleva el botón "Ver más". */
+  postSlug: string;
 }
 
-export const travelerTypes: TravelerType[] = [
+export const collections: Collection[] = [
   {
     title: { es: "Negocios", en: "Business" },
     description: {
@@ -28,6 +31,7 @@ export const travelerTypes: TravelerType[] = [
       en: "Well-lit single room for business travelers",
     },
     tag: { es: "Corporativo", en: "Corporate" },
+    postSlug: "trabajar-remoto-chiclayo",
   },
   {
     title: { es: "Turismo", en: "Tourism" },
@@ -42,6 +46,7 @@ export const travelerTypes: TravelerType[] = [
       en: "Bright double room, ready to explore Chiclayo",
     },
     tag: { es: "Descubre la ciudad", en: "Discover the city" },
+    postSlug: "chiclayo-en-48-horas",
   },
   {
     title: { es: "Experiencias", en: "Experiences" },
@@ -59,6 +64,7 @@ export const travelerTypes: TravelerType[] = [
       es: "Momentos memorables",
       en: "Memorable moments",
     },
+    postSlug: "arroz-con-pato-conserje",
   },
   {
     title: { es: "Salud y bienestar", en: "Health and wellness" },
@@ -73,5 +79,6 @@ export const travelerTypes: TravelerType[] = [
       en: "Relaxing massage session with aromatherapy",
     },
     tag: { es: "Bienestar", en: "Wellness" },
+    postSlug: "rituales-casa-zentra",
   },
 ];

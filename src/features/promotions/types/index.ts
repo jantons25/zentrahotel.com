@@ -14,7 +14,8 @@ export interface Promotion {
   validUntil: string;
   cover: string;
   coverAlt: LocalizedString;
-  code?: string;
+  /** Código promocional: toda promoción debe tener uno. */
+  code: string;
   ctaLabel: LocalizedString;
   ctaHref: LocalizedString;
   ctaExternal?: boolean;

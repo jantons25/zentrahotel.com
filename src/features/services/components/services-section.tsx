@@ -1,5 +1,8 @@
 // Tercera sección de la home: "Nuestros servicios".
-// Tarjetas con foto + icono + nombre, en un flex-wrap siempre centrado horizontalmente.
+// Tres tarjetas con foto + icono + nombre; al pasar el cursor (o al recibir foco)
+// la tarjeta se expande con una transición suave y revela el detalle del servicio.
+// La reja usa `items-start` para que solo crezca la tarjeta activa: sin estirado
+// de fila, las hermanas conservan su alto original.
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
@@ -12,9 +15,6 @@ import { siteConfig } from "@/config/site";
 import { pick } from "@/lib/i18n-pick";
 
 import styles from "./services-section.module.css";
-
-// Máxima demora escalonada antes de que las cards revelen todas a la vez (evita cascadas eternas).
-const MAX_STAGGER_INDEX = 12;
 
 export async function ServicesSection() {
   const t = await getTranslations("home.services");
@@ -71,55 +71,84 @@ export async function ServicesSection() {
         </header>
 
         <ul
-          className="mt-12 flex flex-wrap justify-center gap-4 lg:mt-16 lg:gap-5"
+          className="mx-auto mt-12 grid max-w-[64rem] grid-cols-1 items-start gap-6 sm:grid-cols-3 lg:mt-16 lg:gap-8"
           aria-label={t("listAria", { count: total })}
         >
-          {hotelServices.map(({ label, icon: Icon, image }, index) => {
-            const labelText = pick(label, locale);
-            return (
-              <li
-                key={labelText}
-                className={`${styles.reveal} w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] md:w-[15rem] lg:w-[15.5rem]`}
-                style={
-                  {
-                    "--reveal-delay": `${80 + Math.min(index, MAX_STAGGER_INDEX) * 55}ms`,
-                  } as React.CSSProperties
-                }
-              >
-                <article
-                  className={`${styles.card} group flex h-full flex-col overflow-hidden rounded-2xl border border-secondary/10 bg-card text-center shadow-card`}
+          {hotelServices.map(
+            ({ label, icon: Icon, image, detail, highlights }, index) => {
+              const labelText = pick(label, locale);
+              return (
+                <li
+                  key={labelText}
+                  className={styles.reveal}
+                  style={
+                    {
+                      "--reveal-delay": `${120 + index * 90}ms`,
+                    } as React.CSSProperties
+                  }
                 >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-secondary/5">
-                    <Image
-                      src={image}
-                      alt=""
-                      fill
-                      loading="lazy"
-                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 16rem"
-                      className={styles.media}
-                    />
-                    <div
-                      className="absolute inset-0 bg-gradient-to-t from-secondary/55 via-secondary/10 to-transparent"
-                      aria-hidden="true"
-                    />
-                  </div>
+                  <article
+                    tabIndex={0}
+                    className={`${styles.card} group flex h-full flex-col overflow-hidden rounded-2xl border border-secondary/10 bg-card text-center shadow-card focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary`}
+                  >
+                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-secondary/5">
+                      <Image
+                        src={image}
+                        alt=""
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 640px) 100vw, 21rem"
+                        className={styles.media}
+                      />
+                      <div
+                        className="absolute inset-0 bg-gradient-to-t from-secondary/55 via-secondary/10 to-transparent"
+                        aria-hidden="true"
+                      />
+                    </div>
 
-                  {/* El chip del icono monta sobre la foto para coser imagen y texto. */}
-                  <div className="relative z-10 -mt-7 flex flex-1 flex-col items-center px-4 pb-5">
-                    <span
-                      className={`${styles.iconChip} grid size-14 place-items-center rounded-full border-4 border-card bg-card text-secondary shadow-card`}
-                      aria-hidden="true"
-                    >
-                      <Icon className="size-5" strokeWidth={1.75} />
-                    </span>
-                    <p className="mt-3 text-sm leading-snug font-medium text-balance text-secondary">
-                      {labelText}
-                    </p>
-                  </div>
-                </article>
-              </li>
-            );
-          })}
+                    {/* El chip del icono monta sobre la foto para coser imagen y texto. */}
+                    <div className="relative z-10 -mt-7 flex flex-1 flex-col items-center px-5 pb-6">
+                      <span
+                        className={`${styles.iconChip} grid size-14 place-items-center rounded-full border-4 border-card bg-card text-secondary shadow-card`}
+                        aria-hidden="true"
+                      >
+                        <Icon className="size-5" strokeWidth={1.75} />
+                      </span>
+                      <p className="mt-3 text-base leading-snug font-medium text-balance text-secondary">
+                        {labelText}
+                      </p>
+
+                      {/* Detalle plegado: se despliega al hacer hover o al enfocar. */}
+                      <div className={styles.detail}>
+                        <div className={styles.detailInner}>
+                          <p className="mt-3 text-[0.85rem] leading-relaxed text-balance text-muted-foreground">
+                            {pick(detail, locale)}
+                          </p>
+                          <ul className="mt-3 space-y-1.5 text-left">
+                            {highlights.map((highlight) => {
+                              const highlightText = pick(highlight, locale);
+                              return (
+                                <li
+                                  key={highlightText}
+                                  className="flex items-start gap-2 text-[0.8rem] leading-snug text-secondary/75"
+                                >
+                                  <span
+                                    aria-hidden="true"
+                                    className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary"
+                                  />
+                                  {highlightText}
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+              );
+            },
+          )}
         </ul>
       </Container>
     </Section>

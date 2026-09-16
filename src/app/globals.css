@@ -115,6 +115,9 @@
   }
   html {
     @apply scroll-smooth font-sans;
+    /* El header es sticky: todo destino de ancla (#sedes, #sede-balta, ...) debe
+       frenar por debajo de él, o su parte superior queda tapada. */
+    scroll-padding-top: calc(var(--h-header) + 1.5rem);
   }
   body {
     @apply bg-background text-foreground antialiased;

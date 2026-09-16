@@ -54,7 +54,7 @@ export async function SpecialOffersSection() {
         t("whatsappPrefill", {
           offer: title,
           venue: offer.venue,
-          code: offer.code ?? "-",
+          code: offer.code,
         }),
       ),
     };

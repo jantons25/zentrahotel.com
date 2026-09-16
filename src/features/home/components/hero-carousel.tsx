@@ -101,6 +101,7 @@ export function HeroCarousel({ slides, labels, children }: HeroCarouselProps) {
             </div>
           );
         })}
+        <div className={styles.tint} aria-hidden="true" />
         <div className={styles.scrim} aria-hidden="true" />
         <div className={styles.grain} aria-hidden="true" />
       </div>

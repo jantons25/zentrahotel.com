@@ -167,17 +167,6 @@
       "ctaPackages": "Ver paquetes",
       "featuredBadge": "Signature"
     },
-    "traveler": {
-      "eyebrow": "Colecciones",
-      "titleA": "Para cada",
-      "titleB": "tipo de",
-      "titleEmphasis": "viajero.",
-      "lead": "Habitaciones, servicios y experiencias diseñadas para cada motivo de tu viaje: negocios, turismo, celebraciones o un descanso pleno en el corazón de Chiclayo.",
-      "ctaCollections": "Ver colecciones",
-      "prevAria": "Categoría anterior",
-      "nextAria": "Siguiente categoría",
-      "statusAria": "Categoría {current} de {total}"
-    },
     "booking": {
       "eyebrow": "Canales",
       "titleA": "¿Cómo",
@@ -245,12 +234,15 @@
     },
     "searchBar": {
       "aria": "Buscar disponibilidad",
+      "venue": "Sede",
+      "venueAria": "Elige la sede",
+      "venueSoon": "(próximamente)",
       "checkIn": "Check-in",
       "checkOut": "Check-out",
       "guests": "Huéspedes",
       "guestsAria": "Número de adultos",
       "adult": "{n} {n, plural, one {adulto} other {adultos}}",
-      "submit": "Ver disponibilidad"
+      "submit": "Buscar"
     },
     "specialOffers": {
       "eyebrow": "Promociones",
@@ -519,10 +511,24 @@
       "readingAria": "Tiempo de lectura {minutes} minutos",
       "cta": "Leer artículo"
     },
+    "collections": {
+      "eyebrow": "Colecciones",
+      "titleA": "Para cada",
+      "titleB": "tipo de",
+      "titleEmphasis": "viajero.",
+      "lead": "Habitaciones, servicios y experiencias diseñadas para cada motivo de tu viaje: negocios, turismo, celebraciones o un descanso pleno en el corazón de Chiclayo.",
+      "prevAria": "Categoría anterior",
+      "nextAria": "Siguiente categoría",
+      "statusAria": "Categoría {current} de {total}",
+      "ctaMore": "Ver más",
+      "ctaAria": "Ver más sobre la colección {collection}"
+    },
     "grid": {
       "eyebrow": "Publicaciones recientes",
       "titleA": "Lo último del",
-      "titleEmphasis": "diario."
+      "titleEmphasis": "diario.",
+      "moreEyebrow": "Sigue leyendo",
+      "listAria": "Más artículos del diario"
     },
     "card": {
       "readingAria": "Tiempo de lectura {minutes} minutos",
