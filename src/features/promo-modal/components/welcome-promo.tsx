@@ -20,6 +20,9 @@ import { cn } from "@/lib/utils";
 
 const DISMISS_KEY = "zentra:welcome-promo-dismissed";
 const OPEN_DELAY_MS = 12000;
+// El descarte caduca: si fuera permanente, un solo clic en la X escondería para
+// siempre la tarjeta y el modal automático en ese navegador.
+const DISMISS_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 
 // Store externo mínimo sobre localStorage: evita leer el navegador durante el render
 // del servidor y permite suscribirse al descarte sin efectos que llamen a setState.
@@ -35,7 +38,15 @@ const dismissStore = {
   },
   getSnapshot() {
     try {
-      return window.localStorage.getItem(DISMISS_KEY) === "1";
+      const raw = window.localStorage.getItem(DISMISS_KEY);
+      if (!raw) return false;
+      const until = Number(raw);
+      // Valor heredado ("1", sin caducidad) o vencido: la promoción vuelve a salir.
+      if (!Number.isFinite(until) || until <= 1 || Date.now() > until) {
+        window.localStorage.removeItem(DISMISS_KEY);
+        return false;
+      }
+      return true;
     } catch {
       return false;
     }
@@ -46,7 +57,10 @@ const dismissStore = {
   },
   dismiss() {
     try {
-      window.localStorage.setItem(DISMISS_KEY, "1");
+      window.localStorage.setItem(
+        DISMISS_KEY,
+        String(Date.now() + DISMISS_TTL_MS),
+      );
     } catch {
       /* almacenamiento no disponible: basta con ocultarla en esta sesión */
     }
