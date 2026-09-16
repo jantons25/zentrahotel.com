@@ -62,10 +62,11 @@ export const mainNavTree: NavNode[] = [
   { key: "inicio", href: "/" },
   {
     key: "sedes",
+    // Cada sede tiene página propia y se abre en una pestaña nueva.
     children: [
-      { key: "sedeBalta", href: "/#sede-balta" },
-      { key: "sedePlaza", href: "/#sede-plaza" },
-      { key: "sedeSanJose", href: "/#sede-san-jose" },
+      { key: "sedeBalta", href: "/sede-balta", newTab: true },
+      { key: "sedePlaza", href: "/sede-plaza", newTab: true },
+      { key: "sedeSanJose", href: "/sede-san-jose", newTab: true },
     ],
   },
   { key: "empresa", href: "/empresa" },

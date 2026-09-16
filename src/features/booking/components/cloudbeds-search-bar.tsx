@@ -49,9 +49,23 @@ function propertyBookingUrl(code: string) {
   return `https://hotels.cloudbeds.com/es/reservation/${code}?currency=${cloudbeds.currency}`;
 }
 
-export function CloudbedsSearchBar() {
+interface CloudbedsSearchBarProps {
+  /**
+   * Fija el motor a una sola propiedad (páginas de sede): en vez del selector de
+   * sedes se pinta el nombre de la sede y se reserva siempre contra su código.
+   */
+  property?: { code: string; name: string };
+}
+
+export function CloudbedsSearchBar({ property }: CloudbedsSearchBarProps = {}) {
   const t = useTranslations("home.searchBar");
   const locale = useLocale();
+
+  // Con sede fija se usa siempre la barra propia: el web component de Organización
+  // lista todas las propiedades y no admite restringirlo a una sola.
+  if (property) {
+    return <FallbackSearchBar locked={property} />;
+  }
 
   if (cloudbeds.orgSubdomain) {
     return (
@@ -75,14 +89,18 @@ export function CloudbedsSearchBar() {
 
 // Barra horizontal propia (fechas + huéspedes + buscar) con los mismos tokens de
 // marca. Redirige al Booking Engine con los parámetros ya prellenados.
-function FallbackSearchBar() {
+function FallbackSearchBar({
+  locked,
+}: {
+  locked?: { code: string; name: string };
+}) {
   const t = useTranslations("home.searchBar");
 
   const today = React.useMemo(() => toISODate(new Date()), []);
   // Las tres sedes ya tienen código de propiedad. La guarda se mantiene para que una
   // sede nueva sin código se liste inhabilitada en vez de romper la redirección.
   const [property, setProperty] = React.useState<string>(
-    () => cloudbeds.properties.find((item) => item.code)?.code ?? "",
+    () => locked?.code ?? cloudbeds.properties.find((item) => item.code)?.code ?? "",
   );
   const [checkin, setCheckin] = React.useState(() =>
     toISODate(addDays(new Date(), 1)),
@@ -134,18 +152,24 @@ function FallbackSearchBar() {
           <span className="text-[0.58rem] font-semibold tracking-[0.22em] text-secondary/60 uppercase">
             {t("venue")}
           </span>
-          <select
-            value={property}
-            onChange={(e) => setProperty(e.target.value)}
-            aria-label={t("venueAria")}
-            className="bg-transparent text-sm font-semibold text-secondary outline-none"
-          >
-            {cloudbeds.properties.map(({ code, name }) => (
-              <option key={name} value={code} disabled={!code}>
-                {code ? name : `${name} ${t("venueSoon")}`}
-              </option>
-            ))}
-          </select>
+          {locked ? (
+            <span className="truncate text-sm font-semibold text-secondary">
+              {locked.name}
+            </span>
+          ) : (
+            <select
+              value={property}
+              onChange={(e) => setProperty(e.target.value)}
+              aria-label={t("venueAria")}
+              className="bg-transparent text-sm font-semibold text-secondary outline-none"
+            >
+              {cloudbeds.properties.map(({ code, name }) => (
+                <option key={name} value={code} disabled={!code}>
+                  {code ? name : `${name} ${t("venueSoon")}`}
+                </option>
+              ))}
+            </select>
+          )}
         </span>
       </label>
 

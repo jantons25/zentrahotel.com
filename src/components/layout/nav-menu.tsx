@@ -63,6 +63,10 @@ export function NavMenu() {
                 <Link
                   href={child.href ?? "/"}
                   onClick={close}
+                  // Las sedes abren su página en una pestaña nueva.
+                  {...(child.newTab
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                   className="group inline-flex items-center gap-2 text-sm font-medium tracking-[0.04em] text-white/65 transition-colors duration-(--duration-fast) hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none"
                 >
                   <span

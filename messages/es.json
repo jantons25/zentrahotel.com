@@ -629,5 +629,13 @@
     },
     "floatingLead": "Afíliate sin costo y recibe tu código de bienvenida en el correo.",
     "floatingCta": "Quiero mi descuento"
+  },
+  "venuePage": {
+    "rooms": {
+      "eyebrow": "Alojamiento",
+      "title": "Nuestras habitaciones",
+      "lead": "De la Clásica a la Suite. Las tarifas cambian según la temporada y el canal, así que se consultan en el motor de reservas.",
+      "ctaSeeAll": "Ver todas las habitaciones"
+    }
   }
 }

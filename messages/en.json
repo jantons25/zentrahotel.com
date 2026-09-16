@@ -629,5 +629,13 @@
     },
     "floatingLead": "Join free and get your welcome code by email.",
     "floatingCta": "Get my discount"
+  },
+  "venuePage": {
+    "rooms": {
+      "eyebrow": "Stay",
+      "title": "Our rooms",
+      "lead": "From the Classic to the Suite. Rates change with the season and the channel, so they are quoted in the booking engine.",
+      "ctaSeeAll": "See all rooms"
+    }
   }
 }
