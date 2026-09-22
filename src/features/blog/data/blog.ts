@@ -10,24 +10,55 @@ export const blogCategoryLabels: Record<BlogCategory, LocalizedString> = {
 };
 
 const authors: Record<string, BlogAuthor> = {
-  concierge: {
-    name: "Lucía Reyna",
-    role: { es: "Concierge Zentra", en: "Zentra Concierge" },
-    avatar: "/images/viajero-1.webp",
-  },
   editorial: {
     name: "Editorial Zentra",
     role: { es: "Equipo Zentra", en: "Zentra team" },
     avatar: "/images/logo-icono.jpeg",
   },
-  corporate: {
-    name: "Diego Aliaga",
-    role: { es: "Cuentas corporativas", en: "Corporate accounts" },
-    avatar: "/images/viajero-2.webp",
-  },
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "agenda-papa-leon-xiv-chiclayo",
+    category: "chiclayo",
+    title: {
+      es: "Agenda del Papa León XIV en Chiclayo: horarios y lugares que visitará",
+      en: "Pope Leo XIV's schedule in Chiclayo: times and places he will visit",
+    },
+    excerpt: {
+      es: "El Vaticano publicó el programa oficial: del 13 al 15 de noviembre de 2026 el Papa estará en Lambayeque. Misa en las Pampas de Pimentel, coronación en la Catedral, Santa Cruz y Zaña, con horarios confirmados.",
+      en: "The Vatican has published the official program: Pope Leo XIV will be in Lambayeque from 13 to 15 November 2026. Mass at the Pampas de Pimentel, a coronation at the Cathedral, Santa Cruz and Zaña, with confirmed times.",
+    },
+    cover: "/images/blog/agenda-papa/portada.webp",
+    coverAlt: {
+      es: "El Papa León XIV saludando frente a la Catedral de Chiclayo",
+      en: "Pope Leo XIV waving in front of Chiclayo Cathedral",
+    },
+    author: authors.editorial,
+    publishedAt: "2026-09-22",
+    readingMinutes: 7,
+    featured: true,
+  },
+  {
+    slug: "como-llegar-misa-papa-pimentel",
+    category: "chiclayo",
+    title: {
+      es: "¿Cómo llegar a la misa del Papa León XIV en Chiclayo desde tu hotel?",
+      en: "How to get to Pope Leo XIV's Mass in Chiclayo from your hotel",
+    },
+    excerpt: {
+      es: "La misa del 13 de noviembre será en las Pampas de Pimentel, sector Las Rocas, y podría reunir a un millón de fieles. Cómo organizar el traslado, qué llevar y por qué conviene salir desde Chiclayo.",
+      en: "The 13 November Mass will be held at the Pampas de Pimentel, Las Rocas sector, and could draw a million people. How to plan your transport, what to bring and why leaving from Chiclayo makes sense.",
+    },
+    cover: "/images/blog/como-llegar-misa/portada.webp",
+    coverAlt: {
+      es: "El Papa León XIV entre cardenales durante una celebración en la Capilla Sixtina",
+      en: "Pope Leo XIV among cardinals during a celebration in the Sistine Chapel",
+    },
+    author: authors.editorial,
+    publishedAt: "2026-09-21",
+    readingMinutes: 5,
+  },
   {
     slug: "ruta-del-papa-chiclayo",
     category: "chiclayo",
@@ -47,7 +78,6 @@ export const blogPosts: BlogPost[] = [
     author: authors.editorial,
     publishedAt: "2026-09-02",
     readingMinutes: 9,
-    featured: true,
   },
   {
     slug: "chiclayo-en-48-horas",
@@ -65,7 +95,7 @@ export const blogPosts: BlogPost[] = [
       es: "Composición de imágenes del centro de Chiclayo",
       en: "Composite of images from downtown Chiclayo",
     },
-    author: authors.concierge,
+    author: authors.editorial,
     publishedAt: "2026-07-12",
     readingMinutes: 8,
   },
@@ -85,7 +115,7 @@ export const blogPosts: BlogPost[] = [
       es: "Plato tradicional lambayecano en mesa de restaurante",
       en: "Traditional Lambayeque dish on a restaurant table",
     },
-    author: authors.concierge,
+    author: authors.editorial,
     publishedAt: "2026-07-08",
     readingMinutes: 5,
   },
@@ -125,7 +155,7 @@ export const blogPosts: BlogPost[] = [
       es: "Maleta abierta con ropa de trabajo lista para viajar",
       en: "Open suitcase with work clothes ready for travel",
     },
-    author: authors.corporate,
+    author: authors.editorial,
     publishedAt: "2026-06-30",
     readingMinutes: 4,
   },
@@ -145,7 +175,7 @@ export const blogPosts: BlogPost[] = [
       es: "Museo Tumbas Reales de Sipán en Lambayeque",
       en: "Royal Tombs of Sipán museum in Lambayeque",
     },
-    author: authors.concierge,
+    author: authors.editorial,
     publishedAt: "2026-06-24",
     readingMinutes: 5,
   },
