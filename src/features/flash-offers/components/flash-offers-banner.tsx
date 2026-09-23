@@ -5,6 +5,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Zap } from "lucide-react";
 
 import { flashOffers } from "@/features/flash-offers/data/flash-offers";
+import { Link } from "@/i18n/navigation";
 import { pick } from "@/lib/i18n-pick";
 
 export async function FlashOffersBanner() {
@@ -21,9 +22,11 @@ export async function FlashOffersBanner() {
   const duration = `${items.length * 9}s`;
 
   return (
-    <div
-      aria-label={t("aria")}
-      className="relative flex h-[var(--h-flash)] w-full items-center overflow-hidden bg-primary text-secondary"
+    // Toda la cinta es un enlace a la sección "Ofertas" de la home.
+    <Link
+      href="/#promociones"
+      aria-label={t("ctaAria")}
+      className="relative flex h-[var(--h-flash)] w-full cursor-pointer items-center overflow-hidden bg-primary text-secondary focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-secondary"
     >
       <span
         aria-hidden="true"
@@ -75,6 +78,6 @@ export async function FlashOffersBanner() {
           </ul>
         ))}
       </div>
-    </div>
+    </Link>
   );
 }

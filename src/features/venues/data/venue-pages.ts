@@ -3,7 +3,13 @@
 //
 // Las fotos de habitación definitivas aún no existen, así que el mosaico reutiliza y
 // repite las imágenes disponibles de cada sede: al reemplazarlas basta cambiar `src`.
-import type { VenuePage, VenueSlug } from "@/features/venues/types";
+import type {
+  VenueAmenityKey,
+  VenuePage,
+  VenueRoomShot,
+  VenueRoomType,
+  VenueSlug,
+} from "@/features/venues/types";
 
 // Proporciones del mosaico. Se repiten en ciclo para que la grilla quede despareja
 // (columnas CSS + alturas distintas = efecto masonry sin librería).
@@ -19,34 +25,154 @@ const ASPECTS = [
   "aspect-[16/10]",
 ];
 
-// Tipos de habitación que rotan sobre las fotos disponibles.
-const LABELS = [
-  { es: "Habitación Clásica", en: "Classic Room" },
-  { es: "Habitación Clásica", en: "Classic Room" },
-  { es: "Habitación Clásica", en: "Classic Room" },
-  { es: "Habitación Ejecutiva", en: "Executive Room" },
-  { es: "Habitación Ejecutiva", en: "Executive Room" },
-  { es: "Habitación Ejecutiva", en: "Executive Room" },
-  { es: "Habitación Deluxe", en: "Deluxe Room" },
-  { es: "Habitación Deluxe", en: "Deluxe Room" },
-  { es: "Suite", en: "Suite" },
+// Servicios reutilizables entre tipos de habitación (clave + etiqueta bilingüe).
+const AMENITIES: Record<
+  VenueAmenityKey,
+  { key: VenueAmenityKey; label: { es: string; en: string } }
+> = {
+  wifi: {
+    key: "wifi",
+    label: {
+      es: "Wi-Fi en toda la habitación",
+      en: "Wi-Fi throughout the room",
+    },
+  },
+  ac: {
+    key: "ac",
+    label: { es: "Aire acondicionado", en: "Air conditioning" },
+  },
+  tv: { key: "tv", label: { es: "Smart TV", en: "Smart TV" } },
+  bath: {
+    key: "bath",
+    label: { es: "Baño privado con ducha", en: "Private bathroom with shower" },
+  },
+  desk: {
+    key: "desk",
+    label: { es: "Escritorio de trabajo", en: "Work desk" },
+  },
+  coffee: {
+    key: "coffee",
+    label: { es: "Café e infusiones", en: "Coffee and tea" },
+  },
+  breakfast: {
+    key: "breakfast",
+    label: { es: "Desayuno incluido", en: "Breakfast included" },
+  },
+  bed: {
+    key: "bed",
+    label: { es: "Ropa de cama premium", en: "Premium bedding" },
+  },
+  sparkles: {
+    key: "sparkles",
+    label: { es: "Limpieza diaria", en: "Daily housekeeping" },
+  },
+};
+
+const amenityList = (...keys: VenueAmenityKey[]) =>
+  keys.map((key) => AMENITIES[key]);
+
+// Tipos de habitación del mosaico. `slots` define cuántas fotos de la grilla
+// corresponden a cada tipo (suman los 9 huecos de ASPECTS).
+const ROOM_TYPES = [
+  {
+    id: "clasica",
+    slots: 3,
+    icon: "bed" as VenueAmenityKey,
+    name: { es: "Habitación Clásica", en: "Classic Room" },
+    description: {
+      es: "El descanso esencial de Zentra: cama bien vestida, baño privado y todo lo necesario para llegar, soltar la maleta y dormir tranquilo.",
+      en: "Zentra's essential rest: a well-made bed, private bathroom and everything you need to arrive, drop your bag and sleep well.",
+    },
+    amenities: amenityList("bed", "ac", "wifi", "tv", "bath"),
+  },
+  {
+    id: "ejecutiva",
+    slots: 3,
+    icon: "desk" as VenueAmenityKey,
+    name: { es: "Habitación Ejecutiva", en: "Executive Room" },
+    description: {
+      es: "Pensada para viajes de trabajo, con escritorio, aire acondicionado y Wi-Fi en toda la habitación.",
+      en: "Designed for business trips, with a work desk, air conditioning and Wi-Fi throughout the room.",
+    },
+    amenities: amenityList("desk", "ac", "wifi", "tv", "bath"),
+  },
+  {
+    id: "deluxe",
+    slots: 2,
+    icon: "sparkles" as VenueAmenityKey,
+    name: { es: "Habitación Deluxe", en: "Deluxe Room" },
+    description: {
+      es: "Más espacio y mejores acabados para estadías largas: zona de estar, ropa de cama premium y limpieza diaria.",
+      en: "More space and finer finishes for longer stays: a sitting area, premium bedding and daily housekeeping.",
+    },
+    amenities: amenityList("sparkles", "ac", "wifi", "tv", "coffee"),
+  },
+  {
+    id: "suite",
+    slots: 1,
+    icon: "coffee" as VenueAmenityKey,
+    name: { es: "Suite", en: "Suite" },
+    description: {
+      es: "La categoría más amplia de la sede, para celebrar o alargar el viaje sin apuros. Ambiente separado, desayuno incluido y atención 24 horas.",
+      en: "The largest category at this location, to celebrate or extend your trip without rushing. Separate sitting area, breakfast included and 24-hour service.",
+    },
+    amenities: amenityList("coffee", "breakfast", "ac", "wifi", "bath"),
+  },
 ];
 
-// Arma el mosaico repitiendo en bucle las fotos que hoy tiene la sede.
-function buildRoomShots(venueName: string, sources: string[]) {
-  return ASPECTS.map((aspect, index) => {
-    const label = LABELS[index];
-    return {
-      id: `shot-${index + 1}`,
-      src: sources[index % sources.length],
-      alt: {
-        es: `${label.es} de ${venueName}.`,
-        en: `${label.en} at ${venueName}.`,
-      },
-      label,
-      aspect,
-    };
-  });
+// Mínimo de fotos por carrusel: si un tipo tiene menos huecos en el mosaico, se
+// completa con el resto de fotos de la sede (las definitivas aún no existen).
+const MIN_GALLERY = 4;
+
+// Arma el mosaico y las fichas del modal repitiendo en bucle las fotos de la sede.
+function buildRooms(venueName: string, sources: string[]) {
+  const shots: VenueRoomShot[] = [];
+  const roomTypes: VenueRoomType[] = [];
+  let slot = 0;
+
+  for (const type of ROOM_TYPES) {
+    const ownSources: string[] = [];
+
+    for (let i = 0; i < type.slots; i += 1, slot += 1) {
+      const src = sources[slot % sources.length];
+      ownSources.push(src);
+      shots.push({
+        id: `shot-${slot + 1}`,
+        src,
+        alt: {
+          es: `${type.name.es} de ${venueName}.`,
+          en: `${type.name.en} at ${venueName}.`,
+        },
+        label: type.name,
+        aspect: ASPECTS[slot % ASPECTS.length],
+        typeId: type.id,
+      });
+    }
+
+    // Completa el carrusel con las demás fotos de la sede hasta el mínimo.
+    const gallerySources = [...ownSources];
+    for (const src of sources) {
+      if (gallerySources.length >= MIN_GALLERY) break;
+      if (!gallerySources.includes(src)) gallerySources.push(src);
+    }
+
+    roomTypes.push({
+      id: type.id,
+      name: type.name,
+      description: type.description,
+      icon: type.icon,
+      amenities: type.amenities,
+      images: gallerySources.map((src) => ({
+        src,
+        alt: {
+          es: `${type.name.es} de ${venueName}.`,
+          en: `${type.name.en} at ${venueName}.`,
+        },
+      })),
+    });
+  }
+
+  return { roomShots: shots, roomTypes };
 }
 
 export const venuePages: Record<VenueSlug, VenuePage> = {
@@ -120,7 +246,7 @@ export const venuePages: Record<VenueSlug, VenuePage> = {
         },
       },
     ],
-    roomShots: buildRoomShots("Zentra Balta", [
+    ...buildRooms("Zentra Balta", [
       "/images/balta/hab-suite.webp",
       "/images/balta/hab-suite-dos.webp",
       "/images/balta/hab-suite-002.webp",
@@ -204,7 +330,7 @@ export const venuePages: Record<VenueSlug, VenuePage> = {
         },
       },
     ],
-    roomShots: buildRoomShots("Zentra Plaza", [
+    ...buildRooms("Zentra Plaza", [
       "/images/plaza/habitacion-001.webp",
       "/images/plaza/individual.webp",
       "/images/plaza/cowork-plaza-uno.webp",
@@ -288,7 +414,7 @@ export const venuePages: Record<VenueSlug, VenuePage> = {
         },
       },
     ],
-    roomShots: buildRoomShots("Zentra San José", [
+    ...buildRooms("Zentra San José", [
       "/images/sanjose/hab-matrimonial.webp",
       "/images/sanjose/hab-doble.webp",
       "/images/sanjose/comedor.webp",

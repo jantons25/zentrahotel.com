@@ -10,7 +10,7 @@ import { Container } from "@/components/common/container";
 import { Section } from "@/components/common/section";
 import { fontVenuesDisplay } from "@/features/venues/config/venues-fonts";
 import { venues } from "@/features/venues/data/venues";
-import { buildWhatsAppUrl } from "@/lib/whatsapp";
+import { Link } from "@/i18n/navigation";
 import { pick } from "@/lib/i18n-pick";
 
 import styles from "./venues-section.module.css";
@@ -134,14 +134,15 @@ export async function VenuesSection() {
                       ))}
                     </ul>
 
-                    <a
-                      href={buildWhatsAppUrl(
-                        t("whatsappPrefill", { venue: venue.name }),
-                      )}
+                    {/* "Ver más": las sedes llevan a su página; Nexus Cowork, a su
+                        sitio. En ambos casos se abre en una pestaña nueva, igual que
+                        los submenús "Sedes" del menú principal. */}
+                    <Link
+                      href={venue.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={t("ctaAria", { venue: venue.name })}
-                      className="mt-auto inline-flex w-fit items-center gap-2 pt-5 text-sm font-semibold text-secondary transition-colors duration-(--duration-normal) hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none"
+                      className="mt-auto inline-flex w-fit cursor-pointer items-center gap-2 pt-5 text-sm font-semibold text-secondary transition-colors duration-(--duration-normal) hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none"
                     >
                       {t("cta")}
                       <ArrowUpRight
@@ -149,7 +150,7 @@ export async function VenuesSection() {
                         strokeWidth={2}
                         aria-hidden="true"
                       />
-                    </a>
+                    </Link>
                   </div>
                 </article>
               </li>

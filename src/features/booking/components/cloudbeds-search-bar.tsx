@@ -21,6 +21,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight, CalendarDays, MapPin, UsersRound } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
+import { propertyBookingUrl } from "@/lib/booking";
 
 function toISODate(date: Date) {
   const y = date.getFullYear();
@@ -43,11 +44,6 @@ const { cloudbeds } = siteConfig;
 const propertyOrder = cloudbeds.properties.every((property) => property.code)
   ? cloudbeds.properties.map((property) => property.code).join(";")
   : "";
-
-// Booking Engine individual de cada propiedad (el que sirve mientras no hay Organización).
-function propertyBookingUrl(code: string) {
-  return `https://hotels.cloudbeds.com/es/reservation/${code}?currency=${cloudbeds.currency}`;
-}
 
 interface CloudbedsSearchBarProps {
   /**
@@ -100,7 +96,10 @@ function FallbackSearchBar({
   // Las tres sedes ya tienen código de propiedad. La guarda se mantiene para que una
   // sede nueva sin código se liste inhabilitada en vez de romper la redirección.
   const [property, setProperty] = React.useState<string>(
-    () => locked?.code ?? cloudbeds.properties.find((item) => item.code)?.code ?? "",
+    () =>
+      locked?.code ??
+      cloudbeds.properties.find((item) => item.code)?.code ??
+      "",
   );
   const [checkin, setCheckin] = React.useState(() =>
     toISODate(addDays(new Date(), 1)),

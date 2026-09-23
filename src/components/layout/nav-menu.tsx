@@ -6,7 +6,7 @@
 import * as React from "react";
 import { Popover } from "@base-ui/react/popover";
 import { useTranslations } from "next-intl";
-import { ArrowUpRight, Mail, Menu, Phone, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Mail, Menu, Phone, X } from "lucide-react";
 
 import {
   FacebookIcon,
@@ -40,44 +40,53 @@ export function NavMenu() {
   const close = () => setOpen(false);
 
   // Cada entrada de primer nivel: enlace simple o grupo con submenús (p. ej. "Sedes").
-  const renderNode = (node: NavNode, index: number) => {
-    const order = (index + 1).toString().padStart(2, "0");
-
+  const renderNode = (node: NavNode) => {
     if (node.children?.length) {
       return (
-        <li key={node.key} className="border-b border-white/10 py-2.5">
-          <p className="flex items-baseline gap-3">
-            <span
-              aria-hidden="true"
-              className="font-mono text-[0.6rem] tracking-[0.24em] text-primary"
-            >
-              {order}
-            </span>
-            <span className="font-[family-name:var(--font-menu-display)] text-xl leading-none font-light text-white">
+        // Grupo "Sedes": las sedes permanecen plegadas y se despliegan al pasar el
+        // cursor (o al enfocar con teclado) sobre la fila, con transición de altura.
+        <li
+          key={node.key}
+          className="group/group border-b border-white/10 py-2.5"
+        >
+          {/* `tabIndex` hace que en pantallas táctiles un toque enfoque la fila y
+              despliegue las sedes, donde no existe el hover. */}
+          <p
+            tabIndex={0}
+            className="flex cursor-default items-center gap-2 outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+          >
+            <span className="font-[family-name:var(--font-menu-display)] text-xl leading-none font-light text-white transition-colors duration-(--duration-fast) group-hover/group:text-primary group-focus-within/group:text-primary motion-reduce:transition-none">
               {t(node.key)}
             </span>
+            <ChevronDown
+              className="size-4 text-white/45 transition-transform duration-(--duration-normal) group-hover/group:rotate-180 group-hover/group:text-primary group-focus-within/group:rotate-180 group-focus-within/group:text-primary motion-reduce:transition-none"
+              strokeWidth={1.75}
+              aria-hidden="true"
+            />
           </p>
-          <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1.5 pl-8">
-            {node.children.map((child) => (
-              <li key={child.key}>
-                <Link
-                  href={child.href ?? "/"}
-                  onClick={close}
-                  // Las sedes abren su página en una pestaña nueva.
-                  {...(child.newTab
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                  className="group inline-flex items-center gap-2 text-sm font-medium tracking-[0.04em] text-white/65 transition-colors duration-(--duration-fast) hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="h-px w-4 bg-white/25 transition-[width,background-color] duration-(--duration-normal) group-hover:w-6 group-hover:bg-primary motion-reduce:transition-none"
-                  />
-                  {t(child.key)}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="grid grid-rows-[0fr] transition-[grid-template-rows,opacity] duration-(--duration-normal) ease-out opacity-0 group-hover/group:grid-rows-[1fr] group-hover/group:opacity-100 group-focus-within/group:grid-rows-[1fr] group-focus-within/group:opacity-100 motion-reduce:transition-none">
+            <ul className="flex flex-wrap gap-x-5 gap-y-1.5 overflow-hidden">
+              {node.children.map((child) => (
+                <li key={child.key} className="mt-2">
+                  <Link
+                    href={child.href ?? "/"}
+                    onClick={close}
+                    // Las sedes abren su página en una pestaña nueva.
+                    {...(child.newTab
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className="group inline-flex items-center gap-2 text-sm font-medium tracking-[0.04em] text-white/65 transition-colors duration-(--duration-fast) hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary motion-reduce:transition-none"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="h-px w-4 bg-white/25 transition-[width,background-color] duration-(--duration-normal) group-hover:w-6 group-hover:bg-primary motion-reduce:transition-none"
+                    />
+                    {t(child.key)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </li>
       );
     }
@@ -87,15 +96,17 @@ export function NavMenu() {
         <Link
           href={node.href ?? "/"}
           onClick={close}
-          className="group flex items-baseline gap-3 py-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+          className="group flex items-center gap-2 py-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
         >
           <span
-            aria-hidden="true"
-            className="font-mono text-[0.6rem] tracking-[0.24em] text-primary"
+            className={cn(
+              "font-[family-name:var(--font-menu-display)] text-xl leading-none font-light transition-colors duration-(--duration-fast) motion-reduce:transition-none",
+              // "Ruta del papa" es la única entrada con la tipografía en verde de marca.
+              node.highlight
+                ? "text-primary group-hover:text-primary/80"
+                : "text-white group-hover:text-primary",
+            )}
           >
-            {order}
-          </span>
-          <span className="font-[family-name:var(--font-menu-display)] text-xl leading-none font-light text-white transition-colors duration-(--duration-fast) group-hover:text-primary motion-reduce:transition-none">
             {t(node.key)}
           </span>
           <ArrowUpRight

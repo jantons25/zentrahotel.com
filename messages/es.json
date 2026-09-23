@@ -4,7 +4,7 @@
     "nosotros": "Nosotros",
     "habitaciones": "Habitaciones",
     "empresa": "Empresa",
-    "blog": "Blog",
+    "blog": "Ruta del papa",
     "promociones": "Promociones",
     "reservar": "Reservar",
     "reservarAhora": "Reservar ahora",
@@ -269,8 +269,8 @@
       "titleEmphasis": "centro de Chiclayo.",
       "lead": "Elige la sede que mejor te queda: todas están a pocos minutos de la Plaza de Armas, el centro financiero y la zona comercial.",
       "cardEyebrow": "Sede",
-      "cta": "Solicitar sede",
-      "ctaAria": "Solicitar información de {venue}",
+      "cta": "Ver más",
+      "ctaAria": "Ver más sobre {venue}",
       "whatsappPrefill": "Hola, quiero información sobre {venue}."
     }
   },
@@ -590,7 +590,8 @@
   },
   "flashOffers": {
     "aria": "Ofertas flash",
-    "prefix": "Oferta flash"
+    "prefix": "Oferta flash",
+    "ctaAria": "Ver las ofertas de Zentra Hotel"
   },
   "welcomePromo": {
     "floatingEyebrow": "Regístrate y gana",
@@ -635,7 +636,15 @@
       "eyebrow": "Alojamiento",
       "title": "Nuestras habitaciones",
       "lead": "De la Clásica a la Suite. Las tarifas cambian según la temporada y el canal, así que se consultan en el motor de reservas.",
-      "ctaSeeAll": "Ver todas las habitaciones"
+      "ctaSeeAll": "Ver todas las habitaciones",
+      "openDetail": "Ver detalle de {room}",
+      "close": "Cerrar",
+      "prev": "Foto anterior",
+      "next": "Foto siguiente",
+      "goTo": "Ir a la foto {index}",
+      "amenitiesTitle": "Servicios de la habitación",
+      "rateNote": "Consultar tarifa",
+      "ctaAvailability": "Consultar disponibilidad"
     }
   }
 }

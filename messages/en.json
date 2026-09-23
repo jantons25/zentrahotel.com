@@ -4,7 +4,7 @@
     "nosotros": "About",
     "habitaciones": "Rooms",
     "empresa": "Corporate",
-    "blog": "Blog",
+    "blog": "Pope's Route",
     "promociones": "Offers",
     "reservar": "Book",
     "reservarAhora": "Book now",
@@ -269,8 +269,8 @@
       "titleEmphasis": "downtown Chiclayo.",
       "lead": "Pick the location that suits you best: all of them are minutes from the main square, the financial district and the shopping area.",
       "cardEyebrow": "Location",
-      "cta": "Request this location",
-      "ctaAria": "Request information about {venue}",
+      "cta": "See more",
+      "ctaAria": "See more about {venue}",
       "whatsappPrefill": "Hi, I would like information about {venue}."
     }
   },
@@ -590,7 +590,8 @@
   },
   "flashOffers": {
     "aria": "Flash offers",
-    "prefix": "Flash offer"
+    "prefix": "Flash offer",
+    "ctaAria": "See Zentra Hotel offers"
   },
   "welcomePromo": {
     "floatingEyebrow": "Sign up and get",
@@ -635,7 +636,15 @@
       "eyebrow": "Stay",
       "title": "Our rooms",
       "lead": "From the Classic to the Suite. Rates change with the season and the channel, so they are quoted in the booking engine.",
-      "ctaSeeAll": "See all rooms"
+      "ctaSeeAll": "See all rooms",
+      "openDetail": "See details for {room}",
+      "close": "Close",
+      "prev": "Previous photo",
+      "next": "Next photo",
+      "goTo": "Go to photo {index}",
+      "amenitiesTitle": "Room amenities",
+      "rateNote": "Rate on request",
+      "ctaAvailability": "Check availability"
     }
   }
 }

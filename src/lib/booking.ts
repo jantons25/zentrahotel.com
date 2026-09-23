@@ -6,3 +6,8 @@ export const bookingLinkProps = {
   target: "_blank",
   rel: "noopener noreferrer",
 } as const;
+
+// Booking Engine individual de cada propiedad (páginas de sede y fichas de habitación).
+export function propertyBookingUrl(code: string) {
+  return `https://hotels.cloudbeds.com/es/reservation/${code}?currency=${siteConfig.cloudbeds.currency}`;
+}

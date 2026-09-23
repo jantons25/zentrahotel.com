@@ -70,7 +70,8 @@ export const mainNavTree: NavNode[] = [
     ],
   },
   { key: "empresa", href: "/empresa" },
-  { key: "blog", href: "/blog" },
+  // Etiqueta "Ruta del papa": única entrada del menú con la tipografía en verde.
+  { key: "blog", href: "/blog", highlight: true },
   { key: "galeria", href: "/galeria" },
   { key: "promociones", href: "/promociones", hidden: true },
   { key: "nosotros", href: "/nosotros", hidden: true },

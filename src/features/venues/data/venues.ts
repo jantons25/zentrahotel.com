@@ -18,6 +18,8 @@ export interface Venue {
   id: string;
   /** Id del ancla en la home (destino de los submenús del menú principal). */
   anchor: string;
+  /** Destino del CTA "Ver más": ruta interna de la sede o sitio externo (Nexus). */
+  href: string;
   brand: "Zentra Hotel" | "Nexus Cowork";
   name: string;
   image: string;
@@ -30,6 +32,7 @@ export const venues: Venue[] = [
   {
     id: "plaza",
     anchor: "sede-plaza",
+    href: "/sede-plaza",
     brand: "Zentra Hotel",
     name: "Zentra Plaza",
     image: "/images/plaza/cowork-plaza-uno.webp",
@@ -52,6 +55,7 @@ export const venues: Venue[] = [
   {
     id: "nexus",
     anchor: "nexus-cowork",
+    href: "https://nexuscowork.com",
     brand: "Nexus Cowork",
     name: "Nexus Cowork",
     image: "/images/nexus/sala-a.webp",
@@ -77,6 +81,7 @@ export const venues: Venue[] = [
   {
     id: "san-jose",
     anchor: "sede-san-jose",
+    href: "/sede-san-jose",
     brand: "Zentra Hotel",
     name: "Zentra San José",
     image: "/images/sanjose/hab-matrimonial.webp",
@@ -99,6 +104,7 @@ export const venues: Venue[] = [
   {
     id: "balta",
     anchor: "sede-balta",
+    href: "/sede-balta",
     brand: "Zentra Hotel",
     name: "Zentra Balta",
     image: "/images/balta/hab-suite.webp",
