@@ -19,6 +19,27 @@ const authors: Record<string, BlogAuthor> = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "papa-leon-xiv-chiclayo-historia",
+    category: "chiclayo",
+    title: {
+      es: "Papa León XIV y Chiclayo: la historia de un vínculo que comenzó mucho antes del papado",
+      en: "Pope Leo XIV and Chiclayo: the story of a bond that began long before the papacy",
+    },
+    excerpt: {
+      es: "De la misión agustiniana en el norte del Perú a obispo de Chiclayo entre 2014 y 2023: así se construyó la relación de Robert Prevost con la ciudad a la que regresa como Papa en noviembre de 2026.",
+      en: "From the Augustinian mission in northern Peru to bishop of Chiclayo from 2014 to 2023: how Robert Prevost built his bond with the city he returns to as Pope in November 2026.",
+    },
+    cover: "/images/blog/historia-papa-chiclayo/portada.webp",
+    coverAlt: {
+      es: "El papa Francisco estrecha la mano de monseñor Robert Prevost en el Vaticano",
+      en: "Pope Francis shakes hands with Bishop Robert Prevost at the Vatican",
+    },
+    author: authors.editorial,
+    publishedAt: "2026-09-29",
+    readingMinutes: 6,
+    featured: true,
+  },
+  {
     slug: "agenda-papa-leon-xiv-chiclayo",
     category: "chiclayo",
     title: {
@@ -37,7 +58,6 @@ export const blogPosts: BlogPost[] = [
     author: authors.editorial,
     publishedAt: "2026-09-22",
     readingMinutes: 7,
-    featured: true,
   },
   {
     slug: "como-llegar-misa-papa-pimentel",

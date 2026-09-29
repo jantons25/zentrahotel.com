@@ -6,9 +6,466 @@ import type { BlogArticle } from "@/features/blog/types";
 const PAPA = "/images/blog/ruta-del-papa";
 const AGENDA = "/images/blog/agenda-papa";
 const MISA = "/images/blog/como-llegar-misa";
+const HISTORIA = "/images/blog/historia-papa-chiclayo";
 
 export const blogArticles: Record<string, BlogArticle> = {
   ...blogArticlesDiario,
+
+  // ---------------------------------------------------------------------------
+  "papa-leon-xiv-chiclayo-historia": {
+    lead: {
+      es: "Antes de ser León XIV, Robert Francis Prevost fue durante casi nueve años el obispo de Chiclayo. Esta es la historia de un vínculo que empezó mucho antes del papado y que tendrá un nuevo capítulo en noviembre de 2026.",
+      en: "Before he became Leo XIV, Robert Francis Prevost spent almost nine years as bishop of Chiclayo. This is the story of a bond that began long before the papacy and will add a new chapter in November 2026.",
+    },
+    tags: [
+      { es: "Papa León XIV", en: "Pope Leo XIV" },
+      { es: "Chiclayo", en: "Chiclayo" },
+      { es: "Historia", en: "History" },
+      { es: "Visita papal 2026", en: "Papal visit 2026" },
+    ],
+    body: [
+      {
+        type: "paragraph",
+        text: {
+          es: "Antes de ser conocido como León XIV, Robert Francis Prevost fue durante años una figura cercana para miles de personas en Chiclayo.",
+          en: "Before he was known as Leo XIV, Robert Francis Prevost was for years a familiar figure to thousands of people in Chiclayo.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Su relación con el Perú comenzó décadas antes de su elección como Papa y, particularmente, su historia con Chiclayo se consolidó durante los años en los que estuvo al frente de la diócesis.",
+          en: "His relationship with Peru began decades before his election as Pope, and his story with Chiclayo in particular took shape during the years he led the diocese.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Por eso, cuando el 8 de mayo de 2025 fue elegido como el 267.º Papa de la Iglesia Católica, Chiclayo no recibió la noticia como la de un pontífice lejano: para muchos habitantes de la ciudad era el regreso de alguien a quien habían conocido como monseñor Robert Prevost, su obispo.",
+          en: "So when he was elected the 267th Pope of the Catholic Church on 8 May 2025, Chiclayo did not take the news as that of a distant pontiff: for many in the city it was the return of someone they had known as Monsignor Robert Prevost, their bishop.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Hoy, mientras la ciudad se prepara para recibirlo nuevamente en noviembre de 2026, conocer esta historia permite entender por qué existe un vínculo tan particular entre el Papa León XIV y Chiclayo.",
+          en: "Today, as the city gets ready to welcome him again in November 2026, knowing this story helps explain why there is such a special bond between Pope Leo XIV and Chiclayo.",
+        },
+      },
+      {
+        type: "heading",
+        id: "llegada-al-peru",
+        text: {
+          es: "¿Cuándo llegó Robert Prevost al Perú?",
+          en: "When did Robert Prevost arrive in Peru?",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "La historia de Robert Prevost con el Perú comenzó mucho antes de su llegada a Chiclayo.",
+          en: "Robert Prevost's story with Peru began long before he arrived in Chiclayo.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "En 1985, cuando tenía 30 años, fue enviado por la Orden de San Agustín a la misión de Chulucanas, en Piura. Después continuó desarrollando diferentes labores pastorales y formativas en el país.",
+          en: "In 1985, aged 30, he was sent by the Order of Saint Augustine to the mission in Chulucanas, Piura. He went on to carry out various pastoral and formation roles in the country.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Entre 1988 y 1998 estuvo vinculado a la misión agustiniana de Trujillo, donde desempeñó diferentes responsabilidades de formación y enseñanza.",
+          en: "Between 1988 and 1998 he was part of the Augustinian mission in Trujillo, where he held several formation and teaching responsibilities.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Es decir, cuando años después llegó a Chiclayo, Prevost ya tenía una larga experiencia misionera y pastoral en el norte del Perú.",
+          en: "In other words, when he reached Chiclayo years later, Prevost already had long missionary and pastoral experience in northern Peru.",
+        },
+      },
+      {
+        type: "heading",
+        id: "inicio-en-chiclayo",
+        text: {
+          es: "2014: el inicio de su historia con Chiclayo",
+          en: "2014: the start of his story with Chiclayo",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "El 3 de noviembre de 2014, el papa Francisco nombró a Robert Francis Prevost como administrador apostólico de la Diócesis de Chiclayo. Cuatro días después, el 7 de noviembre, tomó posesión canónica de la diócesis.",
+          en: "On 3 November 2014, Pope Francis appointed Robert Francis Prevost apostolic administrator of the Diocese of Chiclayo. Four days later, on 7 November, he took canonical possession of the diocese.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Poco más de un mes después, el 12 de diciembre de 2014, fue ordenado obispo en la Catedral de Santa María de Chiclayo, un lugar que volverá a formar parte de su agenda durante su visita de noviembre de 2026. Ese día adoptó su lema episcopal:",
+          en: "Just over a month later, on 12 December 2014, he was ordained bishop in the Cathedral of Santa María in Chiclayo, a place that will be on his schedule again during his November 2026 visit. That day he took his episcopal motto:",
+        },
+      },
+      {
+        type: "quote",
+        text: {
+          es: "In Illo uno unum: «En el único Cristo somos uno».",
+          en: "In Illo uno unum: “In the one Christ we are one.”",
+        },
+        cite: {
+          es: "Lema episcopal, inspirado en San Agustín",
+          en: "Episcopal motto, drawn from Saint Augustine",
+        },
+      },
+      {
+        type: "heading",
+        id: "obispo-de-chiclayo",
+        text: {
+          es: "2015: se convierte oficialmente en obispo de Chiclayo",
+          en: "2015: he officially becomes bishop of Chiclayo",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "El 26 de septiembre de 2015, el papa Francisco lo nombró oficialmente obispo de Chiclayo. Durante los siguientes años, Prevost desarrolló su labor pastoral en una diócesis que comprende diferentes comunidades de Lambayeque.",
+          en: "On 26 September 2015, Pope Francis officially named him bishop of Chiclayo. Over the following years, Prevost carried out his pastoral work in a diocese that spans many communities across Lambayeque.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Su trabajo no se limitó a las actividades estrictamente religiosas. La Diócesis de Chiclayo recuerda diversas iniciativas pastorales y sociales impulsadas durante su periodo como obispo, mientras que Vatican News ha documentado proyectos sociales promovidos entre 2014 y 2023 que posteriormente continuaron siendo desarrollados por organizaciones locales.",
+          en: "His work was not limited to strictly religious activities. The Diocese of Chiclayo recalls various pastoral and social initiatives launched during his time as bishop, and Vatican News has documented social projects promoted between 2014 and 2023 that local organizations later carried on.",
+        },
+      },
+      {
+        type: "heading",
+        id: "obispo-cercano",
+        text: {
+          es: "Un obispo cercano a la comunidad",
+          en: "A bishop close to his community",
+        },
+      },
+      {
+        type: "image",
+        src: `${HISTORIA}/obispo-cercano.webp`,
+        alt: {
+          es: "Robert Prevost sirviendo un plato de comida en una cocina comunitaria",
+          en: "Robert Prevost serving a plate of food in a community kitchen",
+        },
+        caption: {
+          es: "Sus colaboradores lo recuerdan como un pastor comprometido con las personas más vulnerables.",
+          en: "Those who worked with him remember a pastor committed to the most vulnerable.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Parte de la historia de Prevost en Chiclayo también puede conocerse a través de las personas que trabajaron con él.",
+          en: "Part of Prevost's story in Chiclayo can also be told through the people who worked with him.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "El padre Marcos Antonio Ballena Rentería, quien estuvo relacionado con la formación sacerdotal en la diócesis, recordó a Prevost como un pastor cercano y comprometido con las personas más vulnerables.",
+          en: "Father Marcos Antonio Ballena Rentería, who was involved in priestly formation in the diocese, remembered Prevost as a pastor who was approachable and committed to the most vulnerable.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Otro de sus colaboradores cercanos, César Piscoya, trabajó con él en la pastoral diocesana. En una entrevista con Vatican News después de su elección como Papa, recordó que Prevost insistía en la importancia de trabajar en unidad y con corresponsabilidad dentro de la comunidad.",
+          en: "Another close collaborator, César Piscoya, worked with him in diocesan ministry. In an interview with Vatican News after the papal election, he recalled that Prevost insisted on working in unity and with shared responsibility within the community.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Estos testimonios ayudan a entender que su relación con Chiclayo no se construyó únicamente desde el cargo de obispo, sino también a través de los vínculos que estableció con sacerdotes, religiosos, jóvenes y comunidades.",
+          en: "These accounts show that his relationship with Chiclayo was not built only from the bishop's office, but also through the ties he formed with priests, religious, young people and communities.",
+        },
+      },
+      {
+        type: "heading",
+        id: "jovenes-y-educacion",
+        text: {
+          es: "Su vínculo con los jóvenes y la educación",
+          en: "His ties to young people and education",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Durante sus años en Chiclayo, Prevost también mantuvo contacto con jóvenes y espacios educativos.",
+          en: "During his years in Chiclayo, Prevost also stayed close to young people and educational settings.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "La educación fue uno de los ámbitos en los que desarrolló responsabilidades dentro de la Conferencia Episcopal Peruana. En 2018 fue elegido segundo vicepresidente de la Conferencia Episcopal Peruana y también estuvo vinculado a la Comisión de Cultura y Educación.",
+          en: "Education was one of the areas in which he took on responsibilities within the Peruvian Episcopal Conference. In 2018 he was elected its second vice-president, and he was also involved with the Commission for Culture and Education.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Esta dimensión de su trayectoria tendrá un significado especial durante su próxima visita: el programa oficial de noviembre de 2026 incluye un encuentro con el mundo universitario en la Universidad Católica Santo Toribio de Mogrovejo.",
+          en: "This side of his career will take on special meaning during his upcoming visit: the official November 2026 program includes a meeting with the university community at the Universidad Católica Santo Toribio de Mogrovejo.",
+        },
+      },
+      {
+        type: "heading",
+        id: "regreso-al-vaticano",
+        text: {
+          es: "2023: deja Chiclayo para regresar al Vaticano",
+          en: "2023: he leaves Chiclayo for the Vatican",
+        },
+      },
+      {
+        type: "image",
+        src: `${HISTORIA}/mural-leon-xiv.webp`,
+        alt: {
+          es: "Mural colorido con la figura del Papa León XIV y escenas de su vida, frente al que caminan dos personas",
+          en: "Colorful mural showing Pope Leo XIV and scenes from his life, with two people walking past",
+        },
+        caption: {
+          es: "Un mural repasa su camino: la misión en el Perú, sus años de obispo y su llegada a Roma.",
+          en: "A mural traces his path: the mission in Peru, his years as bishop and his move to Rome.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Después de casi nueve años vinculados a la conducción de la Diócesis de Chiclayo, llegó un nuevo capítulo.",
+          en: "After almost nine years leading the Diocese of Chiclayo, a new chapter began.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "El 30 de enero de 2023, el papa Francisco llamó a Robert Prevost a Roma para asumir como Prefecto del Dicasterio para los Obispos y Presidente de la Pontificia Comisión para América Latina. De esta manera, dejó Chiclayo para asumir una responsabilidad dentro de la Santa Sede. Ese mismo año, el papa Francisco lo creó cardenal.",
+          en: "On 30 January 2023, Pope Francis called Robert Prevost to Rome as Prefect of the Dicastery for Bishops and President of the Pontifical Commission for Latin America. He thus left Chiclayo to take up a post in the Holy See. That same year, Pope Francis made him a cardinal.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "La Diócesis de Chiclayo señala que su servicio como administrador apostólico y posteriormente obispo se extendió desde noviembre de 2014 hasta abril de 2023.",
+          en: "The Diocese of Chiclayo notes that his service as apostolic administrator and later bishop ran from November 2014 to April 2023.",
+        },
+      },
+      {
+        type: "heading",
+        id: "eleccion-2025",
+        text: {
+          es: "2025: Chiclayo vuelve a aparecer en la historia",
+          en: "2025: Chiclayo returns to the story",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "El 8 de mayo de 2025, Robert Francis Prevost fue elegido Papa y tomó el nombre de León XIV.",
+          en: "On 8 May 2025, Robert Francis Prevost was elected Pope and took the name Leo XIV.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Desde el balcón de la Basílica de San Pedro, una de sus primeras referencias después de ser elegido fue precisamente Chiclayo. El nuevo pontífice envió un saludo a su «querida diócesis de Chiclayo», recordando a la comunidad que había acompañado durante sus años como obispo.",
+          en: "From the balcony of St Peter's Basilica, one of his first references after his election was Chiclayo itself. The new pontiff sent greetings to his “beloved diocese of Chiclayo,” remembering the community he had served as bishop.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "La respuesta en Chiclayo fue inmediata. La elección fue celebrada por la comunidad local y, pocos días después, una delegación de aproximadamente 60 personas de la Diócesis de Chiclayo viajó a Roma para participar de las celebraciones del inicio de su pontificado. El 19 de mayo de 2025, León XIV recibió a esta delegación en el Vaticano.",
+          en: "Chiclayo responded right away. The local community celebrated the election and, a few days later, a delegation of about 60 people from the Diocese of Chiclayo traveled to Rome for the celebrations marking the start of his pontificate. On 19 May 2025, Leo XIV received the delegation at the Vatican.",
+        },
+      },
+      {
+        type: "heading",
+        id: "regreso-2026",
+        text: {
+          es: "2026: León XIV regresa a Chiclayo",
+          en: "2026: Leo XIV returns to Chiclayo",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "La historia tendrá un nuevo capítulo en noviembre de 2026. El Vaticano confirmó oficialmente que el Papa León XIV visitará Chiclayo durante su viaje apostólico al Perú. Su agenda en la región incluye:",
+          en: "The story will add a new chapter in November 2026. The Vatican has officially confirmed that Pope Leo XIV will visit Chiclayo during his apostolic journey to Peru. His schedule in the region includes:",
+        },
+      },
+      {
+        type: "list",
+        items: [
+          {
+            title: { es: "Pampas de Pimentel", en: "Pampas de Pimentel" },
+            text: {
+              es: "Misa multitudinaria.",
+              en: "Large open-air Mass.",
+            },
+          },
+          {
+            title: { es: "Capilla San Óscar A. Romero", en: "St Óscar A. Romero Chapel" },
+            text: { es: "Visita.", en: "Visit." },
+          },
+          {
+            title: {
+              es: "Santuario de Nuestra Señora de la Paz",
+              en: "Sanctuary of Our Lady of Peace",
+            },
+            text: {
+              es: "Encuentro con obispos, sacerdotes, religiosos, religiosas y seminaristas.",
+              en: "Meeting with bishops, priests, religious and seminarians.",
+            },
+          },
+          {
+            title: { es: "USAT", en: "USAT" },
+            text: {
+              es: "Encuentro con el mundo universitario.",
+              en: "Meeting with the university community.",
+            },
+          },
+          {
+            title: {
+              es: "Catedral de Santa María de Chiclayo",
+              en: "Cathedral of Santa María, Chiclayo",
+            },
+            text: {
+              es: "Visita y coronación de la Virgen Inmaculada.",
+              en: "Visit and coronation of the Immaculate Virgin.",
+            },
+          },
+          {
+            title: { es: "Zaña", en: "Zaña" },
+            text: {
+              es: "Encuentro de oración en el Santuario de Santo Toribio de Mogrovejo.",
+              en: "Prayer gathering at the Sanctuary of St Toribio de Mogrovejo.",
+            },
+          },
+        ],
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "La visita permitirá al Papa regresar a varios lugares que forman parte de la historia religiosa de la región.",
+          en: "The visit will bring the Pope back to several places that are part of the region's religious history.",
+        },
+      },
+      {
+        type: "heading",
+        id: "vinculo-especial",
+        text: {
+          es: "¿Por qué Chiclayo tiene un vínculo especial con el Papa León XIV?",
+          en: "Why does Chiclayo have a special bond with Pope Leo XIV?",
+        },
+      },
+      {
+        type: "image",
+        src: `${HISTORIA}/comunidad-rural.webp`,
+        alt: {
+          es: "Robert Prevost a caballo por un camino de tierra, rodeado de niños con trajes típicos",
+          en: "Robert Prevost on horseback along a dirt road, surrounded by children in traditional dress",
+        },
+        caption: {
+          es: "Sus años en la región se construyeron también en los caminos, junto a las comunidades.",
+          en: "His years in the region were also spent on the road, alongside local communities.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "La respuesta está en los años que Robert Prevost pasó en la ciudad y en la región. No se trata únicamente de que haya ocupado el cargo de obispo de Chiclayo: durante ese periodo construyó relaciones con comunidades, sacerdotes, religiosos, jóvenes y organizaciones locales.",
+          en: "The answer lies in the years Robert Prevost spent in the city and the region. It is not only that he served as bishop of Chiclayo: during that time he built relationships with communities, priests, religious, young people and local organizations.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Además, su trayectoria peruana comenzó mucho antes de ser obispo y se desarrolló principalmente en el norte del país.",
+          en: "His time in Peru also began long before he was a bishop, and it unfolded mainly in the north of the country.",
+        },
+      },
+      {
+        type: "tip",
+        label: { es: "En pocas palabras", en: "In short" },
+        text: {
+          es: "Para comprender la relación entre León XIV y Chiclayo hay que mirar más allá de su elección como Papa: Chiclayo forma parte de la historia pastoral que lo acompañó hasta Roma.",
+          en: "To understand the bond between Leo XIV and Chiclayo you have to look beyond his election as Pope: Chiclayo is part of the pastoral story that went with him to Rome.",
+        },
+      },
+      {
+        type: "heading",
+        id: "ciudad-que-lo-recibe",
+        text: {
+          es: "Chiclayo, una ciudad que vuelve a recibirlo",
+          en: "Chiclayo, a city that welcomes him back",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "En noviembre de 2026, León XIV regresará a una ciudad que conoció durante casi una década. Esta vez lo hará desde una posición completamente diferente: como Papa de la Iglesia Católica.",
+          en: "In November 2026, Leo XIV will return to a city he knew for almost a decade. This time he comes in a completely different role: as Pope of the Catholic Church.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Para quienes viven en Chiclayo y para los visitantes que llegarán desde otras ciudades, su visita será también una oportunidad para conocer los lugares que forman parte de esta historia. Desde la Catedral de Santa María hasta Pimentel y Zaña, la visita permitirá recorrer algunos de los espacios que hoy forman parte de la Ruta del Papa en Lambayeque.",
+          en: "For people who live in Chiclayo and for visitors arriving from other cities, the visit is also a chance to see the places that are part of this story. From the Cathedral of Santa María to Pimentel and Zaña, it is a way to walk some of the sites that now make up the Pope's Route in Lambayeque.",
+        },
+      },
+      {
+        type: "heading",
+        id: "si-vienes-a-chiclayo",
+        text: {
+          es: "Si vienes a Chiclayo por la visita del Papa",
+          en: "If you are coming to Chiclayo for the papal visit",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si estás planeando viajar a Chiclayo durante noviembre, puedes aprovechar tu estadía para conocer no solo los lugares incluidos en la agenda papal, sino también los principales atractivos turísticos de Lambayeque.",
+          en: "If you are planning to travel to Chiclayo in November, you can use your stay to see not only the places on the papal schedule but also the main attractions of Lambayeque.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Hospedarte en Zentra Hotel te permite tener una base en Chiclayo desde la cual organizar tu recorrido, conocer la ciudad y desplazarte hacia los diferentes destinos de la región.",
+          en: "Staying at Zentra Hotel gives you a base in Chiclayo from which to plan your route, get to know the city and head out to the different destinations in the region.",
+        },
+      },
+      {
+        type: "cta",
+        title: {
+          es: "Descubre la historia de Chiclayo y recorre la Ruta del Papa",
+          en: "Discover Chiclayo's story and walk the Pope's Route",
+        },
+        text: {
+          es: "Vive de cerca este capítulo especial para Lambayeque desde el centro de Chiclayo.",
+          en: "Experience this special chapter for Lambayeque up close, from the heart of Chiclayo.",
+        },
+        label: {
+          es: "Reserva tu estadía en Zentra",
+          en: "Book your stay at Zentra",
+        },
+        href: "/habitaciones",
+      },
+    ],
+  },
 
   // ---------------------------------------------------------------------------
   "como-llegar-misa-papa-pimentel": {
