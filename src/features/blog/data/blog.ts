@@ -19,6 +19,27 @@ const authors: Record<string, BlogAuthor> = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "que-hacer-en-chiclayo-3-dias",
+    category: "chiclayo",
+    title: {
+      es: "Qué hacer en Chiclayo en 3 días: guía para descubrir lo mejor de Lambayeque",
+      en: "What to do in Chiclayo in 3 days: a guide to the best of Lambayeque",
+    },
+    excerpt: {
+      es: "Un itinerario de tres jornadas: el centro de Chiclayo y su gastronomía, el legado arqueológico de Sipán y Brüning en Lambayeque, y un día entre el muelle de Pimentel y la artesanía de Monsefú.",
+      en: "A three-day itinerary: downtown Chiclayo and its food, the archaeological legacy of Sipán and Brüning in Lambayeque, and a day between the Pimentel pier and the crafts of Monsefú.",
+    },
+    cover: "/images/blog/chiclayo-3-dias/portada.webp",
+    coverAlt: {
+      es: "Collage con el Museo Tumbas Reales de Sipán, un plato de arroz con pato y el muelle de Pimentel",
+      en: "Collage of the Royal Tombs of Sipán Museum, a plate of arroz con pato and the Pimentel pier",
+    },
+    author: authors.editorial,
+    publishedAt: "2026-10-26",
+    readingMinutes: 7,
+    featured: true,
+  },
+  {
     slug: "papa-leon-xiv-chiclayo-historia",
     category: "chiclayo",
     title: {
@@ -37,7 +58,6 @@ export const blogPosts: BlogPost[] = [
     author: authors.editorial,
     publishedAt: "2026-09-29",
     readingMinutes: 6,
-    featured: true,
   },
   {
     slug: "agenda-papa-leon-xiv-chiclayo",

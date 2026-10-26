@@ -7,9 +7,640 @@ const PAPA = "/images/blog/ruta-del-papa";
 const AGENDA = "/images/blog/agenda-papa";
 const MISA = "/images/blog/como-llegar-misa";
 const HISTORIA = "/images/blog/historia-papa-chiclayo";
+const TRES_DIAS = "/images/blog/chiclayo-3-dias";
 
 export const blogArticles: Record<string, BlogArticle> = {
   ...blogArticlesDiario,
+
+  // ---------------------------------------------------------------------------
+  "que-hacer-en-chiclayo-3-dias": {
+    lead: {
+      es: "¿Estás planeando un viaje al norte del Perú y no sabes por dónde empezar? Chiclayo es un excelente punto de partida para descubrir la historia, la gastronomía y los paisajes de Lambayeque. En solo tres días puedes visitar museos con tesoros de antiguas civilizaciones, caminar junto al mar, probar platos tradicionales y conocer pueblos llenos de cultura.",
+      en: "Planning a trip to northern Peru and not sure where to start? Chiclayo is an excellent base for discovering the history, food and landscapes of Lambayeque. In just three days you can visit museums holding the treasures of ancient civilizations, walk by the sea, try traditional dishes and get to know towns full of culture.",
+    },
+    tags: [
+      { es: "Chiclayo", en: "Chiclayo" },
+      { es: "Itinerarios", en: "Itineraries" },
+      { es: "Lambayeque", en: "Lambayeque" },
+      { es: "Gastronomía", en: "Food" },
+      { es: "Qué hacer en Chiclayo", en: "Things to do in Chiclayo" },
+    ],
+    body: [
+      {
+        type: "paragraph",
+        text: {
+          es: "La clave está en organizar bien tu itinerario para aprovechar el tiempo sin terminar corriendo de un lugar a otro.",
+          en: "The key is to plan your itinerary well so you make the most of your time without rushing from one place to the next.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "En esta guía te proponemos qué hacer en Chiclayo en 3 días, con actividades para cada jornada, recomendaciones para comer y consejos para planificar tu estadía.",
+          en: "In this guide we suggest what to do in Chiclayo in 3 days, with activities for each day, places to eat and tips for planning your stay.",
+        },
+      },
+      {
+        type: "heading",
+        id: "dia-1",
+        text: {
+          es: "Día 1: descubre el centro de Chiclayo y su gastronomía",
+          en: "Day 1: discover downtown Chiclayo and its food",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Tu primer día es ideal para familiarizarte con la ciudad, conocer sus principales espacios urbanos y probar algunos de los sabores que hacen reconocida a la cocina lambayecana.",
+          en: "Your first day is ideal for getting to know the city, its main public spaces and some of the flavors that have made Lambayeque cooking famous.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Recorre la Plaza de Armas y la Catedral de Chiclayo",
+          en: "Walk around the Plaza de Armas and Chiclayo Cathedral",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Comienza la mañana en el centro de la ciudad, alrededor de la Plaza de Armas. Aquí puedes conocer la Catedral de Santa María y observar uno de los espacios más representativos de Chiclayo.",
+          en: "Start the morning downtown, around the Plaza de Armas. Here you can visit the Cathedral of Santa María and take in one of Chiclayo's most iconic spaces.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Aprovecha para caminar por los alrededores, tomar fotografías y conocer el movimiento cotidiano de la ciudad.",
+          en: "Take the chance to stroll around, take photos and get a feel for the city's everyday rhythm.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si te interesa la historia religiosa de Lambayeque, también puedes incluir algunos lugares vinculados con la Ruta del Papa León XIV.",
+          en: "If you are interested in Lambayeque's religious history, you can also add some of the places linked to Pope Leo XIV's Route.",
+        },
+      },
+      {
+        type: "cta",
+        title: {
+          es: "Recorre la Ruta del Papa León XIV",
+          en: "Walk Pope Leo XIV's Route",
+        },
+        text: {
+          es: "Templos, santuarios y pueblos vinculados al Papa, con distancias reales desde el centro de Chiclayo.",
+          en: "Churches, sanctuaries and towns tied to the Pope, with real distances from downtown Chiclayo.",
+        },
+        label: {
+          es: "Ver la guía de la Ruta del Papa",
+          en: "See the Pope's Route guide",
+        },
+        href: "/blog/ruta-del-papa-chiclayo",
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Prueba la gastronomía lambayecana",
+          en: "Try Lambayeque cooking",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Ninguna visita a Chiclayo está completa sin dedicarle tiempo a su gastronomía. La cocina local combina ingredientes de la costa con recetas tradicionales que forman parte de la identidad de la región.",
+          en: "No visit to Chiclayo is complete without time set aside for its food. Local cooking combines coastal ingredients with traditional recipes that are part of the region's identity.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Durante el almuerzo, busca la oportunidad de probar alguno de estos platos:",
+          en: "At lunch, look for a chance to try one of these dishes:",
+        },
+      },
+      {
+        type: "list",
+        items: [
+          {
+            title: { es: "Arroz con pato", en: "Arroz con pato" },
+            text: {
+              es: "Una preparación tradicional con arroz condimentado, pato y culantro.",
+              en: "A traditional dish of seasoned rice, duck and coriander.",
+            },
+          },
+          {
+            title: { es: "Seco de cabrito", en: "Seco de cabrito" },
+            text: {
+              es: "Un clásico norteño que suele acompañarse con arroz y frejoles.",
+              en: "A northern classic of stewed goat, usually served with rice and beans.",
+            },
+          },
+          {
+            title: { es: "Espesado", en: "Espesado" },
+            text: {
+              es: "Una preparación a base de choclo, tradicionalmente acompañada de carne y otros ingredientes.",
+              en: "A dish made from Andean corn, traditionally served with beef and other ingredients.",
+            },
+          },
+          {
+            title: { es: "Chinguirito", en: "Chinguirito" },
+            text: {
+              es: "Un plato emblemático preparado con pescado seco salado y aliños.",
+              en: "An emblematic dish made with dried salted fish and seasonings.",
+            },
+          },
+        ],
+      },
+      {
+        type: "image",
+        src: `${TRES_DIAS}/arroz-con-pato.webp`,
+        alt: {
+          es: "Plato de arroz con pato acompañado de sarsa de cebolla, palta y lechuga",
+          en: "A plate of arroz con pato served with onion relish, avocado and lettuce",
+        },
+        caption: {
+          es: "El arroz con pato es uno de los platos más representativos de la cocina lambayecana.",
+          en: "Arroz con pato is one of the signature dishes of Lambayeque cooking.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si prefieres comer cerca del mar, también puedes reservar la experiencia de probar un ceviche en alguno de los restaurantes de Pimentel.",
+          en: "If you would rather eat by the sea, you can save the ceviche experience for one of the restaurants in Pimentel.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Visita el Paseo Yortuque",
+          en: "Visit the Paseo Yortuque",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Por la tarde, puedes recorrer el Paseo Yortuque, un espacio urbano con esculturas que representan elementos de la historia y la mitología de Lambayeque.",
+          en: "In the afternoon, you can stroll along the Paseo Yortuque, an urban promenade with sculptures depicting elements of Lambayeque's history and mythology.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Es una alternativa para caminar al aire libre, tomar fotografías y conocer parte de la identidad cultural de la región sin salir de la ciudad.",
+          en: "It is a good option for walking outdoors, taking photos and discovering part of the region's cultural identity without leaving the city.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Termina el día con una cena tranquila",
+          en: "End the day with a relaxed dinner",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Después de recorrer el centro, aprovecha la noche para cenar y descansar. Si viajas por pocos días, dormir bien también es parte de una buena planificación: tendrás más energía para las excursiones de las siguientes jornadas.",
+          en: "After exploring downtown, use the evening to have dinner and rest. On a short trip, sleeping well is part of good planning too: you will have more energy for the excursions of the following days.",
+        },
+      },
+      {
+        type: "heading",
+        id: "dia-2",
+        text: {
+          es: "Día 2: conoce el legado arqueológico de Lambayeque",
+          en: "Day 2: explore Lambayeque's archaeological legacy",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Reserva tu segundo día para uno de los grandes atractivos de la región: su patrimonio arqueológico.",
+          en: "Save your second day for one of the region's great attractions: its archaeological heritage.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Lambayeque conserva vestigios de antiguas civilizaciones y museos que permiten comprender mejor la historia del norte peruano. El Museo Tumbas Reales de Sipán y el Museo Arqueológico Nacional Brüning son dos paradas destacadas para quienes visitan la zona.",
+          en: "Lambayeque preserves remains of ancient civilizations and museums that help you understand the history of northern Peru. The Royal Tombs of Sipán Museum and the Brüning National Archaeological Museum are two highlights for visitors to the area.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Visita el Museo Tumbas Reales de Sipán",
+          en: "Visit the Royal Tombs of Sipán Museum",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si hay un lugar que merece estar en tu itinerario, es el Museo Tumbas Reales de Sipán, ubicado en la ciudad de Lambayeque.",
+          en: "If there is one place that deserves a spot on your itinerary, it is the Royal Tombs of Sipán Museum, in the city of Lambayeque.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "El museo conserva una importante colección relacionada con la cultura mochica y el hallazgo arqueológico de la tumba del Señor de Sipán. En sus salas puedes conocer objetos ceremoniales, ornamentos y otros elementos que ayudan a comprender el poder y las costumbres de esta antigua sociedad.",
+          en: "The museum holds an important collection related to the Moche culture and the archaeological discovery of the tomb of the Lord of Sipán. Its galleries display ceremonial objects, ornaments and other pieces that help explain the power and customs of this ancient society.",
+        },
+      },
+      {
+        type: "image",
+        src: `${TRES_DIAS}/tumbas-reales-sipan.webp`,
+        alt: {
+          es: "Fachada roja en forma de pirámide trunca del Museo Tumbas Reales de Sipán en Lambayeque",
+          en: "The red truncated-pyramid façade of the Royal Tombs of Sipán Museum in Lambayeque",
+        },
+        caption: {
+          es: "La arquitectura del museo evoca las pirámides truncas de la cultura mochica.",
+          en: "The museum's architecture echoes the truncated pyramids of the Moche culture.",
+        },
+      },
+      {
+        type: "table",
+        head: [
+          { es: "Información para planificar tu visita", en: "Planning your visit" },
+          { es: "Detalle", en: "Details" },
+        ],
+        rows: [
+          [
+            { es: "Dirección", en: "Address" },
+            {
+              es: "Av. Juan Pablo Vizcardo y Guzmán 895, Lambayeque",
+              en: "Av. Juan Pablo Vizcardo y Guzmán 895, Lambayeque",
+            },
+          ],
+          [
+            { es: "Horario habitual publicado", en: "Usual published hours" },
+            {
+              es: "Martes a domingo, de 9:00 a. m. a 5:00 p. m.",
+              en: "Tuesday to Sunday, 9:00 a.m. to 5:00 p.m.",
+            },
+          ],
+          [
+            { es: "Entrada general publicada", en: "Published general admission" },
+            { es: "S/ 10", en: "S/ 10" },
+          ],
+        ],
+      },
+      {
+        type: "tip",
+        label: { es: "Antes de ir", en: "Before you go" },
+        text: {
+          es: "Los horarios, tarifas y posibles excepciones pueden cambiar, así que conviene verificarlos antes de viajar.",
+          en: "Opening hours, fees and exceptions may change, so it is worth checking them before you travel.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Continúa en el Museo Arqueológico Nacional Brüning",
+          en: "Continue at the Brüning National Archaeological Museum",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Aprovecha tu visita a Lambayeque para conocer el Museo Brüning, donde encontrarás colecciones arqueológicas y etnográficas que amplían la mirada sobre las culturas que habitaron esta región.",
+          en: "Make the most of your time in Lambayeque by visiting the Brüning Museum, whose archaeological and ethnographic collections broaden the picture of the cultures that lived in this region.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Es una buena manera de complementar lo aprendido en Tumbas Reales y dedicar más tiempo a la historia, el arte y las tradiciones del norte peruano.",
+          en: "It is a good way to build on what you saw at the Royal Tombs and spend more time on the history, art and traditions of northern Peru.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Almuerza y conoce la ciudad de Lambayeque",
+          en: "Have lunch and explore the city of Lambayeque",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Después de las visitas culturales, puedes hacer una pausa para almorzar y recorrer los alrededores antes de regresar a Chiclayo.",
+          en: "After the museums, you can stop for lunch and walk around before heading back to Chiclayo.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Organizar los museos en una misma jornada ayuda a reducir los desplazamientos y aprovechar mejor el tiempo.",
+          en: "Grouping the museums on the same day cuts down on travel and makes better use of your time.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Alternativa para los amantes de la arqueología: Huaca Rajada-Sipán",
+          en: "An option for archaeology lovers: Huaca Rajada-Sipán",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si prefieres una experiencia más vinculada con el lugar de los hallazgos arqueológicos, puedes considerar una visita al complejo de Huaca Rajada-Sipán y su museo de sitio.",
+          en: "If you would like to be closer to where the discoveries were made, consider a visit to the Huaca Rajada-Sipán complex and its site museum.",
+        },
+      },
+      {
+        type: "tip",
+        label: { es: "Ten en cuenta", en: "Keep in mind" },
+        text: {
+          es: "Esta alternativa requiere más tiempo de traslado y puede sustituir parte del recorrido por los museos de Lambayeque. Si eliges incluirla, revisa previamente las distancias, el transporte disponible y los horarios de atención.",
+          en: "This option takes more travel time and may replace part of the Lambayeque museum route. If you include it, check distances, available transport and opening hours in advance.",
+        },
+      },
+      {
+        type: "heading",
+        id: "dia-3",
+        text: {
+          es: "Día 3: disfruta de Pimentel y conoce las tradiciones de Monsefú",
+          en: "Day 3: enjoy Pimentel and discover the traditions of Monsefú",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Después de dos jornadas dedicadas a la ciudad y la historia, el tercer día es perfecto para cambiar de ambiente y conocer la costa y las tradiciones de los pueblos cercanos.",
+          en: "After two days devoted to the city and its history, the third day is perfect for a change of scene: the coast and the traditions of nearby towns.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Camina por el muelle de Pimentel",
+          en: "Walk along the Pimentel pier",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Empieza la mañana en el balneario de Pimentel, uno de los destinos costeros más conocidos de Lambayeque.",
+          en: "Start the morning in the beach town of Pimentel, one of Lambayeque's best-known coastal destinations.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Su muelle es uno de sus principales atractivos. Puedes caminar por los alrededores, observar el mar y conocer la actividad pesquera tradicional de la zona, incluidos los emblemáticos caballitos de totora.",
+          en: "Its pier is one of the main attractions. You can walk around, watch the sea and see the area's traditional fishing, including the iconic caballitos de totora reed boats.",
+        },
+      },
+      {
+        type: "image",
+        src: `${TRES_DIAS}/muelle-pimentel.webp`,
+        alt: {
+          es: "Muelle de madera de Pimentel adentrándose en el mar bajo un cielo despejado",
+          en: "The wooden Pimentel pier stretching into the sea under a clear sky",
+        },
+        caption: {
+          es: "El muelle de Pimentel es uno de los paseos costeros más conocidos de Lambayeque.",
+          en: "The Pimentel pier is one of the best-known seaside walks in Lambayeque.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Es un buen lugar para tomar fotografías, disfrutar de la brisa marina y comenzar el día con calma.",
+          en: "It is a good place to take photos, enjoy the sea breeze and start the day at an easy pace.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Disfruta de la playa y el paisaje costero",
+          en: "Enjoy the beach and the coastline",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Dedica parte de la mañana a caminar por la playa o simplemente disfrutar del paisaje.",
+          en: "Spend part of the morning walking along the beach or simply taking in the view.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si viajas durante una temporada con viento o mar más movido, consulta las condiciones locales y sigue las indicaciones de seguridad. No es necesario llenar cada hora con actividades: también puedes aprovechar este momento para descansar.",
+          en: "If you travel during a windy season or when the sea is rougher, check local conditions and follow safety instructions. There is no need to fill every hour with activities: this is also a good moment to rest.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Almuerza frente al mar",
+          en: "Have lunch by the sea",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Antes de salir de Pimentel, busca un restaurante donde puedas disfrutar de la gastronomía marina.",
+          en: "Before leaving Pimentel, find a restaurant where you can enjoy some seafood.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "El ceviche es una de las opciones más conocidas, aunque también puedes encontrar otros platos preparados con pescados y mariscos. Si prefieres evitar productos marinos, pregunta por las alternativas disponibles en el establecimiento.",
+          en: "Ceviche is one of the best-known options, though you will also find other fish and shellfish dishes. If you would rather avoid seafood, ask about the alternatives on offer.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Visita Monsefú y conoce su artesanía",
+          en: "Visit Monsefú and its crafts",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Por la tarde, puedes acercarte a Monsefú, una localidad reconocida por su tradición artesanal, sus bordados, tejidos y expresiones culturales.",
+          en: "In the afternoon, head to Monsefú, a town known for its craft tradition, its embroidery, weaving and cultural expressions.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Recorrer sus espacios comerciales y artesanales es una buena oportunidad para conocer el trabajo de los productores locales y llevarte un recuerdo de tu viaje.",
+          en: "Browsing its markets and craft workshops is a great way to discover the work of local makers and take home a souvenir of your trip.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si tu visita coincide con alguna festividad, consulta previamente la programación, ya que las actividades pueden variar según la fecha.",
+          en: "If your visit coincides with a festival, check the program in advance, as activities may vary by date.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Regresa a Chiclayo para cerrar tu viaje",
+          en: "Return to Chiclayo to round off your trip",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Al finalizar el día, vuelve a Chiclayo para descansar y preparar tu retorno.",
+          en: "At the end of the day, head back to Chiclayo to rest and get ready for your journey home.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si tienes tiempo adicional, puedes aprovechar la última noche para cenar, recorrer algún punto que te haya quedado pendiente o simplemente disfrutar de una estadía tranquila.",
+          en: "If you have extra time, use your last evening for dinner, a spot you did not get to, or simply a quiet night in.",
+        },
+      },
+      {
+        type: "heading",
+        id: "donde-hospedarse",
+        text: {
+          es: "¿Dónde hospedarse para conocer Chiclayo en 3 días?",
+          en: "Where to stay to see Chiclayo in 3 days",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Para aprovechar un itinerario corto, conviene elegir un hospedaje que te permita organizar tus salidas y regresar cómodamente después de cada jornada.",
+          en: "To make the most of a short itinerary, choose accommodation that lets you plan your outings and come back comfortably after each day.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Zentra Hotel cuenta con alternativas de alojamiento en Chiclayo para quienes llegan por turismo, trabajo o una combinación de ambos. Puedes utilizar la ciudad como punto de partida para visitar el centro, los museos de Lambayeque, Pimentel y otros destinos cercanos.",
+          en: "Zentra Hotel offers accommodation options in Chiclayo for travelers coming for leisure, work or a mix of both. You can use the city as your base for visiting downtown, the Lambayeque museums, Pimentel and other nearby destinations.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si viajas durante una temporada de alta demanda, reserva con anticipación y confirma la ubicación de la sede que mejor se adapte a tu itinerario.",
+          en: "If you are traveling in high season, book ahead and confirm which of our locations best suits your itinerary.",
+        },
+      },
+      {
+        type: "heading",
+        id: "consejos",
+        text: {
+          es: "Consejos para organizar tu viaje a Chiclayo",
+          en: "Tips for planning your trip to Chiclayo",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Antes de comenzar tu recorrido, considera estas recomendaciones:",
+          en: "Before you set off, keep these recommendations in mind:",
+        },
+      },
+      {
+        type: "list",
+        items: [
+          {
+            title: { es: "Organiza los destinos por zonas", en: "Group destinations by area" },
+            text: {
+              es: "Agrupar las visitas reduce los traslados y te deja más tiempo para disfrutar cada lugar.",
+              en: "Grouping your visits cuts down on travel and leaves more time to enjoy each place.",
+            },
+          },
+          {
+            title: { es: "Verifica los horarios de los museos", en: "Check museum opening hours" },
+            text: {
+              es: "Algunos tienen días específicos de atención y tarifas diferenciadas.",
+              en: "Some open only on certain days and have different fees.",
+            },
+          },
+          {
+            title: {
+              es: "Lleva ropa cómoda y protección solar",
+              en: "Bring comfortable clothes and sun protection",
+            },
+            text: {
+              es: "Te será útil tanto en los espacios arqueológicos como en la costa.",
+              en: "You will need them both at the archaeological sites and on the coast.",
+            },
+          },
+          {
+            title: { es: "Reserva tiempo para comer", en: "Set aside time to eat" },
+            text: {
+              es: "La gastronomía es una parte importante de la experiencia lambayecana.",
+              en: "Food is a big part of the Lambayeque experience.",
+            },
+          },
+          {
+            title: { es: "Confirma el transporte", en: "Confirm your transport" },
+            text: {
+              es: "Si vas a visitar destinos fuera de Chiclayo, revisa con anticipación cómo llegar y regresar.",
+              en: "If you are visiting places outside Chiclayo, check in advance how to get there and back.",
+            },
+          },
+          {
+            title: { es: "Deja espacio para improvisar", en: "Leave room to improvise" },
+            text: {
+              es: "Una buena guía sirve para organizarte, pero también es importante disfrutar el viaje sin apuros.",
+              en: "A good guide helps you get organized, but it is just as important to enjoy the trip without rushing.",
+            },
+          },
+        ],
+      },
+      {
+        type: "heading",
+        id: "chiclayo-te-espera",
+        text: {
+          es: "Chiclayo te espera: tres días para descubrir mucho más",
+          en: "Chiclayo awaits: three days to discover much more",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "En tres días puedes llevarte una primera impresión de todo lo que hace especial a Lambayeque: la historia de sus antiguas civilizaciones, la riqueza de su gastronomía, la tranquilidad de sus playas y la tradición de sus pueblos.",
+          en: "In three days you can get a first taste of everything that makes Lambayeque special: the history of its ancient civilizations, the richness of its food, the calm of its beaches and the traditions of its towns.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Este itinerario es un punto de partida. Puedes adaptarlo según tus intereses, el tiempo disponible y los lugares que más te llamen la atención.",
+          en: "This itinerary is a starting point. Adapt it to your interests, the time you have and the places that appeal to you most.",
+        },
+      },
+      {
+        type: "cta",
+        title: {
+          es: "Planifica tu próxima visita y descubre Chiclayo a tu ritmo",
+          en: "Plan your next visit and discover Chiclayo at your own pace",
+        },
+        text: {
+          es: "Encuentra en Zentra un lugar donde descansar durante tu viaje.",
+          en: "Find a place to rest at Zentra during your trip.",
+        },
+        label: {
+          es: "Reserva tu estadía en Zentra",
+          en: "Book your stay at Zentra",
+        },
+        href: "/habitaciones",
+      },
+    ],
+  },
 
   // ---------------------------------------------------------------------------
   "papa-leon-xiv-chiclayo-historia": {
