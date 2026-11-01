@@ -11,7 +11,7 @@ import { BrandLogo } from "@/components/common/brand-logo";
 import { NavMenu } from "@/components/layout/nav-menu";
 import { LocaleSwitch } from "@/components/layout/locale-switch";
 
-export function Header({ banner }: { banner: React.ReactNode }) {
+export function Header({ banner }: { banner?: React.ReactNode }) {
   const t = useTranslations("nav");
   const [scrolled, setScrolled] = React.useState(false);
 

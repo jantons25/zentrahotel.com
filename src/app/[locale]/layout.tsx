@@ -10,7 +10,6 @@ import { ScrollToTop } from "@/components/common/scroll-to-top";
 import { WhatsAppButton } from "@/components/common/whatsapp-button";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { FlashOffersBanner } from "@/features/flash-offers/components/flash-offers-banner";
 import { WelcomePromo } from "@/features/promo-modal/components/welcome-promo";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
@@ -72,7 +71,9 @@ export default async function LocaleLayout({ children, params }: Props) {
           strategy="beforeInteractive"
         />
         <NextIntlClientProvider>
-          <Header banner={<FlashOffersBanner />} />
+          {/* Banner de ofertas flash oculto hasta que haya promociones activas:
+              reactivarlo con banner={<FlashOffersBanner />} y --h-flash en globals.css. */}
+          <Header />
           <main className="flex-1">{children}</main>
           <Footer />
           <WhatsAppButton />

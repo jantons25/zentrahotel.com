@@ -72,15 +72,16 @@
   --duration-slow: 400ms;
   /* Alturas del header: banner de ofertas flash + barra de navegación.
      `--h-header` es la referencia única para que el hero ocupe exactamente
-     el resto del viewport (header + hero = 100dvh, sin sobrar ni faltar). */
-  --h-flash: 2.1rem;
+     el resto del viewport (header + hero = 100dvh, sin sobrar ni faltar).
+     Banner de ofertas flash oculto (sin promociones activas): `--h-flash` en 0.
+     Para reactivarlo, volver a 2.1rem / 3rem y pasar el banner al Header en el layout. */
+  --h-flash: 0rem;
   --h-navbar: 4rem;
   --h-header: calc(var(--h-flash) + var(--h-navbar));
 }
 
 @media (min-width: 768px) {
   :root {
-    --h-flash: 3rem;
     --h-navbar: 5rem;
   }
 }
