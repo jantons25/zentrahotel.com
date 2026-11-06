@@ -43,8 +43,9 @@ export function BookingFloatingButton() {
 
   const expanded = autoExpanded || interacting;
 
-  // En la landing corporativa se sustituye por el botón "Hablar con un asesor".
-  if (pathname === "/empresa") return null;
+  // En la landing corporativa se sustituye por el botón "Hablar con un asesor";
+  // en la de agradecimiento el huésped ya reservó y la acción es pagar.
+  if (pathname === "/empresa" || pathname === "/gracias-reserva") return null;
 
   return (
     <a

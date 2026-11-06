@@ -646,5 +646,64 @@
       "rateNote": "Consultar tarifa",
       "ctaAvailability": "Consultar disponibilidad"
     }
+  },
+  "thankYou": {
+    "hero": {
+      "titleA": "¡Gracias por",
+      "titleEmphasis": "tu reserva!",
+      "status": "Pendiente de confirmación",
+      "lead": "Recibimos tu solicitud y te enviamos el detalle al correo, con tu número de reserva y el monto total. Para asegurar tu habitación, solo faltan dos pasos.",
+      "ctaPayment": "Ver datos de pago",
+      "ctaWhatsapp": "Enviar comprobante",
+      "stepsAria": "Pasos para confirmar tu reserva",
+      "stepDone": "Listo",
+      "stepReceivedTitle": "Reserva recibida",
+      "stepReceivedHint": "Ya registramos tu solicitud.",
+      "stepPayTitle": "Paga el 50 %",
+      "stepPayHint": "Transfiere el depósito a nuestra cuenta BCP.",
+      "stepSendTitle": "Envía el comprobante",
+      "stepSendHint": "Compártelo con nosotros por WhatsApp.",
+      "stepConfirmedTitle": "Reserva confirmada",
+      "stepConfirmedHint": "Te avisamos en cuanto validemos el pago."
+    },
+    "payment": {
+      "eyebrow": "Cómo confirmar",
+      "titleA": "Dos pasos para",
+      "titleEmphasis": "confirmar tu estadía.",
+      "lead": "Tu reserva se confirma con un depósito del 50 % del total. Sigue estos pasos y nosotros nos encargamos del resto.",
+      "stepOne": "Paso 01",
+      "stepTwo": "Paso 02",
+      "transferTitle": "Realiza la transferencia",
+      "amountNote": "Transfiere el <strong>50 % del total</strong> de tu reserva. Encontrarás el monto exacto en el correo que te enviamos.",
+      "holderLabel": "Titular",
+      "bankLabel": "Banco",
+      "accountLabel": "Cuenta corriente BCP en soles",
+      "interbankLabel": "Cuenta interbancaria (CCI)",
+      "copy": "Copiar",
+      "copied": "Copiado",
+      "copyAria": "Copiar {label}",
+      "voucherTitle": "Envía tu comprobante",
+      "voucherLead": "Escríbenos por WhatsApp con la captura de tu transferencia y tu número de reserva. Así podremos confirmarla.",
+      "voucherCta": "Enviar por WhatsApp",
+      "whatsappPrefill": "Hola, acabo de reservar en Zentra Hotel y quiero enviar mi comprobante de pago del 50 % para confirmar mi reserva. Mi número de reserva es: ",
+      "emailNote": "¿No ves el correo? Revisa tu carpeta de spam o escríbenos y te ayudamos."
+    },
+    "info": {
+      "eyebrow": "Tu estadía",
+      "titleA": "Te damos la bienvenida a",
+      "titleEmphasis": "Zentra Hotel.",
+      "lead": "Queremos que te sientas como en casa desde que cruces nuestras puertas. Revisa en tu correo la sede de tu reserva y aquí te contamos cómo llegar.",
+      "mapAlt": "Croquis de {brand} en el centro de Chiclayo con la ubicación de las sedes Plaza, San José y Balta.",
+      "directions": "Cómo llegar",
+      "directionsAria": "Cómo llegar a {name} en Google Maps",
+      "policiesTitle": "Horarios de entrada y salida",
+      "policyCheckIn": "Check-in",
+      "policyCheckOut": "Check-out",
+      "policyLateUntil": "Salida tardía, hasta",
+      "policyLateFee": "Recargo por salida tardía",
+      "contactTitle": "¿Tienes dudas?",
+      "contactPhone": "Teléfono y WhatsApp",
+      "contactEmail": "Correo"
+    }
   }
 }

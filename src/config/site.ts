@@ -8,6 +8,8 @@ export const siteConfig = {
     "Zentra Hotel: hotel moderno y cómodo en el centro de Chiclayo. Reserva directo en web y ahorra en tu próximo viaje.",
   url: "https://zentrahotel.com",
   bookingUrl: "https://hotels.cloudbeds.com/es/reservation/h4UU3o?currency=pen",
+  // Etiqueta de Google (gtag.js) de la cuenta de Google Ads.
+  googleAdsId: "AW-18541058298",
   // Motor de reservas embebido (web components de Cloudbeds Immersive Experience 2.0).
   // `orgSubdomain` es el subdominio de la Organización de Cloudbeds — el texto que
   // antecede a `.cloudbeds.com` en la URL del Group Booking Engine. NO es el dominio

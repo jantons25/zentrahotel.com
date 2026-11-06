@@ -90,8 +90,13 @@ export function WelcomePromo() {
     dismissStore.dismiss();
   };
 
-  // En la landing corporativa manda el asesor B2B, no la promoción de huéspedes.
-  if (pathname === "/empresa" || dismissed) return null;
+  const hiddenOnPage =
+    // En la landing corporativa manda el asesor B2B, no la promoción de huéspedes.
+    pathname === "/empresa" ||
+    // Quien acaba de reservar debe completar el pago, sin un modal que lo interrumpa.
+    pathname === "/gracias-reserva";
+
+  if (hiddenOnPage || dismissed) return null;
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>

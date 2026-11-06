@@ -63,6 +63,22 @@ export default async function LocaleLayout({ children, params }: Props) {
       data-scroll-behavior="smooth"
       className={`${fontSans.variable} h-full antialiased`}
     >
+      <head>
+        {/* Etiqueta de Google (gtag.js) de Google Ads: en el <head> de todas las páginas,
+            por eso va como <script> directo y no con next/script. Debe existir una sola. */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.googleAdsId}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${siteConfig.googleAdsId}');`,
+          }}
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         {/* Web components del Booking Engine de Cloudbeds (Immersive Experience 2.0).
             Debe cargarse antes de que el navegador analice las etiquetas <cb-*>. */}

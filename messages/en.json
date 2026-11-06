@@ -646,5 +646,64 @@
       "rateNote": "Rate on request",
       "ctaAvailability": "Check availability"
     }
+  },
+  "thankYou": {
+    "hero": {
+      "titleA": "Thank you for",
+      "titleEmphasis": "your booking!",
+      "status": "Pending confirmation",
+      "lead": "We received your request and emailed you the details, including your booking number and total amount. Just two steps left to secure your room.",
+      "ctaPayment": "See payment details",
+      "ctaWhatsapp": "Send proof of payment",
+      "stepsAria": "Steps to confirm your booking",
+      "stepDone": "Done",
+      "stepReceivedTitle": "Booking received",
+      "stepReceivedHint": "We have logged your request.",
+      "stepPayTitle": "Pay 50%",
+      "stepPayHint": "Transfer the deposit to our BCP account.",
+      "stepSendTitle": "Send your proof",
+      "stepSendHint": "Share it with us on WhatsApp.",
+      "stepConfirmedTitle": "Booking confirmed",
+      "stepConfirmedHint": "We will let you know once the payment is verified."
+    },
+    "payment": {
+      "eyebrow": "How to confirm",
+      "titleA": "Two steps to",
+      "titleEmphasis": "confirm your stay.",
+      "lead": "Your booking is confirmed with a deposit of 50% of the total. Follow these steps and we will take care of the rest.",
+      "stepOne": "Step 01",
+      "stepTwo": "Step 02",
+      "transferTitle": "Make the transfer",
+      "amountNote": "Transfer <strong>50% of your booking total</strong>. You will find the exact amount in the email we sent you.",
+      "holderLabel": "Account holder",
+      "bankLabel": "Bank",
+      "accountLabel": "BCP checking account in soles",
+      "interbankLabel": "Interbank account (CCI)",
+      "copy": "Copy",
+      "copied": "Copied",
+      "copyAria": "Copy {label}",
+      "voucherTitle": "Send your proof of payment",
+      "voucherLead": "Message us on WhatsApp with a screenshot of your transfer and your booking number so we can confirm it.",
+      "voucherCta": "Send on WhatsApp",
+      "whatsappPrefill": "Hi, I just booked at Zentra Hotel and would like to send my 50% proof of payment to confirm my booking. My booking number is: ",
+      "emailNote": "Can't see the email? Check your spam folder or message us and we will help."
+    },
+    "info": {
+      "eyebrow": "Your stay",
+      "titleA": "Welcome to",
+      "titleEmphasis": "Zentra Hotel.",
+      "lead": "We want you to feel at home from the moment you walk through our doors. Your email shows which location you booked, and here is how to get there.",
+      "mapAlt": "Map of {brand} in downtown Chiclayo showing the Plaza, San José and Balta locations.",
+      "directions": "Get directions",
+      "directionsAria": "Get directions to {name} on Google Maps",
+      "policiesTitle": "Check-in and check-out times",
+      "policyCheckIn": "Check-in",
+      "policyCheckOut": "Check-out",
+      "policyLateUntil": "Late check-out, until",
+      "policyLateFee": "Late check-out fee",
+      "contactTitle": "Any questions?",
+      "contactPhone": "Phone and WhatsApp",
+      "contactEmail": "Email"
+    }
   }
 }
