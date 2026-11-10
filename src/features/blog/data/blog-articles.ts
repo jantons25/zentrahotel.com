@@ -13,6 +13,451 @@ export const blogArticles: Record<string, BlogArticle> = {
   ...blogArticlesDiario,
 
   // ---------------------------------------------------------------------------
+  "registro-joinnus-misa-papa-chiclayo": {
+    lead: {
+      es: "El registro gratuito para la misa del papa León XIV en Chiclayo se realiza a través de Joinnus. Te explicamos cómo encontrar el evento, qué revisar durante la inscripción y cómo prepararte para el viernes 13 de noviembre en las Pampas de Pimentel.",
+      en: "Free registration for Pope Leo XIV's Mass in Chiclayo is handled through Joinnus. Here is how to find the event, what to check while signing up and how to get ready for Friday 13 November at the Pampas de Pimentel.",
+    },
+    tags: [
+      { es: "Papa León XIV", en: "Pope Leo XIV" },
+      { es: "Joinnus", en: "Joinnus" },
+      { es: "Pimentel", en: "Pimentel" },
+      { es: "Visita papal 2026", en: "Papal visit 2026" },
+    ],
+    body: [
+      {
+        type: "paragraph",
+        text: {
+          es: "¿Quieres asistir a la misa del papa León XIV en Chiclayo? El registro gratuito para participar en esta celebración ya fue anunciado y se realiza a través de la plataforma Joinnus.",
+          en: "Want to attend Pope Leo XIV's Mass in Chiclayo? Free registration for the celebration has been announced and is handled through the Joinnus platform.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "La misa está programada para el viernes 13 de noviembre de 2026, a las 10:30 a. m., en la explanada frente a las Pampas de Pimentel, en Lambayeque.",
+          en: "The Mass is scheduled for Friday 13 November 2026 at 10:30 a.m., on the esplanade facing the Pampas de Pimentel, in Lambayeque.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si planeas asistir, en esta guía te explicamos cómo encontrar el evento, qué debes tener en cuenta durante la inscripción y cómo prepararte para el día de la celebración.",
+          en: "If you plan to go, this guide explains how to find the event, what to keep in mind while registering and how to prepare for the day itself.",
+        },
+      },
+      {
+        type: "heading",
+        id: "cuando-y-donde",
+        text: {
+          es: "¿Cuándo y dónde será la misa del papa León XIV?",
+          en: "When and where will Pope Leo XIV's Mass take place?",
+        },
+      },
+      {
+        type: "image",
+        src: `${AGENDA}/misa-pampas-pimentel.webp`,
+        alt: {
+          es: "Miles de fieles reunidos en una explanada frente al mar durante una misa papal",
+          en: "Thousands of faithful gathered on a seaside esplanade during a papal Mass",
+        },
+        caption: {
+          es: "La misa se celebrará en la explanada frente a las Pampas de Pimentel.",
+          en: "The Mass will be celebrated on the esplanade facing the Pampas de Pimentel.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "La celebración forma parte de la visita apostólica del papa León XIV al Perú y representa uno de los acontecimientos más importantes para Chiclayo y la región Lambayeque.",
+          en: "The celebration is part of Pope Leo XIV's apostolic visit to Peru and is one of the most significant events ever for Chiclayo and the Lambayeque region.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Estos son los datos principales:",
+          en: "These are the key details:",
+        },
+      },
+      {
+        type: "list",
+        items: [
+          {
+            title: { es: "Fecha", en: "Date" },
+            text: {
+              es: "Viernes 13 de noviembre de 2026.",
+              en: "Friday 13 November 2026.",
+            },
+          },
+          {
+            title: { es: "Hora programada", en: "Scheduled time" },
+            text: { es: "10:30 a. m.", en: "10:30 a.m." },
+          },
+          {
+            title: { es: "Lugar", en: "Venue" },
+            text: {
+              es: "Explanada frente a las Pampas de Pimentel, Lambayeque.",
+              en: "Esplanade facing the Pampas de Pimentel, Lambayeque.",
+            },
+          },
+          {
+            title: { es: "Costo de la entrada", en: "Ticket price" },
+            text: { es: "Gratuito.", en: "Free." },
+          },
+          {
+            title: { es: "Plataforma de registro", en: "Registration platform" },
+            text: { es: "Joinnus.", en: "Joinnus." },
+          },
+        ],
+      },
+      {
+        type: "tip",
+        label: { es: "Importante", en: "Important" },
+        text: {
+          es: "Antes de organizar tu traslado, revisa las comunicaciones oficiales por si se publican actualizaciones sobre los horarios, accesos o condiciones de ingreso.",
+          en: "Before arranging your transport, check official announcements in case there are updates on times, access points or entry conditions.",
+        },
+      },
+      {
+        type: "heading",
+        id: "paso-a-paso",
+        text: {
+          es: "Cómo registrarse en Joinnus para la misa del papa: paso a paso",
+          en: "How to register on Joinnus for the Pope's Mass: step by step",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Paso 1. Ingresa a Joinnus",
+          en: "Step 1. Go to Joinnus",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Accede a la plataforma oficial de Joinnus (joinnus.com) y busca el evento relacionado con la misa del papa León XIV en las Pampas de Pimentel. También puedes ingresar desde el enlace directo que publiquen las autoridades o los organizadores oficiales.",
+          en: "Open the official Joinnus platform (joinnus.com) and look for the event for Pope Leo XIV's Mass at the Pampas de Pimentel. You can also use the direct link published by the authorities or official organizers.",
+        },
+      },
+      {
+        type: "tip",
+        label: { es: "Importante", en: "Important" },
+        text: {
+          es: "Comprueba que hayas seleccionado el evento de la misa en Pimentel y no otra actividad de la visita papal.",
+          en: "Make sure you have selected the Mass in Pimentel and not another event from the papal visit.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Paso 2. Revisa la información del evento",
+          en: "Step 2. Review the event details",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Antes de comenzar el registro, lee los detalles que aparecen en la página del evento. Verifica la fecha, el lugar, las condiciones de inscripción y cualquier indicación sobre la cantidad de entradas disponibles por persona.",
+          en: "Before you start registering, read the details on the event page. Check the date, venue, registration conditions and any note on how many tickets each person can request.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "La información periodística publicada sobre el registro señala que las entradas son gratuitas. No necesitas pagar a terceros para obtener una entrada.",
+          en: "Press coverage of the registration states that tickets are free. You do not need to pay anyone to get one.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Paso 3. Completa el registro según las indicaciones de la plataforma",
+          en: "Step 3. Complete the registration as the platform indicates",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Sigue las instrucciones que aparezcan en Joinnus para realizar tu inscripción. Ten a la mano tu documento de identidad y tus datos de contacto por si la plataforma los solicita. Revisa cuidadosamente toda la información antes de enviarla.",
+          en: "Follow the instructions Joinnus gives you to sign up. Keep your ID and contact details handy in case the platform asks for them, and review everything carefully before submitting.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Los campos obligatorios, la cantidad de entradas permitidas y los requisitos específicos deben confirmarse en el formulario oficial, ya que pueden depender de las condiciones establecidas para el evento.",
+          en: "Required fields, the number of tickets allowed and any specific requirements should be confirmed on the official form, as they may depend on the conditions set for the event.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Paso 4. Confirma que tu inscripción se haya completado",
+          en: "Step 4. Confirm your registration went through",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Al finalizar el procedimiento, comprueba que la plataforma muestre una confirmación del registro. Si aparece un mensaje de error o no recibes una confirmación, revisa las indicaciones de Joinnus antes de intentar registrarte nuevamente.",
+          en: "When you finish, check that the platform shows a registration confirmation. If you see an error or receive no confirmation, review Joinnus's guidance before trying again.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Evita realizar varias solicitudes sin comprobar primero si la anterior se completó correctamente.",
+          en: "Avoid submitting several requests without first checking whether the previous one went through.",
+        },
+      },
+      {
+        type: "subheading",
+        text: {
+          es: "Paso 5. Guarda tu entrada y revisa las indicaciones de ingreso",
+          en: "Step 5. Save your ticket and read the entry instructions",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si la plataforma emite una entrada digital, conserva el acceso a ella y sigue las instrucciones para presentarla el día del evento. Si recibes un código QR, evita compartir una imagen de este públicamente. Consulta también si debes presentar tu documento de identidad u otra información al ingresar.",
+          en: "If the platform issues a digital ticket, keep access to it and follow the instructions for showing it on the day. If you receive a QR code, avoid sharing an image of it publicly. Also check whether you need to show your ID or anything else at the entrance.",
+        },
+      },
+      {
+        type: "tip",
+        label: { es: "Recuerda", en: "Remember" },
+        text: {
+          es: "Completar un formulario no siempre equivale a tener una entrada confirmada: verifica que la plataforma te indique expresamente que tu registro fue exitoso.",
+          en: "Filling in a form does not always mean you have a confirmed ticket: make sure the platform explicitly tells you your registration was successful.",
+        },
+      },
+      {
+        type: "heading",
+        id: "cuanto-cuesta",
+        text: {
+          es: "¿Cuánto cuesta la entrada para la misa del papa en Pimentel?",
+          en: "How much does a ticket for the Pope's Mass in Pimentel cost?",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "El registro anunciado para la misa es gratuito. Las autoridades regionales han advertido sobre la importancia de no pagar a intermediarios por una entrada. Por eso, desconfía de personas que ofrezcan cupos garantizados a cambio de dinero.",
+          en: "The announced registration for the Mass is free. Regional authorities have warned against paying middlemen for a ticket, so be wary of anyone offering guaranteed places in exchange for money.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Para registrarte de manera segura:",
+          en: "To register safely:",
+        },
+      },
+      {
+        type: "list",
+        items: [
+          {
+            text: {
+              es: "Utiliza la plataforma oficial de Joinnus.",
+              en: "Use the official Joinnus platform.",
+            },
+          },
+          {
+            text: {
+              es: "No pagues por entradas que se ofrecen gratuitamente.",
+              en: "Do not pay for tickets that are offered for free.",
+            },
+          },
+          {
+            text: {
+              es: "Evita ingresar tus datos en páginas sospechosas.",
+              en: "Avoid entering your details on suspicious websites.",
+            },
+          },
+          {
+            text: {
+              es: "No compartas públicamente tu código QR.",
+              en: "Do not share your QR code publicly.",
+            },
+          },
+          {
+            text: {
+              es: "Conserva la confirmación de tu inscripción.",
+              en: "Keep your registration confirmation.",
+            },
+          },
+        ],
+      },
+      {
+        type: "heading",
+        id: "cuantas-entradas",
+        text: {
+          es: "¿Cuántas entradas se pueden solicitar por persona?",
+          en: "How many tickets can each person request?",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Las publicaciones periodísticas difundidas sobre el registro han mencionado límites de entradas por persona. Sin embargo, la información disponible presenta discrepancias respecto de la cantidad permitida.",
+          en: "Press reports about the registration have mentioned per-person ticket limits. However, the available information is inconsistent about the exact number allowed.",
+        },
+      },
+      {
+        type: "tip",
+        label: { es: "Confírmalo en Joinnus", en: "Check it on Joinnus" },
+        text: {
+          es: "Confirma el límite directamente en la página oficial del evento en Joinnus antes de iniciar el procedimiento. No te guíes únicamente por publicaciones compartidas en redes sociales.",
+          en: "Confirm the limit directly on the official Joinnus event page before you start. Do not rely only on posts shared on social media.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si vas a asistir con familiares o amigos, organiza la inscripción con anticipación y sigue las condiciones que establezca la plataforma.",
+          en: "If you are going with family or friends, organize your registration in advance and follow the conditions the platform sets.",
+        },
+      },
+      {
+        type: "heading",
+        id: "que-llevar",
+        text: {
+          es: "¿Qué debes llevar el día de la misa del papa León XIV?",
+          en: "What should you bring on the day of Pope Leo XIV's Mass?",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Una vez que tengas confirmada tu entrada, prepara tu visita con tiempo. Te recomendamos:",
+          en: "Once your ticket is confirmed, prepare your visit ahead of time. We recommend:",
+        },
+      },
+      {
+        type: "list",
+        items: [
+          {
+            text: {
+              es: "Tener disponible la entrada digital, si corresponde.",
+              en: "Having your digital ticket at hand, if you have one.",
+            },
+          },
+          {
+            text: {
+              es: "Llevar tu documento de identidad.",
+              en: "Bringing your ID.",
+            },
+          },
+          {
+            text: {
+              es: "Cargar tu celular antes de salir.",
+              en: "Charging your phone before you leave.",
+            },
+          },
+          {
+            text: {
+              es: "Revisar las indicaciones oficiales de ingreso.",
+              en: "Reviewing the official entry instructions.",
+            },
+          },
+          {
+            text: {
+              es: "Consultar las rutas y opciones de transporte hacia Pimentel.",
+              en: "Checking routes and transport options to Pimentel.",
+            },
+          },
+          {
+            text: {
+              es: "Considerar el tiempo necesario para llegar al lugar.",
+              en: "Allowing enough time to reach the venue.",
+            },
+          },
+          {
+            text: {
+              es: "Llevar protección solar y agua, siguiendo las indicaciones de seguridad del evento.",
+              en: "Bringing sunscreen and water, in line with the event's safety guidance.",
+            },
+          },
+        ],
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Consulta los canales oficiales antes de viajar para conocer los accesos habilitados, las recomendaciones para los asistentes y cualquier restricción que pueda aplicarse.",
+          en: "Check official channels before you travel for the open access points, recommendations for attendees and any restrictions that may apply.",
+        },
+      },
+      {
+        type: "heading",
+        id: "donde-hospedarse",
+        text: {
+          es: "¿Dónde hospedarse en Chiclayo para la visita del papa León XIV?",
+          en: "Where to stay in Chiclayo for Pope Leo XIV's visit",
+        },
+      },
+      {
+        type: "image",
+        src: `${MISA}/sedes-zentra.webp`,
+        alt: {
+          es: "Fachadas de las tres sedes de Zentra Hotel & Cowork en Chiclayo",
+          en: "Façades of the three Zentra Hotel & Cowork locations in Chiclayo",
+        },
+        caption: {
+          es: "Nuestras sedes en Chiclayo: una base cómoda para tu viaje a la misa en Pimentel.",
+          en: "Our locations in Chiclayo: a comfortable base for your trip to the Mass in Pimentel.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Si viajarás desde otra ciudad para participar en la misa, reservar tu alojamiento con anticipación te permitirá organizar mejor tu estadía.",
+          en: "If you are traveling from another city for the Mass, booking your accommodation early will help you organize your stay.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "En Zentra Hotel encontrarás alternativas de hospedaje en Chiclayo para descansar durante tu visita a Lambayeque. Antes de reservar, revisa la ubicación de nuestras sedes y elige la opción que mejor se adapte a tu itinerario.",
+          en: "At Zentra Hotel you will find places to stay in Chiclayo to rest during your visit to Lambayeque. Before booking, check where our locations are and choose the one that best fits your itinerary.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "Para consultar disponibilidad y coordinar tu reserva, comunícate por WhatsApp al +51 924 048 177.",
+          en: "To check availability and arrange your booking, message us on WhatsApp at +51 924 048 177.",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          es: "La visita del papa León XIV es una ocasión histórica para Chiclayo y Lambayeque. Si deseas asistir a la misa, consulta el registro oficial, verifica las condiciones de ingreso y organiza tu viaje con anticipación.",
+          en: "Pope Leo XIV's visit is a historic occasion for Chiclayo and Lambayeque. If you want to attend the Mass, use the official registration, check the entry conditions and plan your trip in advance.",
+        },
+      },
+      {
+        type: "cta",
+        title: {
+          es: "Prepárate para vivir este acontecimiento en Lambayeque",
+          en: "Get ready to experience this event in Lambayeque",
+        },
+        text: {
+          es: "Disfruta tu estadía con Zentra y haz de Chiclayo tu punto de partida hacia la misa en Pimentel.",
+          en: "Enjoy your stay with Zentra and make Chiclayo your starting point for the Mass in Pimentel.",
+        },
+        label: {
+          es: "Reserva tu estadía en Zentra",
+          en: "Book your stay at Zentra",
+        },
+        href: "/habitaciones",
+      },
+    ],
+  },
+
+  // ---------------------------------------------------------------------------
   "que-hacer-en-chiclayo-3-dias": {
     lead: {
       es: "¿Estás planeando un viaje al norte del Perú y no sabes por dónde empezar? Chiclayo es un excelente punto de partida para descubrir la historia, la gastronomía y los paisajes de Lambayeque. En solo tres días puedes visitar museos con tesoros de antiguas civilizaciones, caminar junto al mar, probar platos tradicionales y conocer pueblos llenos de cultura.",

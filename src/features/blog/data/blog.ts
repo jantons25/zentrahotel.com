@@ -19,6 +19,27 @@ const authors: Record<string, BlogAuthor> = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "registro-joinnus-misa-papa-chiclayo",
+    category: "chiclayo",
+    title: {
+      es: "Cómo registrarse en Joinnus para la misa del papa León XIV en Chiclayo",
+      en: "How to register on Joinnus for Pope Leo XIV's Mass in Chiclayo",
+    },
+    excerpt: {
+      es: "La entrada es gratuita y el registro se hace en Joinnus. Paso a paso para inscribirte a la misa del viernes 13 de noviembre en las Pampas de Pimentel, cómo evitar estafas y qué llevar el día de la celebración.",
+      en: "Tickets are free and registration is done on Joinnus. A step-by-step guide to signing up for the Mass on Friday 13 November at the Pampas de Pimentel, how to avoid scams and what to bring on the day.",
+    },
+    cover: "/images/blog/registro-joinnus-misa/portada.webp",
+    coverAlt: {
+      es: "Una persona sostiene un celular con la entrada gratuita de Joinnus para la misa del papa León XIV, en una habitación de hotel",
+      en: "A person holds a phone showing the free Joinnus ticket for Pope Leo XIV's Mass, in a hotel room",
+    },
+    author: authors.editorial,
+    publishedAt: "2026-11-10",
+    readingMinutes: 5,
+    featured: true,
+  },
+  {
     slug: "que-hacer-en-chiclayo-3-dias",
     category: "chiclayo",
     title: {
@@ -37,7 +58,6 @@ export const blogPosts: BlogPost[] = [
     author: authors.editorial,
     publishedAt: "2026-10-26",
     readingMinutes: 7,
-    featured: true,
   },
   {
     slug: "papa-leon-xiv-chiclayo-historia",
