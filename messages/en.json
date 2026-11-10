@@ -523,6 +523,17 @@
       "ctaMore": "See more",
       "ctaAria": "See more about the {collection} collection"
     },
+    "papaRegistro": {
+      "eyebrow": "Quick guide",
+      "titleA": "Registering",
+      "titleB": "for the Pope's",
+      "titleEmphasis": "Mass.",
+      "lead": "How registration and entry will work for Pope Leo XIV's Mass at the Pampas de Pimentel: your Joinnus account, ticket details, ID, and access times.",
+      "prevAria": "Previous slide",
+      "nextAria": "Next slide",
+      "statusAria": "Slide {current} of {total}",
+      "cta": "Read the full guide"
+    },
     "grid": {
       "eyebrow": "Recent posts",
       "titleA": "Latest from the",

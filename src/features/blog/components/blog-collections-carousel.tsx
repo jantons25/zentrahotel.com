@@ -21,8 +21,14 @@ import { cn } from "@/lib/utils";
 import { collections } from "@/features/blog/data/collections";
 import { pick } from "@/lib/i18n-pick";
 
-function CarouselNav() {
-  const t = useTranslations("blog.collections");
+// Flechas del carrusel, compartidas con el separador del registro para la misa.
+export function CollectionsCarouselNav({
+  prevLabel,
+  nextLabel,
+}: {
+  prevLabel: string;
+  nextLabel: string;
+}) {
   const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } =
     useCarousel();
   return (
@@ -31,7 +37,7 @@ function CarouselNav() {
         type="button"
         onClick={scrollPrev}
         disabled={!canScrollPrev}
-        aria-label={t("prevAria")}
+        aria-label={prevLabel}
         className="grid size-11 place-items-center rounded-full border border-white/30 text-white transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
       >
         <ChevronLeft className="size-5" strokeWidth={1.75} />
@@ -40,7 +46,7 @@ function CarouselNav() {
         type="button"
         onClick={scrollNext}
         disabled={!canScrollNext}
-        aria-label={t("nextAria")}
+        aria-label={nextLabel}
         className="grid size-11 place-items-center rounded-full border border-white/30 text-white transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
       >
         <ChevronRight className="size-5" strokeWidth={1.75} />
@@ -213,7 +219,10 @@ export function BlogCollectionsCarousel() {
             )}
           </CarouselContent>
 
-          <CarouselNav />
+          <CollectionsCarouselNav
+            prevLabel={t("prevAria")}
+            nextLabel={t("nextAria")}
+          />
         </Carousel>
       </div>
     </div>

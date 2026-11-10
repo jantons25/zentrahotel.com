@@ -523,6 +523,17 @@
       "ctaMore": "Ver más",
       "ctaAria": "Ver más sobre la colección {collection}"
     },
+    "papaRegistro": {
+      "eyebrow": "Guía rápida",
+      "titleA": "Registro para",
+      "titleB": "la misa del",
+      "titleEmphasis": "Papa.",
+      "lead": "Así será tu registro e ingreso a la misa del papa León XIV en las Pampas de Pimentel: cuenta en Joinnus, datos de tu entrada, DNI y horarios de acceso.",
+      "prevAria": "Lámina anterior",
+      "nextAria": "Siguiente lámina",
+      "statusAria": "Lámina {current} de {total}",
+      "cta": "Leer la guía completa"
+    },
     "grid": {
       "eyebrow": "Publicaciones recientes",
       "titleA": "Lo último del",
